@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  learning_time: 2020-05-27 12:07:20
+  learning_text: MyString
+  comment: MyText
+  subject: MyString
+  student: one
+
+two:
+  learning_time: 2020-05-27 12:07:20
+  learning_text: MyString
+  comment: MyText
+  subject: MyString
+  student: two
