@@ -1,0 +1,4 @@
+news/index.html.erb (news_field)
+    @current_teacher　　//ログイン中のteacher
+    @current_student 　//ログイン中のstudent
+    @news 　//生徒の学習履歴一覧と先生のメッセージ一覧を時系列に並べた配列
