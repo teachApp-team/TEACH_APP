@@ -18,7 +18,7 @@ Student.create({
 end
 
 2.times do |i|
-  Messages.create({
+  Message.create({
     comment: "#{i}回目のコメントだよ。",
     student_id: 1,
     teacher_id: 1
