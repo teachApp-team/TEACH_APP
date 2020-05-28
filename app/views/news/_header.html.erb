@@ -5,7 +5,13 @@
       <%= image_tag "self-profile.jpg", class: "self_profile" %>
       </div>
       <div class="self_name">
-      <h3>Kosuke Fujita　先生</h3>
+      <% if @current_teacher %>
+        <h3><%= @current_teacher&.full_name %>　先生</h3>
+      <% elsif @current_student %>
+        <h3><%= @current_student&.full_name %>  さん</h3>
+      <% else %>
+        <h3>名無しさん</h3>
+      <% end %>
       </div>
     </div>    
     <div class="bg-dark p-4">

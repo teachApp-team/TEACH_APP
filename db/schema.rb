@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_120904) do
+ActiveRecord::Schema.define(version: 2020_05_28_103335) do
 
   create_table "learning_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.time "learning_time"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_120904) do
     t.bigint "teacher_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "image"
     t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
@@ -47,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_05_27_120904) do
     t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.string "image"
   end
 
   add_foreign_key "learning_histories", "students"
