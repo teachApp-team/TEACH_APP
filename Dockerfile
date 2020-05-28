@@ -4,7 +4,10 @@ FROM ruby:2.5.1
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get update -qq && \
     apt-get install -y build-essential \
-                       nodejs
+                       nodejs　
+
+# rmagick用にパッケージをインストール
+RUN apt-get install -y imagemagick libmagickcore-dev libmagickwand-dev
 
 # ルート直下にwebappという名前で作業ディレクトリを作成（コンテナ内のアプリケーションディレクトリ）
 RUN mkdir /webapp
