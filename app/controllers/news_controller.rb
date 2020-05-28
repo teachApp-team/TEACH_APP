@@ -1,7 +1,5 @@
 class NewsController < ApplicationController
   def index
-    @current_teacher = Teacher.find(1)
-    @current_student = Student.find(1)
     histories = LearningHistory.all
     messages = Message.all
     @news = []
