@@ -1,0 +1,55 @@
+.nav_self {
+  border-bottom: solid 1px white;
+}
+
+.nav_self > .self_img > .self_profile{
+  border-radius: 50%;
+  height: 130px;
+  width: 130px;
+  object-fit: cover;
+}
+
+.nav_self > .self_name {
+  margin-top: 24px;
+  color: #C0C0C0;
+}
+
+
+
+.navbar.bg-dark {
+  background: #C0C0C0 !important;
+}
+
+.navbar-toggler {
+  font-size: 1.6rem !important;
+  border: 3px solid white !important;
+}
+
+button:focus{
+  outline: none !important;
+}
+
+.navbar  {
+  justify-content: flex-start !important;
+}
+.navbar > .navbar-titile {
+  margin: 0 auto;
+  bottom: 0;
+  border: solid 3px #191970;
+  border-radius: 3rem;
+  padding: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.navbar > .navbar-titile > a {
+  text-decoration: none;
+}
+
+.navbar > .navbar-titile h2 {
+  color: #191970;
+  font-family: serif;
+  margin-bottom: 0;
+}
+
+
