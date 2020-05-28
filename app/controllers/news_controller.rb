@@ -12,4 +12,7 @@ class NewsController < ApplicationController
       @news.push(m)
     end
   end
+
+  def test
+  end
 end
