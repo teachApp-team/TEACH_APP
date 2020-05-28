@@ -5,13 +5,22 @@ class ApplicationController < ActionController::Base
   private
 
   def current_teacher
-    return unless session[:teacher_id]
-    @current_teacher = Teacher.find(session[:teacher_id])
-    @current_user = Teacher.find(session[:teacher_id])
+    if session[:teacher_id]
+      @current_teacher = Teacher.find(session[:teacher_id])
+      @current_user = Teacher.find(session[:teacher_id])
+    end
   end
+
   def current_student
-    return unless session[:student_id]
-    @current_student = Student.find(session[:student_id])
-    @current_user = Student.find(session[:student_id])
+    if session[:student_id]
+      @current_student = Student.find(session[:student_id])
+      @current_user = Student.find(session[:student_id])
+    end
+  end
+
+  def auth_user
+    if @current_user == nil
+      redirect_to '/'
+    end
   end
 end

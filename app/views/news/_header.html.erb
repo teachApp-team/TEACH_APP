@@ -2,8 +2,8 @@
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="nav_self bg-dark p-4">
       <div class="self_img">  
-      <% if @current_teacher.image? %>
-        <%= image_tag @current_teacher.image.url, class: "self_profile" %>
+      <% if @current_user&.image %>
+        <%= image_tag @current_user.image.url, class: "self_profile" %>
       <% else %>
         <%= image_tag "self-profile.jpg", class: "self_profile" %>
       <% end %>

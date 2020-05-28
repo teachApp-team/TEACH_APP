@@ -1,4 +1,6 @@
 class NewsController < ApplicationController
+  before_action :auth_user
+
   def index
     histories = LearningHistory.all
     messages = Message.all
