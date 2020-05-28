@@ -2,14 +2,16 @@ Teacher.create({
   full_name: 'kosuke fujita',
   subject: '英語',
   password: 'password',
-  password_confirmation: 'password'
+  password_confirmation: 'password',
+  image: open("./db/icons/icon0.jpeg")
 })
 Student.create({
   full_name: 'hiroharu hara',
   school_of_choice: '東京大学',
   password: 'password',
   password_confirmation: 'password',
-  teacher_id: 1
+  teacher_id: 1,
+  image: open("./db/icons/icon1.png")
 })
 [10, 20, 30].each do |i|
   LearningHistory.create({

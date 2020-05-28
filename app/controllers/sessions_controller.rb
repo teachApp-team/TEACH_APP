@@ -1,17 +1,17 @@
 class SessionsController < ApplicationController
   def create
     teacher = Teacher.find_by(full_name: params[:session][:name])
-    if teacher && teacher.authenticate(params[:session][:password])
+    if teacher && teacher.authenticate(params[:session][:password]) && session[:student_id].nil?
       session[:teacher_id] = teacher.id
       redirect_to '/news_field'
     end
 
     student = Student.find_by(full_name: params[:session][:name])
-    if student && student.authenticate(params[:session][:password])
+    if student && student.authenticate(params[:session][:password]) && session[:teacher_id].nil?
       session[:student_id] = student.id
       redirect_to '/news_field'
-    else
-      render '/'
+    elsif student.nil? && teacher.nil?
+      redirect_to '/'
     end
   end
 
