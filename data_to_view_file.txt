@@ -2,3 +2,20 @@ news/index.html.erb (news_field)
     @current_teacher　　//ログイン中のteacher
     @current_student 　//ログイン中のstudent
     @news 　//生徒の学習履歴一覧と先生のメッセージ一覧を時系列に並べた配列
+    @news = [
+      { 
+        learning_time: "00:10:00",
+        learning_text: "チャート式　第1章",
+        comment: "今日は20分学習しました。",
+        subject: "数学",
+        student_id: 1
+      },
+      { 
+        comment: "1回目のコメントだよ。",
+        student_id: 1,
+        teacher_id: 1
+      }
+    ]
+
+    つまり、@news[0].learning_text -> "チャート式　第1章"
+    ということ。
