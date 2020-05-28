@@ -1,0 +1,134 @@
+.stu_card {
+  border-bottom: solid 1px #191970;
+  margin: 0 320px;
+  padding: 10px 30px;
+}
+
+.stu_card_info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+  -ms-grid-rows: 30px 20px;
+      grid-template-rows: 30px 20px;
+}
+
+.stu_card_info_img {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  text-align: center;
+}
+
+.stu_card_info_img_self {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.stu_card_info_name {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.stu_card_info_name > h4 {
+  margin: 4px 0px;
+}
+
+.stu_card_comment {
+  margin-top: 1rem;
+  padding-left: 20px;
+}
+
+.stu_card_info_time_ago {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.stu_card_content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+}
+
+.teacher_card {
+  border-bottom: solid 1px #191970;
+  margin: 0 320px;
+  padding: 0 30px;
+}
+
+.teacher_card_info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+  -ms-grid-rows: 50px 20px;
+      grid-template-rows: 50px 20px;
+}
+
+.teacher_card_info_img {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+}
+
+.teacher_card_info_img_self {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.teacher_card_info_name {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.teacher_card_info_name > h4 {
+  margin-top: 10px;
+}
+
+.teacher_card_info_time_ago {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.teacher_card_comment {
+  margin-top: 1rem;
+}
+
+@media (min-width: 0px) and (max-width: 900px) {
+  .stu_card {
+    margin: 0;
+  }
+  .teacher_card {
+    margin: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */
