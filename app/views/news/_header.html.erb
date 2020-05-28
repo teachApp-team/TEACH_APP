@@ -1,8 +1,12 @@
 <div class="fixed-top">
   <div class="collapse" id="navbarToggleExternalContent">
     <div class="nav_self bg-dark p-4">
-      <div class="self_img">
-      <%= image_tag "self-profile.jpg", class: "self_profile" %>
+      <div class="self_img">  
+      <% if @current_teacher.image? %>
+        <%= image_tag @current_teacher.image.url, class: "self_profile" %>
+      <% else %>
+        <%= image_tag "self-profile.jpg", class: "self_profile" %>
+      <% end %>
       </div>
       <div class="self_name">
       <% if @current_teacher %>
@@ -10,7 +14,7 @@
       <% elsif @current_student %>
         <h3><%= @current_student&.full_name %>  さん</h3>
       <% else %>
-        <h3>名無しさん</h3>
+        <h3>ログインしてません</h3>
       <% end %>
       </div>
     </div>    

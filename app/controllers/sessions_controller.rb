@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
     teacher = Teacher.find_by(full_name: params[:session][:name])
     if teacher && teacher.authenticate(params[:session][:password])
       session[:teacher_id] = teacher.id
-      redirect_to '/news_field'
     end
 
     student = Student.find_by(full_name: params[:session][:name])
@@ -11,7 +10,7 @@ class SessionsController < ApplicationController
       session[:student_id] = student.id
       redirect_to '/news_field'
     else
-      render '/'
+      redirect_to '/'
     end
   end
 
