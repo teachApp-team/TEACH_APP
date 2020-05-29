@@ -1,3 +1,50 @@
-<h1>Teachers#show</h1>
-<p>Find me in app/views/teachers/show.html.erb</p>
-<h1><%= @current_teacher.full_name %></h1>
+<%= render partial: 'news/header' %>
+<section class="teacher_profile_section">
+  <div style="padding: 76px 0 0 0"></div>
+  <div class="teacher_profile_title">
+    <div>
+      <h2>About Me</h2>
+    </div>
+    <div class="teacher_profile_edit">
+      <a href="#" class="teacher_profile_edit_btn">
+        <i class="fas fa-user-edit teacher_edit_icon"></i>
+      </a>
+    </div>
+  </div>
+  <div class="teacher_profile">
+    <div class="teacher_profile_img">
+      <%=image_tag @current_teacher.image.url , class: "teacher_profile_img_self" %>
+    </div>
+    <div class="teacher_profile">
+      <h1><%= @current_teacher.full_name %></h1>
+    </div>
+    <div class="teacher_profile_subject">
+      <h2><%= @current_teacher.subject %></h2>
+    </div>
+  </div>
+
+  <div class="your_students">
+    <div class="your_students_title">
+      <div>
+        <h2>Your Students</h2>
+      </div>
+      <div class="your_students_add">
+        <a href="#" class="your_students_add_btn">
+          <i class="fas fa-plus your_students_add_icon"></i>
+        </a>
+      </div>
+    </div>
+    <div class="your_students_list">
+      <% @current_teacher.students.each do |s| %>
+      <div class="your_students_list">
+        <div class="your_students_img">
+          <%=image_tag s.image.url, class: "your_student_img_self" %>
+        </div>
+        <div class="your_student_name">
+          <h3><%=s.full_name %></h3>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>

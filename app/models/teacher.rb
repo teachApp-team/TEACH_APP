@@ -3,6 +3,6 @@ class Teacher < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  has_many :teachers
+  has_many :students
   has_many :messages
 end
