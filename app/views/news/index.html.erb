@@ -1,4 +1,5 @@
 <%= render partial: 'header' %>
+<section>
 <div style="padding: 76px 0 0 0"></div>
 
 <% @news.each do |e| %>
@@ -15,38 +16,48 @@
         <p><%= e.created_at.to_s(:datetime_jp) %></p>
       </div>
     </div>
-    <div class="stu_card_comment">
-      <p><%= e.comment %></p>
-    </div>
-    <div class="stu_card_content">
-      <div class="stu_card_content_subject">
-        <p><%= e.subject %></p>
+
+    <div class="balloon">
+      <div class="stu_card_comment">
+        <p>「<%= e.comment %>」</p>
       </div>
-      <div class="stu_card_content_text">
-        <p><%= e.learning_text %></p>
+      <div class="stu_card_content">
+        <div class="stu_card_content_subject">
+          <p class="stu_card_content_subject_circle"
+          ><%= e.subject[0, 1] %></p>
+        </div>
+        <div class="stu_card_content_text">
+          <span class= "stu_card_content_text_subject">教材: </span><span><%= e.learning_text %></span>
+        </div>
+      </div>
+      <div class="stu_card_content_time">
+        <p><%= e.learning_time %></p>
       </div>
     </div>
-    <div class="stu_card_content_time">
-      <p><%= e.learning_time %></p>
-    </div>
+      
+
   </div>
   
   <% else %>
+  
   <div class="teacher_card">
     <div class="teacher_card_info">
       <div class="teacher_card_info_img">
-        <%= image_tag "self-profile.jpg", class: "teacher_card_info_img_self" %>
+        <%=image_tag e.teacher.image.url , class: "teacher_card_info_img_self" %>
       </div>
       <div class="teacher_card_info_name">
-        <h4><%= e.teacher.full_name %>先生</h4>
+        <h5><%= e.teacher.full_name %>先生</h5>
       </div>
       <div class="teacher_card_info_time_ago">
         <p><%= e.created_at.to_s(:datetime_jp) %></p>
       </div>
     </div>
-    <div class="teacher_card_comment">
-      <p><%= e.comment %></p>
+    <div class="balloon_teacher">
+      <div class="teacher_card_comment">
+        <p><%= e.comment %></p>
+      </div>
     </div>
   </div>
   <% end %>
 <% end%>
+</section>
