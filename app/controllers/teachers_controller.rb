@@ -1,4 +1,5 @@
 class TeachersController < ApplicationController
+  before_action :auth_user, except: [:new]
   def new
   end
 

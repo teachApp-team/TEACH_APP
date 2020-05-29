@@ -8,3 +8,50 @@
 <h1>this is test</h1>
 <h1>this is test</h1>
 <%= link_to "ログアウト", "/sessions/destroy", method: :delete, class: "btn btn-danger" %>
+
+<% if @current_student %>
+<div style="padding: 30px;">
+  <%= form_for(:learning, url: "create_lh", method: :post) do |f| %>
+  <div class="form-group">
+    <%= f.label :learning_time, "学習時間" %>
+    <%= f.text_field :learning_time, class: "form-control", style: "width: 300px;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :learning_text, "学習したテキスト" %>
+    <%= f.text_field :learning_text, class: "form-control", style: "width: 300px;"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :comment, "コメント" %>
+    <%= f.text_field :comment, class: "form-control", style: "width: 300px;"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subject, "学習した教科" %>
+    <%= f.text_field :subject, class: "form-control", style: "width: 300px;"  %>
+  </div>
+
+  <%= f.hidden_field :student_id, value: @current_student.id %>
+
+  <%= f.submit "送信", class: "btn btn-outline-success" %>
+  <% end %>
+</div>
+
+<% else %>
+
+<div style="padding: 30px;">
+  <%= form_for(:message, url: "create_msg", method: :post) do |f| %>
+  <div class="form-group">
+    <%= f.label :comment, "コメント" %>
+    <%= f.text_area :comment, class: "form-control", style: "width: 300px; height: 200px;" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :subject, "送り先の生徒" %>
+    <%= f.collection_select(:student_id, Student.where(id: @current_teacher.id), :id, :full_name) %>
+  </div>
+
+  <%= f.hidden_field :teacher_id, value: @current_teacher.id %>
+
+  <%= f.submit "送信", class: "btn btn-outline-success" %>
+  <% end %>
+</div>
+
+<% end %>

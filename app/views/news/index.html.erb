@@ -1,5 +1,5 @@
 <%= render partial: 'header' %>
-<section>
+<section class="news_field">
 <div style="padding: 76px 0 0 0"></div>
 
 <% @news.each do |e| %>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="stu_card_content_time">
-        <p><%= e.learning_time %></p>
+        <p><%= e.learning_time.to_s(:time_jp) %></p>
       </div>
     </div>
       
