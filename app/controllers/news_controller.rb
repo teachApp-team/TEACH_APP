@@ -2,6 +2,7 @@ class NewsController < ApplicationController
   before_action :auth_user
 
   def index
+    require "time"
     histories = LearningHistory.all
     messages = Message.all
     @news = []
@@ -11,6 +12,8 @@ class NewsController < ApplicationController
     messages.each do |m|
       @news.push(m)
     end
+    # newsの投稿日時から降順に並び替え
+    @news.sort_by! { |n| n[:created_at] }.reverse!
   end
 
   def new_learning_history
