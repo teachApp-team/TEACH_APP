@@ -1,0 +1,70 @@
+.teacher_profile_title {
+  display: flex;
+  padding: 15px;
+  border-bottom: solid 1px #000099;
+  justify-content: center;
+}
+
+.teacher_profile_title {
+  
+}
+
+.teacher_profile_edit {
+  
+}
+
+.teacher_profile_edit_btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #000099;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  border: solid 2px #668ad8;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .4s;
+}
+
+.teacher_edit_icon {
+  font-size: 28px;
+}
+
+.teacher_profile_img {
+  text-align: center;
+  padding: 20px;
+}
+.teacher_profile_img_self {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.your_students_add_btn {
+  display: inline-block;
+  text-decoration: none;
+  color: #000099;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  border: solid 2px #668ad8;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .4s;  
+}
+
+.your_students_add_icon {
+  font-size: 35px;
+}
+
+.your_student_img_self {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  object-fit: cover;  
+}
