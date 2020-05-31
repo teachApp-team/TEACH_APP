@@ -1,16 +1,18 @@
 .teacher_profile_title {
-  display: flex;
-  padding: 15px;
-  border-bottom: solid 1px #000099;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  text-align: center;
+  padding: 20px 60px;
+  background-color: white;
 }
 
-.teacher_profile_title {
-  
+.teacher_profile_title h2 {
+  text-align: left;
+  font-family: serif;
 }
 
 .teacher_profile_edit {
-  
+  text-align: right;
 }
 
 .teacher_profile_edit_btn {
@@ -32,30 +34,84 @@
   font-size: 28px;
 }
 
-.teacher_profile_img {
+.teacher-profile {
   text-align: center;
-  padding: 20px;
+  margin: 50px 0px;
 }
-.teacher_profile_img_self {
+
+.teacher-profile-img {
+  text-align: center;
+}
+.teacher-profile-img-self {
   border-radius: 50%;
   height: 200px;
   width: 200px;
   object-fit: cover;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .3);
+}
+
+
+.teacher-profile > h1 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.teacher-profile > h1:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 40%;
+  height: 10px;
+  left: 50%;
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #7ED1E6;
+  border-radius: 5px;
+  }
+
+.teacher-profile-subject > h2 {
+  font-family: 'Osaka', serif;
+}
+
+.your_students_title {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  justify-content: space-around;
+  background-color: #555555;
+  padding: 10px 60px;;
+  color: white;
+  font-family: 'arial';
+  align-items: center;
+}
+
+.your_students_title h4 {
+  margin-bottom: 0;
+  font-family: serif;
+}
+
+.your_students_add {
+  text-align: right;
 }
 
 .your_students_add_btn {
   display: inline-block;
   text-decoration: none;
-  color: #000099;
+  color: white;
   width: 40px;
   height: 40px;
   line-height: 40px;
   border-radius: 50%;
-  border: solid 2px #668ad8;
+  border: solid 2px white;
   text-align: center;
   overflow: hidden;
   font-weight: bold;
-  transition: .4s;  
+  transition: .4s;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
 }
 
 .your_students_add_icon {
@@ -66,5 +122,36 @@
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  object-fit: cover;  
+  object-fit: cover;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 1);
+}
+
+.your_students_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.your_student_list {
+  margin: 20px  10px 20px 10px;
+  padding: 20px;
+  text-align: center; 
+  background-color: #555555;
+  color: white;
+  align-items: center;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 1);
+  border-radius: 20px;
+}
+
+.your_student_name {
+  margin: 20px 0px;
+}
+
+.your_student_name > h5 {
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.teacher_profile_bottom_margin {
+  margin-bottom: 20px;
+  background-color: #DDDDDD;
 }
