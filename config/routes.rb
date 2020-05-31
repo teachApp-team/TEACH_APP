@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'test', to: 'news#test'
   get 'teachers/:id', to: "teachers#show"
+  get 'news/new_msg'
 
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"

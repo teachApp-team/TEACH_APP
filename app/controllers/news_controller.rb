@@ -19,6 +19,9 @@ class NewsController < ApplicationController
   def new_learning_history
   end
 
+  def new_msg
+  end
+
   def create_learning_history
     @learn = LearningHistory.new({
       learning_time: params[:learning][:learning_time],
