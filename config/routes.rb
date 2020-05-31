@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'news_field', to: 'news#index'
   root 'home#top'
   get 'test', to: 'news#test'
+  get 'teachers/edit'
+  post 'teachers/update'
   get 'teachers/:id', to: "teachers#show"
 
   get 'new_lh', to: "news#new_learning_history"
