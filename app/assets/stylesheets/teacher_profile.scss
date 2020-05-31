@@ -36,7 +36,7 @@
 
 .teacher-profile {
   text-align: center;
-  margin: 50px 0px;
+  margin: 50px 20px;
 }
 
 .teacher-profile-img {
@@ -154,4 +154,14 @@
 .teacher_profile_bottom_margin {
   margin-bottom: 20px;
   background-color: #DDDDDD;
+}
+
+.teacher_profile_section {
+  margin: 0 100px;
+}
+
+.tacher-card-wrapper {
+  box-shadow: 0 0 8px gray;
+  margin: 30px 250px;
+  padding: 20px 0;
 }
