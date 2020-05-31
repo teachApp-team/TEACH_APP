@@ -3,7 +3,7 @@
   <div style="padding: 76px 0 0 0"></div>
   <div class="teacher_profile_title">
     <div>
-      <h2>About Me</h2>
+      <h2>About You</h2>
     </div>
     <div class="teacher_profile_edit">
       <a href="#" class="teacher_profile_edit_btn">
@@ -11,22 +11,22 @@
       </a>
     </div>
   </div>
-  <div class="teacher_profile">
-    <div class="teacher_profile_img">
-      <%=image_tag @current_teacher.image.url , class: "teacher_profile_img_self" %>
+  <div class="teacher-profile">
+    <div class="teacher-profile-img">
+      <%=image_tag @current_teacher.image.url , class: "teacher-profile-img-self" %>
     </div>
-    <div class="teacher_profile">
+    <div class="teacher-profile">
       <h1><%= @current_teacher.full_name %></h1>
     </div>
-    <div class="teacher_profile_subject">
-      <h2><%= @current_teacher.subject %></h2>
+    <div class="teacher-profile-subject">
+      <h5>担当教科</h5><h2><%= @current_teacher.subject %></h2>
     </div>
   </div>
 
   <div class="your_students">
     <div class="your_students_title">
       <div>
-        <h2>Your Students</h2>
+        <h4>Your Students</h4>
       </div>
       <div class="your_students_add">
         <a href="#" class="your_students_add_btn">
@@ -36,15 +36,19 @@
     </div>
     <div class="your_students_list">
       <% @current_teacher.students.each do |s| %>
-      <div class="your_students_list">
-        <div class="your_students_img">
+      <div class="your_student_list">
+        <div class="your_student_img">
           <%=image_tag s.image.url, class: "your_student_img_self" %>
         </div>
         <div class="your_student_name">
-          <h3><%=s.full_name %></h3>
+          <h5><%=s.full_name %></h5>
+        </div>
+        <div class="your_student_school">
+          <p><%=s.school_of_choice %>志望</p>
         </div>
       </div>
       <% end %>
     </div>
   </div>
+  <div class="teacher_profile_bottom_margin"></div>
 </section>
