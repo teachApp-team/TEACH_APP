@@ -1,0 +1,8 @@
+<h1>Students#index</h1>
+<p>Find me in app/views/students/index.html.erb</p>
+
+<%= @students.present? %>
+  <% if @students.each do |s| %>
+    <h1><%= s.full_name %></h1>
+  <% end %>
+<% end %>
