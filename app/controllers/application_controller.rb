@@ -23,4 +23,14 @@ class ApplicationController < ActionController::Base
       redirect_to '/'
     end
   end
+  def auth_teacher
+    if @current_teacher == nil
+      redirect_to '/'
+    end
+  end
+  def auth_student
+    if @current_student == nil
+      redirect_to '/'
+    end
+  end
 end

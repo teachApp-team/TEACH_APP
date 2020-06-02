@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
+  get 'students/index'
+  get 'students/new'
+  get 'students/edit'
   post 'sessions/create'
   delete 'sessions/destroy'
   get 'news_field', to: 'news#index'
   root 'home#top'
   get 'test', to: 'news#test'
+  get 'teachers/edit'
+  post 'teachers/update'
+  get 'history', to: "students#history"
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
 

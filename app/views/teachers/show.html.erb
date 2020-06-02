@@ -6,20 +6,22 @@
       <h2>About You</h2>
     </div>
     <div class="teacher_profile_edit">
-      <a href="#" class="teacher_profile_edit_btn">
+      <a href="/teachers/edit" class="teacher_profile_edit_btn">
         <i class="fas fa-user-edit teacher_edit_icon"></i>
       </a>
     </div>
   </div>
-  <div class="teacher-profile">
-    <div class="teacher-profile-img">
-      <%=image_tag @current_teacher.image.url , class: "teacher-profile-img-self" %>
-    </div>
+  <div class="tacher-card-wrapper">
     <div class="teacher-profile">
-      <h1><%= @current_teacher.full_name %></h1>
-    </div>
-    <div class="teacher-profile-subject">
-      <h5>担当教科</h5><h2><%= @current_teacher.subject %></h2>
+      <div class="teacher-profile-img">
+        <%=image_tag @current_teacher.image.url , class: "teacher-profile-img-self" %>
+      </div>
+      <div class="teacher-profile">
+        <h1><%= @current_teacher.full_name %></h1>
+      </div>
+      <div class="teacher-profile-subject">
+        <h5>担当教科</h5><h2><%= @current_teacher.subject %></h2>
+      </div>
     </div>
   </div>
 
