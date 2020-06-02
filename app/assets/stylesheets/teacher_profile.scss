@@ -165,3 +165,22 @@
   margin: 30px 250px;
   padding: 20px 0;
 }
+
+@media (min-width: 500px) and (max-width: 1000px) {
+  .tacher-card-wrapper {
+    margin: 30px 100px;
+  }
+  .teacher_profile_section{
+    margin: 0;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 499px) {
+  .tacher-card-wrapper {
+    margin: 0;
+    border: none;
+  }
+  .teacher_profile_section{
+    margin: 0;
+  }
+}

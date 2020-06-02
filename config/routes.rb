@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'students/index'
+  get 'students/new'
+  get 'students/edit'
   post 'sessions/create'
   delete 'sessions/destroy'
   get 'news_field', to: 'news#index'
@@ -7,6 +10,7 @@ Rails.application.routes.draw do
   get 'test', to: 'news#test'
   get 'teachers/edit'
   post 'teachers/update'
+  get 'history', to: "students#history"
   get 'teachers/:id', to: "teachers#show"
 
   get 'new_lh', to: "news#new_learning_history"

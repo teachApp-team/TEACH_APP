@@ -1,0 +1,62 @@
+テーブル名
+    カラム名
+
+Teachers
+    full_name  
+    password 　まだ
+    icon_image 　まだ
+    subject
+    (students)  ※複数のstudentのオブジェクト
+    (tests)  ※複数のtestのオブジェクト　まだ
+    (messages)  ※複数のmessageのオブジェクト
+ 
+Students
+    full_name
+    password  まだ
+    icon_image 　まだ
+    school_of_choice
+    teacher_id  ※foreign_key
+    (teacher)  ※１つのteacherのオブジェクト
+    (Learning_histories)  ※複数のLearning_historiesのオブジェクト
+    (Tests)  ※複数のTestsのオブジェクト　　まだ
+    (Schedules)  ※複数のSchedulesのオブジェクト　　まだ
+
+Learning_histories
+    learning_time
+    learning_text
+    comment
+    subject
+    student_id  ※foreign_key
+    (student)   ※１つのstudentのオブジェクト
+
+Tests
+    name
+    score
+    grade
+    average_score
+    teacher_id  ※foreign_key
+    student_id  ※foreign_key
+
+Subjects
+    teacher_id  ※foreign_key
+    name 
+
+Messages
+    comment
+    student_id  (foreign_key)
+    teacher_id  (foreign_key)
+    (teacher)  ※１つのteacherのオブジェクト
+    (studnet)  ※１つのstudnetのオブジェクト
+
+Schedules
+    date
+    subject
+    contents_of_class
+    home_work
+    student_id  ※foreign_key
+
+
+
+
+
+
