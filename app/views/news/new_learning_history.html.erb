@@ -1,11 +1,6 @@
 <%= render partial: 'share/header' %>
-<section class="new_learning_history_section">
-  <div style="padding: 76px 0 0 0"></div>
-  <div class="new_learning_history_title">
-    <div>
-      <h2>Start Learning</h2>
-    </div>
-  </div>
+<section class="new_learning_history_section">  
+<%= render partial: 'share/title', locals: {each_title: 'Start Learning'} %>
 
   <div class="new_learning_history_container">
     <div class="stopwatch_container">

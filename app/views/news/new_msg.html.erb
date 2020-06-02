@@ -1,11 +1,6 @@
 <%= render partial: 'share/header' %>
 <section class="new_msg_section">
-  <div style="padding: 76px 0 0 0"></div>
-  <div class="new_msg_title">
-    <div>
-      <h2>New Comment</h2>
-    </div>
-  </div>
+<%= render partial: 'share/title', locals: {each_title: 'New Comment'} %>
 
   <div class="new_msg_container">
     <form>

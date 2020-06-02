@@ -1,12 +1,6 @@
-
 <%= render partial: 'share/header' %>
 <section class="news_field_background">
-<div style="padding: 76px 0 0 0"></div>
-<div class="new_msg_title">
-  <div>
-    <h2>学習履歴</h2>
-  </div>
-</div>
+<%= render partial: 'share/title', locals: {each_title: '学習履歴'} %>
 
 <% @histories.each do |h| %>
 <div class="balloon">
