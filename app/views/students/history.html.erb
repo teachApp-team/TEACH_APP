@@ -1,8 +1,7 @@
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
+<%= render partial: 'share/header' %>
+<section class="news_field_background">
+<%= render partial: 'share/title', locals: {each_title: 'StartLearning'} %>
+
 <% @histories.each do |h| %>
-  <h2><%= h.comment %></h2>
+  <%= render partial: 'share/student-history', locals: {variable: h} %>
 <% end %>

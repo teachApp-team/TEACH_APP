@@ -1,0 +1,46 @@
+<%= render partial: 'share/header' %>
+
+<section class="student_profile_section">
+  <%= render partial: 'share/student-and-teacher', locals: {teacher_url: "/teachers/edit"} %>
+
+  <div class="student-card-wrapper">
+    <div class="student-profile">
+      <div class="student-profile-img">
+        <%=image_tag @current_student.image.url , class: "student-profile-img-self" %>
+      </div>
+      <div class="student-profile">
+        <h1><%= @current_student.full_name %></h1>
+      </div>
+      <div class="student-profile-subject">
+        <h5>志望校</h5><h2><%= @current_student.school_of_choice %></h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="your_teachers">
+    <div class="your_teachers_title">
+      <div>
+        <h4>Your teachers</h4>
+      </div>
+      <div class="your_teachers_add">
+        <a href="#" class="your_teachers_add_btn">
+          <i class="fas fa-plus your_teachers_add_icon"></i>
+        </a>
+      </div>
+    </div>
+    <div class="your_teachers_list">
+      <div class="your_teacher_list">
+        <div class="your_teacher_img">
+          <%=image_tag @current_student.teacher.image.url, class: "your_teacher_img_self" %>
+        </div>
+        <div class="your_teacher_name">
+          <h5><%=@current_student.teacher.full_name %></h5>
+        </div>
+        <div class="your_teacher_school">
+          <p><%=@current_student.teacher.subject %>担当</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="teacher_profile_bottom_margin"></div>
+</section>
