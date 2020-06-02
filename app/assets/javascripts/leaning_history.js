@@ -118,6 +118,43 @@ $(function() {
     $('.stopwatch_container').css('background-color', '#222222');
     $('.stopwatch_title').css('color', 'white');
   });
+  // $("#test").click(function(){
+  //   var fin_hour = $('#hour')[0].innerText
+  //   var fin_min = $('#min')[0].innerText
+  //   var fin_sec = $('#sec')[0].innerText
+  //   var sum_time = `${fin_hour}:${fin_min}:${fin_sec}`
+  //   console.log(sum_time)
+  //   console.log($('#exampleFormControlTextarea1')[0].value);
+  //   console.log($('#exampleFormControlTextarea1'));
+  //   console.log($('#exampleFormControlTextarea2')[0].value);
+  //   console.log($('#exampleFormControlTextarea2'));
+  // })
+
+  $("#sharebtn").click(function(){
+    var fin_hour = $('#hour')[0].innerText
+    var fin_min = $('#min')[0].innerText
+    var fin_sec = $('#sec')[0].innerText
+    var sum_time = `${fin_hour}:${fin_min}:${fin_sec}`
+    $.ajax({
+        url: "ajax_create_lh",
+        type: "POST",
+        data: JSON.stringify({
+          learning_time: sum_time,
+          learning_text: $('#exampleFormControlTextarea1')[0].value,
+          comment: $('#exampleFormControlTextarea2')[0].value,
+          subject: '英語',
+          student_id: 1
+        }),
+        contentType: 'application/json',
+        dataType: "json",
+        success: function(data) {
+          window.location.href = '/news_field';
+        },
+        error: function(data) {
+           window.location.href = '/test';
+        }
+    });
+});
 
 
 });

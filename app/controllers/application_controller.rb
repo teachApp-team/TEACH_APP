@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :current_teacher
   before_action :current_student
+  protect_from_forgery with: :null_session
 
   private
 

@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
   before_action :auth_user
+  skip_before_action :verify_authenticity_token
+  include AjaxHelper 
 
   def index
     require "time"
@@ -23,18 +25,35 @@ class NewsController < ApplicationController
   end
 
   def create_learning_history
+    # @learn = LearningHistory.new({
+    #   learning_time: params[:learning][:learning_time],
+    #   learning_text: params[:learning][:learning_text],
+    #   comment: params[:learning][:comment],
+    #   subject: params[:learning][:subject],
+    #   student_id: params[:learning][:student_id]
+    # })
     @learn = LearningHistory.new({
-      learning_time: params[:learning][:learning_time],
-      learning_text: params[:learning][:learning_text],
-      comment: params[:learning][:comment],
-      subject: params[:learning][:subject],
-      student_id: params[:learning][:student_id]
+      learning_time: params[:learning_time],
+      learning_text: params[:learning_text],
+      comment: params[:comment],
+      subject: params[:subject],
+      student_id: params[:student_id]
     })
     if @learn.save
       redirect_to '/news_field'
     else
       redirect_to '/test'
     end
+  end
+  def ajax_create_learning_history
+    @learn = LearningHistory.new({
+      learning_time: params[:learning_time],
+      learning_text: params[:learning_text],
+      comment: params[:comment],
+      subject: params[:subject],
+      student_id: params[:student_id]
+    })
+    @learn.save
   end
 
   def create_message

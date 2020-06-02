@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"
+  post 'ajax_create_lh', to: "news#ajax_create_learning_history"
   post 'create_msg', to: "news#create_message"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
