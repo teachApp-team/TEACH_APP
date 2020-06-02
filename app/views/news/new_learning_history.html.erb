@@ -10,7 +10,11 @@
   <div class="new_learning_history_container">
     <div class="stopwatch_container">
       <h3 class="stopwatch_title">StopWatch</h3>
-      <h6 id="timerLabel">00時間00分00秒</h6>
+      <h6 id="timerLabel">
+        <span id="hour">00</span>時間
+        <span id="min">0</span>分
+        <span id="sec">0</span>秒
+      </h6>
     </div>
 
     <div class="information_container">
@@ -20,7 +24,7 @@
       </div>
       <div class="comment_contaner">
         <label for="exampleFormControlTextarea1">コメント</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
       </div>
     </div>
 
@@ -45,6 +49,7 @@
       <div id ="finish">
         <input type="button" class="myButtons share" id="sharebtn" value="上記の内容でシェア">
         <input type="button" class="myButtons share" id="stillbtn" value="まだ学習を続ける">
+        <!-- <input type="button" class="myButtons share" id="test" value="確認用"> -->
       </div>
     </div>
   </div>
