@@ -1,17 +1,7 @@
 <%= render partial: 'share/header' %>
 <section class="teacher_profile_section">
-<%= render partial: 'share/title', locals: {each_title: 'About You'} %>
-  <div style="padding: 76px 0 0 0"></div>
-  <div class="teacher_profile_title">
-    <div>
-      <h2>About You</h2>
-    </div>
-    <div class="teacher_profile_edit">
-      <a href="/teachers/edit" class="teacher_profile_edit_btn">
-        <i class="fas fa-user-edit teacher_edit_icon"></i>
-      </a>
-    </div>
-  </div>
+  <%= render partial: 'share/student-and-teacher', locals: {teacher_url: "/teachers/edit"} %>
+
   <div class="tacher-card-wrapper">
     <div class="teacher-profile">
       <div class="teacher-profile-img">

@@ -1,13 +1,12 @@
-
-.teacher-profile {
+.student-profile {
   text-align: center;
   margin: 50px 20px;
 }
 
-.teacher-profile-img {
+.student-profile-img {
   text-align: center;
 }
-.teacher-profile-img-self {
+.student-profile-img-self {
   border-radius: 50%;
   height: 200px;
   width: 200px;
@@ -16,14 +15,14 @@
 }
 
 
-.teacher-profile > h1 {
+.student-profile > h1 {
   position: relative;
   display: inline-block;
   margin-bottom: 5px;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.teacher-profile > h1:before {
+.student-profile > h1:before {
   content: '';
   position: absolute;
   bottom: -15px;
@@ -39,11 +38,14 @@
   border-radius: 5px;
   }
 
-.teacher-profile-subject > h2 {
+.student-profile-subject > h2 {
   font-family: 'Osaka', serif;
 }
 
-.your_students_title {
+
+
+
+.your_teachers_title {
   display: grid;
   grid-template-columns: 80% 20%;
   justify-content: space-around;
@@ -54,16 +56,16 @@
   align-items: center;
 }
 
-.your_students_title h4 {
+.your_teachers_title h4 {
   margin-bottom: 0;
   font-family: serif;
 }
 
-.your_students_add {
+.your_teachers_add {
   text-align: right;
 }
 
-.your_students_add_btn {
+.your_teachers_add_btn {
   display: inline-block;
   text-decoration: none;
   color: white;
@@ -79,11 +81,11 @@
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .5);
 }
 
-.your_students_add_icon {
+.your_teachers_add_icon {
   font-size: 35px;
 }
 
-.your_student_img_self {
+.your_teacher_img_self {
   border-radius: 50%;
   height: 60px;
   width: 60px;
@@ -91,12 +93,12 @@
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 1);
 }
 
-.your_students_list {
+.your_teachers_list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.your_student_list {
+.your_teacher_list {
   margin: 20px  10px 20px 10px;
   padding: 20px;
   text-align: center; 
@@ -107,11 +109,11 @@
   border-radius: 20px;
 }
 
-.your_student_name {
+.your_teacher_name {
   margin: 20px 0px;
 }
 
-.your_student_name > h5 {
+.your_teacher_name > h5 {
   font-weight: bolder;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -121,31 +123,32 @@
   background-color: #DDDDDD;
 }
 
-.teacher_profile_section {
+.student_profile_section {
   margin: 0 100px;
 }
 
-.tacher-card-wrapper {
+.student-card-wrapper {
   box-shadow: 0 0 8px gray;
   margin: 30px 250px;
   padding: 20px 0;
 }
 
 @media (min-width: 500px) and (max-width: 1000px) {
-  .tacher-card-wrapper {
+  .student-card-wrapper {
     margin: 30px 100px;
   }
-  .teacher_profile_section{
+  
+  .student_profile_section{
     margin: 0;
   }
 }
 
 @media (min-width: 0px) and (max-width: 499px) {
-  .tacher-card-wrapper {
+  .student-card-wrapper {
     margin: 0;
     border: none;
   }
-  .teacher_profile_section{
+  .student_profile_section{
     margin: 0;
   }
 }
