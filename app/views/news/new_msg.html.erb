@@ -1,0 +1,38 @@
+<%= render partial: 'header' %>
+<section class="new_msg_section">
+  <div style="padding: 76px 0 0 0"></div>
+  <div class="new_msg_title">
+    <div>
+      <h2>New Comment</h2>
+    </div>
+  </div>
+
+  <div class="new_msg_container">
+    <form>
+      <div class="choise_student">
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label for="inlineFormCustomSelect">Preference</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+              <option selected>Kosuke Fujita</option>
+              <option value="1">Gen Nakamura</option>
+              <option value="2">Soichi Kubota</option>
+              <option value="3">Hiroharu Hara</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="new_msg_text">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="submit_new_msg">
+        <div class="col-auto my-1">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

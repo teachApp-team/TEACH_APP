@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'teachers/update'
   get 'history', to: "students#history"
   get 'teachers/:id', to: "teachers#show"
+  get 'news/new_msg'
 
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"

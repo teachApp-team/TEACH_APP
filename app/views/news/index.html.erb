@@ -1,8 +1,8 @@
 <%= render partial: 'header' %>
-<section class="news_field">
-<div style="padding: 76px 0 0 0"></div>
+<section class="news_field_background">
+  <div style="padding: 76px 0 0 0"></div>
 
-<% @news.each do |e| %>
+  <% @news.each do |e| %>
   <% if e.try(:subject) %>
   <div class="stu_card">
     <div class="stu_card_info">
@@ -16,7 +16,7 @@
         <p><%= e.created_at.to_s(:datetime_jp) %></p>
       </div>
     </div>
-
+    
     <div class="balloon">
       <div class="stu_card_comment">
         <p>「<%= e.comment %>」</p>
@@ -57,5 +57,18 @@
     </div>
   </div>
   <% end %>
-<% end%>
+  <% end%>
+  <% if @current_teacher %>
+    <div class="new_message_add">
+    <a href="#" class="new_message_add_btn">
+    <i class="fas fa-comment message_icon"></i>
+    </a>
+    </div>
+  <% else %>
+    <div class="new_message_add">
+    <a href="#" class="new_message_add_btn">
+    <i class="fas fa-pencil-alt message_icon"></i></i>
+    </a>
+    </div>
+  <% end %>
 </section>

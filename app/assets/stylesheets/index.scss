@@ -1,8 +1,6 @@
-section.news_field {
+.news_field_background {
   background: #f5f5f5;
 }
-
-
 
 .stu_card {
   margin: 0 320px;
@@ -164,6 +162,26 @@ section.news_field {
   margin: 0;
   padding: 0;
   font-size: 12px;
+}
+
+
+.new_message_add {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 30px 40px 0;
+  width: 80px;
+	height: 80px;
+  font-size: 40px;
+  border-radius: 50px;
+  background-color: #00008b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.message_icon {
+  color: white;
 }
 
 @media (min-width: 0px) and (max-width: 900px) {
