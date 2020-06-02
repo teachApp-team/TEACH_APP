@@ -1,8 +1,28 @@
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
-<h1>sorede</h1>
+
+<%= render partial: 'share/header' %>
+<section class="news_field_background">
+<div style="padding: 76px 0 0 0"></div>
+<div class="new_msg_title">
+  <div>
+    <h2>学習履歴</h2>
+  </div>
+</div>
+
 <% @histories.each do |h| %>
-  <h2><%= h.comment %></h2>
+<div class="balloon">
+  <div class="stu_card_comment">
+    <p><%= h.comment %></p>
+  </div>
+  <div class="stu_card_content">
+    <div class="stu_card_content_subject">
+      <p class="stu_card_content_subject_circle"><%= h.subject[0, 1] %></p>
+    </div>
+    <div class="stu_card_content_text">
+      <span class= "stu_card_content_text_subject">教材: </span><span><%= h.learning_text %></span>
+    </div>
+  </div>
+  <div class="stu_card_content_time">
+    <p><%= h.learning_time.to_s(:time_jp) %></p>
+  </div>
+</div>
 <% end %>
