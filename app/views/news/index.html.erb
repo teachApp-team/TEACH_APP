@@ -58,5 +58,17 @@
   </div>
   <% end %>
   <% end%>
-  <i class="fas fa-comment message_icon"></i>
+  <% if @current_teacher %>
+    <div class="new_message_add">
+    <a href="#" class="new_message_add_btn">
+    <i class="fas fa-comment message_icon"></i>
+    </a>
+    </div>
+  <% else %>
+    <div class="new_message_add">
+    <a href="#" class="new_message_add_btn">
+    <i class="fas fa-pencil-alt message_icon"></i></i>
+    </a>
+    </div>
+  <% end %>
 </section>

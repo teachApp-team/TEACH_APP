@@ -2,19 +2,6 @@
   background: #f5f5f5;
 }
 
-.message_icon {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-.fas {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-}
-
-
-
 .stu_card {
   margin: 0 320px;
   padding: 10px 30px;
@@ -177,6 +164,24 @@
   font-size: 12px;
 }
 
+.new_message_add {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 30px 40px 0;
+  width: 80px;
+	height: 80px;
+  font-size: 40px;
+  border-radius: 50px;
+  background-color: #00008b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.message_icon {
+  color: white;
+}
 
 
 @media (min-width: 0px) and (max-width: 900px) {

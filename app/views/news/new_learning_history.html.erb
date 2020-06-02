@@ -1,1 +1,52 @@
-<h1>new</h1>
+<%= render partial: 'header' %>
+<section class="new_learning_history_section">
+  <div style="padding: 76px 0 0 0"></div>
+  <div class="new_learning_history_title">
+    <div>
+      <h2>Start Learning</h2>
+    </div>
+  </div>
+
+  <div class="new_learning_history_container">
+    <div class="stopwatch_container">
+      <h3 class="stopwatch_title">StopWatch</h3>
+      <h6 id="timerLabel">00時間00分00秒</h6>
+    </div>
+
+    <div class="information_container">
+      <div class="text_container">
+        <label for="exampleFormControlTextarea1">学習教材</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <div class="comment_contaner">
+        <label for="exampleFormControlTextarea1">コメント</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </div>
+
+    <div id="new_history_buttons">
+      <div class="each_history_buttons" id="before_start">
+        <input type="button" class="myButton start" id="startbtn" value="スタート" >
+      </div>
+      <div id="while_studying">
+        <input type="button" class="myButtons pause" id="pausebtn" value="一時停止">
+        <input type="button" class="myButtons finish" id="finishbtn1" value="完了">
+      </div>
+      <div id="pause">
+        <input type="button" class="myButtonss restart" id="restartbtn" value="再開">
+        <input type="button" class="myButtonss reset" id="resetbtn" value="リセット">
+        <input type="button" class="myButtonss finish" id="finishbtn2" value="完了">
+      </div>
+      <div id="confirmation">
+        <p id="confirmation_comment">本当にリセットしてよろしいですか？</p>
+        <input type="button" class="myButtons sure" id="surebtn" value="はい">
+        <input type="button" class="myButtons cancel" id="cancelbtn" value="いいえ">
+      </div>
+      <div id ="finish">
+        <input type="button" class="myButtons share" id="sharebtn" value="上記の内容でシェア">
+        <input type="button" class="myButtons share" id="stillbtn" value="まだ学習を続ける">
+      </div>
+    </div>
+  </div>
+
+</section>
