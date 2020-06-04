@@ -5,4 +5,6 @@ class Teacher < ApplicationRecord
 
   has_many :students
   has_many :messages
+  has_many :tests
 end
+

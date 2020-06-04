@@ -31,6 +31,10 @@ gem 'rmagick'
 gem 'bootstrap', '~> 4.1.3' # 記事下の関連URLからバージョンを確認して導入
 gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.2.0' # 記事下の関連URLからバージョンを確認して導入
+gem "chartkick"
+gem 'gon'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

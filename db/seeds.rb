@@ -30,3 +30,13 @@ end
     teacher_id: 1
   })
 end
+
+20.times do |i|
+  Test.create({
+    name: "#{i}回目のテスト",
+    score: "#{i + 60}",
+    grade: i > 9 ? "A" : "B",
+    student_id: 1,
+    teacher_id: 1
+  })
+end

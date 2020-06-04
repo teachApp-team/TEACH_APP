@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'history', to: "students#history"
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
+  get 'students/show_test', to: 'students#show_test'
   get 'students/:id', to: 'students#show'
 
   get 'new_lh', to: "news#new_learning_history"
