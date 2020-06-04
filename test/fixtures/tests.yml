@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  score: 1
+  grade: MyString
+  average_score: 1.5
+  teacher: one
+  student: one
+
+two:
+  name: MyString
+  score: 1
+  grade: MyString
+  average_score: 1.5
+  teacher: two
+  student: two

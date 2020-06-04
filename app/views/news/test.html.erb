@@ -9,6 +9,10 @@
 <h1>this is test</h1>
 <%= link_to "ログアウト", "/sessions/destroy", method: :delete, class: "btn btn-danger" %>
 
+<%= column_chart Teacher.pluck(:id, :full_name) %><!-- 追記 -->
+
+
+
 <% if @current_student %>
 <div style="padding: 30px;">
   <%= form_for(:learning, url: "create_lh", method: :post) do |f| %>

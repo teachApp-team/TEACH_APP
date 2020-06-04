@@ -7,6 +7,10 @@ class StudentsController < ApplicationController
   def show
   end
 
+  def show_test
+    @tests = Test.all
+  end
+
   def new
   end
 
