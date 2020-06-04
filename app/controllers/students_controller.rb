@@ -8,7 +8,12 @@ class StudentsController < ApplicationController
   end
 
   def show_test
-    @tests = Test.all
+    @test_ary = []
+    tests = Test.all
+    tests.each_with_index do |t,i|
+      @test_ary << [t.date, t.score]
+    end
+    
   end
 
   def new
