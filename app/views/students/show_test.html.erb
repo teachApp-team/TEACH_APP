@@ -1,8 +1,7 @@
+
 <h1>show test</h1>
-<h1>show test</h1>
-<h1>show test</h1>
-<h1>show test</h1>
-<h1>show test</h1>
-<% @tests.each do |t| %>
-  <h2><%= t.score %>点</h2>
+<% @test_ary.each do |t| %>
+  <h2><%= t[0] %></h2>
 <% end %>
+
+<%= line_chart @test_ary, width: "800px", height: "500px" %>
