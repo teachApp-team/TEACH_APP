@@ -11,6 +11,9 @@ class StudentsController < ApplicationController
     @tests = Test.all
   end
 
+  def show_calender
+  end
+
   def new
   end
 
