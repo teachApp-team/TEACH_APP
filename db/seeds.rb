@@ -36,6 +36,7 @@ end
     name: "#{i}回目のテスト",
     score: "#{i + 60}",
     grade: i > 9 ? "A" : "B",
+    date: "2020-06-#{i + 1}",
     student_id: 1,
     teacher_id: 1
   })

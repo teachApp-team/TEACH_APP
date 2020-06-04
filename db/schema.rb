@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_103510) do
+ActiveRecord::Schema.define(version: 2020_06_04_112611) do
 
   create_table "learning_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.time "learning_time"
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_103510) do
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "date"
     t.index ["student_id"], name: "index_tests_on_student_id"
     t.index ["teacher_id"], name: "index_tests_on_teacher_id"
   end
