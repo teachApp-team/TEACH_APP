@@ -16,6 +16,9 @@ class StudentsController < ApplicationController
     
   end
 
+  def show_calender
+  end
+
   def new
   end
 
