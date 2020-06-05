@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_112611) do
+ActiveRecord::Schema.define(version: 2020_06_04_120443) do
+
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "start"
+    t.datetime "end"
+    t.string "subject"
+    t.string "content"
+    t.string "homework"
+    t.boolean "all_day"
+    t.bigint "student_id"
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_events_on_student_id"
+    t.index ["teacher_id"], name: "index_events_on_teacher_id"
+  end
 
   create_table "learning_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.time "learning_time"
@@ -67,6 +82,8 @@ ActiveRecord::Schema.define(version: 2020_06_04_112611) do
     t.index ["teacher_id"], name: "index_tests_on_teacher_id"
   end
 
+  add_foreign_key "events", "students"
+  add_foreign_key "events", "teachers"
   add_foreign_key "learning_histories", "students"
   add_foreign_key "messages", "students"
   add_foreign_key "messages", "teachers"

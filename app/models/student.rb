@@ -7,4 +7,5 @@ class Student < ApplicationRecord
   has_many :messages
   has_many :learning_histories
   has_many :tests
+  has_many :events
 end

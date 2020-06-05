@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start: 2020-06-04 12:04:44
+  end: 2020-06-04 12:04:44
+  subject: MyString
+  content: MyString
+  homework: MyString
+  all_day: false
+  student: one
+  teacher: one
+
+two:
+  start: 2020-06-04 12:04:44
+  end: 2020-06-04 12:04:44
+  subject: MyString
+  content: MyString
+  homework: MyString
+  all_day: false
+  student: two
+  teacher: two
