@@ -8,8 +8,10 @@ class StudentsController < ApplicationController
   end
 
   def show_test
+    @student = Student.find_by(id: @current_student.id)
     @test_ary = []
-    tests = Test.all
+    @test = Test.where(student_id: @current_student.id)
+    tests = Test.all  
     tests.each_with_index do |t,i|
       @test_ary << [t.date, t.score]
     end

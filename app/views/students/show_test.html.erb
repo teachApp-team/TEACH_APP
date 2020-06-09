@@ -1,7 +1,45 @@
+<%= render partial: 'share/header' %>
+<section class="new_msg_section">
+<%= render partial: 'share/title', locals: {each_title: 'テスト成績'} %>
 
-<h1>show test</h1>
-<% @test_ary.each do |t| %>
-  <h2><%= t[0] %></h2>
-<% end %>
-
-<%= line_chart @test_ary, width: "800px", height: "500px" %>
+<div class="test_score_contaner">
+  <div class="test_socre_graph_container">
+    <div class="test_socre_graph_container_border">
+      <div class="test_socre_graph_title">
+        <%= @student.full_name %>君の得点推移
+      </div>
+      <div class="test_score_graph_wrapper">
+        <div class="test_score_graph">
+          <%= line_chart @test_ary, 
+          points: false,
+          class: "test_score_graph_content" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="test_history_score_list">
+    <% @test.each do |t| %>
+    <div class="each_test_history_score_card">
+      <div class="each_test_history_score_card_upper">
+        <div>
+          <%= t.name %>
+        </div>
+        <div>
+          得点(率)<%= t.score %>
+        </div>
+        <div>
+          評価<%= t.grade %>
+        </div>
+      </div>
+      <div class="each_test_history_score_card_bottom">
+        <div>
+          ( 平均点(率)： <%= t.average_score %> )
+        </div>
+        <div>
+          テスト実施日 <%= t.date %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+.test_socre_graph_container {
+  border-bottom: solid 2px;
+  text-align: center;
+}
+
+.test_socre_graph_container_border {
+  background-color: #E6FFE9	;
+  box-shadow: 0 0 8px gray;
+  margin: 0 100px;
+}
+
+.test_socre_graph_title {
+  font-size: 17px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  bottom: 0;
+  padding-top: 8px; 
+}
+
+.test_score_graph {
+  overflow: scroll;
+  margin: 0 auto;
+  height: 300px;
+}
+
+.test_score_graph_wrapper {
+  padding: 0 80px;
+  padding-bottom: 80px;
+}
+
+.test_history_score_list {
+  margin: 100px;
+  margin-top: 0px;
+  background-color: beige;
+}
+
+.each_test_history_score_card {
+  padding: 10px 0;
+  border-bottom: solid 1px #003366;
+}
+
+.each_test_history_score_card_upper {
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 22px;
+  display: grid;
+  grid-template-columns: 50% 30% 20%;
+}
+
+.each_test_history_score_card_bottom {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+
+@media screen and (max-width: 660px) {
+  .test_score_graph {
+    width: 350px;
+  }
+  .test_score_graph_wrapper {
+    padding:  0 10px;
+  }
+  .test_history_score_list {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .each_test_history_score_card_upper {
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 50% 30% 20%;
+  }
+  .each_test_history_score_card_bottom {
+    font-size: 13px;
+  }
+  .test_socre_graph_container_border {
+    margin: 0;
+  }
+  
+}
+
+@media screen and (max-width:400px) {
+  .test_socre_graph_container {
+    padding-bottom: 30px;
+  }
+  .test_score_graph {
+    height: 250px;
+  }
+  .test_score_graph_wrapper {
+    padding-right:  10px;
+    padding-left: 0px;
+  }
+  .test_history_score_list {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .each_test_history_score_card_upper {
+    font-size: 18px;
+    display: grid;
+    grid-template-columns: 50% 30% 20%;
+  }
+  .each_test_history_score_card_bottom {
+    font-size: 13px;
+  }
+ 
+  .chartjs-render-monitor {
+    height: 250px !important;
+  }
+  #chart-1 {
+    line-height: 250px !important;
+    height: 250px !important;
+  }
+}
