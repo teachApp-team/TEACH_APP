@@ -41,3 +41,17 @@ end
     teacher_id: 1
   })
 end
+
+5.times do |i|
+  Event.create({
+    title: "#{i}回目の授業",
+    description: "今日は#{i}回目の授業だよ",
+    subject: "英語",
+    start: "2020/06/#{i + 1} 15:00:00",
+    end: "2020/06/#{i + 1} 16:00:00",
+    allday: false,
+    homework: "英単語",
+    teacher_id: 1,
+    student_id: 1
+  })
+end
