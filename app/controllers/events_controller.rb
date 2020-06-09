@@ -24,14 +24,10 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.save
+      redirect_to '/students/show_calender'
+    else
+      redirect_to '/events/new'
     end
   end
 
@@ -62,11 +58,12 @@ class EventsController < ApplicationController
 
     def event_params
       params.require(:event).permit(
-        :content,
+        :title,
+        :description,
         :subject,
         :start,
         :end,
-        :all_day,
+        :allday,
         :homework,
         :teacher_id,
         :student_id
