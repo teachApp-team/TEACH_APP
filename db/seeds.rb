@@ -38,7 +38,8 @@ end
     grade: i > 9 ? "A" : "B",
     date: "2020-06-#{i + 1}",
     student_id: 1,
-    teacher_id: 1
+    teacher_id: 1,
+    average_score: 70.0
   })
 end
 
