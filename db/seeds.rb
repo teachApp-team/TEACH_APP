@@ -50,7 +50,7 @@ end
     start: "2020/06/#{i + 1} 15:00:00",
     end: "2020/06/#{i + 1} 16:00:00",
     allday: false,
-    homework: "英単語",
+    homework: "英語長文読解週の#{i + 10}ページ",
     teacher_id: 1,
     student_id: 1
   })

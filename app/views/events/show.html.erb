@@ -1,3 +1,35 @@
-<h1><%= @event.title %></h1>
-<p><%= @event.description %></p>
-<p><%= @event.homework %></p>
+<%= render 'share/header' %>
+<div style="padding-top: 100px;"></div>
+
+<table class="table table-striped table-bordered">
+  <tbody>
+    <tr>
+      <td>タイトル</td>
+      <td class="event_detail"><%= @event.title %></td>
+    </tr>
+    <tr>
+      <td>内容</td>
+      <td class="event_detail"><%= @event.description %></td>
+    </tr>
+    <tr>
+      <td>教科</td>
+      <td class="event_detail"><%= @event.subject %></td>
+    </tr>
+    <tr>
+      <td>開始日時</td>
+      <td class="event_detail"><%= @event.start.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <td>終了日時</td>
+      <td class="event_detail"><%= @event.end.to_s(:datetime_jp) %></td>
+    </tr>
+    <tr>
+      <td>終日</td>
+      <td class="event_detail"><%= @event.allday ? "終日の予定です" : "終日ではありません" %></td>
+    </tr>
+    <tr>
+      <td>宿題</td>
+      <td class="event_detail"><%= @event.homework %></td>
+    </tr>
+  </tbody>
+</table>
