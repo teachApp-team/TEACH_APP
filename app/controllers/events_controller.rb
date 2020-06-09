@@ -2,19 +2,7 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy] #パラメータのidからレコードを特定するメソッド
 
   def index
-    @event = Event.new({
-      content: "英語の授業",
-      subject: "英語",
-      start: "2020/06/04 14:00:00",
-      end: "2020/06/04 15:00:00",
-      all_day: false,
-      homework: "英単語",
-      teacher_id: 1,
-      student_id: 1
-    })
-
-    @events = [@event]
-
+    @events = Event.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => @events }
