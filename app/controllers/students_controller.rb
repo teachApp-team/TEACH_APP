@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :auth_student, except: [:new]
+  before_action :auth_student, except: [:new, :show_calender]
   def index
     @students = Student.all
   end

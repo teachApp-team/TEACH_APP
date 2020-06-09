@@ -2,12 +2,11 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy] #パラメータのidからレコードを特定するメソッド
 
   def index
-    @events = Event.all
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.xml { render :xml => @events }
-    #   format.json { render :json => @events }
-    # end
+    if @current_teacher
+      @events = Event.where(teacher_id: @current_teacher.id)
+    else
+      @events = Event.where(student_id: @current_student.id)
+    end
   end
 
   def show
@@ -45,10 +44,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to '/students/show_calender'
   end
 
   private

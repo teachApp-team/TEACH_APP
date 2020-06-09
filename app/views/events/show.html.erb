@@ -33,3 +33,7 @@
     </tr>
   </tbody>
 </table>
+
+<% if @current_teacher %>
+  <%= link_to "この予定を削除", event_path, method: "delete", data: { confirm: "本当に削除しますか？" } ,class: "btn btn-danger" %>
+<% end %>
