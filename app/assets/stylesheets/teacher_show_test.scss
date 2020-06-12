@@ -1,0 +1,52 @@
+.show_test_student_list {
+  text-align: center;
+  white-space: nowrap !important; 
+  width: 100%; 
+  overflow: scroll !important;
+}
+
+.show_test_student_list > ul {
+  flex-wrap: nowrap !important;
+}
+
+.show_test_student_list .active {
+  background-color: #EEEEEE !important;
+  border-color: #EEEEEE !important;
+}
+
+.stu_card_info_img_circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;  
+}
+
+.show_test_student_list .active > .stu_card_info_img_circle {
+  border-radius: 50%;
+  height: 43px;
+  width: 43px;
+  object-fit: cover;  
+}
+
+
+.nav-link {
+  text-decoration: none;
+  padding: 6px 10px !important;
+}
+
+.nav-link > h5 {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.show_test_student_list .active > h5 {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+
+
+.tab-content {
+  background-color: #EEEEEE;
+  padding-top: 10px;
+}

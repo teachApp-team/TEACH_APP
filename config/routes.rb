@@ -15,9 +15,10 @@ Rails.application.routes.draw do
   get 'teachers/edit'
   post 'teachers/update'
   get 'history', to: "students#history"
+  get 'students/show_test', to: 'students#show_test'
+  get 'teachers/show_test', to: 'teachers#show_test'
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
-  get 'students/show_test', to: 'students#show_test'
   get 'students/show_calender', to: 'students#show_calender'
   get 'students/:id', to: 'students#show'
 
