@@ -28,7 +28,11 @@
     <a href="#"><h5 class="text-white h4">小テスト</h5></a>
     </div>
     <div class="bg-dark p-4">
+    <% if @current_student %>
+      <a href="/students/show_calender"><h5 class="text-white h4">授業</h5></a>
+    <% else %>
     <a href="#"><h5 class="text-white h4">授業</h5></a>
+    <% end %>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">

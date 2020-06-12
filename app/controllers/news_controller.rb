@@ -22,6 +22,7 @@ class NewsController < ApplicationController
   end
 
   def new_msg
+    @message = Message.new
   end
 
   def create_learning_history

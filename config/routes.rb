@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'events/index'
-  get 'events/show'
-  get 'events/new'
-  get 'events/edit'
   get 'students/index'
   get 'students/new'
   get 'students/edit'
@@ -27,5 +22,6 @@ Rails.application.routes.draw do
   post 'create_msg', to: "news#create_message"
 
   resources :events
+  resources :messages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

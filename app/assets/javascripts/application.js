@@ -29,6 +29,7 @@ $(function () {
       if ($('#calendar').length) {
           function eventCalendar() {
               return $('#calendar').fullCalendar({
+                height: '1000px'
               });
           };
           function clearCalendar() {
@@ -41,7 +42,8 @@ $(function () {
           $(document).on('turbolinks:before-cache', clearCalendar);
 
           $('#calendar').fullCalendar({
-              events: '/events.json'
+              events: '/events.json',
+              height: 700
           });
       }
   });
