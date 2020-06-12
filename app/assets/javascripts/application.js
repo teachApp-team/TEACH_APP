@@ -43,7 +43,7 @@ $(function () {
 
           $('#calendar').fullCalendar({
               events: '/events.json',
-              height: 700
+              height: 600
           });
       }
   });

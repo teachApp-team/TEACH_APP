@@ -16,6 +16,10 @@ class TeachersController < ApplicationController
     redirect_to "/teachers/#{@current_teacher.id}"
   end
 
+  def show_calender
+    @events = Event.where(teacher_id: @current_teacher.id)
+  end
+
   private
   def teacher_params
     params.require(:teacher).permit(:full_name, :subject, :image)
