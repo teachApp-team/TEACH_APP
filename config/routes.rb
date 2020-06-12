@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-
-  get 'events/index'
-  get 'events/show'
-  get 'events/new'
-  get 'events/edit'
   get 'students/index'
   get 'students/new'
   get 'students/edit'
@@ -15,8 +10,12 @@ Rails.application.routes.draw do
   get 'teachers/edit'
   post 'teachers/update'
   get 'history', to: "students#history"
+
   get 'students/show_test', to: 'students#show_test'
   get 'teachers/show_test', to: 'teachers#show_test'
+
+  get 'teachers/show_calender', to: 'teachers#show_calender'
+  
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
   get 'students/show_calender', to: 'students#show_calender'
@@ -28,5 +27,6 @@ Rails.application.routes.draw do
   post 'create_msg', to: "news#create_message"
 
   resources :events
+  resources :messages
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
