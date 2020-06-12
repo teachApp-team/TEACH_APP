@@ -7,6 +7,16 @@ class TeachersController < ApplicationController
     # @current_teacher でログインしているteacherオブジェクトを取得できる。
   end
 
+  def show_test
+    @students = Student.where(teacher_id: @current_teacher.id)
+    @test_ary = []
+    # @test = Test.where(student_id: @current_teacher.id)
+    tests = Test.all  
+    tests.each_with_index do |t,i|
+      @test_ary << [t.date, t.score]
+    end
+  end
+
   def edit
   end
 

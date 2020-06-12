@@ -1,0 +1,77 @@
+<%= render partial: 'share/header' %>
+<section class="new_msg_section">
+<%= render partial: 'share/title', locals: {each_title: 'テスト成績'} %>
+
+<div class="show_test_student_list">
+  <ul class="nav nav-tabs">
+    <% @students.each_with_index do |s, i| %>
+    <li class="nav-item">
+      <% if i == 0 %>
+      <a href="#student<%= i %>" class="nav-link active" data-toggle="tab">
+      <% else %>
+      <a href="#student<%= i %>" class="nav-link" data-toggle="tab">
+      <% end %>
+        <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
+        <h5><%= s.full_name %>君</h5>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <% @students.each_with_index do |s, i| %>
+  <% if i == 0 %>
+  <div id="student<%= i %>" class="tab-pane test_score_contaner active">
+  <% else %>
+  <div id="student<%= i %>" class="tab-pane test_score_contaner">
+  <% end %>
+
+    <div class="test_socre_graph_container">
+      <div class="test_socre_graph_container_border">
+        <div class="test_socre_graph_title">
+          <%= s.full_name %>君の得点推移
+        </div>
+        <div class="test_score_graph_wrapper">
+          <div class="test_score_graph">
+            <%
+            array = []
+            s.tests.each do |t|
+            array << [t.date, t.score]
+            end
+            %>
+            <%= line_chart array, 
+            points: false,
+            class: "test_score_graph_content" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="test_history_score_list">
+      <% s.tests.each do |t| %>
+      <div class="each_test_history_score_card">
+        <div class="each_test_history_score_card_upper">
+          <div>
+            <%= t.name %>
+          </div>
+          <div>
+            得点(率)<%= t.score %>
+          </div>
+          <div>
+            評価<%= t.grade %>
+          </div>
+        </div>
+        <div class="each_test_history_score_card_bottom">
+          <div>
+            ( 平均点(率)： <%= t.average_score %> )
+          </div>
+          <div>
+            テスト実施日 <%= t.date %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
