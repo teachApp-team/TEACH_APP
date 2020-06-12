@@ -7,6 +7,8 @@
   background-color: #E6FFE9	;
   box-shadow: 0 0 8px gray;
   margin: 0 100px;
+  border-radius: 10px;
+  padding-top: 3px; 
 }
 
 .test_socre_graph_title {
@@ -81,6 +83,11 @@
   .test_socre_graph_container {
     padding-bottom: 30px;
   }
+
+  .test_socre_graph_container_border {
+    margin: 0 10px;
+  }
+
   .test_score_graph {
     height: 250px;
   }
@@ -100,7 +107,6 @@
   .each_test_history_score_card_bottom {
     font-size: 13px;
   }
- 
   .chartjs-render-monitor {
     height: 250px !important;
   }
