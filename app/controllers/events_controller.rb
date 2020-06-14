@@ -10,6 +10,11 @@ class EventsController < ApplicationController
     end
   end
 
+  def each_events
+    @events = Event.where(student_id: params[:id])
+    render json: @events
+  end
+
   def show
     @event = Event.find(params[:id])
   end
