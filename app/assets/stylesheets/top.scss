@@ -57,6 +57,16 @@
   transition: .3s;
 }
 
+.login_container > form > .input_div > div h6 {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translate(-45%);
+  color:#999;
+  font-size: 15px;
+  transition: .3s;
+}
+
 .login_container > form > .input_div > div input {
   position: absolute;
   width: 100%;
