@@ -9,6 +9,7 @@
   flex-wrap: nowrap !important;
 }
 
+
 .show_test_student_list .active {
   background-color: #EEEEEE !important;
   border-color: #EEEEEE !important;
@@ -19,6 +20,7 @@
   height: 40px;
   width: 40px;
   object-fit: cover;  
+  box-shadow: 2px 2px 4px;
 }
 
 .show_test_student_list .active > .stu_card_info_img_circle {
@@ -32,6 +34,7 @@
 .nav-link {
   text-decoration: none;
   padding: 6px 10px !important;
+  color: black !important;
 }
 
 .nav-link > h5 {
