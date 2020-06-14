@@ -40,9 +40,9 @@ $(function () {
               eventCalendar();
           });
           $(document).on('turbolinks:before-cache', clearCalendar);
-
+          console.log(gon.user_id)
           $('#calendar').fullCalendar({
-              events: '/events.json',
+              events: `/each_events/${gon.user_id}`,
               height: 600
           });
       }

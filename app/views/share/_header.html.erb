@@ -43,8 +43,11 @@
       <% if @current_student %>
         <a href="/students/show_calender"><h5 class="text-white h4">授業</h5></a>
       <% else %>
-        <a href="#"><h5 class="text-white h4">授業</h5></a>
+        <a href="/teachers/show_calender"><h5 class="text-white h4">授業</h5></a>
       <% end %>
+    </div>
+    <div class="bg-dark p-4">
+      <%= link_to "ログアウト", "/sessions/destroy", method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">
