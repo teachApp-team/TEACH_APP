@@ -3,12 +3,13 @@
   grid-template-columns: 80% 20%;
   text-align: center;
   padding: 20px 60px;
-  background-color: white;
+  background: linear-gradient(to bottom, #DDDDDD, #EEEEEE	, white);
 }
 
 .student-and-teacher_title h2 {
   text-align: left;
   font-family: serif;
+  color: #000066;
 }
 
 .student-and-teacher_edit {
@@ -18,12 +19,12 @@
 .student-and-teacher_edit_btn {
   display: inline-block;
   text-decoration: none;
-  color: #000099;
+  color: #000066;
   width: 40px;
   height: 40px;
   line-height: 40px;
   border-radius: 50%;
-  border: solid 2px #668ad8;
+  border: solid 2px #000066;
   text-align: center;
   overflow: hidden;
   font-weight: bold;

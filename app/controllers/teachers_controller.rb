@@ -7,6 +7,10 @@ class TeachersController < ApplicationController
     # @current_teacher でログインしているteacherオブジェクトを取得できる。
   end
 
+  def history
+    @students = Student.where(teacher_id: @current_teacher.id)
+  end
+
   def show_test
     @students = Student.where(teacher_id: @current_teacher.id)
     @test_ary = []
