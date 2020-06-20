@@ -22,9 +22,11 @@
 //= require moment
 //= require fullcalendar
 
+
 $(function () {
   // 画面遷移を検知
   $(document).on('turbolinks:load', function () {
+  // $(document).on('ready', function () {
       // lengthを呼び出すことで、#calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
       if ($('#calendar').length) {
           function eventCalendar() {
@@ -34,17 +36,24 @@ $(function () {
           };
           function clearCalendar() {
               $('#calendar').html('');
+              gon.clear
           };
 
           $(document).on('turbolinks:load', function () {
               eventCalendar();
+              gon.clear
           });
           $(document).on('turbolinks:before-cache', clearCalendar);
           console.log(gon.user_id)
+         
           $('#calendar').fullCalendar({
               events: `/each_events/${gon.user_id}`,
               height: 600
           });
+
+          gon.clear
+          window.gon // => {}
       }
+      
   });
 });
