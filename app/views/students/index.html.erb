@@ -1,8 +1,17 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
-
-<%= @students.present? %>
-  <% if @students.each do |s| %>
-    <h1><%= s.full_name %></h1>
-  <% end %>
-<% end %>
+<%= render partial: 'share/header' %>
+<div class="students-index-wrapper">
+  <div class="student-index-card-wrapper">
+    <% @students.each do |s| %>
+      <div class="student-index-card">
+        <%= image_tag s.image.url , class: "student-profile-img-self index" %>
+        <a href="/students/<%= s.id %>"><%= s.full_name %></a>
+        <button type="button" class="btn btn-outline-primary">
+          追加する 
+          <span class="badge badge-light">
+            <i class="fas fa-plus your_students_add_icon"></i>
+          </span>
+        </button>
+      </div>
+    <% end %>
+  </div>
+</div>
