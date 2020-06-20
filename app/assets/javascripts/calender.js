@@ -168,36 +168,35 @@
 // // });
 
 // $(function () {
-//   // 画面遷移を検知
+ 
 //   $(document).on('turbolinks:load', function () {
-//   // $(document).on('ready', function () {
-//       // lengthを呼び出すことで、#calendarが存在していた場合はtrueの処理がされ、無い場合はnillを返す
-//       if ($('#calendar').length) {
-//           function eventCalendar() {
-//               return $('#calendar').fullCalendar({
-//                 height: '1000px'
-//               });
-//           };
-//           function clearCalendar() {
-//               $('#calendar').html('');
-//               gon.clear
-//           };
-
-//           $(document).on('turbolinks:load', function () {
-//               eventCalendar();
-//               gon.clear
+ 
+//     if ($('#calendar').length) {
+//       function eventCalendar() {
+//           return $('#calendar').fullCalendar({
+//             events: `/each_events/${gon.user_id}`,
+//             height: '1000px'
 //           });
-//           $(document).on('turbolinks:before-cache', clearCalendar);
-//           console.log(gon.user_id)
-         
-//           $('#calendar').fullCalendar({
-//               events: `/each_events/${gon.user_id}`,
-//               height: 600
-//           });
+//       };
+//       function clearCalendar() {
+//           $('#calendar').html('');
+//       };
 
-//           gon.clear
-//           window.gon // => {}
-//       }
-      
-//   });
-// });
+//       $(document).on('turbolinks:load', function () {
+//           eventCalendar();
+//       });
+
+
+//       $(document).on('turbolinks:before-cache', clearCalendar);
+//         console.log(gon.user_id)
+//         $('#calendar').fullCalendar({
+//           events: `/each_events/${gon.user_id}`,
+//           height: 600
+//         });
+
+//   }
+
+//   })
+// })
+
+

@@ -34,7 +34,7 @@ class TeachersController < ApplicationController
     @events = Event.where(student_id: params[:id])
     @students = @current_teacher.students
     @student = Student.find(params[:id])
-    gon.user_id = params[:id]
+    gon.user_id = @student.id
   end
 
   private

@@ -50,8 +50,7 @@ $(function () {
               events: `/each_events/${gon.user_id}`,
               height: 600
           });
-
-          gon.clear
+          // window.gon={};
           window.gon // => {}
       }
       
