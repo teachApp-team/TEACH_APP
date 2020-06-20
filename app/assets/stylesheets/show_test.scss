@@ -1,12 +1,12 @@
 .test_socre_graph_container {
-  border-bottom: solid 2px;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .test_socre_graph_container_border {
-  background-color: #E6FFE9	;
-  box-shadow: 0 0 8px gray;
-  margin: 0 100px;
+  background-color: white;
+  box-shadow: 0 0 8px black;
+  margin: 0 20%;
   border-radius: 10px;
   padding-top: 3px; 
 }
@@ -21,23 +21,28 @@
 .test_score_graph {
   overflow: scroll;
   margin: 0 auto;
-  height: 300px;
+  height: 400px;
+}
+
+.chartjs-render-monitor {
+  height: 400px !important;
 }
 
 .test_score_graph_wrapper {
-  padding: 0 80px;
-  padding-bottom: 80px;
+  padding: 10px 80px;
 }
 
 .test_history_score_list {
-  margin: 100px;
-  margin-top: 0px;
-  background-color: beige;
+  margin: 0 20%;
+  background: linear-gradient(to right, #000077, #0000AA, #000077);
+  padding: 5px 10px;
+  box-shadow: 0 0 8px black;
 }
 
 .each_test_history_score_card {
   padding: 10px 0;
-  border-bottom: solid 1px #003366;
+  border-bottom: solid 1px white;
+  color: white;
 }
 
 .each_test_history_score_card_upper {
@@ -45,19 +50,27 @@
   font-family: 'Courier New', Courier, monospace;
   font-size: 22px;
   display: grid;
-  grid-template-columns: 50% 30% 20%;
+  grid-template-columns: 40% 30% 30%;
+  text-align: center;
 }
 
 .each_test_history_score_card_bottom {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40% 60%;
+  text-align: center;
 }
 
 
 @media screen and (max-width: 660px) {
   .test_score_graph {
+    height: 300px;
     width: 350px;
   }
+
+  .chartjs-render-monitor {
+    height: 300px !important;
+  }
+
   .test_score_graph_wrapper {
     padding:  0 10px;
   }
@@ -91,8 +104,12 @@
   .test_score_graph {
     height: 250px;
   }
+
+  .chartjs-render-monitor {
+    height: 250px !important;
+  }
   .test_score_graph_wrapper {
-    padding-right:  10px;
+    padding-right: 10px;
     padding-left: 0px;
   }
   .test_history_score_list {
@@ -106,9 +123,6 @@
   }
   .each_test_history_score_card_bottom {
     font-size: 13px;
-  }
-  .chartjs-render-monitor {
-    height: 250px !important;
   }
   #chart-1 {
     line-height: 250px !important;

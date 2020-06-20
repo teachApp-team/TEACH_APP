@@ -1,0 +1,36 @@
+.custom-select:focus {
+  box-shadow: none !important;
+  border-color: white !important;
+}
+
+.custom-select {
+  background-color: #F5F5F5 !important;
+  border: 1px solid white !important;
+}
+
+.new_msg_container {
+  margin: 15px 10%;
+}
+
+.new_msg_text {
+  margin-top: 20px;
+}
+
+.form-group > .form-control {
+  border: 1.5px solid white !important;
+  background-color: #F5F5F5 !important;
+  height: 250px !important;
+}
+
+.form-control:focus {
+  box-shadow: none !important;
+}
+
+.submit_new_msg1 {
+  text-align: center;
+}
+
+.submit_new_msg .btn-primary {
+  background: linear-gradient(to right, #000077, #0000AA, #000077) !important;
+  border-color: #000077 !important;
+}
