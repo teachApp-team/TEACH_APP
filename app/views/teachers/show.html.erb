@@ -13,6 +13,7 @@
       <div class="teacher-profile-subject">
         <h5>担当教科</h5><h2><%= @current_teacher.subject %></h2>
       </div>
+      <%= link_to "ログアウト", "/sessions/destroy", method: :delete, data: { confirm: "本当にログアウトしますか？" }, class: "btn btn-outline-danger" %>
     </div>
   </div>
 
