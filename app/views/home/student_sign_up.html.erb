@@ -1,0 +1,37 @@
+<section>
+  <div class="top_container">
+    <div class="login_container">
+      <%= form_for(:session, method: :post, url: 'sessions/create') do |f| %>
+        <%= image_tag "plant.jpg", class: "open_door_img" %>
+        <h2 class="font-italic">sign up</h2>
+        <div class="input_div first_input_div">
+          <i class="fas fa-user"></i>  
+          <div>
+            <h5 class="font-italic">Full Name</h5>
+            <%= f.text_field :name, class: "input" %>
+          </div>
+        </div>
+        <div class="input_div second_input_div">
+          <i class="fas fa-lock"></i>  
+          <div>
+            <h5 class="font-italic stu_sign_in_password">Password</h5>
+            <%= f.password_field :password, class: "input" %>
+          </div>
+        </div>
+        <div class="input_div second_input_div">
+          <i class="fas fa-lock"></i>  
+          <div>
+            <h6 class="font-italic stu_sign_in_password">Confirmation</h6>
+            <%= f.password_field :password, class: "input" %>
+          </div>
+        </div>
+        <input type="submit" class="btn stu_sign_in_btn" value="Sign In">
+      <% end %>
+      <p>
+        ここでは生徒の新しいアカウントを作成します。
+        <br>
+        パスワードは忘れないように注意しましょう。
+      </p>
+    </div>
+  </div>
+</section>

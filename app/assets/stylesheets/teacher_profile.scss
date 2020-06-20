@@ -1,7 +1,7 @@
 
 .teacher-profile {
   text-align: center;
-  margin: 50px 20px;
+  margin: 40px 20px;
 }
 
 .teacher-profile-img {
@@ -9,8 +9,8 @@
 }
 .teacher-profile-img-self {
   border-radius: 50%;
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: 180px;
   object-fit: cover;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .3);
 }
@@ -35,7 +35,7 @@
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  background-color: #7ED1E6;
+  background-color: #0000CD;
   border-radius: 5px;
   }
 
@@ -100,7 +100,7 @@
   margin: 20px  10px 20px 10px;
   padding: 20px;
   text-align: center; 
-  background-color: #555555;
+  background-color: #4169E1;
   color: white;
   align-items: center;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 1);

@@ -1,0 +1,34 @@
+<%= render partial: 'share/header' %>
+<section class="news_field_background">
+<%= render partial: 'share/title', locals: {each_title: 'StartLearning'} %>
+
+<div class="show_test_student_list">
+  <ul class="nav nav-tabs">
+    <% @students.each_with_index do |s, i| %>
+    <li class="nav-item">
+      <% if i == 0 %>
+      <a href="#student<%= i %>" class="nav-link active" data-toggle="tab">
+      <% else %>
+      <a href="#student<%= i %>" class="nav-link" data-toggle="tab">
+      <% end %>
+        <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
+        <h5><%= s.full_name %>君</h5>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <% @students.each_with_index do |s, i| %>
+  <% if i == 0 %>
+  <div id="student<%= i %>" class="tab-pane test_score_contaner active">
+  <% else %>
+  <div id="student<%= i %>" class="tab-pane test_score_contaner">
+  <% end %>
+    <% s.learning_histories.each do |h| %>
+      <%= render partial: 'share/student-history', locals: {variable: h} %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
