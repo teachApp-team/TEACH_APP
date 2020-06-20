@@ -25,6 +25,8 @@
   height: 50px;
   width: 50px;
   object-fit: cover;  
+  border: solid 1px;
+  box-shadow: 0 0 8px gray;
 }
 
 .stu_card_info_name {
@@ -119,6 +121,8 @@
   height: 50px;
   width: 50px;
   object-fit: cover;  
+  border: solid 1px;
+  box-shadow: 0 0 8px gray;
 }
 
 .teacher_card_info_name {
@@ -143,7 +147,7 @@
   padding: 20px;
   color: white;
   font-size: 16px;
-  background:linear-gradient(to right, #CD853F, #F4A460, #CD853F);
+  background: #0000AA;
   border-radius: 15px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, .4);
 }
@@ -155,7 +159,7 @@
   left: 15%;
   margin-left: -15px;
   border: 15px solid transparent;
-  border-bottom: 15px solid #CD853F;
+  border-bottom: 15px solid #0000AA;
 }
 
 .balloon_teacher p {
