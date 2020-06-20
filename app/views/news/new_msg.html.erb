@@ -1,13 +1,13 @@
 <%= render partial: 'share/header' %>
 <section class="new_msg_section">
+<%= render partial: 'share/title', locals: {each_title: 'メッセージ送信'} %>
 
-<div class="new_msg_container" style="margin: 0 150px;">
-    <%= render partial: 'share/title', locals: {each_title: 'New Comment'} %>
+<div class="new_msg_container">
     <form>
       <div class="choise_student">
         <div class="form-row align-items-center">
-          <div class="col-auto my-1">
-            <label for="inlineFormCustomSelect">Preference</label>
+          <div class="my-1">
+            <label for="inlineFormCustomSelect">送信する生徒を選択</label>
             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
               <option selected>Kosuke Fujita</option>
               <option value="1">Gen Nakamura</option>
@@ -19,13 +19,13 @@
       </div>
       <div class="new_msg_text">
         <div class="form-group">
-          <label for="exampleFormControlTextarea1">Example textarea</label>
+          <label for="exampleFormControlTextarea1">メッセージを作成</label>
           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
       </div>
       <div class="submit_new_msg">
-        <div class="col-auto my-1">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="my-1 submit_new_msg1">
+          <button type="submit" class="btn btn-primary">送信する</button>
         </div>
       </div>
     </form>
