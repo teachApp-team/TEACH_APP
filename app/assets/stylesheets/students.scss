@@ -1,3 +1,56 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.students-index-wrapper {
+  height: 100vh;
+  background: #fff;
+  padding: 80px;
+}
+
+.student-index-card-wrapper{
+  height: 100%;
+  background: #fff;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.student-index-card {
+  height: 70px;
+  width: 400px;
+  box-shadow: 0 0 18px #ccc;
+  margin: 30px 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-left: 3px solid blue;
+  border-right: 3px solid blue;
+  border-radius: 8px;
+}
+.student-index-card a {
+  margin: 0 30px;
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+}
+.student-index-card button {
+  width: 100px;
+  height: 40px;
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.student-index-card button i {
+  font-size: 5px;
+}
+.student-index-card button span {
+  line-height: 100%;
+}
+.student-profile-img-self.index {
+  width: 40px;
+  height: 40px;
+}
