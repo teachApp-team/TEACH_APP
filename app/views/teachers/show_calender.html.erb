@@ -5,11 +5,13 @@
   <ul class="nav nav-tabs">
     <% @students.each_with_index do |s, i| %>
     <li class="nav-item">
-        <a href="/teachers/show_calender/<%= s.id %>" class="nav-link" >
-   
-        <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
-        <h5><%= s.full_name %>君</h5>
-      </a>
+
+        <%= link_to "/teachers/show_calender/#{s.id}", remote: true, class: "cal-stu" do %>
+          <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
+          <h5><%= s.full_name %>君</h5>
+          <p style="display: none;"><%= i %></p>
+        <% end %>
+      
     </li>
     <% end %>
   </ul>
