@@ -30,14 +30,26 @@
 
 .text_container > .form-control{
   height: 60px;
-  background-color:  #0000AA	!important;
-  color: white !important;
+  background-color:  white	!important;
+  color: black !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 8px gray;
+}
+
+.text_container > label {
+  font-weight: bold;
+}
+
+.comment_contaner > label {
+  font-weight: bold;
 }
 
 .comment_contaner > .form-control {
   height: 60px;
-  background-color:  #0000AA	!important;
-  color: white !important;
+  background-color:  white	!important;
+  color: black !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 8px gray;
 }
 
 #new_history_buttons {
