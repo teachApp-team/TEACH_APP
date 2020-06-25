@@ -20,6 +20,7 @@ class StudentsController < ApplicationController
 
   def show_calender
     @events = Event.where(student_id: @current_student.id)
+    gon.user_id = @current_student.id
   end
 
   def new
