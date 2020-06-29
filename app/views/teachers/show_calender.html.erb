@@ -2,50 +2,69 @@
 <div style="padding-top: 100px;"></div>
 
 <div class="show_test_student_list">
-  <ul class="nav nav-tabs">
+  <ul class="nav nav-tabs calendar">
     <% @students.each_with_index do |s, i| %>
     <li class="nav-item">
-
-        <%= link_to "/teachers/show_calender/#{s.id}", remote: true, class: "cal-stu" do %>
-          <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
-          <h5><%= s.full_name %>君</h5>
-          <p style="display: none;"><%= i %></p>
-        <% end %>
-      
+      <% if i == 0 %>
+      <a href="#student<%= i %>" class="nav-link active calendar" data-toggle="tab">
+      <% else %>
+      <a href="#student<%= i %>" class="nav-link calendar" data-toggle="tab">
+      <% end %>
+        <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
+        <h5><%= s.full_name %>君</h5>
+      </a>
     </li>
     <% end %>
   </ul>
 </div>
+<div class="tab-content calendar">
+  <% @students.each_with_index do |s, i| %>
+    <% if i == 0 %>
+    <div id="student<%= i %>" class="tab-pane test_score_contaner active">
+    <% else %>
+    <div id="student<%= i %>" class="tab-pane test_score_contaner">
+    <% end %>
+    <div class="calendar_wrapper">
+      <p class="calendar_stu_title">
+        <i class="far fa-calendar-alt"></i>
+        <%= s.full_name %>君のカレンダー    
+        <button type="button" class="btn btn-dark">
+          今月の予定 <span class="badge badge-light"><%= s.events.length %></span>
+        </button>
+      </p>
+      <%= month_calendar attribute: :start,events: s.events  do |date, events| %>
+        <%= date.day %>
 
-    <h2 style="
-      text-align: center;
-      font-family: cursive;
-      margin: 30px auto;
-      width: 400px;
-      border-bottom: 1px solid #999;
-    "><%= @student.full_name %></h2>
-  
-    <div class="calendar-wrapper">
-      <div id="calendar" style="height: 1000px;"></div>
+        <% events.each do |e| %>
+
+          <div>
+            <%= link_to e.title, e %>
+          </div>
+        <% end %>
+      <% end %>  
     </div>
 
-    <div class="events_index_wrapper">
-      <% @events.each do |e| %>
-        <div class="event_card">
-          <div class="left">
-            <h3 style="color: #fff;font-size: 24px;"><%= e.title%></h3>
-            <small style="color: #eee;"><%= e.start.to_s(:datetime_jp)%></small>
-          </div>
-          <div class="right">
-            <span class="badge badge-info">
-              <small><%= e.subject %></small>
-            </span>
-            <h4 style="font-size: 20px; margin: 7px 0"><%= e.description %></h4>
-            <small><%= e.start.to_s(:datetime_jp) %> ~ <%= e.end.to_s(:datetime_jp) %></small>
-            <div class="homework_wrapper">
-              <p>宿題 : <%= e.homework %></p>
-            </div>
-          </div>
+    </div>
+  <% end %>
+</div>
+<div class="events_index_wrapper">
+  <% @events.each do |e| %>
+    <div class="event_card">
+      <div class="left">
+        <h3 style="color: #fff;font-size: 24px;"><%= e.title%></h3>
+        <small style="color: #eee;"><%= e.start.to_s(:datetime_jp)%></small>
+      </div>
+      <div class="right">
+        <span class="badge badge-info">
+          <small><%= e.subject %></small>
+        </span>
+        <h4 style="font-size: 20px; margin: 7px 0"><%= e.description %></h4>
+        <small><%= e.start.to_s(:datetime_jp) %> ~ <%= e.end.to_s(:datetime_jp) %></small>
+        <div class="homework_wrapper">
+          <div><p>宿題</p></div>
+          <div><p><%= e.homework %></p></div>
         </div>
-      <% end %>
+      </div>
     </div>
+  <% end %>
+</div>

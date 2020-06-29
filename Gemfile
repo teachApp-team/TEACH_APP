@@ -36,6 +36,7 @@ gem 'gon'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
+gem 'simple_calendar', '~> 2.0'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

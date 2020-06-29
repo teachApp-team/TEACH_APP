@@ -2,11 +2,47 @@
 //   width: 500px;
 // }
 
-.calendar-wrapper {
-  height: 95vh;
-  padding: 30px 80px 0px 80px;
+.calendar_wrapper {
+  padding: 30px;
+  color: #555;
 }
-
+.calendar_wrapper .calendar-heading{
+  text-align: center;
+  padding: 20px 0;
+}
+.calendar_wrapper .calendar-heading a{
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 1px solid #555;
+}
+.calendar_wrapper .table th,
+.calendar_wrapper .table td
+{
+  border: 1px solid #555;
+}
+.calendar_wrapper .calendar-title{
+  font-size: 20px;
+  margin: 0 30px;
+  font-weight: bold;
+}
+.simple-calendar {
+  background: rgb(255, 255, 255);
+  box-shadow: 0 0 18px gray;
+}
+.simple-calendar .day{
+  font-weight: bold;
+}
+.nav-link.active.calendar,
+.tab-content.calendar {
+  background: #ddd !important;
+  border-bottom: none;
+}
+.calendar_stu_title {
+  font-size: 25px;
+  color: #555;
+  text-align: center;
+  font-weight: bold;
+}
 .fc-time {
   display: none;
 }
