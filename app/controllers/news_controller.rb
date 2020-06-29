@@ -46,6 +46,7 @@ class NewsController < ApplicationController
       redirect_to '/test'
     end
   end
+  
   def ajax_create_learning_history
     @learn = LearningHistory.new({
       learning_time: params[:learning_time],

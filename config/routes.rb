@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  
   get 'students/index'
   get 'students/new'
   get 'students/edit'
@@ -17,7 +18,10 @@ Rails.application.routes.draw do
   get 'students/show_test', to: 'students#show_test'
   get 'teachers/show_test', to: 'teachers#show_test'
 
+  get 'teachers/edit_test', to: 'teachers#edit_test'
+
   get 'teachers/show_calender/:id', to: 'teachers#show_calender'
+
   
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
@@ -27,6 +31,11 @@ Rails.application.routes.draw do
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"
   post 'ajax_create_lh', to: "news#ajax_create_learning_history"
+
+  post 'teachers/ajax_create_test', to: 'teachers#ajax_create_test'
+
+  
+
   post 'create_msg', to: "news#create_message"
   get 'each_events/:id', to: "events#each_events"
 

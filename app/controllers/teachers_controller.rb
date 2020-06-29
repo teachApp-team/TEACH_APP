@@ -21,6 +21,24 @@ class TeachersController < ApplicationController
     end
   end
 
+  def edit_test
+    @students = Student.where(teacher_id: @current_teacher.id)
+  end
+
+  def ajax_create_test
+    @test = Test.new({
+      name: params[:name],
+      score: params[:score],
+      grade: params[:grade],
+      date: params[:date],
+      student_id: params[:student_id],
+      teacher_id: params[:teacher_id],
+      average_score: params[:average_score]
+    })
+    @test.save
+  end
+
+
   def edit
   end
 
