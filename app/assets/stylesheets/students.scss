@@ -5,7 +5,7 @@
 .students-index-wrapper {
   height: 100vh;
   background: #fff;
-  padding: 80px;
+  padding: 0 5%;
 }
 
 .student-index-card-wrapper{
@@ -19,37 +19,40 @@
 
 .student-index-card {
   height: 70px;
-  width: 400px;
+  width: 300px;
   box-shadow: 0 0 18px #ccc;
-  margin: 30px 20px;
+  margin: 20px 20px;
   display: flex;
   align-items: center;
-  padding: 0 20px;
-  border-left: 3px solid blue;
-  border-right: 3px solid blue;
+  padding: 0 0 0 20px;
   border-radius: 8px;
 }
 .student-index-card a {
-  margin: 0 30px;
-  font-size: 18px;
+  margin-left: 20px;
+  font-size: 15px;
   font-weight: bold;
   display: block;
   cursor: pointer;
+  color: black !important;
 }
+
+.already-your-student {
+  margin: 0 20px;
+  font-size: 13px;
+}
+
 .student-index-card button {
-  width: 100px;
-  height: 40px;
-  font-size: 8px;
-  display: flex;
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+  font-size: 15px;
+  font-weight: bold;
   align-items: center;
-  justify-content: space-around;
+  border-radius: 50%;
+  color: white;
+  background-color: #000066;
 }
-.student-index-card button i {
-  font-size: 5px;
-}
-.student-index-card button span {
-  line-height: 100%;
-}
+
 .student-profile-img-self.index {
   width: 40px;
   height: 40px;

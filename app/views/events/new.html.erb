@@ -1,48 +1,68 @@
 <%= render 'share/header' %>
-<div style="
-  min-height: 100vh;
-  padding: 100px;
-  width: 600px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  ">
-<%= form_for @event do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "タイトル"%>
-    <%= f.text_field :title, class: "form-control" %>
+<div style="padding: 76px 0 0 0"></div>
+
+<div class="new_events_wrapper">
+  <%= form_for @event do |f| %>
+    <div class="choise_student">
+      <div class="my-1">
+        <div class="form-group">
+          <%= f.label :student_id, "追加したい生徒のカレンダー" %>
+          <%= f.collection_select(:student_id, Student.where(teacher_id: @current_teacher.id), :id, :full_name, {}, {class: 'custom-select'}) %>
+        </div>
+      </div>
+    </div>
+  <div class="new_events_text">
+    <div class="form-group">
+      <%= f.label :title, "タイトル"%>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :description, "内容"%>
-    <%= f.text_area :description, class: "form-control", style: "width: 400px; height: 100px;" %>
+
+  <div class="new_events_content">
+    <div class="form-group">
+      <%= f.label :description, "内容"%>
+      <%= f.text_area :description, class: "form-control", style: "width: 400px; height: 100px;" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :subject, "教科"%>
-    <%= f.text_field :subject, class: "form-control" %>
+
+  <div class="new_events_subject">
+    <div class="form-group">
+      <%= f.label :subject, "教科"%>
+      <%= f.text_field :subject, class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :start, "開始日時"%><br/>
-    <%= f.datetime_select :start, class: "form-control" %>
+
+  <div class="new_events_date">
+    <div class="form-group">
+      <%= f.label :start, "開始日時"%><br/>
+      <%= f.datetime_select :start, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :end, "終了日時"%><br/>
+      <%= f.datetime_select :end, class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :end, "終了日時"%><br/>
-    <%= f.datetime_select :end, class: "form-control" %>
+
+  <div class="allday_events">
+    <div class="form-group">
+      <%= f.label :allday, "終日"%>
+      <%= f.check_box :allday, class: "form-check-input", style: "margin-right: 100px;" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :allday, "終日"%>
-    <%= f.check_box :allday, class: "form-check-input", style: "margin-right: 100px;" %>
+
+  <div class="homework_events">
+    <div class="form-group">
+      <%= f.label :homework, "宿題"%>
+      <%= f.text_field :homework, class: "form-control" %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= f.label :homework, "宿題"%>
-    <%= f.text_field :homework, class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.label :student_id, "送り先の生徒" %>
-    <%= f.collection_select(:student_id, Student.where(id: @current_teacher.id), :id, :full_name) %>
-  </div>
+  
   <%= f.hidden_field :teacher_id, value: @current_teacher.id %>
   
-  <%= f.submit "作成", class: "btn btn-success"%>
-<% end %>
+  <div class="submit_new_msg">
+    <div class="my-1 submit_new_msg1">
+    <%= f.submit "作成", class: "btn btn-success"%>
+    </div>
+  </div>
+  <% end %>
 </div>

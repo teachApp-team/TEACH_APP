@@ -1,7 +1,10 @@
 <%= render 'share/header' %>
-<div style="padding-top: 100px;"></div>
+<%= render partial: 'share/title', locals: {each_title: '生徒の授業日程'} %>
+
+
 
 <div class="show_test_student_list">
+
   <ul class="nav nav-tabs calendar">
     <% @students.each_with_index do |s, i| %>
     <li class="nav-item">
@@ -18,6 +21,7 @@
   </ul>
 </div>
 <div class="tab-content calendar">
+
   <% @students.each_with_index do |s, i| %>
     <% if i == 0 %>
     <div id="student<%= i %>" class="tab-pane test_score_contaner active">
@@ -32,6 +36,15 @@
           今月の予定 <span class="badge badge-light"><%= s.events.length %></span>
         </button>
       </p>
+
+      <div class="submit_new_msg">
+        <div class="my-3 submit_new_msg1">
+        <a href="/events/new" type="submit" class="btn btn-primary">
+          カレンダーに授業を追加する
+        </a>
+        </div>
+      </div>
+
       <%= month_calendar attribute: :start,events: s.events  do |date, events| %>
         <%= date.day %>
 
