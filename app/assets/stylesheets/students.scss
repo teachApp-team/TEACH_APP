@@ -1,6 +1,30 @@
 // Place all the styles related to the students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search-area > form {
+  padding: 5px;
+}
+
+#search-text {
+  padding: 5px;
+  background-color: #DDDDDD;
+  border-radius: 10px;
+  width: 80%;
+  line-height: 10px !important;
+}
+
+.students-index-wrapper > .search-area {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.student-index-card-wrapper > .hidden {
+  display: none !important;
+}
+
+.student-index-card > li {
+  display: none !important;
+}
 
 .students-index-wrapper {
   height: 100vh;
