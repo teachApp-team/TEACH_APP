@@ -26,27 +26,22 @@ class TeachersController < ApplicationController
   end
 
   def ajax_create_test
-    @test = Test.new({
-      name: params[:name],
-      score: params[:score],
-      grade: params[:grade],
-      date: params[:date],
-      student_id: params[:student_id],
-      teacher_id: params[:teacher_id],
-      average_score: params[:average_score]
-    })
-    @test.save
-    @students = Student.where(teacher_id: @current_teacher.id)
-    render @students 
-  end
-
-  def sample
-    @title = params[:title]
-    respond_to do |format|
-      format.html
-      format.js
+    @test = Test.new(test_params)
+    if @test.save
+      @students = Student.where(teacher_id: @current_teacher.id)
+      redirect_to '/teachers/show_test'
+    else
+      redirect_to '/teachers/show_test'
     end
   end
+
+  # def sample
+  #   @title = params[:title]
+  #   respond_to do |format|
+  #     format.html
+  #     format.js
+  #   end
+  # end
 
 
   def edit
@@ -67,5 +62,17 @@ class TeachersController < ApplicationController
   private
   def teacher_params
     params.require(:teacher).permit(:full_name, :subject, :image)
+  end
+
+  def test_params
+    params.require(:test).permit(
+      :student_id,
+      :teacher_id,
+      :name,
+      :score,
+      :grade,
+      :date,
+      :average_score
+    )
   end
 end

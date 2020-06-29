@@ -38,8 +38,8 @@ Rails.application.routes.draw do
 
   post 'create_msg', to: "news#create_message"
   get 'each_events/:id', to: "events#each_events"
-  get 'sample', to: "teachers#sample"
-  post 'sample', to: "teachers#sample"
+  # get 'sample', to: "teachers#sample"
+  # post 'sample', to: "teachers#sample"
 
   resources :events
   resources :messages

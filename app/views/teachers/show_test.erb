@@ -95,7 +95,7 @@
 
 <div class="new_test_container" id= "new_your_students_test">
 
-    <%= form_for(:test, url: {controller: "teachers", action: "ajax_create_test"}) do |f|  %>
+    <%= form_for(:test, method: :post ,url: '/teachers/ajax_create_test') do |f|  %>
 
       <div class="choise_student">
         <div class="my-1">
@@ -143,6 +143,7 @@
         </div>
       </div>
 
+      <%= f.hidden_field :teacher_id, value: @current_teacher.id %>
 
     <% end %>
    
