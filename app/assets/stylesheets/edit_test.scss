@@ -1,0 +1,58 @@
+.new_test_container {
+  margin: 30px 10%;
+  box-shadow: 0 0 8px gray;
+  padding: 20px 5px;
+}
+
+.new_test_text {
+  margin-top: 20px;
+}
+
+.new_test_text > .form-group > .form-control {
+  border: 1.5px solid white !important;
+  background-color: #F5F5F5 !important;
+  height: 50px !important;
+}
+
+.new_test_text > .form-group > .form-control:focus {
+  box-shadow: none !important;
+}
+
+.score_wrapper {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.choise_score  > .form-control {
+  border: 1.5px solid white !important;
+  background-color: #F5F5F5 !important;
+  height: 45px !important;
+}
+
+.choise_score > .form-control:focus {
+  box-shadow: none !important;
+}
+
+.choise_average_score  > .form-control {
+  border: 1.5px solid white !important;
+  background-color: #F5F5F5 !important;
+  height: 45px !important;
+}
+
+.choise_average_score > .form-control:focus {
+  box-shadow: none !important;
+}
+
+.choise_grade {
+  margin-top: 20px;
+}
+
+.choise_date {
+  margin-top: 20px;
+}
+
+.choise_date .form-control {
+  border: 1.5px solid white !important;
+  background-color: #F5F5F5 !important;
+  height: 45px !important;
+}

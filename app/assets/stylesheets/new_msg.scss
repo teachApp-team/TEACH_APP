@@ -16,13 +16,13 @@
   margin-top: 20px;
 }
 
-.form-group > .form-control {
+.new_msg_text > .form-group > .form-control {
   border: 1.5px solid white !important;
   background-color: #F5F5F5 !important;
   height: 250px !important;
 }
 
-.form-control:focus {
+.new_msg_text > .form-group > .form-control:focus {
   box-shadow: none !important;
 }
 
