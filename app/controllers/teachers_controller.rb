@@ -36,6 +36,16 @@ class TeachersController < ApplicationController
       average_score: params[:average_score]
     })
     @test.save
+    @students = Student.where(teacher_id: @current_teacher.id)
+    render @students 
+  end
+
+  def sample
+    @title = params[:title]
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
 

@@ -94,70 +94,57 @@
 </p>
 
 <div class="new_test_container" id= "new_your_students_test">
-    <form>
+
+    <%= form_for(:test, url: {controller: "teachers", action: "ajax_create_test"}) do |f|  %>
+
       <div class="choise_student">
-          <div class="my-1">
-            <label for="inlineFormCustomSelect">追加したい生徒のテスト</label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect1">
-              <% @students.each do |s| %>
-              <option value="<%=s.id %>" 
-                <% if s.id == 0 %>
-                selected
-                <% end %>
-              >
-                <%=s.full_name %>のテスト
-              </option>
-              <% end %>
-            </select>
-          </div>
+        <div class="my-1">
+          <%= f.label :student_id, "追加したい生徒" %>
+          <%= f.collection_select(:student_id, Student.where(teacher_id: @current_teacher.id), :id, :full_name,{},{class: "custom-select"}) %>
+        </div>
       </div>
 
       <div class="new_test_text">
-        <div class="form-group">
-          <label for="exampleFormControlTextarea1">テスト名を記入</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <div class="my-1">
+          <%= f.label :name, "テスト名を記入" %>
+          <%= f.text_area :name, class: "form-control", rows: 1 %>
         </div>
       </div>
 
       <div class="score_wrapper">
         <div class="choise_score">
-          <label for="exampleFormControlTextarea1">点数を入力</label>
-          <input class="form-control" type="number" value="0" id="example-number-input1" max="100" min="0">
+          <%= f.label :score, "点数を入力" %>
+          <%= f.number_field :score, class: "form-control", max: 100, min: 0, value: 0 %>
         </div>
-        
         <div class="choise_average_score">
-          <label for="exampleFormControlTextarea1">平均点を入力</label>
-          <input class="form-control" type="number" value="0" id="example-number-input2" max="100" min="0">
+          <%= f.label :average_score, "平均点を入力" %>
+          <%= f.number_field :average_score, class: "form-control", max: 100, min: 0, value: 0 %>
         </div>
       </div>
 
       <div class="choise_grade">
-          <div class="my-1">
-          <label for="exampleFormControlTextarea1">評価を選択</label>
-            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect2">
-              <option selected>A</option>
-              <option value="1">B</option>
-              <option value="2">C</option>
-              <option value="3">D</option>
-            </select>
-          </div>
+        <div class="my-1">
+          <%= f.label :grade, "評価を選択" %>
+          <%= f.select :grade, ["A", "B", "C", "D"],{}, class: "custom-select" %>
+        </div>
       </div>
 
       <div class="form-group row choise_date">
-      <label for="example-date-input" class="col-5 col-form-label">テスト実施日</label>
+        <%= f.label :date, "テスト実施日", class: "col-5 col-form-label" %>
         <div class="col-7">
           <% require "date" %>
-          <input class="form-control" type="date" value="<%=  Date.today %>" id="example-date-input">
+          <%= f.date_field :date, class: "form-control", value: Date.today %>
+        </div>
+      </div>
+  
+      <div class="submit_new_msg">
+        <div class="my-1 submit_new_msg1">
+          <%= f.submit "追加する", class: "btn btn-primary" %>
         </div>
       </div>
 
-      <div class="submit_new_msg">
-        <div class="my-1 submit_new_msg1">
-          <button type="submit" class="btn btn-primary" id="add_test">
-              追加する
-          </button>
-        </div>
-      </div>
-    </form>
+
+    <% end %>
+   
   </div>
 </section>
