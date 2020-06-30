@@ -1,23 +1,34 @@
 <%= render partial: 'share/header' %>
-<div style="padding: 76px 0 0 0"></div>
+<%= render partial: 'share/title', locals: {each_title: '自分の生徒に追加する'} %>
 <div class="students-index-wrapper">
+  <div class="search-area">
+    <form>
+      <input type="text" id="search-text" placeholder="生徒の名前を検索">
+    </form>
+    <div class="search-result">
+      <div class="search-result__hit-num"></div>
+      <div id="search-result__list"></div>
+    </div>
+  </div>
+
   <div class="student-index-card-wrapper">
     <% @students.each do |s| %>
-      <div class="student-index-card">
+      <div class="student-index-card target-area">
+        <li><%= s.full_name %></li>
         <%= image_tag s.image.url , class: "student-profile-img-self index" %>
         <div>
           <a href="/students/<%= s.id %>"><%= s.full_name %>君</a>
           <% if @current_teacher.id == s.teacher_id %>
-           <div class="already-your-student">
-             すでにあなたの生徒です
-           </div>
+          <div class="already-your-student">
+            すでにあなたの生徒です
+          </div>
         </div>
-          <% else %>
+        <% else %>
           <button type="button" class="btn btn-outline-primary">
             追加
           </button>
-          <% end %>
+        <% end %>
       </div>
-    <% end %>
+      <% end %>
   </div>
 </div>
