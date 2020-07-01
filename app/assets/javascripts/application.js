@@ -213,7 +213,7 @@ $("#sharebtn").click(function(){
 });
 });
 
-
+document.addEventListener("turbolinks:load", function() {
 $(function () {
   searchWord = function(){
     var searchText = $(this).val(), 
@@ -231,4 +231,6 @@ $(function () {
   };
 
   $('#search-text').on('input', searchWord);
+});
+
 });
