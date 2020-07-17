@@ -1,7 +1,6 @@
 <%= render partial: 'share/header' %>
 <section class="new_msg_section">
 <%= render partial: 'share/title', locals: {each_title: 'メッセージ送信'} %>
-
 <div class="new_msg_container">
     <form>
       <div class="choise_student">
@@ -9,10 +8,13 @@
           <div class="my-1">
             <label for="inlineFormCustomSelect">送信する生徒を選択</label>
             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-              <option selected>Kosuke Fujita</option>
-              <option value="1">Gen Nakamura</option>
-              <option value="2">Soichi Kubota</option>
-              <option value="3">Hiroharu Hara</option>
+            <% @current_teacher.students.each_with_index do |s, i| %>
+              <% if s.id == @current_teacher.students[0].id %>
+                <option selected><%= s.full_name %></option>
+              <% else %>
+              <option value=<%=i%>><%= s.full_name %></option>
+              <% end %>
+            <% end %>
             </select>
           </div>
         </div>

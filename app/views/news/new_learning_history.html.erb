@@ -6,9 +6,9 @@
     <div class="stopwatch_container">
       <h3 class="stopwatch_title">StopWatch</h3>
       <h6 id="timerLabel">
-        <span id="hour">00</span>時間
-        <span id="min">0</span>分
-        <span id="sec">0</span>秒
+        <div class="timer" id="timer">
+          00:00:00
+        </div>
       </h6>
     </div>
 
@@ -25,10 +25,10 @@
 
     <div id="new_history_buttons">
       <div class="each_history_buttons" id="before_start">
-        <input type="button" class="myButton start" id="startbtn" value="スタート" >
+        <input type="button" class="myButton start" id="startbtn" onclick="startTimer()" value="スタート" >
       </div>
       <div id="while_studying">
-        <input type="button" class="myButtons pause" id="pausebtn" value="一時停止">
+        <input type="button" class="myButtons pause" id="pausebtn" onclick="stopTimer()" value="一時停止">
         <input type="button" class="myButtons finish" id="finishbtn1" value="完了">
       </div>
       <div id="pause">
@@ -44,9 +44,191 @@
       <div id ="finish">
         <input type="button" class="myButtons share" id="sharebtn" value="上記の内容でシェア">
         <input type="button" class="myButtons share" id="stillbtn" value="まだ学習を続ける">
-        <!-- <input type="button" class="myButtons share" id="test" value="確認用"> -->
       </div>
     </div>
   </div>
-
 </section>
+
+<script type="text/javascript">
+
+
+$('#while_studying').hide();
+$('#pause').hide();
+$('#finish').hide();
+$('#confirmation').hide();
+console.log(gon.user_id);
+console.log(gon.teacher_subject);
+
+var w = null;
+  function startTimer() {
+    
+    if (typeof(Worker) !== "undefined"){
+      if (w==null) {
+        w = new Worker('<%= javascript_path "multiple.js" %>'); }
+      w.onmessage = function (event) {
+        second = 0;
+        minute = 0;
+        hour = 0;
+        totalsecond = Number(event.data.slice(6,8))+second;
+        totalminute = Number(event.data.slice(3,5))+minute;
+        totalhour = Number(event.data.slice(0,2))+hour;
+        totalsecond1 = ( '00' + totalsecond ).slice( -2 );
+        totalminute1 = ( '00' + totalminute ).slice( -2 );
+        totalhour1 = ( '00' + totalhour ).slice( -2 );
+        document.getElementById("timer").innerHTML = String(totalhour1)+":"+String(totalminute1)+":"+String(totalsecond1);
+      };
+    } else {
+        document.getElementById("timer").innerHTML = "このブラウザではWeb Workersは利用できません";
+    }
+    $('#while_studying').fadeIn(1500);
+    $('#before_start').hide();
+    $('#new_history_buttons').css('background-color', 'midnightblue');
+    $('.stopwatch_container').css('background-color', 'midnightblue');
+    $('#timerLabel').css('color', 'white');
+    $('#timerLabel').css('font-size', '25px');
+  }
+  function stopTimer(){
+    stoptime= document.getElementById("timer").innerHTML;
+    console.log(stoptime);
+    console.log(stoptime.slice(6,8)); 
+    console.log(stoptime.slice(3,5)); 
+    console.log(stoptime.slice(0,2)); 
+    second = stoptime.slice(6,8)
+    minute = stoptime.slice(3,5)
+    hour = stoptime.slice(0,2)
+    document.cookie = hour+minute+second;
+    if (w == null) {
+      wb.terminate();
+      wb = null;
+    } else {
+      w.terminate();
+      w = null;
+    };
+    $('#pause').fadeIn(1500);
+    $('#while_studying').hide();
+    $('#new_history_buttons').css('background-color', '#778899');
+    $('.stopwatch_container').css('background-color', '#778899');
+    $('.stopwatch_title').css('color', 'white');
+  } 
+  $('#resetbtn').click(function() {
+    $('#confirmation').fadeIn(1500);
+    $('#while_studying').hide();
+    $('#pause').hide();
+    $('#new_history_buttons').css('background-color', '#778899');
+    $('#confirmation_comment').css('color', 'white');
+    $('.stopwatch_container').css('background-color', '#778899');
+  });
+$('#surebtn').click(function() {
+  document.getElementById("timer").innerHTML = "00:00:00";
+  $('#before_start').fadeIn(1500);
+  $('#confirmation').hide();
+  $('#new_history_buttons').css('background-color', '#BBBBBB');
+  $('.stopwatch_container').css('background-color', '#BBBBBB');
+});
+$('#cancelbtn').click(function() {
+  $('#pause').fadeIn(1500);
+  $('#confirmation').hide();
+});
+
+$('#finishbtn1').click(function() {
+  if (w == null) {
+      wb.terminate();
+      wb = null;
+    } else {
+      w.terminate();
+      w = null;
+    };
+  $('#finish').fadeIn(1500);
+  $('#while_studying').hide();
+  $('#pause').hide();
+  $('#new_history_buttons').css('background-color', 'midnightblue');
+  $('.stopwatch_container').css('background-color', 'midnightblue');
+  $('#timerLabel').css('color', 'white');
+  $('#timerLabel').css('font-size', '25px');
+  $('.stopwatch_title').css('color', 'white');
+});
+
+$('#finishbtn2').click(function() {
+  $('#finish').fadeIn(1500);
+  $('#while_studying').hide();
+  $('#pause').hide();
+  $('#new_history_buttons').css('background-color', 'midnightblue');
+  $('.stopwatch_container').css('background-color', 'midnightblue');
+  $('#timerLabel').css('color', 'white');
+  $('#timerLabel').css('font-size', '25px');
+  $('.stopwatch_title').css('color', 'white');
+});
+
+var wb = null;
+// 再開
+$('#restartbtn').click(function() {
+  $('#while_studying').fadeIn(1500);
+  $('#pause').hide();
+  console.log("リスタートボタン押しました");
+  if (typeof(Worker) !== "undefined"){
+      if (wb==null) {
+      wb = new Worker('<%= javascript_path "worker.js" %>');}
+      wb.postMessage(document.cookie);
+      console.log("worker.jsに送信");
+    wb.onmessage = function (event) {
+      totalsecond = Number(event.data.slice(6,8));
+      totalminute = Number(event.data.slice(3,5));
+      totalhour = Number(event.data.slice(0,2));
+      console.log("totalsecondは"+totalsecond);
+      totalsecond1 = ( '00' + totalsecond ).slice( -2 );
+      totalminute1 = ( '00' + totalminute ).slice( -2 );
+      totalhour1 = ( '00' + totalhour ).slice( -2 );
+      console.log("totalsecond1は"+totalsecond1);
+      document.getElementById("timer").innerHTML = String(totalhour1)+":"+String(totalminute1)+":"+String(totalsecond1);
+    }; 
+  } else {
+    document.getElementById("timer").innerHTML = "このブラウザではWeb Workersは利用できません";
+  }
+  $('#new_history_buttons').css('background-color', 'midnightblue');
+  $('.stopwatch_container').css('background-color', 'midnightblue');
+  $('#timerLabel').css('color', 'white');
+  $('#timerLabel').css('font-size', '25px');
+});
+
+$('#stillbtn').click(function() {
+  $('#pause').fadeIn(1500);
+  $('#before_start').hide();
+  $('#finish').hide();
+  $('#new_history_buttons').css('background-color', '#778899');
+  $('.stopwatch_container').css('background-color', '#778899');
+  $('.stopwatch_title').css('color', 'white');
+});
+
+$("#sharebtn").click(function(){
+  var finish_stoptime = document.getElementById("timer").innerHTML;
+  var finish_second = finish_stoptime.slice(6,8)
+  var finish_minute = finish_stoptime.slice(3,5)
+  var finish_hour = finish_stoptime.slice(0,2)
+  var sum_time = `${finish_hour}:${finish_minute}:${finish_second}`
+  var user_name_id = gon.user_id;
+  var teacher_subject = gon.teacher_subject;
+  
+  $.ajax({
+      url: "ajax_create_lh",
+      type: "POST",
+      data: JSON.stringify({
+        learning_time: sum_time,
+        learning_text: $('#exampleFormControlTextarea1')[0].value,
+        comment: $('#exampleFormControlTextarea2')[0].value,
+        subject: teacher_subject,
+        student_id: user_name_id
+      }),
+      contentType: 'application/json',
+      dataType: "json",
+      success: function(data) {
+        window.location.href = '/news_field';
+      },
+      error: function(data) {
+         window.location.href = '/test';
+      }
+  });
+});
+</script>
+
+
+

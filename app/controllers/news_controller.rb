@@ -19,6 +19,8 @@ class NewsController < ApplicationController
   end
 
   def new_learning_history
+    gon.user_id = @current_student.id
+    gon.teacher_subject = @current_student.teacher.subject
   end
 
   def new_msg
