@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  
+  get 'student_sign_up', to: 'home#student_sign_up'
+  post 'student_users/create', to: 'students#create'
+
   get 'students/index'
   get 'students/new'
   get 'students/edit'
@@ -8,11 +10,11 @@ Rails.application.routes.draw do
   get 'news_field', to: 'news#index'
   root 'home#top'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
-  get 'student_sign_up', to: 'home#student_sign_up'
+ 
   get 'test', to: 'news#test'
   get 'teachers/edit'
   post 'teachers/update'
-  get 'history', to: "students#history"
+  get 'students/history', to: "students#history"
   get 'teachers/history', to: 'teachers#history'
 
   get 'students/show_test', to: 'students#show_test'

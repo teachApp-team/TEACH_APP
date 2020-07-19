@@ -9,7 +9,7 @@
             <label for="inlineFormCustomSelect">送信する生徒を選択</label>
             <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <% @current_teacher.students.each_with_index do |s, i| %>
-              <% if s.id == @current_teacher.students[0].id %>
+              <% if i == 0 %>
                 <option selected><%= s.full_name %></option>
               <% else %>
               <option value=<%=i%>><%= s.full_name %></option>

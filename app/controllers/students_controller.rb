@@ -26,6 +26,14 @@ class StudentsController < ApplicationController
   def new
   end
 
+  def create
+    user = Student.new(user_params)
+    if user.save
+      redirect_to("/")
+    else
+      redirect_to :back
+  end
+
   def history
     @histories = LearningHistory.where(student_id: @current_student.id)
   end

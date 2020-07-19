@@ -1,4 +1,6 @@
+<div id=javascropt_header>
 <%= render partial: 'share/header' %>
+</div>
 <section class="new_learning_history_section">  
 <%=render partial: 'share/title', locals:{each_title: 'Start Learning'}%>
 
@@ -81,6 +83,7 @@ var w = null;
         document.getElementById("timer").innerHTML = "このブラウザではWeb Workersは利用できません";
     }
     $('#while_studying').fadeIn(1500);
+    $('#javascropt_header').hide();
     $('#before_start').hide();
     $('#new_history_buttons').css('background-color', 'midnightblue');
     $('.stopwatch_container').css('background-color', 'midnightblue');
@@ -122,6 +125,7 @@ $('#surebtn').click(function() {
   document.getElementById("timer").innerHTML = "00:00:00";
   $('#before_start').fadeIn(1500);
   $('#confirmation').hide();
+  $('#javascropt_header').fadeIn(1500);
   $('#new_history_buttons').css('background-color', '#BBBBBB');
   $('.stopwatch_container').css('background-color', '#BBBBBB');
 });
