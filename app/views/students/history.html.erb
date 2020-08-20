@@ -2,6 +2,6 @@
 <section class="news_field_background">
 <%= render partial: 'share/title', locals: {each_title: '学習履歴'} %>
 
-<% @histories.each do |h| %>
+<% @histories.sort.reverse.each do |h| %>
   <%= render partial: 'share/student-history', locals: {variable: h} %>
 <% end %>
