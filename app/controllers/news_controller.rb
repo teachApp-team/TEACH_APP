@@ -5,8 +5,14 @@ class NewsController < ApplicationController
 
   def index
     require "time"
-    histories = LearningHistory.all
-    messages = Message.all
+    if @current_student.present?
+      histories = LearningHistory.where(student_id: @current_student.id)
+      messages = Message.where(student_id: @current_student.id)
+    end
+    if @current_teacher.present?
+      histories = LearningHistory.where(student_id: @current_teacher.students.ids)
+      messages = Message.where(teacher_id: @current_teacher.id)
+    end
     @news = []
     histories.each do |h|
       @news.push(h)

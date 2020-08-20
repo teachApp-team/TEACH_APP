@@ -1,13 +1,17 @@
 <%= render partial: 'share/header' %>
 
 <section class="student_profile_section">
-<%= render partial: 'share/title', locals: {each_title: 'プロフィール'} %>
+<%= render partial: 'share/student-and-teacher', locals: {teacher_url: "/students/edit"} %>
 
   <div class="student-card-wrapper">
     <div class="student-profile">
       <div class="student-profile-img">
+      <% if @current_student.image.present? %>
         <%=image_tag @current_student.image.url , class: "student-profile-img-self" %>
-      </div>
+      <% else %>
+        <p>画像が設定されていません</p>
+      <% end %>
+        </div>
       <div class="student-profile">
         <h1><%= @current_student.full_name %></h1>
       </div>

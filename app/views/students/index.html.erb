@@ -12,24 +12,28 @@
   </div>
 
   <div class="student-index-card-wrapper">
-    <% @students.each do |s| %>
+      <% @students.each do |s| %>
       <div class="student-index-card target-area">
-        <li><%= s.full_name %></li>
-        <%= image_tag s.image.url , class: "student-profile-img-self index" %>
+          <li><%= s.full_name %></li>
+          <% if s.image.present? %>
+          <%= image_tag s.image.url , class: "student-profile-img-self index" %>
+          <% else %>
+          <p>画像が設定なし</p>
+          <% end %>
         <div>
           <a href="/students/<%= s.id %>"><%= s.full_name %>君</a>
           <% if @current_teacher.id == s.teacher_id %>
-          <div class="already-your-student">
-            すでにあなたの生徒です
-          </div>
+            <div class="already-your-student">
+              あなたの生徒です
+            </div>
+          <% else %>
+            <div class="already-your-student">
+              <button type="button" class="btn btn-outline-primary">
+                追加
+              </button>
+            </div>
+          <% end %>
         </div>
-        <% else %>
-          <div>
-            <button type="button" class="btn btn-outline-primary">
-              追加
-            </button>
-          </div>
-        <% end %>
       </div>
       <% end %>
   </div>

@@ -1,6 +1,15 @@
 class TeachersController < ApplicationController
-  before_action :auth_teacher, except: [:new]
+  before_action :auth_teacher, except: [:new, :create]
   def new
+  end
+
+  def create
+    teacher = Teacher.new(teacher_params)
+    if teacher.save
+      redirect_to("/")
+    else
+      redirect_to :back
+    end
   end
 
   def show
@@ -54,7 +63,7 @@ class TeachersController < ApplicationController
   end
 
   def show_calender
-    @events = Event.where(student_id: params[:id])
+    @events = Event.where(student_id: @current_teacher.id)
     @students = @current_teacher.students
     @student = Student.find(params[:id])
   end
@@ -74,5 +83,10 @@ class TeachersController < ApplicationController
       :date,
       :average_score
     )
+  end
+
+  private
+  def teacher_params
+    params.require(:teacher).permit(:full_name, :password, :password_confirmation, :subject)
   end
 end
