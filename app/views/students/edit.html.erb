@@ -1,2 +1,35 @@
-<h1>Students#edit</h1>
-<p>Find me in app/views/students/edit.html.erb</p>
+<%= render partial: 'share/header' %>
+
+<div style="padding-top: 76px;" class="teacher-edit-container">
+  <div class="form-wrapper">
+    <div class="title">
+      <h2>プロフィール編集</h2>
+    </div>
+    <div class="teacher_icon">
+    <% if @current_student.image.present? %>
+      <%= image_tag @current_student.image.url, class: "teacher-profile-img-self image" %>
+      <% else %>
+      現在プロフィール画像が設定されていません
+    <% end %>
+    </div>
+    <%= form_for(@current_student, url: 'update', method: :post) do |f| %>
+      <div class="form-group row">
+        <%= f.label :full_name, "氏名", class: "col-4 label" %>
+        <%= f.text_field :full_name, class: "form-control col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :school_of_choice, "志望校", class: "col-4 label" %>
+        <%= f.text_field :school_of_choice, class: "form-control col-8" %>
+      </div>
+      <div class="form-group row">
+        <%= f.label :image, "アイコン画像", class: "col-4 label" %>
+        <%= f.file_field :image, class: "file-field form-control col-8" %>
+      </div>
+      <div class="form-group" style="text-align: center;">
+        <%= f.hidden_field :teacher_id, value: 1 %>
+        <%= f.submit "更新", class: "btn btn-outline-warning editButton" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+

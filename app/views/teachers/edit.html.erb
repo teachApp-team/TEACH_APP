@@ -6,7 +6,11 @@
       <h2>プロフィール編集</h2>
     </div>
     <div class="teacher_icon">
+    <% if @current_teacher.image.present? %>
       <%= image_tag @current_teacher.image.url, class: "teacher-profile-img-self image" %>
+      <% else %>
+      現在プロフィール画像が設定されていません
+    <% end %>
     </div>
     <%= form_for(@current_teacher, url: 'update', method: :post) do |f| %>
       <div class="form-group row">
@@ -22,7 +26,7 @@
         <%= f.file_field :image, class: "file-field form-control col-8" %>
       </div>
       <div class="form-group" style="text-align: center;">
-        <%= f.submit "送信", class: "btn btn-outline-warning editButton" %>
+        <%= f.submit "更新", class: "btn btn-outline-warning editButton" %>
       </div>
     <% end %>
   </div>
