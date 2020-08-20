@@ -26,7 +26,7 @@
   <% else %>
   <div id="student<%= i %>" class="tab-pane test_score_contaner">
   <% end %>
-    <% s.learning_histories.each do |h| %>
+    <% s.learning_histories.sort.reverse.each do |h| %>
       <%= render partial: 'share/student-history', locals: {variable: h} %>
     <% end %>
   </div>

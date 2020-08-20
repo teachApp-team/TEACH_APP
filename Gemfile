@@ -30,6 +30,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'bootstrap', '~> 4.1.3' # 記事下の関連URLからバージョンを確認して導入
 gem 'jquery-rails'
+gem 'jquery-turbolinks'
 gem 'font-awesome-sass', '~> 5.2.0' # 記事下の関連URLからバージョンを確認して導入
 gem "chartkick"
 gem 'gon'
