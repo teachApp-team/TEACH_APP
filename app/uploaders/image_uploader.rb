@@ -24,7 +24,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   #ファイル名を変更し拡張子を同じにする
   def filename
-    super.chomp(File.extname(super)) + '.jpg' 
+    original_filename if original_filename
   end
 
   # Choose what kind of storage to use for this uploader:

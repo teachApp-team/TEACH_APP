@@ -33,26 +33,22 @@
 }
 
 .student-index-card-wrapper{
-  height: 100%;
   background: #fff;
-  overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
-  align-content: flex-start;
 }
 
 .student-index-card {
-  height: 70px;
-  width: 300px;
+  height: 150px;
+  width: 200px;
   box-shadow: 0 0 18px #ccc;
   margin: 20px 20px;
-  display: flex;
-  align-items: center;
-  padding: 0 0 0 20px;
   border-radius: 8px;
+  text-align: center;
+  padding: 10px;
 }
 .student-index-card a {
-  margin-left: 20px;
+  margin-top: 10px;
   font-size: 15px;
   font-weight: bold;
   display: block;
@@ -61,18 +57,16 @@
 }
 
 .already-your-student {
-  margin: 0 20px;
+  margin: 10px 20px;
   font-size: 13px;
 }
 
 .student-index-card button {
-  width: 60px;
-  height: 60px;
-  margin-left: 20px;
+  width: 80px;
+  height: 40px;
   font-size: 15px;
   font-weight: bold;
   align-items: center;
-  border-radius: 50%;
   color: white;
   background-color: #000066;
 }

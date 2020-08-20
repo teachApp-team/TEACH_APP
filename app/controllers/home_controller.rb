@@ -6,12 +6,11 @@ class HomeController < ApplicationController
   end
 
   def student_sign_up
-    @user = Student.new(params[:user])
-    @user.save
-    redirect_to ('/')
+    @student = Student.new(params[:student])
   end
   
   def teacher_sign_up
+    @teacher = Teacher.new(params[:teacher])
   end
 
 end

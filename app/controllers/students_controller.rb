@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :auth_student, except: [:new, :show_calender, :index]
+  before_action :auth_student, except: [:new, :show_calender, :index, :create]
   def index
     @students = Student.all
   end
@@ -27,17 +27,30 @@ class StudentsController < ApplicationController
   end
 
   def create
-    user = Student.new(user_params)
-    if user.save
+    student = Student.new(student_params)
+    if student.save
       redirect_to("/")
     else
       redirect_to :back
+    end
   end
+
 
   def history
     @histories = LearningHistory.where(student_id: @current_student.id)
   end
 
   def edit
+  end
+
+  def update
+    user = Student.find(@current_student.id)
+    user.update(student_params)
+    redirect_to "/students/#{@current_student.id}"
+  end
+
+  private
+  def student_params
+    params.require(:student).permit(:full_name, :password, :password_confirmation, :school_of_choice, :teacher_id)
   end
 end

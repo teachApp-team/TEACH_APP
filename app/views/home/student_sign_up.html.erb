@@ -1,7 +1,7 @@
 <section>
   <div class="top_container">
     <div class="login_container">
-      <%= form_for(@user, url: 'student_users/create') do |f| %>
+      <%= form_for(@student, url: 'student_users/create') do |f| %>
         <%= image_tag "plant.jpg", class: "open_door_img" %>
         <h2 class="font-italic">sign up</h2>
         <div class="input_div first_input_div">
@@ -22,10 +22,18 @@
           <i class="fas fa-lock"></i>  
           <div>
             <h6 class="font-italic stu_sign_in_password">Confirmation</h6>
-            <%= f.password_field :password, class: "form-control" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
           </div>
         </div>
-        <input type="submit" class="btn stu_sign_in_btn" value="Sign In">
+        <div class="input_div second_input_div">
+          <i class="fas fa-lock"></i>  
+          <div>
+            <h6 class="font-italic stu_sign_in_password">school_of_choice</h6>
+            <%= f.text_field :school_of_choice, class: "form-control" %>
+          </div>
+        </div>
+        <%= f.hidden_field :teacher_id, value: 1 %>
+        <%= f.submit "Sign In",class:"btn stu_sign_in_btn" %>
       <% end %>
       <p>
         ここでは生徒の新しいアカウントを作成します。

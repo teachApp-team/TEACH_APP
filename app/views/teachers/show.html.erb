@@ -6,7 +6,11 @@
   <div class="tacher-card-wrapper">
     <div class="teacher-profile">
       <div class="teacher-profile-img">
+      <% if @current_teacher.image.present? %>
         <%=image_tag @current_teacher.image.url , class: "teacher-profile-img-self" %>
+      <% else %>
+        <p>画像が設定されていません</p>
+      <% end %>
       </div>
       <div class="teacher-profile">
         <h1><%= @current_teacher.full_name %></h1>
@@ -33,7 +37,11 @@
       <% @current_teacher.students.each do |s| %>
       <div class="your_student_list">
         <div class="your_student_img">
-          <%=image_tag s.image.url, class: "your_student_img_self" %>
+          <% if s.image.present? %>
+            <%=image_tag s.image.url, class: "your_student_img_self" %>
+          <% else %>
+          生徒の画像が<br>設定されていません
+          <% end %>
         </div>
         <div class="your_student_name">
           <h5><%=s.full_name %></h5>
