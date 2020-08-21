@@ -1,5 +1,17 @@
 <%= render 'share/header' %>
 <div style="padding-top: 100px;"></div>
+
+<div class="calendar_wrapper">
+  <%= month_calendar attribute: :start,events: @events  do |date, events| %>
+    <%= date.day %>
+    <% events.each do |e| %>
+      <div>
+        <%= link_to e.title, e %>
+      </div>
+    <% end %>
+  <% end %> 
+</div> 
+
 <div class="events_index_wrapper">
   <% @events.each do |e| %>
     <div class="event_card">
