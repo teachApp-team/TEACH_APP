@@ -148,5 +148,27 @@
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
   }
-  
+
+  .calendar_wrapper .calendar-heading a{
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 1px solid #555;
+  }
+
+  .calendar_wrapper .calendar-title{
+    font-size: 20px;
+    margin: 0 10px;
+    font-weight: bold;
+  }
+
+  .calendar_stu_title {
+    font-size: 20px;
+    color: #555;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .table th, .table td {
+    padding: 0 !important;
+  }
 }
