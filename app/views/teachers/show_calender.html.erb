@@ -67,19 +67,47 @@
 <div class="events_index_wrapper">
   <% @events.each do |e| %>
     <div class="event_card">
-      <div class="left">
+      <div style="display: grid;grid-template-columns: 80% 20%;" class="left">
+      <% if e.title? %>
+      <div>
         <h3 style="color: #fff;font-size: 24px;"><%= e.title%></h3>
+      </div>
+      <div style="color: #fff;">
+      <a href="#" style="color: #fff;font-size: 13px;">削除</a>
+      <a href="#" style="color: #fff;font-size: 13px;">編集</a>
+      </div>
+      <% else %>
+      <div>
+        <h3 style="color: #fff;font-size: 24px;">記載なし</h3>
+      </div>
+      <div style="color: #fff;">
+      <a href="#" style="color: #fff;font-size: 13px;">削除</a>
+      <a href="#" style="color: #fff;font-size: 13px;">編集</a>
+      </div>
+      <% end %>
         <small style="color: #eee;"><%= e.start.to_s(:datetime_jp)%></small>
       </div>
       <div class="right">
         <span class="badge badge-info">
+        <% if e.subject? %>
           <small><%= e.subject %></small>
+        <% else %>
+          <small>記載なし</small>
+        <% end %>
         </span>
+        <% if e.description? %>
         <h4 style="font-size: 20px; margin: 7px 0"><%= e.description %></h4>
+        <% else %>
+        <h4 style="font-size: 20px; margin: 7px 0">記載なし</h4>
+        <% end %>
         <small><%= e.start.to_s(:datetime_jp) %> ~ <%= e.end.to_s(:datetime_jp) %></small>
         <div class="homework_wrapper">
           <div><p>宿題</p></div>
+          <% if e.homework? %>
           <div><p><%= e.homework %></p></div>
+          <% else %>
+          <div><p>記載なし</p></div>
+          <% end %>
         </div>
       </div>
     </div>

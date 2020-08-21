@@ -28,9 +28,8 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
     if @event.save
-      redirect_to '/students/show_calender'
+      redirect_to "/teachers/show_calender/#{@current_teacher.id}"
     else
       redirect_to '/events/new'
     end
@@ -50,7 +49,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to '/students/show_calender'
+    redirect_to "/teachers/show_calender#{@current_teacher.id}"
   end
 
   private
