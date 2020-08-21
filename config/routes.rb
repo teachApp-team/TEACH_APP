@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
   post 'student_users/create', to: 'students#create'
   post 'teacher_users/create', to: 'teachers#create'
+  post 'students/add', to: 'students#add'
 
   get 'students/index'
   get 'students/new'

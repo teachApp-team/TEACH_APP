@@ -28,9 +28,10 @@
             </div>
           <% else %>
             <div class="already-your-student">
-              <button type="button" class="btn btn-outline-primary">
-                追加
-              </button>
+              <%= form_with url: students_add_path, method: :post, local: true do |f| %>
+                <%= f.hidden_field :student_id, value: s.id %>
+                <%= f.submit "追加", class: "btn btn-outline-primary student-add" %>
+              <% end %>
             </div>
           <% end %>
         </div>
