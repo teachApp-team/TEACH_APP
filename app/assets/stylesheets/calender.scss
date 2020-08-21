@@ -142,6 +142,10 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0;
   }
+  .events_index_wrapper .left h3{
+    font-size: 20px !important;
+  }
+
   .events_index_wrapper .right {
     width: 100%;
     flex-shrink: 0;
@@ -149,8 +153,13 @@
     border-bottom-right-radius: 20px;
   }
 
+  .events_index_wrapper .right h4{
+    font-size: 17px !important;
+  }
+
   .calendar_wrapper .calendar-heading a{
-    padding: 5px 10px;
+    font-size: 15px;
+    padding: 5px 8px;
     border-radius: 20px;
     border: 1px solid #555;
   }
@@ -162,7 +171,7 @@
   }
 
   .calendar_stu_title {
-    font-size: 20px;
+    font-size: 15px;
     color: #555;
     text-align: center;
     font-weight: bold;
