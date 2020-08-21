@@ -1,8 +1,8 @@
 <%= render partial: 'share/header' %>
 <section class="new_msg_section">
 
-<div class="new_msg_container" style="margin: 0 150px;">
-    <%= render partial: 'share/title', locals: {each_title: 'New Comment'} %>
+<div class="new_msg_container" style="margin: 0 30px;">
+<%= render partial: 'share/title', locals: {each_title: 'メッセージを送信'} %>
     <%= form_for @message do |f| %>
       <div class="choise_student">
         <div class="form-row align-items-center">
@@ -20,7 +20,7 @@
       </div>
       <div class="submit_new_msg">
         <div class="col-auto my-1">
-          <%= f.submit "Submit", class: "btn btn-primary" %>
+          <%= f.submit "送信", class: "btn btn-primary" %>
         </div>
       </div>
     <% end %>
