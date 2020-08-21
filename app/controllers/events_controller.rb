@@ -30,7 +30,7 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      redirect_to '/students/show_calender'
+      redirect_to '/students/show_caledder'
     else
       redirect_to '/events/new'
     end
