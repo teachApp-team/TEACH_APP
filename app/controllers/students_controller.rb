@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :auth_student, except: [:new, :show_calender, :index, :create]
+  before_action :auth_student, except: [:new, :show_calender, :index, :create, :add]
   def index
     @students = Student.all
   end
@@ -14,8 +14,7 @@ class StudentsController < ApplicationController
     tests = Test.all  
     tests.each_with_index do |t,i|
       @test_ary << [t.date, t.score]
-    end
-    
+    end   
   end
 
   def show_calender
@@ -49,8 +48,18 @@ class StudentsController < ApplicationController
     redirect_to "/students/#{@current_student.id}"
   end
 
+  def add
+    student = Student.find(params[:student_id])
+    @current_teacher.students << student
+    redirect_to students_index_path
+  end
+
   private
   def student_params
     params.require(:student).permit(:full_name, :password, :password_confirmation, :school_of_choice, :teacher_id)
+  end
+
+  def get_params
+    params.permit(:student_id)
   end
 end
