@@ -1,0 +1,136 @@
+.test_socre_graph_container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.test_socre_graph_container_border {
+  background-color: white;
+  -webkit-box-shadow: 0 0 8px black;
+          box-shadow: 0 0 8px black;
+  margin: 0 20%;
+  border-radius: 10px;
+  padding-top: 3px;
+}
+
+.test_socre_graph_title {
+  font-size: 17px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  bottom: 0;
+  padding-top: 8px;
+}
+
+.test_score_graph {
+  overflow: scroll;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.chartjs-render-monitor {
+  height: 400px !important;
+}
+
+.test_score_graph_wrapper {
+  padding: 10px 80px;
+}
+
+.test_history_score_list {
+  margin: 0 20%;
+  background: -webkit-gradient(linear, left top, right top, from(#000077), color-stop(#0000AA), to(#000077));
+  background: linear-gradient(to right, #000077, #0000AA, #000077);
+  padding: 5px 10px;
+  -webkit-box-shadow: 0 0 8px black;
+          box-shadow: 0 0 8px black;
+}
+
+.each_test_history_score_card {
+  padding: 10px 0;
+  border-bottom: solid 1px white;
+  color: white;
+}
+
+.each_test_history_score_card_upper {
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40% 30% 30%;
+      grid-template-columns: 40% 30% 30%;
+  text-align: center;
+}
+
+.each_test_history_score_card_bottom {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 40% 60%;
+      grid-template-columns: 40% 60%;
+  text-align: center;
+}
+
+@media screen and (max-width: 660px) {
+  .test_score_graph {
+    height: 300px;
+    width: 350px;
+  }
+  .chartjs-render-monitor {
+    height: 300px !important;
+  }
+  .test_score_graph_wrapper {
+    padding: 0 10px;
+  }
+  .test_history_score_list {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .each_test_history_score_card_upper {
+    font-size: 18px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 30% 20%;
+        grid-template-columns: 50% 30% 20%;
+  }
+  .each_test_history_score_card_bottom {
+    font-size: 13px;
+  }
+  .test_socre_graph_container_border {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .test_socre_graph_container {
+    padding-bottom: 30px;
+  }
+  .test_socre_graph_container_border {
+    margin: 0 10px;
+  }
+  .test_score_graph {
+    height: 250px;
+  }
+  .chartjs-render-monitor {
+    height: 250px !important;
+  }
+  .test_score_graph_wrapper {
+    padding-right: 10px;
+    padding-left: 0px;
+  }
+  .test_history_score_list {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .each_test_history_score_card_upper {
+    font-size: 15px;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 50% 30% 20%;
+        grid-template-columns: 50% 30% 20%;
+  }
+  .each_test_history_score_card_bottom {
+    font-size: 13px;
+  }
+  #chart-1 {
+    line-height: 250px !important;
+    height: 250px !important;
+  }
+}
+/*# sourceMappingURL=show_test.css.map */

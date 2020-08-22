@@ -1,0 +1,110 @@
+.new_learning_history_container {
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.stopwatch_container {
+  display: block;
+  background-color: #AAAAAA;
+  padding-top: 50px;
+  width: 230px;
+  height: 230px;
+  margin: 0 auto;
+  border-radius: 50%;
+  -webkit-box-shadow: 0 10px 25px 0 #333333;
+          box-shadow: 0 10px 25px 0 #333333;
+}
+
+.comment_contaner {
+  margin-top: 10px;
+}
+
+#timerLabel {
+  margin-top: 30px;
+  color: white;
+  font-size: 20px;
+}
+
+.information_container {
+  padding: 30px 10%;
+}
+
+.text_container > .form-control {
+  height: 60px;
+  background-color: white	!important;
+  color: black !important;
+  border-radius: 10px !important;
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+}
+
+.text_container > label {
+  font-weight: bold;
+}
+
+.comment_contaner > label {
+  font-weight: bold;
+}
+
+.comment_contaner > .form-control {
+  height: 60px;
+  background-color: white	!important;
+  color: black !important;
+  border-radius: 10px !important;
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+}
+
+#new_history_buttons {
+  text-align: center;
+  background-color: #BBBBBB;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.myButton {
+  width: 180px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.myButtons {
+  width: 160px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.myButtonss {
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 16px;
+}
+
+.each_history_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.stopwatch_title {
+  color: white;
+}
+
+.myButton, .myButtons, .myButtonss {
+  color: midnightblue;
+}
+/*# sourceMappingURL=new_learnig_history.css.map */

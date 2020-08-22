@@ -1,0 +1,56 @@
+.show_test_student_list {
+  text-align: center;
+  white-space: nowrap !important;
+  width: 100%;
+  overflow: scroll !important;
+}
+
+.show_test_student_list > ul {
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
+}
+
+.show_test_student_list .active {
+  background-color: #EEEEEE !important;
+  border-color: #EEEEEE !important;
+}
+
+.stu_card_info_img_circle {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 2px 2px 4px;
+          box-shadow: 2px 2px 4px;
+}
+
+.show_test_student_list .active > .stu_card_info_img_circle {
+  border-radius: 50%;
+  height: 43px;
+  width: 43px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.nav-link {
+  text-decoration: none;
+  padding: 6px 10px !important;
+  color: black !important;
+}
+
+.nav-link > h5 {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.show_test_student_list .active > h5 {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.tab-content {
+  background-color: #EEEEEE;
+  padding-top: 30px;
+}
+/*# sourceMappingURL=teacher_show_test.css.map */
