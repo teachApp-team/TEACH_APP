@@ -1,0 +1,149 @@
+.student-profile {
+  text-align: center;
+  margin: 40px 20px;
+}
+
+.student-profile-img {
+  text-align: center;
+}
+
+.student-profile-img-self {
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.student-profile > h1 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.student-profile > h1:before {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  display: inline-block;
+  width: 40%;
+  height: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  background-color: #0000CD;
+  border-radius: 5px;
+}
+
+.student-profile-subject > h2 {
+  font-family: 'Osaka', serif;
+}
+
+.your_teachers_title {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 80% 20%;
+      grid-template-columns: 80% 20%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #555555;
+  padding: 10px 60px;
+  color: white;
+  font-family: 'arial';
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.your_teachers_title h4 {
+  margin-bottom: 0;
+  font-family: serif;
+}
+
+.your_teachers_add {
+  text-align: right;
+}
+
+.your_teachers_add_icon {
+  font-size: 35px;
+}
+
+.your_teacher_img_self {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 0 10px 10px 0 black;
+          box-shadow: 0 10px 10px 0 black;
+}
+
+.your_teachers_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.your_teacher_list {
+  margin: 20px  10px 20px 10px;
+  padding: 20px;
+  text-align: center;
+  background-color: #4169E1;
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0 10px 10px 0 black;
+          box-shadow: 0 10px 10px 0 black;
+  border-radius: 20px;
+}
+
+.your_teacher_name {
+  margin: 20px 0px;
+}
+
+.your_teacher_name > h5 {
+  font-weight: bolder;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.teacher_profile_bottom_margin {
+  margin-bottom: 20px;
+  background-color: #DDDDDD;
+}
+
+.student_profile_section {
+  margin: 0 100px;
+}
+
+.student-card-wrapper {
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+  margin: 30px 250px;
+  padding: 20px 0;
+}
+
+@media (min-width: 500px) and (max-width: 1000px) {
+  .student-card-wrapper {
+    margin: 30px 100px;
+  }
+  .student_profile_section {
+    margin: 0;
+  }
+}
+
+@media (min-width: 0px) and (max-width: 499px) {
+  .student-card-wrapper {
+    margin: 0;
+    border: none;
+  }
+  .student_profile_section {
+    margin: 0;
+  }
+}
+/*# sourceMappingURL=student_profile.css.map */

@@ -1,0 +1,234 @@
+.news_field_background {
+  background: #f5f5f5;
+}
+
+.stu_card {
+  margin: 0 200px;
+  padding: 10px 30px;
+  background: white;
+  border-bottom: solid 5px #f5f5f5;
+}
+
+.stu_card_info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+  -ms-grid-rows: 25px 15px;
+      grid-template-rows: 25px 15px;
+  margin-bottom: 30px;
+}
+
+.stu_card_info_img {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  text-align: center;
+}
+
+.stu_card_info_img_self {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: solid 1px;
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+}
+
+.stu_card_info_name {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.stu_card_info_name > h5 {
+  font-size: 16px;
+  margin: 4px 0px;
+}
+
+.balloon {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 10px 20px;
+  color: black;
+  font-size: 14px;
+  background: -webkit-gradient(linear, left top, right top, from(#DCDCDC), color-stop(#D3D3D3), to(#DCDCDC));
+  background: linear-gradient(to right, #DCDCDC, #D3D3D3, #DCDCDC);
+  border-radius: 15px;
+  -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.stu_card_info_time_ago {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  font-size: 12px;
+}
+
+.stu_card_comment {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.stu_card_content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10% 90%;
+      grid-template-columns: 10% 90%;
+}
+
+.stu_card_content_subject_circle {
+  font-family: serif;
+  font-size: 20px;
+  color: #f5f5f5;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #663333;
+  text-align: center;
+  line-height: 28px;
+}
+
+.stu_card_content_text {
+  bottom: 0;
+  padding: 5px;
+}
+
+.stu_card_content_text_subject {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.stu_card_content_time {
+  text-align: center;
+}
+
+.teacher_card {
+  margin: 10px 200px;
+  padding: 10px 30px;
+}
+
+.teacher_card_info {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 20% 80%;
+      grid-template-columns: 20% 80%;
+  -ms-grid-rows: 25px 15px;
+      grid-template-rows: 25px 15px;
+  margin-bottom: 30px;
+}
+
+.teacher_card_info_img {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / 3;
+  text-align: center;
+}
+
+.teacher_card_info_img_self {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: solid 1px;
+  -webkit-box-shadow: 0 0 8px gray;
+          box-shadow: 0 0 8px gray;
+}
+
+.teacher_card_info_name {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1 / 2;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+}
+
+.teacher_card_info_name > h5 {
+  font-size: 16px;
+  margin: 4px 0px;
+}
+
+.teacher_card_info_time_ago {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2 / 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  font-size: 12px;
+}
+
+.balloon_teacher {
+  position: relative;
+  margin: 1.5em 0;
+  padding: 20px;
+  color: white;
+  font-size: 16px;
+  background: #0000AA;
+  border-radius: 15px;
+  -webkit-box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.4);
+          box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.balloon_teacher:before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 15%;
+  margin-left: -15px;
+  border: 15px solid transparent;
+  border-bottom: 15px solid #0000AA;
+}
+
+.balloon_teacher p {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+
+.new_message_add {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 0 30px 40px 0;
+  width: 80px;
+  height: 80px;
+  font-size: 40px;
+  border-radius: 50px;
+  background-color: #00008b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.message_icon {
+  color: white;
+}
+
+@media (min-width: 0px) and (max-width: 900px) {
+  .stu_card {
+    margin: 0;
+  }
+  .teacher_card {
+    margin: 0;
+  }
+}
+/*# sourceMappingURL=index.css.map */

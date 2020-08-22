@@ -1,0 +1,84 @@
+.search-area > form {
+  padding: 5px;
+}
+
+#search-text {
+  padding: 5px;
+  background-color: #DDDDDD;
+  border-radius: 10px;
+  width: 80%;
+  line-height: 10px !important;
+}
+
+.students-index-wrapper > .search-area {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.student-index-card-wrapper > .hidden {
+  display: none !important;
+}
+
+.student-index-card > li {
+  display: none !important;
+}
+
+.students-index-wrapper {
+  height: 100vh;
+  background: #fff;
+  padding: 0 5%;
+}
+
+.student-index-card-wrapper {
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.student-index-card {
+  height: 150px;
+  width: 200px;
+  -webkit-box-shadow: 0 0 18px #ccc;
+          box-shadow: 0 0 18px #ccc;
+  margin: 20px 20px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+}
+
+.student-index-card a {
+  margin-top: 10px;
+  font-size: 15px;
+  width: 100%;
+  font-weight: bold;
+  display: block;
+  cursor: pointer;
+  color: black !important;
+}
+
+.already-your-student {
+  margin: 10px 20px;
+  font-size: 13px;
+}
+
+.student-index-card button {
+  width: 80px;
+  height: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  background-color: #000066;
+  display: block;
+}
+
+.student-profile-img-self.index {
+  width: 40px;
+  height: 40px;
+}
+/*# sourceMappingURL=students.css.map */
