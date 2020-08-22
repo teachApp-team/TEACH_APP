@@ -7,7 +7,11 @@
   <div class="stu_card">
     <div class="stu_card_info">
       <div class="stu_card_info_img">
+      <% if e.student.image.present? %>
         <%= image_tag e.student.image.url, class: "stu_card_info_img_self" %>
+      <% else %>
+        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+      <% end %>
       </div>
       <div class="stu_card_info_name">
         <h5><%= e.student.full_name %>君</h5>

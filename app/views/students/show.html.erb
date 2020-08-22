@@ -34,19 +34,25 @@
     <div class="your_teachers_list">
       <div class="your_teacher_list">
         <div class="your_teacher_img">
-        <% if @current_student.teacher.image.present? %>
-          <%=image_tag @current_student.teacher.image.url, class: "your_teacher_img_self" %>
+        <% if @current_student.teacher.present? %>
+          <% if @current_student.teacher.image.present? %>
+            <%=image_tag @current_student.teacher.image.url, class: "your_teacher_img_self" %>
+          <% else %>
+            <p>画像が設定されていません</p>
+          <% end %>
         <% else %>
-          <p>画像が設定されていません</p>
         <% end %>
         </div>
-        <div class="your_teacher_name">
-          <h5><%=@current_student.teacher.full_name %></h5>
-        </div>
-        <div class="your_teacher_school">
-          <p><%=@current_student.teacher.subject %>担当</p>
-        </div>
-        
+        <% if @current_student.teacher.present? %>
+          <div class="your_teacher_name">
+            <h5><%=@current_student.teacher.full_name %></h5>
+          </div>
+          <div class="your_teacher_school">
+            <p><%=@current_student.teacher.subject %>担当</p>
+          </div>
+        <% else %>
+        <p>先生がいません</p>
+        <% end %>
       </div>
     </div>
   </div>
