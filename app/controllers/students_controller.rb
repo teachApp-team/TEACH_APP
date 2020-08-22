@@ -11,7 +11,7 @@ class StudentsController < ApplicationController
     @student = Student.find_by(id: @current_student.id)
     @test_ary = []
     @test = Test.where(student_id: @current_student.id)
-    tests = Test.all  
+    tests = @test.all  
     tests.each_with_index do |t,i|
       @test_ary << [t.date, t.score]
     end   
