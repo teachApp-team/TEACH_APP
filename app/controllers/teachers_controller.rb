@@ -58,8 +58,11 @@ class TeachersController < ApplicationController
 
   def update
     user = Teacher.find(@current_teacher.id)
-    user.update(teacher_params)
-    redirect_to "/teachers/#{@current_teacher.id}"
+    if user.update(teacher_params)
+      redirect_to "/teachers/#{@current_teacher.id}"
+    else
+      redirect_to "/news_field"
+    end
   end
 
   def show_calender
@@ -70,7 +73,7 @@ class TeachersController < ApplicationController
 
   private
   def teacher_params
-    params.require(:teacher).permit(:full_name, :subject, :image)
+    params.require(:teacher).permit(:full_name, :password, :password_confirmation, :subject, :image)
   end
 
   def test_params
@@ -83,10 +86,5 @@ class TeachersController < ApplicationController
       :date,
       :average_score
     )
-  end
-
-  private
-  def teacher_params
-    params.require(:teacher).permit(:full_name, :password, :password_confirmation, :subject)
   end
 end
