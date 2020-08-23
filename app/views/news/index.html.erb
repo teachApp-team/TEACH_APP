@@ -14,7 +14,14 @@
       <% end %>
       </div>
       <div class="stu_card_info_name">
-        <h5><%= e.student.full_name %>君</h5>
+        <% if e.student.id == @current_student&.id %>
+          <h5>
+            <%= e.student.full_name %>君
+            <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 40px;", method: :delete %>
+          </h5>
+        <% else %>
+          <h5><%= e.student.full_name %>君</h5>
+        <% end %>
       </div>
       <div class="stu_card_info_time_ago">
         <p style="margin-bottom: 5px;"><%= e.created_at.to_s(:datetime_jp) %></p>
@@ -40,7 +47,14 @@
         <% end %>
       </div>
       <div class="teacher_card_info_name">
-        <h5><%= e.teacher.full_name %>先生</h5>
+        <% if e.teacher.id == @current_teacher&.id %>
+          <h5>
+            <%= e.teacher.full_name %>先生
+            <%= link_to "削除", "/messages/#{e.id}", method: :delete, style: "color: tomato;margin-left: 40px;" %>
+          </h5>
+        <% else %>
+          <h5><%= e.teacher.full_name %>先生</h5>
+        <% end %>
       </div>
       <div class="teacher_card_info_time_ago">
         <p><%= e.created_at.to_s(:datetime_jp) %></p>

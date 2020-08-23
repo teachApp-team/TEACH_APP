@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"
   post 'ajax_create_lh', to: "news#ajax_create_learning_history"
+  delete 'destroy_lh/:id', to: "news#destroy_lh"
 
   post 'teachers/ajax_create_test', to: 'teachers#ajax_create_test'
 
