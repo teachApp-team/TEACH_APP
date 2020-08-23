@@ -17,7 +17,11 @@
   </div>
   <div class="stu_card_content_time">
     <div style="background-color: #0000AA;margin: 0 25%;border-radius: 15px;">
+      <% if variable&.learning_time %>
       <p style="font-size: 13px;padding: 5px 0px;margin: 0 20%;color: white;">学習時間<br><%= variable.learning_time.to_s(:time_jp) %></p>
+      <% else %>
+      <p style="font-size: 13px;padding: 5px 0px;margin: 0 20%;color: white;">エラー</p>
+      <% end %>
     </div>
   </div>
 </div>
