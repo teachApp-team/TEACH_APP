@@ -1,10 +1,11 @@
-var timerStart = false;
+var timerStart = true;
 onmessage = function(data1) {
 function myTimer(d0){
   if (data1.data != "00:00:00" ) {
-    console.log("一時停止時間の秒数は"+Number(data1.data.slice(-3)))
-    console.log("一時停止時間の分数は"+Number(data1.data.slice(-4,-2)))
-    console.log("一時停止時間の時間数は"+Number(data1.data.slice(-6,-4)))
+    console.log(data1)
+    console.log(Number(data1.data.slice(-2)))
+    console.log(Number(data1.data.slice(-4,-2)))
+    console.log(Number(data1.data.slice(-6,-4)))
     console.log("一時停止時間を追加していきます")
    // get current time
    var d=(new Date()).valueOf();
@@ -41,6 +42,6 @@ if (timerStart){
    // repeat myTimer(d0) every 100 ms
    myVar=setInterval(function(){myTimer(d0)},100);
    // timer should not start anymore since it has been started
-   timerStart = true;
+   timerStart = false;
   }
 }
