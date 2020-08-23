@@ -22,6 +22,12 @@ class MessagesController < ApplicationController
   def edit
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to '/news_field'
+  end
+
   private
   def message_params
     params.require(:message).permit(:comment, :student_id)

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'student_users/create', to: 'students#create'
   post 'teacher_users/create', to: 'teachers#create'
   post 'students/add', to: 'students#add'
+  delete 'students/:student_id/unfasten', to: 'students#unfasten'
 
   get 'students/index'
   get 'students/new'
@@ -37,6 +38,7 @@ Rails.application.routes.draw do
   get 'new_lh', to: "news#new_learning_history"
   post 'create_lh', to: "news#create_learning_history"
   post 'ajax_create_lh', to: "news#ajax_create_learning_history"
+  delete 'destroy_lh/:id', to: "news#destroy_lh"
 
   post 'teachers/ajax_create_test', to: 'teachers#ajax_create_test'
 
