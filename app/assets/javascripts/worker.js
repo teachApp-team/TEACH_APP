@@ -1,4 +1,4 @@
-var timerStart = true;
+var timerStart = false;
 onmessage = function(data1) {
 function myTimer(d0){
   if (data1.data != "00:00:00" ) {
@@ -41,6 +41,6 @@ if (timerStart){
    // repeat myTimer(d0) every 100 ms
    myVar=setInterval(function(){myTimer(d0)},100);
    // timer should not start anymore since it has been started
-   timerStart = false;
+   timerStart = true;
   }
 }
