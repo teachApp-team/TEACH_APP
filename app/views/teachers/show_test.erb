@@ -13,7 +13,7 @@
 <div class="show_test_student_list">
   <ul class="nav nav-tabs">
     <% @students.each_with_index do |s, i| %>
-    <li class="nav-item">
+    <li class="nav-item" style="margin-bottom: -3px;">
       <% if i == 0 %>
       <a href="#student<%= i %>" class="nav-link active" data-toggle="tab">
       <% else %>
@@ -22,7 +22,7 @@
       <% if s.image.present? %>
         <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
       <% else %>
-      生徒の画像が<br>設定されていません
+      画像なし
       <% end %>
         <h5><%= s.full_name %>君</h5>
       </a>
@@ -39,7 +39,7 @@
   <div id="student<%= i %>" class="tab-pane test_score_contaner">
   <% end %>
 
-    <div class="test_socre_graph_container">
+    <div class="test_socre_graph_container" style="padding-bottom: 10px;">
       <div class="test_socre_graph_container_border">
         <div class="test_socre_graph_title">
           <%= s.full_name %>君の得点推移
@@ -67,7 +67,7 @@
             <%= t.name %>
           </div>
           <div>
-            得点(率)<%= t.score %>
+            得点率<%= t.score %>
           </div>
           <div>
             評価<%= t.grade %>
@@ -75,11 +75,14 @@
         </div>
         <div class="each_test_history_score_card_bottom">
           <div>
-            ( 平均点(率)： <%= t.average_score %> )
+            ( 合格得点率： <%= t.average_score %> )
           </div>
           <div>
             テスト実施日 <%= t.date %>
           </div>
+        </div>
+        <div style="color: #fff;text-align: right;">
+          <a href="#" style="color: #fff;font-size: 13px;">削除</a>
         </div>
       </div>
       <% end %>

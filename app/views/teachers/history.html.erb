@@ -1,6 +1,6 @@
 <%= render partial: 'share/header' %>
 <section class="news_field_background">
-<%= render partial: 'share/title', locals: {each_title: '学習を始める'} %>
+<%= render partial: 'share/title', locals: {each_title: '学習履歴'} %>
 
 <div class="show_test_student_list">
   <ul class="nav nav-tabs">
@@ -14,7 +14,7 @@
       <% if s.image.present? %>
         <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
       <% else %>
-      生徒の画像が<br>設定されていません
+      画像なし
       <% end %>
         <h5><%= s.full_name %>君</h5>
       </a>

@@ -1,14 +1,14 @@
 .show_test_student_list {
   text-align: center;
-  white-space: nowrap !important; 
-  width: 100%; 
+  white-space: nowrap !important;
+  width: 100%;
   overflow: scroll !important;
 }
 
 .show_test_student_list > ul {
-  flex-wrap: nowrap !important;
+  -ms-flex-wrap: nowrap !important;
+      flex-wrap: nowrap !important;
 }
-
 
 .show_test_student_list .active {
   background-color: #EEEEEE !important;
@@ -19,17 +19,19 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  object-fit: cover;  
-  box-shadow: 2px 2px 4px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-shadow: 2px 2px 4px;
+          box-shadow: 2px 2px 4px;
 }
 
 .show_test_student_list .active > .stu_card_info_img_circle {
   border-radius: 50%;
   height: 43px;
   width: 43px;
-  object-fit: cover;  
+  -o-object-fit: cover;
+     object-fit: cover;
 }
-
 
 .nav-link {
   text-decoration: none;
@@ -47,9 +49,8 @@
   font-size: 14px;
 }
 
-
-
 .tab-content {
   background-color: #EEEEEE;
   padding-top: 30px;
 }
+/*# sourceMappingURL=teacher_show_test.css.map */

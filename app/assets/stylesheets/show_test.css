@@ -5,17 +5,18 @@
 
 .test_socre_graph_container_border {
   background-color: white;
-  box-shadow: 0 0 8px black;
+  -webkit-box-shadow: 0 0 8px black;
+          box-shadow: 0 0 8px black;
   margin: 0 20%;
   border-radius: 10px;
-  padding-top: 3px; 
+  padding-top: 3px;
 }
 
 .test_socre_graph_title {
   font-size: 17px;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   bottom: 0;
-  padding-top: 8px; 
+  padding-top: 8px;
 }
 
 .test_score_graph {
@@ -34,9 +35,11 @@
 
 .test_history_score_list {
   margin: 0 20%;
+  background: -webkit-gradient(linear, left top, right top, from(#000077), color-stop(#0000AA), to(#000077));
   background: linear-gradient(to right, #000077, #0000AA, #000077);
   padding: 5px 10px;
-  box-shadow: 0 0 8px black;
+  -webkit-box-shadow: 0 0 8px black;
+          box-shadow: 0 0 8px black;
 }
 
 .each_test_history_score_card {
@@ -49,30 +52,31 @@
   font-weight: bold;
   font-family: 'Courier New', Courier, monospace;
   font-size: 15px;
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 40% 30% 30%;
+  -ms-grid-columns: 40% 30% 30%;
+      grid-template-columns: 40% 30% 30%;
   text-align: center;
 }
 
 .each_test_history_score_card_bottom {
+  display: -ms-grid;
   display: grid;
-  grid-template-columns: 40% 60%;
+  -ms-grid-columns: 40% 60%;
+      grid-template-columns: 40% 60%;
   text-align: center;
 }
-
 
 @media screen and (max-width: 660px) {
   .test_score_graph {
     height: 300px;
     width: 350px;
   }
-
   .chartjs-render-monitor {
     height: 300px !important;
   }
-
   .test_score_graph_wrapper {
-    padding:  0 10px;
+    padding: 0 10px;
   }
   .test_history_score_list {
     margin: 0;
@@ -80,8 +84,10 @@
   }
   .each_test_history_score_card_upper {
     font-size: 18px;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 50% 30% 20%;
+    -ms-grid-columns: 50% 30% 20%;
+        grid-template-columns: 50% 30% 20%;
   }
   .each_test_history_score_card_bottom {
     font-size: 13px;
@@ -89,22 +95,18 @@
   .test_socre_graph_container_border {
     margin: 0;
   }
-  
 }
 
-@media screen and (max-width:400px) {
+@media screen and (max-width: 400px) {
   .test_socre_graph_container {
     padding-bottom: 30px;
   }
-
   .test_socre_graph_container_border {
     margin: 0 10px;
   }
-
   .test_score_graph {
     height: 250px;
   }
-
   .chartjs-render-monitor {
     height: 250px !important;
   }
@@ -118,8 +120,10 @@
   }
   .each_test_history_score_card_upper {
     font-size: 15px;
+    display: -ms-grid;
     display: grid;
-    grid-template-columns: 50% 30% 20%;
+    -ms-grid-columns: 50% 30% 20%;
+        grid-template-columns: 50% 30% 20%;
   }
   .each_test_history_score_card_bottom {
     font-size: 13px;
@@ -129,3 +133,4 @@
     height: 250px !important;
   }
 }
+/*# sourceMappingURL=show_test.css.map */

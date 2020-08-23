@@ -16,7 +16,7 @@
       <% if s.image.present? %>
         <%= image_tag s.image.url, class: "stu_card_info_img_circle" %>
       <% else %>
-      生徒の画像が<br>設定されていません
+      画像なし
       <% end %>
         <h5><%= s.full_name %>君</h5>
       </a>
@@ -70,8 +70,8 @@
             <h3 style="color: #fff;font-size: 24px;"><%= e.title%></h3>
           </div>
           <div style="color: #fff;">
-          <a href="#" style="color: #fff;font-size: 13px;">削除</a>
-          <a href="#" style="color: #fff;font-size: 13px;">編集</a>
+            <a href="#" style="color: #fff;font-size: 13px;">削除</a>
+            <a href="#" style="color: #fff;font-size: 13px;">編集</a>
           </div>
           <% else %>
           <div>

@@ -1,0 +1,70 @@
+.teacher-edit-container {
+  background: #fff;
+  height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.teacher-edit-container .form-wrapper {
+  width: 400px;
+  -webkit-box-shadow: 0 0 24px gray;
+          box-shadow: 0 0 24px gray;
+  padding: 20px;
+}
+
+.teacher-edit-container .form-wrapper .title {
+  font-size: 24px;
+  text-align: center;
+  margin: 30px;
+}
+
+.teacher-edit-container .form-wrapper .row {
+  width: 100%;
+  margin: 0 0 30px 0;
+}
+
+.teacher-edit-container .form-wrapper .label {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #777;
+}
+
+.teacher-edit-container .form-wrapper .file-field {
+  background: white;
+  font-size: 10px;
+}
+
+.teacher-edit-container .teacher_icon {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.teacher-edit-container .teacher_icon .image {
+  width: 100px;
+  height: 100px;
+}
+
+.teacher-edit-container .editButton {
+  padding: 14px 60px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=teacher-edit.css.map */
