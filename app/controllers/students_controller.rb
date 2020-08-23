@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :auth_student, except: [:new, :show_calender, :index, :create, :add]
+  before_action :auth_student, except: [:new, :show_calender, :index, :create, :add, :unfasten]
   def index
     @students = Student.all
   end
@@ -52,6 +52,12 @@ class StudentsController < ApplicationController
     student = Student.find(params[:student_id])
     @current_teacher.students << student
     redirect_to students_index_path
+  end
+
+  def unfasten
+    student = Student.find(params[:student_id])
+    @current_teacher.students.delete(student)
+    redirect_to "/teachers/#{@current_teacher.id}"
   end
 
   private

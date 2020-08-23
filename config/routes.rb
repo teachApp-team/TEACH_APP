@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'student_users/create', to: 'students#create'
   post 'teacher_users/create', to: 'teachers#create'
   post 'students/add', to: 'students#add'
+  delete 'students/:student_id/unfasten', to: 'students#unfasten'
 
   get 'students/index'
   get 'students/new'
