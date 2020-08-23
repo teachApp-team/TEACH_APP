@@ -4,7 +4,11 @@
   </div>
   <div class="stu_card_content">
     <div class="stu_card_content_subject">
-      <p class="stu_card_content_subject_circle"><%= variable.subject[0, 1] %></p>
+      <% if variable&.subject %>
+        <p class="stu_card_content_subject_circle"><%= variable.subject[0, 1] %></p>
+      <% else %>
+        <p class="stu_card_content_subject_circle">時間が設定されておりません</p>
+      <% end %>
     </div>
     <div class="stu_card_content_text">
       <span class= "stu_card_content_text_subject">教材: </span><span><%= variable.learning_text %></span>
