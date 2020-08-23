@@ -66,7 +66,6 @@ console.log(gon.teacher_subject);
 
 var w = null;
   function startTimer() {
-    
     if (typeof(Worker) !== "undefined"){
       if (w==null) {
         w = new Worker('<%= javascript_path "multiple.js" %>'); }
@@ -186,7 +185,7 @@ $('#restartbtn').click(function() {
       totalminute1 = ( '00' + totalminute ).slice( -2 );
       totalhour1 = ( '00' + totalhour ).slice( -2 );
       console.log("totalsecond1は"+totalsecond1);
-      document.getElementById("timer").innerHTML = String(totalhour1)+":"+String(totalminute1)+":"+String(totalsecond1);
+      document.getElementById("timer").innerHTML = totalhour1+":"+totalminute1+":"+totalsecond1;
     }; 
   } else {
     document.getElementById("timer").innerHTML = "このブラウザではWeb Workersは利用できません";
