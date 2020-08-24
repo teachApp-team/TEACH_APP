@@ -1,12 +1,24 @@
-<div id=javascropt_header>
+<div id="javascropt_header">
 <%= render partial: 'share/header' %>
 </div>
-<section class="new_learning_history_section">  
+
+<section id="StopwatchByHand" >
+  <%=render partial: 'share/title', locals:{each_title: 'Start Learning'}%>
+  <div class="stopwatch_container" style="text-align: center;">
+        <h4 class="stopwatch_title">StopWatch</h4>
+        <input id="SureHandTimer" type="time" step="1" value="00:00:00" style="padding: 5px; font-size: 20px; border-color:#3366FF;">
+        <div style="text-align: center; margin-top:10px;">
+          <input type="button" value="確定" style="font-size: 12px; background-color: white;color: midnightblue; border-radius: 6px;" onclick="SureHandTimer()"></input>
+        </div>
+  </div>
+</section>
+
+<section id="new-learning-history" class="new_learning_history_section">  
 <%=render partial: 'share/title', locals:{each_title: 'Start Learning'}%>
 
   <div class="new_learning_history_container">
-    <div class="stopwatch_container">
-      <h3 class="stopwatch_title">StopWatch</h3>
+    <div class="stopwatch_container" id="StopwatchByButton">
+      <h4 class="stopwatch_title">StopWatch</h4>
       <h6 id="timerLabel">
         <div class="timer" id="timer">
           00:00:00
@@ -24,9 +36,6 @@
         <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
       </div>
     </div>
-
-    <div id="attention-message" style="font-size: 13px;">ストップウォッチ起動中はページ遷移しないで下さい。<br>遷移したい場合は<span style="color: red;">リセット</span>するか学習を<span style="color: red;">完了</span>させてください。</div>
-
 
     <div id="new_history_buttons">
       <div class="each_history_buttons" id="before_start">
@@ -50,7 +59,11 @@
         <input type="button" class="myButtons share" id="sharebtn" value="上記の内容でシェア">
         <input type="button" class="myButtons share" id="stillbtn" value="まだ学習を続ける">
       </div>
+      <div id="hand-timer-button" style="text-align: center; margin-top:20px;">
+        <input type="button" value="手動で入力はこちら" style="font-size: 12px; background-color: white;color: midnightblue; border-radius: 6px;" onclick="HandTimer()"></input>
+      </div>
     </div>
+    <div id="attention-message" style="font-size: 13px;">ストップウォッチ起動中はページ遷移しないで下さい。<br>遷移したい場合は<span style="color: red;">リセット</span>するか学習を<span style="color: red;">完了</span>させてください。</div>
   </div>
 </section>
 
@@ -61,9 +74,30 @@ $('#while_studying').hide();
 $('#pause').hide();
 $('#finish').hide();
 $('#confirmation').hide();
+$('#StopwatchByHand').hide();
 
 var pausetime;
 var w = null;
+  function HandTimer() {
+    $('#new-learning-history').hide();
+    $('#StopwatchByHand').fadeIn(1500);
+  }
+
+  function SureHandTimer() {
+    const t = document.getElementById('SureHandTimer')
+    const timer = document.getElementById('timer')
+      let [h, m, s] = (t.value).split(':')
+      if (s === undefined) {
+        s = '00';
+      };
+      $('#StopwatchByHand').hide();
+      $('#new-learning-history').fadeIn(1500);
+      $('#finish').fadeIn(1500);
+      $('#before_start').hide();
+      $('#stillbtn').hide();
+      document.getElementById("timer").innerHTML = `${h}:${m}:${s}`
+  }
+
   function startTimer() {
     if (typeof(Worker) !== "undefined"){
       if (w==null) {
@@ -83,8 +117,11 @@ var w = null;
     } else {
         document.getElementById("timer").innerHTML = "このブラウザではWeb Workersは利用できません";
     }
+
     $('#while_studying').fadeIn(1500);
+    $('#hand-timer-button').hide();
     $('#javascropt_header').hide();
+    $('#javascript_margin').hide();
     $('#before_start').hide();
     $('#new_history_buttons').css('background-color', 'midnightblue');
     $('.stopwatch_container').css('background-color', 'midnightblue');
@@ -101,7 +138,6 @@ var w = null;
     minute = stoptime.slice(3,5)
     hour = stoptime.slice(0,2)
     pausetime = hour+minute+second;
-    // document.cookie = hour+minute+second;
     if (w == null) {
       wb.terminate();
       wb = null;
@@ -111,6 +147,7 @@ var w = null;
     };
     $('#pause').fadeIn(1500);
     $('#while_studying').hide();
+    $('#hand-timer-button').hide();
     $('#new_history_buttons').css('background-color', '#778899');
     $('.stopwatch_container').css('background-color', '#778899');
     $('.stopwatch_title').css('color', 'white');
@@ -118,6 +155,7 @@ var w = null;
   $('#resetbtn').click(function() {
     $('#confirmation').fadeIn(1500);
     $('#while_studying').hide();
+    $('#hand-timer-button').hide();
     $('#pause').hide();
     $('#new_history_buttons').css('background-color', '#778899');
     $('#confirmation_comment').css('color', 'white');
@@ -125,15 +163,18 @@ var w = null;
   });
 $('#surebtn').click(function() {
   document.getElementById("timer").innerHTML = "00:00:00";
+  $('#hand-timer-button').fadeIn(1500);
   $('#before_start').fadeIn(1500);
   $('#confirmation').hide();
   $('#javascropt_header').fadeIn(1500);
+  $('#javascript_margin').fadeIn(1500);
   $('#new_history_buttons').css('background-color', '#BBBBBB');
   $('.stopwatch_container').css('background-color', '#BBBBBB');
 });
 $('#cancelbtn').click(function() {
   $('#pause').fadeIn(1500);
   $('#confirmation').hide();
+  $('#hand-timer-button').hide();
 });
 
 $('#finishbtn1').click(function() {
@@ -194,6 +235,7 @@ $('#restartbtn').click(function() {
   $('.stopwatch_container').css('background-color', 'midnightblue');
   $('#timerLabel').css('color', 'white');
   $('#timerLabel').css('font-size', '25px');
+  $('#hand-timer-button').hide();
 });
 
 $('#stillbtn').click(function() {

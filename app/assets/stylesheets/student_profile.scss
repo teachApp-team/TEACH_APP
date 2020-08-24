@@ -1,6 +1,6 @@
 .student-profile {
   text-align: center;
-  margin: 40px 20px;
+  margin: 10px 20px;
 }
 
 .student-profile-img {
@@ -8,8 +8,8 @@
 }
 .student-profile-img-self {
   border-radius: 50%;
-  height: 180px;
-  width: 180px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .3);
 }
@@ -110,7 +110,7 @@
 }
 
 .student-card-wrapper {
-  box-shadow: 0 0 8px gray;
+  border-top: solid;
   margin: 30px 250px;
   padding: 20px 0;
 }
@@ -127,8 +127,8 @@
 
 @media (min-width: 0px) and (max-width: 499px) {
   .student-card-wrapper {
+    border-top: solid 1px;
     margin: 0;
-    border: none;
   }
   .student_profile_section{
     margin: 0;
