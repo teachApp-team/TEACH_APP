@@ -61,9 +61,8 @@ $('#while_studying').hide();
 $('#pause').hide();
 $('#finish').hide();
 $('#confirmation').hide();
-console.log(gon.user_id);
-console.log(gon.teacher_subject);
 
+var pausetime;
 var w = null;
   function startTimer() {
     if (typeof(Worker) !== "undefined"){
@@ -101,7 +100,8 @@ var w = null;
     second = stoptime.slice(6,8)
     minute = stoptime.slice(3,5)
     hour = stoptime.slice(0,2)
-    document.cookie = hour+minute+second;
+    pausetime = hour+minute+second;
+    // document.cookie = hour+minute+second;
     if (w == null) {
       wb.terminate();
       wb = null;
@@ -173,9 +173,9 @@ $('#restartbtn').click(function() {
   console.log("リスタートボタン押しました");
   if (typeof(Worker) !== "undefined"){
       if (wb==null) {
-      wb = new Worker('<%= javascript_path "worker.js" %>');}
-      wb.postMessage(document.cookie);
-      console.log("worker.jsに送信");
+      wb = new Worker('<%= javascript_path "worker.js" %>');
+      wb.postMessage(pausetime);
+      console.log("worker.jsに送信");}
     wb.onmessage = function (events) {
       totalsecond = Number(events.data.slice(6,8));
       totalminute = Number(events.data.slice(3,5));
