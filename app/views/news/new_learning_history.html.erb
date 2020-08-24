@@ -176,11 +176,11 @@ $('#restartbtn').click(function() {
       wb = new Worker('<%= javascript_path "worker.js" %>');}
       wb.postMessage(document.cookie);
       console.log("worker.jsに送信");
-    wb.onmessage = function (event) {
-      totalsecond = Number(event.data.slice(6,8));
-      totalminute = Number(event.data.slice(3,5));
-      totalhour = Number(event.data.slice(0,2));
-      console.log("totalsecondは"+totalsecond);
+    wb.onmessage = function (events) {
+      totalsecond = Number(events.data.slice(6,8));
+      totalminute = Number(events.data.slice(3,5));
+      totalhour = Number(events.data.slice(0,2));
+      
       totalsecond1 = ( '00' + totalsecond ).slice( -2 );
       totalminute1 = ( '00' + totalminute ).slice( -2 );
       totalhour1 = ( '00' + totalhour ).slice( -2 );

@@ -3,14 +3,14 @@ onmessage = function(data1) {
 function myTimer(d0){
   if (data1.data != "00:00:00" ) {
     console.log(data1)
-    console.log(Number(data1.data.slice(-2)))
+    console.log(parseInt(data1.data.slice(-2), 10))
     console.log(Number(data1.data.slice(-4,-2)))
     console.log(Number(data1.data.slice(-6,-4)))
     console.log("一時停止時間を追加していきます")
    // get current time
    var d=(new Date()).valueOf();
    // calculate time difference between now and initial time
-   var diff = d-d0+Number(data1.data.slice(-2))*1000+Number(data1.data.slice(-4,-2))*60*1000+Number(data1.data.slice(-6,-4))*60*60*1000;
+   var diff = d-d0+parseInt(data1.data.slice(-2), 10)*1000+parseInt(data1.data.slice(-4,-2), 10)*60*1000+parseInt(data1.data.slice(-6,-4), 10)*60*60*1000;
    // calculate number of minutes
    var hours = Math.floor(diff/1000/60/60);
    var minutes = Math.floor(diff/1000/60)-hours*60;
