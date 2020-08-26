@@ -60,6 +60,13 @@ class NewsController < ApplicationController
     lh.destroy
     redirect_to "/news_field"
   end
+
+  def edit_lh
+    @lh = LearningHistory.find_by(id: params[:id])
+    @lh_time = @lh.learning_time
+  end
+
+
   
   def ajax_create_learning_history
     @learn = LearningHistory.new({
