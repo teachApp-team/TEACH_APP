@@ -66,8 +66,12 @@ class NewsController < ApplicationController
     @lh_time = @lh.learning_time
   end
 
+  def update_lh
+    lh = LearningHistory.find(params[:id])
+    lh.update(lh_params)
+    redirect_to "/news_field"
+  end
 
-  
   def ajax_create_learning_history
     @learn = LearningHistory.new({
       learning_time: params[:learning_time],
@@ -93,5 +97,11 @@ class NewsController < ApplicationController
   end
 
   def test
+  end
+
+  private
+
+  def lh_params
+    params.require(:learning_history).permit(:learning_time,:learning_text,:comment)
   end
 end
