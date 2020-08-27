@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'students/new'
   get 'students/edit', to: 'students#edit'
   get 'news_field/:id/edit', to: 'news#edit_lh'
+  post 'news_field/:id/update', to: 'news#update_lh'
   post 'sessions/create'
   delete 'sessions/destroy'
   get 'news_field', to: 'news#index'
