@@ -82,7 +82,7 @@
           </div>
         </div>
         <div style="color: #fff;text-align: right;">
-          <a href="#" style="color: #fff;font-size: 13px;">削除</a>
+          <%= link_to "削除", "/teachers/show_test/#{t.id}", method: "delete", data: { confirm: "本当に削除しますか？" } ,style: "color: #fff;font-size: 13px;" %>
         </div>
       </div>
       <% end %>

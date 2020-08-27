@@ -1,7 +1,7 @@
 <section class="edit_learning_history">
 
 <%= form_for(@lh, url: "/news_field/#{@lh.id}/update", method: :post) do |f| %>
-  <div class="stopwatch_container" style="text-align: center; width: 600px;">
+  <div class="stopwatch_container" style="text-align: center;">
         <h4 class="stopwatch_title">StopWatch</h4>   
         <%= f.time_select :learning_time, {}, style: "padding: 5px; font-size: 20px; border-color:#3366FF;" %>
   </div>
