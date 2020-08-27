@@ -1,7 +1,7 @@
 <%= render partial: 'share/header' %>
-<section class="news_field_background">
-  <div style="padding: 76px 0 0 0"></div>
+<div style="padding: 76px 0 0 0"></div>
 
+<section class="news_field_background">
   <% @news.each do |e| %>
   <% if e.try(:subject) %>
   <div class="stu_card">
@@ -17,7 +17,8 @@
         <% if e.student.id == @current_student&.id %>
           <h5>
             <%= e.student.full_name %>君
-            <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 40px;", method: :delete %>
+            <%= link_to "編集", "/news_field/#{e.id}/edit", style: "color: tomato;margin-left: 40px;" %>
+            <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 20px;", method: :delete %>
           </h5>
         <% else %>
           <h5><%= e.student.full_name %>君</h5>
