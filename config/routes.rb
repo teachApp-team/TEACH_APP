@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   get 'students/show_test', to: 'students#show_test'
   get 'teachers/show_test', to: 'teachers#show_test'
-
+  delete '/teachers/show_test/:id', to: 'teachers#delete_test'
   get 'teachers/edit_test', to: 'teachers#edit_test'
 
   get 'teachers/show_calender/:id', to: 'teachers#show_calender'

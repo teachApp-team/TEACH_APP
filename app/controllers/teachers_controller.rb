@@ -30,6 +30,12 @@ class TeachersController < ApplicationController
     end
   end
 
+  def delete_test
+    test = Test.find(params[:id])
+    test.destroy
+    redirect_to '/teachers/show_test'
+  end
+
   def edit_test
     @students = Student.where(teacher_id: @current_teacher.id)
   end
