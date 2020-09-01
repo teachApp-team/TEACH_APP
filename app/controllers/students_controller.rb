@@ -4,8 +4,10 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def new_exam
+  end
+
   def show
-    
     @events = Event.where(student_id: @current_student.id)
   end
 

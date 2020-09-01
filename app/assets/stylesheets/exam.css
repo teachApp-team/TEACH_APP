@@ -1,0 +1,10 @@
+.new_exam_wrapper {
+  margin: 30px;
+}
+
+#input_plural {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=exam.css.map */

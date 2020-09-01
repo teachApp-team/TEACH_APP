@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,iBAAiB,CAAC;EAChB,MAAM,EAAE,IACV;CAAC;;AAED,AAAA,aAAa,CAAC;EACZ,OAAO,EAAE,IAAI;CACd",
+    "sources": [
+        "exam.scss"
+    ],
+    "names": [],
+    "file": "exam.css"
+}

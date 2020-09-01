@@ -31,7 +31,7 @@
   </nav>
   <div class="tab-content" id="nav-tabContent" style="padding-top: 5px;">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <table class="table" border="1" style="border-collapse: collapse">
+      <table class="table" border="2" style="border-collapse: collapse">
         <thead class="thead-dark">
           <tr valign="middle">
             <th scope="col" width="27%" style="font-size: 14px;">次回授業日</th>
@@ -40,7 +40,7 @@
         </thead>
         <tbody>
           <% @events.sort.reverse.each do |e| %>
-          <tr valign="middle">
+          <tr valign="middle" style="border-bottom: 2px solid;">
               <th scope="row" style="font-size: 14px;"><%= e.start.to_s(:datetime_jp)[6, 7] %></th>
               <td style="font-size: 14px;"><%= e.homework %></td>
           </tr>
@@ -49,11 +49,15 @@
       </table>
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-      <table class="table" border="1" style="border-collapse: collapse">
+      <div>
+        <%= link_to "模試成績追加", "/students/new_exam", method: :get, style: "color: tomato;" %>
+      </div>
+      <table class="table" border="1" style="border-collapse: collapse; margin-top: 5px;">
         <thead class="thead-dark">
           <tr valign="middle">
             <th scope="col" style="font-size: 14px;">模試名</th>
             <th scope="col" style="font-size: 14px;">科目</th>
+            <th scope="col" style="font-size: 14px;">点数</th>
             <th scope="col" style="font-size: 14px;">偏差値</th>
             <th scope="col" style="font-size: 14px;">判定</th>
           </tr>
@@ -64,15 +68,18 @@
             <!-- つまりrowspanの数は科目数 -->
               <td rowspan="4" style="font-size: 14px;">第一回全国模試</td>
               <td style="font-size: 14px;">国語</td>
+              <td style="font-size: 14px;">70</td>
               <td style="font-size: 14px;">50</td>
               <td rowspan="4" style="font-size: 14px;">A</td>
           </tr>
           <tr valign="middle">
               <td style="font-size: 14px;">数学</td>
+              <td style="font-size: 14px;">80</td>
               <td style="font-size: 14px;">60</td>
           </tr>
           <tr valign="middle">
             <td style="font-size: 14px;">英語</td>
+            <td style="font-size: 14px;">60</td>
             <td style="font-size: 14px;">50</td>
           </tr>
         </tbody>
