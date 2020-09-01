@@ -9,8 +9,8 @@
 
 .student-profile-img-self {
   border-radius: 50%;
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
   -o-object-fit: cover;
      object-fit: cover;
   -webkit-box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.3);
@@ -123,13 +123,25 @@
 
 .student-card-wrapper {
   border-top: solid;
-  margin: 30px 250px;
+  margin: 0px 250px;
   padding: 20px 0;
+}
+
+.nav-link.active.show {
+  background-color: #EEEEEE !important;
+}
+
+.nav-link.active {
+  background-color: #EEEEEE !important;
+}
+
+.nav-tabs > .nav-link {
+  border: 0px !important;
 }
 
 @media (min-width: 500px) and (max-width: 1000px) {
   .student-card-wrapper {
-    margin: 30px 100px;
+    margin: 0px 100px;
   }
   .student_profile_section {
     margin: 0;

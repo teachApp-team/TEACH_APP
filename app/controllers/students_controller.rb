@@ -5,6 +5,8 @@ class StudentsController < ApplicationController
   end
 
   def show
+    
+    @events = Event.where(student_id: @current_student.id)
   end
 
   def show_test
