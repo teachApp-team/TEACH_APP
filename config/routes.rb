@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'students/history', to: "students#history"
   get 'teachers/history', to: 'teachers#history'
 
+  get 'students/new_exam', to: "students#new_exam"
+
   get 'students/show_test', to: 'students#show_test'
   get 'teachers/show_test', to: 'teachers#show_test'
   delete '/teachers/show_test/:id', to: 'teachers#delete_test'
