@@ -26,10 +26,31 @@
 <div class="tab-content">
   <% @students.each_with_index do |s, i| %>
   <% if i == 0 %>
-  <div id="student<%= i %>" class="tab-pane test_score_contaner active">
+    <div id="student<%= i %>" class="tab-pane test_score_contaner active">
   <% else %>
-  <div id="student<%= i %>" class="tab-pane test_score_contaner">
+    <div id="student<%= i %>" class="tab-pane test_score_contaner">
   <% end %>
+
+
+  <table class="table" border="2" style="border-collapse: collapse">
+    <thead class="thead-dark">
+      <tr valign="middle">
+        <th scope="col"  style="font-size: 14px;">学習日</th>
+        <th scope="col" width="40%" style="font-size: 14px;">学習時間</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% s.get_uniq_created_at.zip(s.history_time_ary) do |hd, ht|%>
+        <tr valign="middle" style="border-bottom: 2px solid;">
+          <th scope="row" style="font-size: 14px;"><%= hd %></th>  
+          <td style="font-size: 14px;"><%= ht %>分</td>
+        </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+
+
     <% s.learning_histories.sort.reverse.each do |h| %>
       <%= render partial: 'share/student-history', locals: {variable: h} %>
     <% end %>

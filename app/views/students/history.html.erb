@@ -18,6 +18,7 @@
   </tbody>
 </table>
 
+
 <% @histories.sort.reverse.each do |h| %>
   <div class="stu_card_info_time_ago" style="text-align: right;">
         <p style="margin-bottom: 5px;"><%= h.created_at.to_s(:datetime_jp) %></p>
