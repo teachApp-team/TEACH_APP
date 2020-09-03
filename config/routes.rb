@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   get 'teachers/show_calender/:id', to: 'teachers#show_calender'
 
+  get 'each_student/:id', to: 'teachers#each_student'
+
   
   get 'teachers/:id', to: "teachers#show"
   get 'news/new_msg'
