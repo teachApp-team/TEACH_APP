@@ -72,8 +72,11 @@ class StudentsController < ApplicationController
 
   def update
     user = Student.find(@current_student.id)
-    user.update(student_params)
-    redirect_to "/students/#{@current_student.id}"
+    if user.update(student_params)
+      redirect_to "/students/#{@current_student.id}"
+    else
+      redirect_to "/news_field"
+    end
   end
 
   def add
@@ -90,7 +93,7 @@ class StudentsController < ApplicationController
 
   private
   def student_params
-    params.require(:student).permit(:full_name, :password, :password_confirmation, :school_of_choice, :image)
+    params.require(:student).permit(:full_name, :password, :password_confirmation, :school_of_choice, :subject, :image)
   end
 
   def get_params
