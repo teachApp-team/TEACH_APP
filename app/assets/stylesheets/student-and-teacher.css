@@ -6,6 +6,8 @@
   text-align: center;
   padding: 20px 60px;
   background: white;
+  border-bottom: 1px solid;
+  margin-bottom: 3px;
 }
 
 .student-and-teacher_title h2 {
