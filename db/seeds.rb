@@ -15,15 +15,15 @@
 #     image: open("./db/icons/icon#{i}.jpeg")
 #   })
 # end
-# [10, 20, 30].each do |i|
-#   LearningHistory.create({
-#     learning_time: "00:#{i}:00",
-#     learning_text: "チャート式　第#{i}章",
-#     comment: "今日は#{i}分学習しました。",
-#     subject: "数学",
-#     student_id: 1
-#   })
-# end
+[10, 20, 30].each do |i|
+  LearningHistory.create({
+    learning_time: "00:#{i}:00",
+    learning_text: "チャート式　第#{i}章",
+    comment: "今日は#{i}分学習しました。",
+    subject: "国語",
+    student_id: 1
+  })
+end
 
 # 2.times do |i|
 #   Message.create({
@@ -60,12 +60,12 @@
 #   })
 # end
 
-5.times do |i|
-  Student.create({
-    full_name: "test student#{i + 20}",
-    school_of_choice: '東京大学',
-    password: 'password',
-    password_confirmation: 'password',
-    image: open("./db/icons/icon#{i}.jpeg")
-  })
-end
+# 5.times do |i|
+#   Student.create({
+#     full_name: "test student#{i + 20}",
+#     school_of_choice: '東京大学',
+#     password: 'password',
+#     password_confirmation: 'password',
+#     image: open("./db/icons/icon#{i}.jpeg")
+#   })
+# end
