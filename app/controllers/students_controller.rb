@@ -41,6 +41,30 @@ class StudentsController < ApplicationController
 
   def history
     @histories = LearningHistory.where(student_id: @current_student.id)
+    history_date_ary = []
+    @histories.each_with_index do |t,i|
+      history_date_ary << t.created_at.strftime("%Y年%m月%d日")
+    end
+    @hd = history_date_ary.uniq.sort.reverse!
+
+    @histories1 = LearningHistory.where(student_id: @current_student.id)
+    @history_time_ary = []
+
+    sum = 0
+    @temp_created = @histories1[0].created_at.strftime("%Y年%m月%d日")
+    @histories1.each_with_index do |h, index|
+      new_created_at = h.created_at.strftime("%Y年%m月%d日")
+      sum = 0 if @temp_created != new_created_at
+      @temp_created = new_created_at
+      new_learning_time = h.learning_time.hour*60 + h.learning_time.min
+      @hd.each_with_index do |t, i|
+        if t == new_created_at
+          sum += new_learning_time
+          @history_time_ary[i] = sum
+        end
+      end
+    end 
+    @history_time_ary.sort.reverse!
   end
 
   def edit
