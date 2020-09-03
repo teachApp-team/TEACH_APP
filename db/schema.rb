@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_09_101431) do
+ActiveRecord::Schema.define(version: 2020_09_03_132131) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_09_101431) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "image"
+    t.string "subject"
     t.index ["teacher_id"], name: "index_students_on_teacher_id"
   end
 
