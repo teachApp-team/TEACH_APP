@@ -21,7 +21,7 @@
             <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 20px;", method: :delete %>
           </h5>
         <% else %>
-          <h5><%= e.student.full_name %>君</h5>
+          <h5><%= link_to e.student.full_name, "/each_student/#{e.student.id}", method: :get %></h5>
         <% end %>
       </div>
       <div class="stu_card_info_time_ago">

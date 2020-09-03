@@ -1,24 +1,22 @@
 <%= render partial: 'share/header' %>
 <section class="teacher_profile_section">
   <%= render partial: 'share/student-and-teacher', locals: {teacher_url: "/teachers/edit"} %>
-
-
   <div class="tacher-card-wrapper">
     <div class="teacher-profile">
       <div class="teacher-profile-img">
       <% if @current_teacher.image.present? %>
-        <%=image_tag @current_teacher.image.url , class: "teacher-profile-img-self" %>
+        <%=image_tag @current_teacher.image.url , class: "student-profile-img-self" %>
       <% else %>
         <p>画像が設定されていません</p>
       <% end %>
       </div>
-      <div class="teacher-profile">
+      <div class="student-profile">
         <h1><%= @current_teacher.full_name %></h1>
       </div>
       <div class="teacher-profile-subject">
-        <h5>担当教科</h5><h2><%= @current_teacher.subject %></h2>
+        <h5 style="margin-top: 10px;margin-bottom: 0px;">担当教科</h5><h2><%= @current_teacher.subject %></h2>
       </div>
-      <%= link_to "ログアウト", "/sessions/destroy", method: :delete, data: { confirm: "本当にログアウトしますか？" }, class: "btn btn-outline-danger" %>
+      <%= link_to "ログアウト", "/sessions/destroy", method: :delete, data: { confirm: "本当にログアウトしますか？" }, class: "btn btn-outline-danger", style:"padding: 6px 6px; font-size: 10px;" %>
     </div>
   </div>
 
@@ -44,7 +42,7 @@
           <% end %>
         </div>
         <div class="your_student_name">
-          <h5><%=s.full_name %></h5>
+          <h5 style="color: black;"><%= link_to s.full_name, "/each_student/#{s.id}", method: :get, :style=>"color:white;" %></h5>
         </div>
         <div class="your_student_school">
           <p><%=s.school_of_choice %>志望</p>
