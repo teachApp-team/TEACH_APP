@@ -11,17 +11,18 @@
 #     school_of_choice: '東京大学',
 #     password: 'password',
 #     password_confirmation: 'password',
-#     teacher_id: 1,
+#     teacher_id: 1, 
 #     image: open("./db/icons/icon#{i}.jpeg")
 #   })
 # end
-[10, 20, 30].each do |i|
+[10].each do |i|
   LearningHistory.create({
     learning_time: "00:#{i}:00",
     learning_text: "チャート式　第#{i}章",
     comment: "今日は#{i}分学習しました。",
     subject: "国語",
-    student_id: 1
+    student_id: 1,
+    created_at: '2020/09/03 15:00:00'
   })
 end
 
