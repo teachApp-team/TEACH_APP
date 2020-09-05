@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_03_132131) do
+ActiveRecord::Schema.define(version: 2020_09_03_160833) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -26,6 +26,28 @@ ActiveRecord::Schema.define(version: 2020_09_03_132131) do
     t.string "title"
     t.index ["student_id"], name: "index_events_on_student_id"
     t.index ["teacher_id"], name: "index_events_on_teacher_id"
+  end
+
+  create_table "exam_subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.bigint "exam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_subjects_on_exam_id"
+  end
+
+  create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "subject"
+    t.integer "score"
+    t.float "deviation"
+    t.string "judge"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "student_id", null: false
+    t.bigint "teacher_id", null: false
+    t.index ["student_id"], name: "index_exams_on_student_id"
+    t.index ["teacher_id"], name: "index_exams_on_teacher_id"
   end
 
   create_table "learning_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,6 +108,9 @@ ActiveRecord::Schema.define(version: 2020_09_03_132131) do
 
   add_foreign_key "events", "students"
   add_foreign_key "events", "teachers"
+  add_foreign_key "exam_subjects", "exams"
+  add_foreign_key "exams", "students"
+  add_foreign_key "exams", "teachers"
   add_foreign_key "learning_histories", "students"
   add_foreign_key "messages", "students"
   add_foreign_key "messages", "teachers"

@@ -18,31 +18,6 @@ class TeachersController < ApplicationController
 
   def history
     @students = Student.where(teacher_id: @current_teacher.id)
-    @result_ary = []
-    @students.each_with_index do |student, student_i|
-      created_at_ary = student.learning_histories.pluck(:created_at).uniq!
-      created_at_ary.each_with_index do |created_at, created_i|
-        @result_ary[student_i]
-        student.learning_histories.where(created_at)
-      end
-    end
-    # @result_ary = [[{ dt: "日時", dl: "勉強時間"}]]
-    # @result_ary = []
-    # @student_result_ary =  []
-    # @students.each_with_index do |student, student_i|
-    #   learning_histories = student.learning_histories
-    #   if learning_histories.nil?
-    #     @result_ary[student_i] = [{ dt: "なし", dl: 0 }]
-    #     next 
-    #   else
-    #     learning_histories.each_with_index do |learning_history, lh_i|
-    #       @student_result_ary[lh_i] = { dt: "なし", dl: 0 }
-    #       @student_result_ary[lh_i][:dt] = learning_history.created_at.strftime("%Y年%m月%d日")
-    #       @student_result_ary[lh_i][:dl] = learning_history.learning_time.hour*60 + learning_history.learning_time.min
-    #     end
-    #     @result_ary[student_i] = @student_result_ary
-    #   end
-    # end
   end
 
   def show_test

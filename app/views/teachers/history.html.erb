@@ -41,10 +41,10 @@
       </tr>
     </thead>
     <tbody>
-      <% s.get_uniq_created_at.zip(s.history_time_ary) do |hd, ht|%>
+      <% s.history_time_ary.each do |history|%>
         <tr valign="middle" style="border-bottom: 2px solid;">
-          <th scope="row" style="font-size: 14px;"><%= hd %></th>  
-          <td style="font-size: 14px;"><%= ht %>分</td>
+          <th scope="row" style="font-size: 14px;"><%= history[0] %></th>  
+          <td style="font-size: 14px;"><%= history[1] %>分</td>
         </tr>
       <% end %>
       

@@ -41,8 +41,6 @@ class StudentsController < ApplicationController
 
   def history
     @histories = LearningHistory.where(student_id: @current_student.id)
-    @hd = @current_student.get_uniq_created_at
-    @history_time_ary = @current_student.history_time_ary
   end
 
   def edit
