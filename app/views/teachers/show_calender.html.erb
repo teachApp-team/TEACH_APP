@@ -1,7 +1,5 @@
 <%= render 'share/header' %>
-<%= render partial: 'share/title', locals: {each_title: '生徒の授業日程'} %>
-
-
+<div style="padding: 76px 0 0 0"></div>
 
 <div class="show_test_student_list">
 
@@ -18,7 +16,7 @@
       <% else %>
       画像なし
       <% end %>
-        <h5><%= s.full_name %>君</h5>
+        <h5 style="margin-bottom:0px;"><%= s.full_name %>君</h5>
       </a>
     </li>
     <% end %>
@@ -36,18 +34,18 @@
         <p class="calendar_stu_title">
           <i class="far fa-calendar-alt"></i>
           <%= s.full_name %>君のカレンダー    
-          <button type="button" class="btn btn-dark">
-            今月の予定 <span class="badge badge-light"><%= s.events.length %></span>
-          </button>
         </p>
 
         <div class="submit_new_msg">
           <div class="my-3 submit_new_msg1">
           <a href="/events/new" type="submit" class="btn btn-primary">
-            カレンダーに授業を追加する
+            授業を追加する
           </a>
           </div>
         </div>
+        <button type="button" class="btn btn-dark" style="font-size: 10px;">
+            今月の予定 <span class="badge badge-light"><%= s.events.length %></span>
+        </button>
 
         <%= month_calendar attribute: :start,events: s.events  do |date, events| %>
           <%= date.day %>
@@ -67,7 +65,7 @@
           <div style="display: grid;grid-template-columns: 80% 20%;" class="left">
           <% if e.title? %>
           <div>
-            <h3 style="color: #fff;font-size: 24px;"><%= e.title%></h3>
+            <h4 style="color: #fff;font-size: 15px; margin-bottom: 0px;"><%= e.title%></h4>
           </div>
           <div style="color: #fff;">
             <a href="#" style="color: #fff;font-size: 13px;">削除</a>
@@ -97,7 +95,7 @@
             <% else %>
             <h4 style="font-size: 20px; margin: 7px 0">記載なし</h4>
             <% end %>
-            <small><%= e.start.to_s(:datetime_jp) %> ~ <%= e.end.to_s(:datetime_jp) %></small>
+            <small><%= e.start.to_s(:datetime_jp) %> ~ <%= e.end.to_s(:datetime_jp)[13, 15] %></small>
             <div class="homework_wrapper">
               <div><p>宿題</p></div>
               <% if e.homework? %>

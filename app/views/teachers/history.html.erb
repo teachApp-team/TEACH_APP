@@ -1,6 +1,7 @@
 <%= render partial: 'share/header' %>
 <section class="news_field_background">
-<%= render partial: 'share/title', locals: {each_title: '学習履歴'} %>
+
+<div style="padding: 76px 0 0 0"></div>
 
 <div class="show_test_student_list">
   <ul class="nav nav-tabs">
@@ -53,6 +54,9 @@
 
 
     <% s.learning_histories.sort.reverse.each do |h| %>
+      <div class="stu_card_info_time_ago" style="text-align: right;">
+        <p style="margin-bottom: 5px;"><%= h.created_at.to_s(:datetime_jp) %></p>
+      </div>
       <%= render partial: 'share/student-history', locals: {variable: h} %>
     <% end %>
   </div>
