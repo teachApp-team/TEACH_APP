@@ -1,8 +1,19 @@
 <%= render partial: 'share/header' %>
 <section class="teacher_profile_section">
-  <%= render partial: 'share/student-and-teacher', locals: {teacher_url: "/teachers/edit"} %>
+<div style="padding: 76px 0 0 0"></div>
+
   <div class="tacher-card-wrapper">
+    <div style="text-align: right;">
+      <a href="/teachers/edit", class="student-and-teacher_edit_btn">
+          <i class="fas fa-user-edit student-and-teacher_edit_icon"></i>
+      </a>
+    <div>
     <div class="teacher-profile">
+      <!-- <div style="margin-right:0;">
+        <a href="/teachers/edit", class="student-and-teacher_edit_btn">
+            <i class="fas fa-user-edit student-and-teacher_edit_icon"></i>
+        </a>
+      <div> -->
       <div class="teacher-profile-img">
       <% if @current_teacher.image.present? %>
         <%=image_tag @current_teacher.image.url , class: "student-profile-img-self" %>
@@ -11,7 +22,7 @@
       <% end %>
       </div>
       <div class="student-profile">
-        <h1><%= @current_teacher.full_name %></h1>
+        <h2><%= @current_teacher.full_name %></h2>
       </div>
       <div class="teacher-profile-subject">
         <h5 style="margin-top: 10px;margin-bottom: 0px;">担当教科</h5><h2><%= @current_teacher.subject %></h2>

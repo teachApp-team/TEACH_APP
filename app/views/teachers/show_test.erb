@@ -1,14 +1,6 @@
 <%= render partial: 'share/header' %>
 <section class="new_msg_section" id= "show_your_students_test">
-<%= render partial: 'share/title', locals: {each_title: 'テスト成績'} %>
-
-<div class="submit_new_msg">
-  <div class="my-1 submit_new_msg1">
-  <button type="submit" class="btn btn-primary" id="new_test">
-    新しいテストを追加する
-  </button>
-  </div>
-</div>
+<div style="padding: 76px 0 0 0"></div>
 
 <div class="show_test_student_list">
   <ul class="nav nav-tabs">
@@ -24,14 +16,21 @@
       <% else %>
       画像なし
       <% end %>
-        <h5><%= s.full_name %>君</h5>
+        <h5 style="margin-bottom:0px;"><%= s.full_name %>君</h5>
       </a>
     </li>
     <% end %>
   </ul>
 </div>
 
-<div class="tab-content">
+<div class="tab-content" style="padding-top:10px;">
+  <div class="submit_new_msg" style="margin-bottom:10px;">
+    <div class="my-0 submit_new_msg1">
+    <button type="submit" class="btn btn-primary" id="new_test">
+      テストを追加
+    </button>
+    </div>
+  </div>
   <% @students.each_with_index do |s, i| %>
   <% if i == 0 %>
   <div id="student<%= i %>" class="tab-pane test_score_contaner active">

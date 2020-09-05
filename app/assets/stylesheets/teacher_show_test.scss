@@ -17,16 +17,16 @@
 
 .stu_card_info_img_circle {
   border-radius: 50%;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   object-fit: cover;  
   box-shadow: 2px 2px 4px;
 }
 
 .show_test_student_list .active > .stu_card_info_img_circle {
   border-radius: 50%;
-  height: 43px;
-  width: 43px;
+  height: 33px;
+  width: 33px;
   object-fit: cover;  
 }
 
@@ -51,5 +51,4 @@
 
 .tab-content {
   background-color: #EEEEEE;
-  padding-top: 30px;
 }
