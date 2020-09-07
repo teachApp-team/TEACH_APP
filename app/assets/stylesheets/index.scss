@@ -173,15 +173,34 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  margin: 0 30px 40px 0;
-  width: 80px;
-	height: 80px;
+  margin: 0 20px 30px 0;
+  width: 75px;
+	height: 75px;
   font-size: 40px;
   border-radius: 50px;
   background-color: #00008b;
   color: white;
   text-align: center;
   padding: 10px;
+}
+
+.new_question_add {
+  position: fixed;
+  bottom: 85px;
+  right: 0;
+  margin: 0 20px 40px 0;
+  width: 75px;
+	height: 75px;
+  font-size: 40px;
+  border-radius: 50px;
+  background-color: #00008b;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.question_icon {
+  color: white;
 }
 
 .message_icon {

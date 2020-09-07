@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'students/new_questions', to: 'questions#new'
+  
   get 'student_sign_up', to: 'home#student_sign_up'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
   post 'student_users/create', to: 'students#create'
@@ -47,7 +49,6 @@ Rails.application.routes.draw do
   delete 'destroy_lh/:id', to: "news#destroy_lh"
 
   post 'teachers/ajax_create_test', to: 'teachers#ajax_create_test'
-
   
 
   post 'create_msg', to: "news#create_message"
