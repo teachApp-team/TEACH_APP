@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'students/new_questions', to: 'questions#new'
+  get 'teacher/reply', to: 'replies#teacher_reply'
   
   get 'student_sign_up', to: 'home#student_sign_up'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'

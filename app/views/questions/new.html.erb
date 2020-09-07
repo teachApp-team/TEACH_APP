@@ -19,13 +19,9 @@
     
     
     <form>
-      <div>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">画像の添付</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile2">
-          <input type="button" value="＋" class="add1 pluralBtn" style="background-color: gainsboro;">
-          <input type="button" value="－" class="del1 pluralBtn" style="background-color: gainsboro;">
-        </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">画像の添付</label>
+        <input type="file" class="form-control-file">
       </div>
     </form>
     
@@ -39,15 +35,3 @@
     </div>
   </form>
 </section>
-
-<script type="text/javascript">
-  $(document).on("click", ".add1", function() {
-      $(this).parent().clone(true).insertAfter($(this).parent());
-  });
-  $(document).on("click", ".del1", function() {
-      var target = $(this).parent();
-      if (target.parent().children().length > 1) {
-          target.remove();
-      }
-  });
-  </script>
