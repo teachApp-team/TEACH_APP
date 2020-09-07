@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'students/new_questions', to: 'questions#new'
   
   get 'student_sign_up', to: 'home#student_sign_up'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
@@ -59,5 +58,6 @@ Rails.application.routes.draw do
   resources :events
   resources :messages
   resources :exams, only: [:index, :create, :new, :edit, :show]
+  resources :questions, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
