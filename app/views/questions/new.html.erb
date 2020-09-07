@@ -2,14 +2,14 @@
   <form class="new_questions_wrapper">
     <div class="form-group" style="margin-top: 10px;">
       <label for="exampleFormControlSelect1">質問する先生</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="exampleFormControlSelect3">
         <option><%=@current_student.teacher.full_name %></option>
       </select>
     </div>
     
     <div class="form-group" style="margin-top: 10px;">
       <label for="exampleFormControlSelect1">質問の種類</label>
-      <select class="form-control" id="exampleFormControlSelect1">
+      <select class="form-control" id="exampleFormControlSelect2">
         <option>勉強内容</option>
         <option>勉強方法</option>
         <option>進路</option>
@@ -22,15 +22,15 @@
       <div>
         <div class="form-group">
           <label for="exampleFormControlFile1">画像の添付</label>
-          <input type="file" class="form-control-file" id="exampleFormControlFile1">
-          <input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">
-          <input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">
+          <input type="file" class="form-control-file" id="exampleFormControlFile2">
+          <input type="button" value="＋" class="add1 pluralBtn" style="background-color: gainsboro;">
+          <input type="button" value="－" class="del1 pluralBtn" style="background-color: gainsboro;">
         </div>
       </div>
     </form>
     
     <div class="form-group">
-      <label for="exampleFormControlTextarea1">質問内容</label>
+      <label for="exampleFormControlTextarea2">質問内容</label>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     
@@ -41,10 +41,10 @@
 </section>
 
 <script type="text/javascript">
-  $(document).on("click", ".add", function() {
+  $(document).on("click", ".add1", function() {
       $(this).parent().clone(true).insertAfter($(this).parent());
   });
-  $(document).on("click", ".del", function() {
+  $(document).on("click", ".del1", function() {
       var target = $(this).parent();
       if (target.parent().children().length > 1) {
           target.remove();
