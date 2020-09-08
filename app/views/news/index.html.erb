@@ -15,7 +15,10 @@
         <% end %>
         </div>
         <div class="stu_card_info_name">
-          <h5><%= e.student.full_name %>君</h5>
+          <h5>
+            <%= e.student.full_name %>君
+            <%= link_to "削除", "/destroy_q/#{e.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
+          </h5>
         </div>
         <div class="stu_card_info_time_ago">
           <p style="margin-bottom: 5px;"><%= e.created_at.to_s(:datetime_jp) %></p>
@@ -24,7 +27,7 @@
       <div class="balloon" style="margin-top: 0px;">
         <div class="stu_card_content">
           <div class="stu_card_content_subject">
-              <p class="stu_card_content_subject_circle" style="margin-bottom: 5px">質</p>
+              <p class="stu_card_content_question_circle" style="margin-bottom: 5px">質</p>
           </div>
           <div class="stu_card_content_text" style="padding: 0px;padding-left: 5px;">
             <span style="font-size: 12px;"><%=e.category %></span>
@@ -38,10 +41,10 @@
         <div class="stu_card_comment" style="margin-top: 5px;">
           <p style="font-size: 12px;margin-bottom: 5px;"><%=e.content %></p>
         </div>
-        <% if e.replies.length == 0 %>
-          <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: tomato;margin" %>
-        <% end %>
       </div>
+      <% if e.replies.length == 0 %>
+          <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: tomato;color:blue;" %>
+      <% end %>
 
     <% e.replies.each_with_index do |r, i| %>
     <div class="teacher_card" style="border-left:solid 1px; padding-right: 0px;padding-top: 10px;padding-bottom: 0px;">
@@ -63,27 +66,45 @@
         </div>
         <div class="teacher_card_info_name">
           <% if r.which == "student" %>
-            <h5><%=r.student.full_name %></h5>
+            <h5>
+              <%=r.student.full_name %>
+            <% if @current_student.present? %>
+              <%= link_to "削除", "/destroy_r/#{r.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
+            <% end %>
+            </h5>
+            
           <% else %>
-            <h5><%=r.teacher.full_name %></h5>
+            <h5>
+              <%=r.teacher.full_name %>
+            <% if @current_teacher.present? %>
+              <%= link_to "削除", "/destroy_r/#{r.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
+            <% end %>
+            </h5>
           <% end %>
         </div>
         <div class="teacher_card_info_time_ago">
           <p><%= r.created_at.to_s(:datetime_jp)%></p>
         </div>
       </div>
-      <div class="balloon_teacher" style="margin-bottom: 10px;">
-      <div class="teacher_card_comment">
-        <% if r.which == "student" %>
+      <% if r.which == "student" %>
+      <div class="balloon_student" style="margin-bottom: 0px;">
+        <div class="teacher_card_comment">
           <p style="font-size: 11px;">To: <%=r.teacher.full_name %></p>
-        <% else %>
+          <p><%=r.content %></p>
+        </div>
+      </div>
+      <% else %>
+      <div class="balloon_teacher" style="margin-bottom: 0px;">
+        <div class="teacher_card_comment">
           <p style="font-size: 11px;">To: <%=r.student.full_name %></p>
-        <% end %>
-        <p><%=r.content %></p>
+          <p><%=r.content %></p>
+        </div>
       </div>
-      </div>
+      <% end %>
       <% if e.replies.length == i + 1 %>
-      <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: tomato;" %>
+      <div style = "margin-top: 10px;">
+        <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: blue;" %>
+      </div>
       <% end %>
   </div>
   <% end %>
@@ -104,8 +125,8 @@
         <% if e.student.id == @current_student&.id %>
           <h5>
             <%= e.student.full_name %>君
-            <%= link_to "編集", "/news_field/#{e.id}/edit", style: "color: tomato;margin-left: 40px;" %>
-            <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 20px;", method: :delete %>
+            <%= link_to "編集", "/news_field/#{e.id}/edit", style: "color: tomato;margin-left: 40px;font-size:13px;" %>
+            <%= link_to "削除", "/destroy_lh/#{e.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
           </h5>
         <% else %>
           <h5><%= link_to e.student.full_name, "/each_student/#{e.student.id}", method: :get %></h5>
@@ -140,7 +161,7 @@
         <% if e.teacher.id == @current_teacher&.id %>
           <h5>
             <%= e.teacher.full_name %>先生
-            <%= link_to "削除", "/messages/#{e.id}", method: :delete, style: "color: tomato;margin-left: 40px;" %>
+            <%= link_to "削除", "/messages/#{e.id}", method: :delete, style: "color: tomato;margin-left: 40px;font-size:13px;" %>
           </h5>
         <% else %>
           <h5><%= e.teacher.full_name %>先生</h5>
