@@ -17,7 +17,9 @@
         <div class="stu_card_info_name">
           <h5>
             <%= e.student.full_name %>君
-            <%= link_to "削除", "/destroy_q/#{e.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
+            <% if @current_student.present? %>
+              <%= link_to "削除", "/destroy_q/#{e.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete %>
+            <% end %>
           </h5>
         </div>
         <div class="stu_card_info_time_ago">
