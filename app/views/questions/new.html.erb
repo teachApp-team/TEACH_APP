@@ -1,37 +1,33 @@
 <section style="padding: 10%;">
-  <form class="new_questions_wrapper">
+  <%= form_for @question, url: { controller: 'questions', action:'create'}, class: "new_questions_wrapper" do |f| %>
     <div class="form-group" style="margin-top: 10px;">
-      <label for="exampleFormControlSelect1">質問する先生</label>
-      <select class="form-control" id="exampleFormControlSelect3">
-        <option><%=@current_student.teacher.full_name %></option>
-      </select>
+      <%= f.label :teacher_id, "質問する先生" %>
+      <%= f.collection_select :teacher_id, [@current_student.teacher], :id, :full_name, {},  class: "form-control", id: "exampleFormControlSelect1" %>
     </div>
     
     <div class="form-group" style="margin-top: 10px;">
-      <label for="exampleFormControlSelect1">質問の種類</label>
-      <select class="form-control" id="exampleFormControlSelect2">
-        <option>勉強内容</option>
-        <option>勉強方法</option>
-        <option>進路</option>
-        <option>その他</option>
-      </select>
+      <%= f.label :category, "質問の種類" %>
+      <%= f.select :category, ["勉強内容", "勉強方法", "進路", "その他"],{} , class: "form-control", id: "exampleFormControlSelect1" %>
     </div>
     
     
-    <form>
-      <div class="form-group">
-        <label for="exampleFormControlFile1">画像の添付</label>
-        <input type="file" class="form-control-file">
+
+      <div>
+        <div class="form-group">
+          <%= f.label :image, "画像の添付" %>
+          <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile1" %>
+        </div>
       </div>
-    </form>
+
     
     <div class="form-group">
-      <label for="exampleFormControlTextarea2">質問内容</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <%= f.label :content, "質問の内容" %>
+      <%= f.text_area :content, class: "form-control", id: "exampleFormControlTextarea1", rows: "6" %>
     </div>
     
     <div style="text-align: center;">
-      <button type="submit" class="btn btn-primary">送信</button>
+      <%= f.hidden_field :student_id, value: @current_student.id %>
+      <%= f.submit "送信", class: "btn btn-primary", data: { disable_with: "送信中..." } %>
     </div>
-  </form>
+  <% end %>
 </section>
