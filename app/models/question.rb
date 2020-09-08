@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
-  has_many :replies
+  has_many :replies, dependent: :destroy
 
   mount_uploader :image, ImageUploader
 
