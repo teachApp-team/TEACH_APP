@@ -55,9 +55,12 @@ Rails.application.routes.draw do
   # get 'sample', to: "teachers#sample"
   # post 'sample', to: "teachers#sample"
 
+  get 'replies/:question_id/new', to: "replies#new"
+
   resources :events
   resources :messages
   resources :exams, only: [:index, :create, :new, :edit, :show]
   resources :questions, only: [:new, :create]
+  resources :replies, only: [:new, :create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

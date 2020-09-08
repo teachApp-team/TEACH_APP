@@ -1,6 +1,7 @@
 class Question < ApplicationRecord
   belongs_to :teacher
   belongs_to :student
+  has_many :replies
 
   mount_uploader :image, ImageUploader
 
