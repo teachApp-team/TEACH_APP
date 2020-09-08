@@ -1,0 +1,38 @@
+<section style="padding: 10%;">
+
+<div style="margin-bottom: 40px;">
+  <div>   
+    <%= @question.content %>
+  </div>
+  <div style="margin-top: 10px;">
+    <% if @question.image.present? %>
+      <%= link_to "添付画像", @question.image.url, target: :blank %><br>
+      <%= image_tag @question.image.url %>
+    <% end %>
+  </div>
+</div>
+
+<div style="padding-top: 20px;border-top:solid 1px;">
+  <%= form_for @reply, class: "new_questions_wrapper" do |f| %>
+
+    <div class="form-group">
+      <%= f.label :content, "回答内容" %>
+      <%= f.text_area :content, class: "form-control", id: "exampleFormControlTextarea1", rows: "3" %>
+    </div>
+
+    <% if @current_teacher %>
+      <%= f.hidden_field :teacher_id, value: @current_teacher.id %>
+      <%= f.hidden_field :student_id, value: @question.student.id %>
+      <%= f.hidden_field :question_id, value: @question.id %>
+    <% else %>
+      <%= f.hidden_field :teacher_id, value: @current_student.id %>
+      <%= f.hidden_field :student_id, value: @question.student.id %>
+      <%= f.hidden_field :question_id, value: @question.id %>
+    <% end %>
+    
+    <div style="text-align: center;">
+      <%= f.submit "送信", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+</section>

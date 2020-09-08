@@ -9,6 +9,7 @@ class Student < ApplicationRecord
   has_many :tests
   has_many :events
   has_many :exams
+  has_many :replies
 
   def history_time_ary
     histories = self.learning_histories

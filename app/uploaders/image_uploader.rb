@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   #上限変更
-  process :resize_to_limit => [700, 700]
+  process :resize_to_limit => [2000, 2000]
 
   #JPGで保存
   process :convert => 'jpg'
@@ -68,4 +68,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+  def size_range
+    1..50.megabytes
+  end
 end

@@ -8,4 +8,6 @@ class Teacher < ApplicationRecord
   has_many :tests
   has_many :events
   has_many :exams
+  has_many :replies
 end
+
