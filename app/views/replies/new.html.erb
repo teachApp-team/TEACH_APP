@@ -7,7 +7,7 @@
   <div style="margin-top: 10px;">
     <% if @question.image.present? %>
       <%= link_to "添付画像", @question.image.url, target: :blank %><br>
-      <%= image_tag @question.image.url %>
+      <%= image_tag @question.image.url, size: "100x100" %>
     <% end %>
   </div>
 </div>
