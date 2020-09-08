@@ -8,12 +8,17 @@ class NewsController < ApplicationController
     if @current_student.present?
       histories = LearningHistory.where(student_id: @current_student.id)
       messages = Message.where(student_id: @current_student.id)
+      questions = Question.where(student_id: @current_student.id)
     end
     if @current_teacher.present?
       histories = LearningHistory.where(student_id: @current_teacher.students.ids)
       messages = Message.where(teacher_id: @current_teacher.id)
+      questions = Question.where(teacher_id: @current_teacher.id)
     end
     @news = []
+    questions.each do |q|
+      @news.push(q)
+    end
     histories.each do |h|
       @news.push(h)
     end
@@ -22,6 +27,9 @@ class NewsController < ApplicationController
     end
     # newsの投稿日時から降順に並び替え
     @news.sort_by! { |n| n[:created_at] }.reverse!
+
+
+
   end
 
   def new_learning_history
