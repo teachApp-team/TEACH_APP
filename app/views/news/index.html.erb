@@ -2,128 +2,95 @@
 <div style="padding: 76px 0 0 0"></div>
 
 <section class="news_field_background">
-  <div class="stu_card">
-    <div class="stu_card_info" style="margin-bottom: 20px;">
-      <div class="stu_card_info_img">
-        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+
+<% @news.each do |e| %>
+<% if e.class.name == "Question" %>
+    <div class="stu_card">
+      <div class="stu_card_info" style="margin-bottom: 20px;">
+        <div class="stu_card_info_img">
+        <% if e.student.image.present? %>
+          <%= image_tag e.student.image.url, class: "stu_card_info_img_self" %>
+        <% else %>
+          <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+        <% end %>
+        </div>
+        <div class="stu_card_info_name">
+          <h5><%= e.student.full_name %>君</h5>
+        </div>
+        <div class="stu_card_info_time_ago">
+          <p style="margin-bottom: 5px;"><%= e.created_at.to_s(:datetime_jp) %></p>
+        </div>
       </div>
-      <div class="stu_card_info_name">
-        <h5>Question君</h5>
-      </div>
-      <div class="stu_card_info_time_ago">
-        <p style="margin-bottom: 5px;">2020年 09月 07日 11時 07分</p>
-      </div>
-    </div>
       <div class="balloon" style="margin-top: 0px;">
         <div class="stu_card_content">
           <div class="stu_card_content_subject">
               <p class="stu_card_content_subject_circle" style="margin-bottom: 5px">質</p>
           </div>
           <div class="stu_card_content_text" style="padding: 0px;padding-left: 5px;">
-            <span style="font-size: 12px;">学習内容について</span>
-            <div style="font-size: 12px;"><ココにPDFリンク貼る></div>
+            <span style="font-size: 12px;"><%=e.category %></span>
+            <% if e.image.present? %>
+            <div style="font-size: 12px;"><%= link_to "画像を表示", e.image.url %></div>
+            <% else %>
+            <div style="font-size: 12px;">画像なし</div>
+            <% end %>
           </div>
         </div>
         <div class="stu_card_comment" style="margin-top: 5px;">
-          <p style="font-size: 12px;margin-bottom: 5px;">添付した資料の三行目が分かりません。そもそも二行目のthatは関係代名詞なのでしょうか。それとも同格のthatなのでしょうか。どうぞよろしくお願いします。</p>
+          <p style="font-size: 12px;margin-bottom: 5px;"><%=e.content %></p>
         </div>
+        <% if e.replies.length == 0 %>
+          <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: tomato;margin" %>
+        <% end %>
       </div>
-      <div class="teacher_card" style="border-left:solid 1px; padding-right: 0px;padding-top: 0px;padding-bottom: 0px;">
-        <div class="teacher_card_info">
-          <div class="teacher_card_info_img">
-            <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
-          </div>
-          <div class="teacher_card_info_name">
-            <h5>Answer先生</h5>
-          </div>
-          <div class="teacher_card_info_time_ago">
-            <p>2020年 09月 08日 01時 42分</p>
-          </div>
-        </div>
-        <div class="balloon_teacher" style="margin-bottom: 10px;">
-          <div class="teacher_card_comment">
-            <p style="font-size: 11px;">To: Question君</p>
-            <p>二行目のthatは同格のthatです。ideaの後にくるthatはほぼ100%で同格のthatです。覚えておきましょう。</p>
-          </div>
-        </div>
-        <%= link_to "返信する", "teacher/reply", method: :get, style: "color: tomato;" %>
-      </div>
-      <div class="teacher_card" style="border-left:solid 1px; padding-right: 0px;padding-top: 10px;padding-bottom: 0px;">
-        <div class="teacher_card_info">
-          <div class="teacher_card_info_img">
-            <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
-          </div>
-          <div class="teacher_card_info_name">
-            <h5>Answer先生</h5>
-          </div>
-          <div class="teacher_card_info_time_ago">
-            <p>2020年 09月 08日 01時 42分</p>
-          </div>
-        </div>
-        <div class="balloon_teacher" style="margin-bottom: 10px;">
-          <div class="teacher_card_comment">
-            <p style="font-size: 11px;">To: Question君</p>
-            <p>二行目のthatは同格のthatです。ideaの後にくるthatはほぼ100%で同格のthatです。覚えておきましょう。</p>
-          </div>
-        </div>
-        <%= link_to "返信する", "teacher/reply", method: :get, style: "color: tomato;" %>
-      </div>
-    </div>
 
-
-
-
-  <% @news.each do |e| %>
-  <% if e.class.name == "Question" %>
-
-  <div class="stu_card">
-    <div class="stu_card_info" style="margin-bottom: 20px;">
-      <div class="stu_card_info_img">
-      <% if e.student.image.present? %>
-        <%= image_tag e.student.image.url, class: "stu_card_info_img_self" %>
-      <% else %>
-        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
-      <% end %>
-      </div>
-      <div class="stu_card_info_name">
-        <h5><%= e.student.full_name %>君</h5>
-      </div>
-      <div class="stu_card_info_time_ago">
-        <p style="margin-bottom: 5px;"><%= e.created_at.to_s(:datetime_jp) %></p>
-      </div>
-    </div>
-    <div class="balloon" style="margin-top: 0px;">
-      <div class="stu_card_content">
-        <div class="stu_card_content_subject">
-            <p class="stu_card_content_subject_circle" style="margin-bottom: 5px">質</p>
-        </div>
-        <div class="stu_card_content_text" style="padding: 0px;padding-left: 5px;">
-          <span style="font-size: 12px;"><%=e.category %></span>
-          <% if e.image.present? %>
-          <div style="font-size: 12px;"><%= link_to "画像を表示", e.image.url %></div>
+    <% e.replies.each_with_index do |r, i| %>
+    <div class="teacher_card" style="border-left:solid 1px; padding-right: 0px;padding-top: 10px;padding-bottom: 0px;">
+      <div class="teacher_card_info">
+        <div class="teacher_card_info_img">
+        <% if r.which == "student" %>
+          <% if r.student.image.present? %>
+            <%= image_tag r.student.image.url, class: "stu_card_info_img_self" %>
           <% else %>
-          <div style="font-size: 12px;">画像なし</div>
+            <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+          <% end %>
+        <% else %>
+          <% if r.teacher.image.present? %>
+            <%= image_tag r.teacher.image.url, class: "stu_card_info_img_self" %>
+          <% else %>
+            <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+          <% end %>
+        <% end %>
+        </div>
+        <div class="teacher_card_info_name">
+          <% if r.which == "student" %>
+            <h5><%=r.student.full_name %></h5>
+          <% else %>
+            <h5><%=r.teacher.full_name %></h5>
           <% end %>
         </div>
+        <div class="teacher_card_info_time_ago">
+          <p><%= r.created_at.to_s(:datetime_jp)%></p>
+        </div>
       </div>
-      <div class="stu_card_comment" style="margin-top: 5px;">
-        <p style="font-size: 12px;margin-bottom: 5px;"><%=e.content %></p>
+      <div class="balloon_teacher" style="margin-bottom: 10px;">
+      <div class="teacher_card_comment">
+        <% if r.which == "student" %>
+          <p style="font-size: 11px;">To: <%=r.teacher.full_name %></p>
+        <% else %>
+          <p style="font-size: 11px;">To: <%=r.student.full_name %></p>
+        <% end %>
+        <p><%=r.content %></p>
       </div>
-        <%= link_to "返信する", "teacher/reply", method: :get, style: "color: tomato;margin" %>
-    </div>
+      </div>
+      <% if e.replies.length == i + 1 %>
+      <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: tomato;" %>
+      <% end %>
   </div>
+  <% end %>
+</div>
 
 
-
-
-
-
-
-
-
-
-
-  <% elsif e.class.name == "LearningHistory" %>
+<% elsif e.class.name == "LearningHistory" %>
   <div class="stu_card">
     <div class="stu_card_info" style="margin-bottom: 20px;">
       <div class="stu_card_info_img">

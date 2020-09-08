@@ -19,7 +19,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # jpg,jpeg,gif,pngのみ
   def extension_white_list
-    %w(jpg jpeg gif png)
+    %w(jpg jpeg gif png pdf)
   end
 
   #ファイル名を変更し拡張子を同じにする
