@@ -47,6 +47,9 @@ Rails.application.routes.draw do
   post 'ajax_create_lh', to: "news#ajax_create_learning_history"
   delete 'destroy_lh/:id', to: "news#destroy_lh"
 
+  delete 'destroy_q/:id', to: "questions#delete"
+  delete 'destroy_r/:id', to: "replies#delete"
+
   post 'teachers/ajax_create_test', to: 'teachers#ajax_create_test'
   
 
