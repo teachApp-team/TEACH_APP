@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2020_09_11_133418) do
     t.bigint "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
+    t.float "deviation"
+    t.string "judge"
     t.index ["exam_id"], name: "index_exam_subjects_on_exam_id"
   end
 
