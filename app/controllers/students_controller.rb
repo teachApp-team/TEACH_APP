@@ -9,6 +9,7 @@ class StudentsController < ApplicationController
 
   def show
     @events = Event.where(student_id: @current_student.id)
+    @exams = @current_student.exams
   end
 
   def show_test

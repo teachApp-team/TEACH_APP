@@ -7,20 +7,22 @@
   
   
   
-  <div id="input_pluralBox">
-    <div id="input_plural">
-      <%= f.text_field :subject, class: "form-control", placeholder: "科目別成績記入"  %>
-      <%= f.text_field :score, class: "form-control", placeholder: "点数"  %>
-      <%= f.text_field :deviation, class: "form-control", placeholder: "偏差値"  %>
-
-      <input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">
-      <input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">
-    </div>
+  <div id="input_pluralBox" class="exam-subject-wrapper">
+    <%= f.fields_for :exam_subjects do |e| %>
+      <div id="input_plural" class="input_plural">
+        <%= e.text_field :name, class: "form-control", placeholder: "科目名" %>
+        <%= e.text_field :score, class: "form-control", placeholder: "点数"  %>
+        <%= e.text_field :deviation, class: "form-control", placeholder: "偏差値"  %>
+        <%= e.select :judge, ["A","B","C","D","E","F"] , {}, class: "form-control", placeholder: "判定" %>
+        <input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">
+        <input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">
+      </div>
+    <% end %>
   </div>
 
   <div class="form-group" style="margin-top: 10px;">
     <%= f.label :judge, "第一志望校判定" %>
-    <%= f.select :judge, ["A","B","C","D","E"], { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+    <%= f.select :judge, ["A","B","C","D","E","F"], { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
   </div>
   <% if @current_teacher %>
     <%= f.hidden_field :teacher_id, value: @current_teacher.id %>
@@ -36,7 +38,23 @@
 
 <script type="text/javascript">
   $(document).on("click", ".add", function() {
-      $(this).parent().clone(true).insertAfter($(this).parent());
+    var num = $('.input_plural').length;
+    console.log(`num: ${num}`);
+    var input = '<div class="input_plural">'
+        + '<input class="form-control" placeholder="科目名" type="text" name="exam[exam_subjects_attributes][' + num + '][name]" id="exam_exam_subjects_attributes_' + num + '_name" required>'
+        + '<input class="form-control" placeholder="点数" type="text" name="exam[exam_subjects_attributes][' + num + '][score]" id="exam_exam_subjects_attributes_' + num + '_score" required>'
+        + '<input class="form-control" placeholder="偏差値" type="text" name="exam[exam_subjects_attributes][' + num + '][diviation]" id="exam_exam_subjects_attributes_' + num + '_diviation" required>'
+        + '<select class="form-control" placeholder="判定" type="select" name="exam[exam_subjects_attributes][' + num + '][judge]" id="exam_exam_subjects_attributes_' + num + '_judge" required>'
+        + '<option value="A">A</option>'
+        + '<option value="B">B</option>'
+        + '<option value="C">C</option>'
+        + '<option value="D">D</option>'
+        + '<option value="E">E</option>'
+        + '</select>'
+        + '<input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">'
+        + '<input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">'
+        +'</div>'
+    $('#input_pluralBox').append(input);
   });
   $(document).on("click", ".del", function() {
       var target = $(this).parent();

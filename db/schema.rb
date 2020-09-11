@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_08_112613) do
+ActiveRecord::Schema.define(version: 2020_09_08_124522) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2020_09_08_112613) do
     t.bigint "exam_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "score"
+    t.float "deviation"
+    t.string "judge"
     t.index ["exam_id"], name: "index_exam_subjects_on_exam_id"
   end
 

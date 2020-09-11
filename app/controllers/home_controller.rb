@@ -1,5 +1,8 @@
 class HomeController < ApplicationController
   def top
+    if @current_user
+      redirect_to '/news_field'
+    end
   end
 
   def test_index

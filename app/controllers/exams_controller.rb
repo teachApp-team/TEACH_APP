@@ -9,6 +9,7 @@ class ExamsController < ApplicationController
     teacher = @current_teacher if @current_teacher.present?
     student = @current_student if @current_student.present?
     @exam = Exam.new
+    @exam.exam_subjects.build
   end
 
   def create
@@ -23,6 +24,6 @@ class ExamsController < ApplicationController
   private
 
   def exam_params
-    params.require(:exam).permit(:name, :subject, :score, :deviation, :judge, :teacher_id, :student_id, exam_subjects:[])
+    params.require(:exam).permit(:name, :subject, :score, :deviation, :judge, :teacher_id, :student_id, exam_subjects_attributes: [:name, :score, :deviation, :judge])
   end
 end
