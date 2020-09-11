@@ -9,11 +9,13 @@ class NewsController < ApplicationController
       histories = LearningHistory.where(student_id: @current_student.id)
       messages = Message.where(student_id: @current_student.id)
       questions = Question.where(student_id: @current_student.id)
+      replies = Reply.where(student_id: @current_student.id)
     end
     if @current_teacher.present?
       histories = LearningHistory.where(student_id: @current_teacher.students.ids)
       messages = Message.where(teacher_id: @current_teacher.id)
       questions = Question.where(teacher_id: @current_teacher.id)
+      replies = Reply.where(student_id: @current_teacher.id)
     end
     @news = []
     questions.each do |q|

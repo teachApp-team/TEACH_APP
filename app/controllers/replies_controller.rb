@@ -5,6 +5,12 @@ class RepliesController < ApplicationController
     @reply = Reply.new(question_id: @question)
   end
 
+  def delete
+    r = Reply.find(params[:id])
+    r.destroy
+    redirect_to "/news_field"
+  end
+
   def create
     @reply = Reply.new(reply_params)
     if @reply.save
@@ -20,6 +26,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:teacher_id, :student_id, :content, :question_id)
+    params.require(:reply).permit(:teacher_id, :student_id, :content, :question_id, :which)
   end
 end

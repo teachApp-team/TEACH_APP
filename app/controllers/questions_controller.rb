@@ -12,6 +12,13 @@ class QuestionsController < ApplicationController
     end 
   end
 
+  def delete
+    q = Question.find(params[:id])
+    q.destroy
+    redirect_to "/news_field"
+  end
+
+
   private
   def question_params
     params.require(:question).permit(:teacher_id, :student_id, :category, :image, :content)
