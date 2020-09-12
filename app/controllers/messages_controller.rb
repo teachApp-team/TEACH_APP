@@ -13,6 +13,8 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.teacher = @current_teacher
     if @message.save
+      NotificationMailer.send_message(@message).deliver
+      # NotificationMailer.send_test(@message).deliver
       redirect_to '/news_field'
     else
       redirect_to '/messages/new'
