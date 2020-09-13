@@ -1,2 +1,44 @@
-<h1>Exams#show</h1>
-<p>Find me in app/views/exams/show.html.erb</p>
+<div style="text-align:center;">
+  <h1 class="mail-head" style="color: #0000AA">TEACH APP</h1>
+  <div style="margin: 0px 10px 0px 10px;">
+    Kosuke Fujitaaaa先生からHiroharu Haraaaa君に<br>新着メッセージがあります
+  </div>
+</div>
+
+<div style="margin: 20px 20px 0px 20px; box-shadow: 0 0 8px gray;padding: 20px 10px 50px 10px;">
+  <p>Kosuke Fujitaaaa先生</p>
+  <div style="background: linear-gradient(to right, #0000AA, #0000AA, #0000AA); color: white; padding: 20px;">
+    <p>明日のテストでは前回授業で扱ったa way that〜 や付帯状況のwithを問います。よく確認しておいてください。イディオムももちろん出します。</p>
+  </div>
+</div>
+<div style="margin-top: 20px;text-align: center;">
+  <a class="mail-btn" href="http://54.248.4.192/" role="button" >TEACH APPへ</a>
+</div>
+
+<style>
+  .mail-head {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 30px;
+  }
+  .mail-head:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    display: inline-block;
+    width: 70px;
+    height: 6px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    background: linear-gradient(to right, #0000CD	, #6495ED, #0000CD);
+    border-radius: 2px;
+  }
+  .mail-btn {
+    background-color: gainsboro;
+    padding: 10px;
+    font-weight: bold;
+    color: black;
+    border-radius: 5px;
+  }
+</style>

@@ -14,7 +14,7 @@ class NotificationMailer < ApplicationMailer
   def send_message(message)
     @message = message
     mail(
-      subject: "#{@message.teacher.full_name}先生からメッセージがあります。", #メールのタイトル
+      subject: "#{@message.teacher.full_name}先生から新着メッセージがあります", #メールのタイトル
       to: @message.student.mail,
       # to: 'hh.25799623@gmail.com',
       from: '"no-reply@teachapp.com" <no-reply@teachapp.com>'
