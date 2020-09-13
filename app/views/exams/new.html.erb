@@ -13,7 +13,6 @@
         <%= e.text_field :name, class: "form-control", placeholder: "科目名" %>
         <%= e.text_field :score, class: "form-control", placeholder: "点数"  %>
         <%= e.text_field :deviation, class: "form-control", placeholder: "偏差値"  %>
-        <%= e.select :judge, ["A","B","C","D","E","F"] , {}, class: "form-control", placeholder: "判定" %>
         <input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">
         <input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">
       </div>
@@ -43,14 +42,7 @@
     var input = '<div class="input_plural">'
         + '<input class="form-control" placeholder="科目名" type="text" name="exam[exam_subjects_attributes][' + num + '][name]" id="exam_exam_subjects_attributes_' + num + '_name" required>'
         + '<input class="form-control" placeholder="点数" type="text" name="exam[exam_subjects_attributes][' + num + '][score]" id="exam_exam_subjects_attributes_' + num + '_score" required>'
-        + '<input class="form-control" placeholder="偏差値" type="text" name="exam[exam_subjects_attributes][' + num + '][diviation]" id="exam_exam_subjects_attributes_' + num + '_diviation" required>'
-        + '<select class="form-control" placeholder="判定" type="select" name="exam[exam_subjects_attributes][' + num + '][judge]" id="exam_exam_subjects_attributes_' + num + '_judge" required>'
-        + '<option value="A">A</option>'
-        + '<option value="B">B</option>'
-        + '<option value="C">C</option>'
-        + '<option value="D">D</option>'
-        + '<option value="E">E</option>'
-        + '</select>'
+        + '<input class="form-control" placeholder="偏差値" type="text" name="exam[exam_subjects_attributes][' + num + '][deviation]" id="exam_exam_subjects_attributes_' + num + '_deviation" required>'
         + '<input type="button" value="＋" class="add pluralBtn" style="background-color: gainsboro;">'
         + '<input type="button" value="－" class="del pluralBtn" style="background-color: gainsboro;">'
         +'</div>'

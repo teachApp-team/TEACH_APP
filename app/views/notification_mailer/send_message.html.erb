@@ -1,5 +1,17 @@
+<div style="text-align:center;">
+  <h1 class="mail-head" style="color: #0000AA">TEACH APP</h1>
+  <div style="margin: 0px 10px 0px 10px;">
+    <%= @message.teacher.full_name %>先生から<%= @message.student.full_name %>君に<br>新着メッセージがあります
+  </div>
+</div>
 
+<div style="margin: 20px 20px 0px 20px; box-shadow: 0 0 8px gray;padding: 20px 10px 50px 10px;">
+  <p><%= @message.teacher.full_name %>先生</p>
+  <div style="background: linear-gradient(to right, #0000AA, #0000AA, #0000AA); color: white; padding: 20px;">
+    <p><%= @message.comment %></p>
+  </div>
+</div>
+<div style="margin-top: 20px;text-align: center;">
+  <a class="mail-btn" href="http://54.248.4.192/" role="button" style="background-color: gainsboro;padding: 10px;font-weight: bold;color: black;border-radius: 5px;">TEACH APPへ</a>
+</div>
 
-<h1><%= @message.comment %></h1>
-
-<%= link_to "TEACH APPへ", "http://54.248.4.192/" %>

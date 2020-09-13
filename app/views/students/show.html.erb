@@ -50,7 +50,8 @@
     </div>
     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
       <div>
-        <%= link_to "模試成績追加", "/students/new_exam", method: :get, style: "color: tomato;" %>
+        <%= link_to "模試成績追加", "/exams/new", method: :get, style: "color: tomato;" %>
+
       </div>
       <table class="table" border="1" style="border-collapse: collapse; margin-top: 5px;">
         <thead class="thead-dark">
@@ -63,25 +64,25 @@
           </tr>
         </thead>
         <tbody>
+        <% @exams.each do |e| %>
             <tr valign="middle">
               <!-- rowspanでセルを縦に結合 -->
               <!-- つまりrowspanの数は科目数 -->
-              <td rowspan="3" style="font-size: 14px;">第一回全国模試</td>
-              <td style="font-size: 14px;">国語</td>
-              <td style="font-size: 14px;">70</td>
-              <td style="font-size: 14px;">50</td>
-              <td rowspan="3" style="font-size: 14px;">A</td>
+              <td rowspan="<%= e.exam_subjects.length %>" style="font-size: 14px;"><%= e.name %></td>
+              <td style="font-size: 14px;"><%= e.exam_subjects[0].name %></td>
+              <td style="font-size: 14px;"><%= e.exam_subjects[0].score %></td>
+              <td style="font-size: 14px;"><%= e.exam_subjects[0].deviation %></td>
+              <td rowspan="<%= e.exam_subjects.length %>" style="font-size: 14px;"><%= e.judge %></td>
             </tr>
+          <% e.exam_subjects.each_with_index do |es, i| %>
+            <% next if i == 0 %>
             <tr valign="middle">
-              <td style="font-size: 14px;">数学</td>
-              <td style="font-size: 14px;">80</td>
-              <td style="font-size: 14px;">60</td>
+              <td style="font-size: 14px;"><%= es.name %></td>
+              <td style="font-size: 14px;"><%= es.score %></td>
+              <td style="font-size: 14px;"><%= es.deviation %></td>
             </tr>
-            <tr valign="middle">
-              <td style="font-size: 14px;">英語</td>
-              <td style="font-size: 14px;">60</td>
-              <td style="font-size: 14px;">50</td>
-            </tr>
+          <% end %>
+      <% end %>
           <tr valign="middle">
             <!-- rowspanでセルを縦に結合 -->
             <!-- つまりrowspanの数は科目数 -->
