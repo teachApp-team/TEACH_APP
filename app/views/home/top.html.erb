@@ -1,4 +1,7 @@
 <section>
+<div style="text-align: center;background-color:#99CCFF;">
+<%=  flash[:danger]  %>
+</div>
   <div class="top_container">
     <div class="login_container">
       <%= form_for(:session, method: :post, url: 'sessions/create') do |f| %>
