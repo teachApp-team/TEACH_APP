@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_11_133418) do
+ActiveRecord::Schema.define(version: 2020_09_29_122656) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -62,6 +62,15 @@ ActiveRecord::Schema.define(version: 2020_09_11_133418) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["student_id"], name: "index_learning_histories_on_student_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "learning_history_id"
+    t.bigint "teacher_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["learning_history_id"], name: "index_likes_on_learning_history_id"
+    t.index ["teacher_id"], name: "index_likes_on_teacher_id"
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -141,6 +150,8 @@ ActiveRecord::Schema.define(version: 2020_09_11_133418) do
   add_foreign_key "exams", "students"
   add_foreign_key "exams", "teachers"
   add_foreign_key "learning_histories", "students"
+  add_foreign_key "likes", "learning_histories"
+  add_foreign_key "likes", "teachers"
   add_foreign_key "messages", "students"
   add_foreign_key "messages", "teachers"
   add_foreign_key "questions", "students"

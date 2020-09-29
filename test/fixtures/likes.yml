@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  learning_history: one
+  teacher: one
+
+two:
+  learning_history: two
+  teacher: two
