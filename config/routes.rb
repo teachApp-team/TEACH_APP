@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   get 'student_sign_up', to: 'home#student_sign_up'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
   post 'student_users/create', to: 'students#create'
@@ -65,5 +64,6 @@ Rails.application.routes.draw do
   resources :exams, only: [:index, :create, :new, :edit, :show]
   resources :questions, only: [:new, :create]
   resources :replies, only: [:new, :create]
+  resources :likes, only: [:create, :destroy]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -59,28 +59,70 @@ $(function () {
           window.gon // => {}
       }
   });
-$('.good_font').hide();
   // Likeボタンクリック
 $('.good_buttons').on('click', function() {
   let $btn = $(this);
-  console.log("ボタン");
+  if($btn.hasClass('iam_student')){
+    return false
+  }
   // Likeボタンがonクラス持っていたら
   if ($btn.hasClass('on')) {
     $btn.removeClass('on');
     // 白抜きアイコンに戻す
     $btn.children("i").attr('class', 'far fa-thumbs-up LikesIcon-fa-heart');
     $btn.children('.good_font').hide();
+    let data = { 
+      learning_history_id: $(this).attr('learning-history-id'), 
+      teacher_id: $(this).attr('teacher-id'), 
+    }
+    $.ajax({
+      url: `likes/${data.learning_history_id}`,
+      type: 'DELETE',
+      data: data,
+      dataType: 'json'
+    })
   } else {
     $btn.addClass('on');
-    // ポイントは2つ！！
-    // ①アイコンを変更する
-    // far fa-heart（白抜きアイコン）
-    // ⇒ fas fa-heart（背景色つきアイコン）
-    // ②アニメーション+アイコン色変更用のheartクラスを付与する
     $btn.children('.good_font').fadeIn(800);
     $btn.children("i").attr('class', 'fas fa-thumbs-up LikesIcon-fa-heart heart');
+    let data = { 
+      learning_history_id: $(this).attr('learning-history-id'), 
+      teacher_id: $(this).attr('teacher-id'), 
+    }
+    $.ajax({
+      url: 'likes',
+      type: 'POST',
+      data: data,
+      dataType: 'json'
+    })
+      .done(function(response) {
+        $btn.children('.good_font.text').text(`${response.teacher_name}先生がいいねしました`)
+      })
   }
 });
+// const url = '/api/v1/s/space_calendars/publish_url'
+// const data = { 
+//   space_id: $(this).attr('space-id'), 
+//   space_organization_id: $(this).attr('space-organization-id'), 
+// }
+// $.ajax({
+//   url: url,
+//   type: 'POST',
+//   data: data,
+//   dataType: 'json'
+// })
+
+// protect_from_forgery except: [:publish_url]
+
+// .done(function(calendar) {
+//   // Show here on async. When the page is reloaded it is drawn by haml
+//   const destroyLink = addLink(calendar)
+//   $('#google-calendar-destroy').html(destroyLink)
+//   $('#google-calendar-tag').html(
+//     '<div class="tag is-primary">連携中</div>'
+//   )
+// })
+// .fail(function(calendar) {})
       
   
 
