@@ -14,6 +14,7 @@ class RepliesController < ApplicationController
   def create
     @reply = Reply.new(reply_params)
     if @reply.save
+      NotificationMailer.send_reply(@reply).deliver
       redirect_to "/news_field"
     else
       redirect_to "/replies/#{@reply.question.id}/new"
