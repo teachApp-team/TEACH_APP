@@ -58,7 +58,7 @@
         <div class="your_student_school">
           <p><%=s.school_of_choice %>志望</p>
         </div>
-        <%= link_to "削除", "/students/#{s.id}/unfasten", class: "btn btn-danger", method: :delete %> 
+        <%= link_to "削除", "/students/#{s.id}/unfasten", class: "btn btn-danger", method: :delete, data: { confirm: '削除しますか？' } %> 
       </div>
       <% end %>
     </div>

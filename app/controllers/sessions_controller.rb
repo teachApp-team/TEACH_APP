@@ -11,6 +11,7 @@ class SessionsController < ApplicationController
       session[:student_id] = student.id
       redirect_to '/news_field'
     elsif student.nil? && teacher.nil?
+      flash[:danger] = "ログインに失敗しました。"
       redirect_to '/'
     end
   end

@@ -167,7 +167,7 @@
 
 
 .teacher_card {
-  margin: 10px 100px;
+  margin: 10px 200px;
   padding: 10px 30px;
 }
 
@@ -302,6 +302,18 @@
 .message_icon {
   color: white;
 }
+
+.pagenation > ul {
+  margin-bottom: 0px;
+  padding: 0px 15px 30px 20px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.pagenation > ul > li {
+  padding: 10px;
+}
+
 
 @media (min-width: 0px) and (max-width: 900px) {
   .stu_card {
