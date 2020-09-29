@@ -1,4 +1,4 @@
-<div class="balloon" style="margin-top: 0px;">
+<div class="balloon" style="margin-top: 0px; margin-bottom: 8px;">
   <div class="stu_card_content">
     <div class="stu_card_content_subject">
       <% if variable&.subject %>
@@ -29,4 +29,15 @@
     </div>
   </div>
 </div>
+<div class="good_buttons">
+  <span class="good_font">
+    <%= image_tag variable.student.teacher.image.url, class: "good_stu_card_info_img_self" %>
+  </span>
+  <span class="good_font" style="font-size: 10px;">
+   Fujita先生がいいねしました
+  </span>  
+  <i class="far fa-thumbs-up LikesIcon-fa-heart"></i>
+
+</div>
+
   

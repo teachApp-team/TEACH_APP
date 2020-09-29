@@ -24,6 +24,10 @@
 //= require fullcalendar
 //= require_tree .
 
+
+
+
+
 $(function () {
   // 画面遷移を検知
   $(document).on('turbolinks:load', function () {
@@ -55,6 +59,28 @@ $(function () {
           window.gon // => {}
       }
   });
+$('.good_font').hide();
+  // Likeボタンクリック
+$('.good_buttons').on('click', function() {
+  let $btn = $(this);
+  console.log("ボタン");
+  // Likeボタンがonクラス持っていたら
+  if ($btn.hasClass('on')) {
+    $btn.removeClass('on');
+    // 白抜きアイコンに戻す
+    $btn.children("i").attr('class', 'far fa-thumbs-up LikesIcon-fa-heart');
+    $btn.children('.good_font').hide();
+  } else {
+    $btn.addClass('on');
+    // ポイントは2つ！！
+    // ①アイコンを変更する
+    // far fa-heart（白抜きアイコン）
+    // ⇒ fas fa-heart（背景色つきアイコン）
+    // ②アニメーション+アイコン色変更用のheartクラスを付与する
+    $btn.children('.good_font').fadeIn(800);
+    $btn.children("i").attr('class', 'fas fa-thumbs-up LikesIcon-fa-heart heart');
+  }
+});
       
   
 
