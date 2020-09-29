@@ -28,7 +28,15 @@ class NewsController < ApplicationController
       @news.push(m)
     end
     # newsの投稿日時から降順に並び替え
-    @news = @news.sort_by! { |n| n[:created_at] }.reverse!
+    @news = @news.sort_by! do |n|
+      if n.class.name == "Question" && n.replies.present?
+        # n.replies.last.created_at
+        n.replies.last.created_at 
+      else
+        n[:created_at]
+      end 
+    end
+    @news.reverse!
     @news = Kaminari.paginate_array(@news).page(params[:page]).per(25)
 
 
