@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_10_04_132616) do
-
+  
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
     t.datetime "end"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_132616) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "which"
+    t.string "image"
     t.index ["question_id"], name: "index_replies_on_question_id"
     t.index ["student_id"], name: "index_replies_on_student_id"
     t.index ["teacher_id"], name: "index_replies_on_teacher_id"
