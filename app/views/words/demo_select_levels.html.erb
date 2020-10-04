@@ -1,0 +1,9 @@
+<h1>レベルを選択して下さい</h1>
+<% @wordbook.levels.each do |level| %>
+  <div>
+    <p><%= level %></p>
+    <%= link_to "50単語", "/demo_test/#{@wordbook.id}/#{level}/50" %>
+    <%= link_to "100単語", "/demo_test/#{@wordbook.id}/#{level}/100" %>
+    <%= link_to "150単語", "/demo_test/#{@wordbook.id}/#{level}/150" %>
+  </div>
+<% end %>

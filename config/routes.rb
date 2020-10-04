@@ -58,6 +58,10 @@ Rails.application.routes.draw do
   # post 'sample', to: "teachers#sample"
 
   get 'replies/:question_id/new', to: "replies#new"
+  get 'fujita', to: "teachers#fujita"
+  get 'demo_select_books', to: "words#demo_select_books"
+  get 'demo_select_levels/:wordbook_id', to: "words#demo_select_levels"
+  get 'demo_test/:wordbook_id/:level/:words_limit', to: "words#demo_test"
 
   resources :events
   resources :messages
@@ -65,5 +69,7 @@ Rails.application.routes.draw do
   resources :questions, only: [:new, :create]
   resources :replies, only: [:new, :create]
   resources :likes, only: [:create, :destroy]
+  resources :words
+  resources :wordbooks
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

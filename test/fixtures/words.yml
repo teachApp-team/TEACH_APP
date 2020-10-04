@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  english: MyString
+  japanese: MyString
+  part: MyString
+  level: MyString
+  wordbook: one
+
+two:
+  english: MyString
+  japanese: MyString
+  part: MyString
+  level: MyString
+  wordbook: two

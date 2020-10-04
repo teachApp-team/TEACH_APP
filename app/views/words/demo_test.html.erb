@@ -1,0 +1,8 @@
+<h1>テストをやっております</h1>
+<p>問題</p>
+<p><%= @seleced_words[0].english %></p>
+<p>選択肢</p>
+<% @seleced_words.each_with_index do |word, index| %>
+  <% next if index == 0 %>
+  <p><%= word.japanese %></p>
+<% end %>

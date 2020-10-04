@@ -1,5 +1,5 @@
 class TeachersController < ApplicationController
-  before_action :auth_teacher, except: [:new, :create]
+  before_action :auth_teacher, except: [:new, :create, :fujita]
   def new
   end
 
@@ -72,6 +72,9 @@ class TeachersController < ApplicationController
     @events = Event.where(student_id: @current_teacher.id)
     @students = @current_teacher.students
     @student = Student.find(params[:id])
+  end
+
+  def fujita
   end
 
   private
