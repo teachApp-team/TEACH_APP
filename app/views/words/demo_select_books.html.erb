@@ -1,0 +1,4 @@
+<h1>テストする単語帳を選んでね</h1>
+<% Wordbook.all.each do |book| %>
+  <%= link_to book.name, "/demo_select_levels/#{book.id}", class: "btn btn-danger" %>
+<% end %>

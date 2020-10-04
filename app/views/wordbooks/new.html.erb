@@ -1,0 +1,11 @@
+<h1>新しい単語帳を作ります。</h1>
+<% @wordbooks.each do |book| %>
+  <p><%= book.name %> <%= book.id %></p>
+<% end %>
+
+<%= form_for @wordbook do |f| %>
+  <%= f.label :name, "単語帳のタイトル" %>
+  <%= f.text_field :name, class: "form-control" %>
+
+  <%= f.submit "送信", class: "btn btn-primary" %>
+<% end %>

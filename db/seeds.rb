@@ -15,16 +15,16 @@
 #     image: open("./db/icons/icon#{i}.jpeg")
 #   })
 # end
-[10].each do |i|
-  LearningHistory.create({
-    learning_time: "00:#{i}:00",
-    learning_text: "チャート式　第#{i}章",
-    comment: "今日は#{i}分学習しました。",
-    subject: "国語",
-    student_id: 1,
-    created_at: '2020/09/03 15:00:00'
-  })
-end
+# [10].each do |i|
+#   LearningHistory.create({
+#     learning_time: "00:#{i}:00",
+#     learning_text: "チャート式　第#{i}章",
+#     comment: "今日は#{i}分学習しました。",
+#     subject: "国語",
+#     student_id: 1,
+#     created_at: '2020/09/03 15:00:00'
+#   })
+# end
 
 # 2.times do |i|
 #   Message.create({
@@ -70,3 +70,31 @@ end
 #     image: open("./db/icons/icon#{i}.jpeg")
 #   })
 # end
+
+150.times do |i|
+  Word.create({
+    english: "basic_word#{i}",
+    japanese: "基礎単語#{i}",
+    part: "名詞",
+    level: "基礎",
+    wordbook_id: 4
+  })
+end
+150.times do |i|
+  Word.create({
+    english: "standard_word#{i}",
+    japanese: "標準単語#{i}",
+    part: "名詞",
+    level: "標準",
+    wordbook_id: 4
+  })
+end
+150.times do |i|
+  Word.create({
+    english: "super_word#{i}",
+    japanese: "発展単語#{i}",
+    part: "名詞",
+    level: "発展",
+    wordbook_id: 4
+  })
+end

@@ -1,0 +1,10 @@
+<h1>単語一覧</h1>
+<% @words.each do |w| %>
+  <p><%# "#{w.english w.japanese w.part w.level}レベル #{w.wordbook.name}" %></p>
+  <p>
+    <%= w.english %>, <%= w.japanese %>, <%= w.part %>, <%= w.level %>レベル, <%= w.wordbook.name %>
+    <%= link_to "編集", edit_word_path(w) %>
+    <%= link_to "削除", word_path(w), method: :delete, data: { confirm: '削除する？？本当に？？' } %>
+  </p>
+  
+<% end %>  

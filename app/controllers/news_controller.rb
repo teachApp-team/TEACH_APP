@@ -30,7 +30,6 @@ class NewsController < ApplicationController
     # newsの投稿日時から降順に並び替え
     @news = @news.sort_by! do |n|
       if n.class.name == "Question" && n.replies.present?
-        # n.replies.last.created_at
         n.replies.last.created_at 
       else
         n[:created_at]
@@ -38,10 +37,6 @@ class NewsController < ApplicationController
     end
     @news.reverse!
     @news = Kaminari.paginate_array(@news).page(params[:page]).per(25)
-
-
-
-
   end
 
   def new_learning_history
