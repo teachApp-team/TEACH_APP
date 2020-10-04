@@ -1,6 +1,6 @@
 <div class="fixed-top">
   <div class="collapse" id="navbarToggleExternalContent">
-    <div class="nav_self bg-dark p-4">
+    <div class="nav_self bg-dark p-2">
       <div class="self_img">  
       <% if @current_user&.image %>
       <% if @current_user.image.present? %>
@@ -20,33 +20,36 @@
       <% end %>
       </div>
     </div>    
-    <div class="bg-dark p-4">
+    <div class="bg-dark p-2">
       <% if @current_student %>
-        <a href="/students/<%= @current_student.id %>"><h5 class="text-white h4">プロフィール</h5></a>
+        <a href="/students/<%= @current_student.id %>"><h5 class="text-white h5">プロフィール</h5></a>
       <% else %>
-        <a href="/teachers/<%= @current_teacher.id %>"><h5 class="text-white h4">プロフィール</h5></a>
+        <a href="/teachers/<%= @current_teacher.id %>"><h5 class="text-white h5">プロフィール</h5></a>
       <% end %>
     </div>
-    <div class="bg-dark p-4">
+    <div class="bg-dark p-2">
       <% if @current_student %>
-        <a href="/students/history"><h5 class="text-white h4">学習履歴</h5></a>
+        <a href="/students/history"><h5 class="text-white h5">学習履歴</h5></a>
       <% else %>
-        <a href="/teachers/history"><h5 class="text-white h4">生徒の学習履歴</h5></a>
+        <a href="/teachers/history"><h5 class="text-white h5">生徒の学習履歴</h5></a>
       <% end %>
     </div>
-    <div class="bg-dark p-4">
+    <div class="bg-dark p-2">
       <% if @current_student %>
-        <a href="/students/show_test"><h5 class="text-white h4">テスト成績推移</h5></a>
+        <a href="/students/show_test"><h5 class="text-white h5">テスト成績推移</h5></a>
       <% else %>
-        <a href="/teachers/show_test"><h5 class="text-white h4">生徒のテスト成績推移</h5></a>
+        <a href="/teachers/show_test"><h5 class="text-white h5">生徒のテスト成績推移</h5></a>
       <% end %>
       </div>
-    <div class="bg-dark p-4">
+    <div class="bg-dark p-2">
       <% if @current_student %>
-        <a href="/students/show_calender"><h5 class="text-white h4">授業日程の確認</h5></a>
+        <a href="/students/show_calender"><h5 class="text-white h5">授業日程の確認</h5></a>
       <% else %>
-        <a href="/teachers/show_calender/1"><h5 class="text-white h4">生徒の授業日程</h5></a>
+        <a href="/teachers/show_calender/1"><h5 class="text-white h5">生徒の授業日程</h5></a>
       <% end %>
+    </div>
+    <div class="bg-dark p-2">
+      <a href="/home/show"><h5 class="text-white h5">単語テスト</h5></a>
     </div>
   </div>
   <nav class="navbar navbar-dark bg-dark">

@@ -1,0 +1,135 @@
+<div class="before_test_card" id="before_test_card" style="margin: 10%; text-align: center;">
+  <div>
+    <h5>システム英単語</h5>
+    <h5>標準レベル</h5>
+    <h5>50単語</h5>
+  </div>
+  <div>
+    以上でテストを開始してよろしいですか？
+  </div>
+  <div id="before_start_buttons">
+    <input type="button" class="start-test" id="start_test_btn" onclick="startTest()" value="スタート" >
+    <a href="/home/test" type="button">キャンセル</a>
+  </div>
+</div>
+
+<div id="middle_test">
+  <div class="progressWrapper">
+    <progress id="bar" value="0" max="1000" min="0"></progress>
+  </div>
+
+  <div id="question-wrapper">
+    <div class="question-card">
+      <div>Caluculation</div>
+      <div>名詞</div>
+    </div>
+    <div class="answer-card">
+      <ul>
+        <li class="alternative alternative0" id="real-answer"></li>
+        <li class="alternative alternative1"></li>
+        <li class="alternative alternative2"></li>
+        <li class="alternative alternative3"></li>
+        <li class="alternative">分からない</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="answer-wrapper">
+  <div class="judgement">
+    <div class="batsu" id="batsu"></div>
+    <div class="seikai" id="seikai"></div>
+  </div>
+  <div class="question-card">
+    <div>Caluculation</div>
+    <div>名詞</div>
+  </div>
+  <div class="answer">
+    <h3>計算</h3>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$('#answer-wrapper').hide();
+$('#middle_test').hide();
+const quizSet = [
+    {q: 'Caluculation', c: ['計算', '耕作', '文化', '美学']},
+    {q: 'Biology', c: ['B0', 'B1', 'B2', 'B3']},
+    {q: 'Accumulation', c: ['C0', 'C1', 'C2', 'C3']},
+  ];
+
+let currentNum = 0; // 現在出題中の問題数をカウント
+
+
+function startTest() {
+    $('#before_test_card').hide();
+    $('#middle_test').fadeIn(1000);
+    $('#seikai').hide();
+}
+
+var timer,
+limitMs = 0,
+restMs = 0,
+resolutionMs = 50,    /* NOTE: Too small value does not work on IE11. */
+maxBar;
+
+var countdown = function() {
+  restMs -= resolutionMs;
+  var restRate = (limitMs - restMs) / limitMs;
+  var restBarLength = maxBar * restRate
+  $('#bar').attr('value', restBarLength);
+  if (restMs < 0) {
+    resetTimer();
+    $('#middle_test').hide();
+    $('#answer-wrapper').fadeIn();
+    $('#seikai').hide();
+    setTimeout("restartTest()", 3000);
+  }
+};
+
+var resetTimer = function() {
+  clearInterval(timer);
+  limitMs = restMs = 5000;
+  $('#bar').attr('value', 0);
+  for (var i = 0; i < quizSet[currentNum].c.length; i++) {
+    choise = quizSet[currentNum].c[i];
+    console.log(choise)
+    $('.alternative' + i)[0].textContent = choise;
+  }
+  currentNum = currentNum + 1;
+};
+
+$(function() {
+  maxBar = $('#bar').attr('max');
+
+  $('#start_test_btn').on('click', function() {
+    resetTimer();
+    timer = setInterval('countdown()', resolutionMs);
+  });
+
+  $('.alternative').on('click', function() {
+    resetTimer();
+    $('#middle_test').hide();
+    $('#answer-wrapper').fadeIn();
+    if ($(this).attr('id') == 'real-answer') {
+      $('#batsu').hide();
+      $('#seikai').fadeIn();
+    } else {
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+    }
+    setTimeout("restartTest()", 3000);
+  });
+});
+
+function restartTest() {
+  $('#before_test_card').hide();
+  $('#answer-wrapper').hide();
+  $('#middle_test').fadeIn();
+  resetTimer();
+  timer = setInterval('countdown()', resolutionMs);
+}
+
+
+</script>
