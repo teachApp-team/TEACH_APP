@@ -18,6 +18,10 @@
     <div class="form-group">
       <%= f.label :content, "回答内容" %>
       <%= f.text_area :content, class: "form-control", id: "exampleFormControlTextarea1", rows: "3" %>
+
+  
+      <%= f.label :image, "画像の添付" %>
+      <%= f.file_field :image, class: "form-control-file", id: "exampleFormControlFile1" %>
     </div>
 
     <% if @current_teacher %>

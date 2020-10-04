@@ -27,6 +27,6 @@ class RepliesController < ApplicationController
   end
 
   def reply_params
-    params.require(:reply).permit(:teacher_id, :student_id, :content, :question_id, :which)
+    params.require(:reply).permit(:teacher_id, :student_id, :content, :question_id, :which, :image)
   end
 end

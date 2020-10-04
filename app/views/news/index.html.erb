@@ -91,6 +91,11 @@
       <% if r.which == "student" %>
       <div class="balloon_student" style="margin-bottom: 0px;">
         <div class="teacher_card_comment">
+          <% if r.image.present? %>
+            <div style="font-size: 12px;"><%= link_to "画像を表示", r.image.url %></div>
+          <% else %>
+            <div style="font-size: 12px;">画像なし</div>
+          <% end %>
           <p style="font-size: 11px;">To: <%=r.teacher.full_name %></p>
           <p><%=r.content %></p>
         </div>
@@ -98,6 +103,11 @@
       <% else %>
       <div class="balloon_teacher" style="margin-bottom: 0px;">
         <div class="teacher_card_comment">
+          <% if r.image.present? %>
+            <div style="font-size: 12px;"><%= link_to "画像を表示", r.image.url %></div>
+          <% else %>
+            <div style="font-size: 12px;">画像なし</div>
+          <% end %>
           <p style="font-size: 11px;">To: <%=r.student.full_name %></p>
           <p><%=r.content %></p>
         </div>

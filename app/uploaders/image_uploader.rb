@@ -7,7 +7,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
 
   #上限変更
-  process :resize_to_limit => [2000, 2000]
+  process :resize_to_limit => [10000, 10000]
 
   #JPGで保存
   process :convert => 'jpg'
@@ -23,8 +23,15 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   #ファイル名を変更し拡張子を同じにする
+  # def filename
+  #   original_filename if original_filename
+  # end
   def filename
-    original_filename if original_filename
+    if original_filename.present?
+      time = Time.now
+      name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+      name.downcase
+    end
   end
 
   # Choose what kind of storage to use for this uploader:
