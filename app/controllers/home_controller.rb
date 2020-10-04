@@ -1,4 +1,13 @@
 class HomeController < ApplicationController
+  def show
+  end
+
+  def level
+  end
+
+  def test
+  end
+
   def top
     if @current_user
       redirect_to '/news_field'

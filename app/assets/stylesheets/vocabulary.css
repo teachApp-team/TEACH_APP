@@ -1,0 +1,149 @@
+@charset "UTF-8";
+.vocabulary-text > ul {
+  padding: 0;
+}
+
+.vocabulary-text > ul li {
+  color: black;
+  position: relative;
+  background: #f1f8ff;
+  /*バーの色*/
+  line-height: 1.5;
+  padding: 0.5em;
+  margin-bottom: 8px;
+  border-left: solid 35px #5c9ee7;
+  /*先の色＝アイコン裏の色*/
+  list-style-type: none !important;
+}
+
+.vocabulary-level > ul {
+  padding: 0;
+}
+
+.vocabulary-level > ul li {
+  color: black;
+  position: relative;
+  background: #f1f8ff;
+  /*バーの色*/
+  line-height: 1.5;
+  padding: 0.5em;
+  margin-bottom: 8px;
+  border-left: solid 35px #5c9ee7;
+  /*先の色＝アイコン裏の色*/
+  list-style-type: none !important;
+}
+
+.progressWrapper {
+  width: 100%;
+}
+
+progress {
+  /* Turn off default styling. */
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  height: 10px;
+  width: 100%;
+  color: red;
+  /* IE */
+  background: navy;
+  /* Firefox */
+}
+
+/* Chrome needs '-webkit-progress-value' and '-webkit-progress-bar' attributes. */
+progress::-webkit-progress-value {
+  background: red;
+}
+
+progress::-webkit-progress-bar {
+  background: navy;
+}
+
+/* Firefox needs only '-moz-progress-bar' attiribute. */
+progress::-moz-progress-bar {
+  background: red;
+}
+
+.answer-card > ul, ol {
+  padding: 0;
+}
+
+.answer-card > ul li {
+  position: relative;
+  list-style-type: none !important;
+  /*ポチ消す*/
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-bottom: 5px;
+  line-height: 1.5;
+  background: #dbebf8;
+  vertical-align: middle;
+  color: #505050;
+  border-radius: 15px 0px 0px 15px;
+  /*左側の角丸く*/
+}
+
+.answer-card > ul li:before {
+  display: inline-block;
+  vertical-align: middle;
+  /*以下白丸つくる*/
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: #fff;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.alternative {
+  padding: 5px 100px;
+}
+
+.batsu {
+  width: 100px;
+  /*枠の大きさ*/
+  height: 100px;
+  /*枠の大きさ*/
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.batsu::before, .batsu::after {
+  content: "";
+  width: 100%;
+  /*バツ線の長さ*/
+  height: 10px;
+  /*バツ線の太さ*/
+  background: blue;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  position: absolute;
+  top: calc(14% - 5px);
+  left: 14%;
+}
+
+.batsu::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  left: auto;
+  right: 14%;
+}
+
+.seikai {
+  width: 100px;
+  height: 100px;
+  border: 10px solid red;
+  /* ←上下20pxのボーダー */
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80px;
+  /* ←円の高さ100px - 上下のボーダー20px */
+}
+/*# sourceMappingURL=vocabulary.css.map */
