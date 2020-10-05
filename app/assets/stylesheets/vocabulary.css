@@ -16,11 +16,11 @@
   list-style-type: none !important;
 }
 
-.vocabulary-level > ul {
+.vocabulary-level ul {
   padding: 0;
 }
 
-.vocabulary-level > ul li {
+.vocabulary-level ul li {
   color: black;
   position: relative;
   background: #f1f8ff;
@@ -35,6 +35,14 @@
 
 .progressWrapper {
   width: 100%;
+  margin-top: 10px;
+}
+
+.words-list li, ol li {
+  line-height: 1.5;
+  /*文の行高*/
+  padding: 0.5em 0;
+  /*前後の文との余白*/
 }
 
 progress {
@@ -145,5 +153,16 @@ progress::-moz-progress-bar {
   text-align: center;
   line-height: 80px;
   /* ←円の高さ100px - 上下のボーダー20px */
+}
+
+.question-word {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.question-word-p {
+  text-align: center;
+  margin-bottom: 15px;
 }
 /*# sourceMappingURL=vocabulary.css.map */
