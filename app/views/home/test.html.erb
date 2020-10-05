@@ -5,11 +5,13 @@
     <h5>50単語</h5>
   </div>
   <div>
-    以上でテストを開始してよろしいですか？
+    <p style="font-size: 13px;">以上でテストを開始してよろしいですか？</p>
   </div>
   <div id="before_start_buttons">
-    <input type="button" class="start-test" id="start_test_btn" onclick="startTest()" value="スタート" >
-    <a href="/home/test" type="button">キャンセル</a>
+    <input type="button" class="start-test" id="start_test_btn" style="background-color: gainsboro; margin: 15px; padding:5px;" onclick="startTest()" value="スタート" >
+    <div>
+      <a href="/home/test" type="button">キャンセル</a>
+    </div>
   </div>
 </div>
 
@@ -20,8 +22,8 @@
 
   <div id="question-wrapper">
     <div class="question-card">
-      <div>Caluculation</div>
-      <div>名詞</div>
+      <div class="question-word">Caluculation</div>
+      <div class="question-word-p">名詞</div>
     </div>
     <div class="answer-card">
       <ul>
