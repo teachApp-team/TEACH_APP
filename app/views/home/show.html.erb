@@ -6,8 +6,9 @@
   </h4>
   <div class="vocabulary-text">
     <ul>
-      <a href="/home/level"><li>システム英単語</li></a>
-      <a href="/home/level"><li>鉄壁</li></a>
+    <% Wordbook.all.each do |book| %>
+      <a href="/home/level/<%= book.id %>"><li><%= book.name %></li></a>
+    <% end %>
     </ul>
   </div>
 </div>
