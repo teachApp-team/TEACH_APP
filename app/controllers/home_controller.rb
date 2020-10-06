@@ -3,9 +3,14 @@ class HomeController < ApplicationController
   end
 
   def level
+    @levels = Wordbook.find(params['id']).levels
+    @wordbook = Wordbook.find(params['id'])
   end
 
   def test
+    @wordbook = Wordbook.find(params['wordbook_id'])
+    @words = @wordbook.leveling_words(params['level'], params['limit'])
+    gon_words = @words
   end
 
   def top

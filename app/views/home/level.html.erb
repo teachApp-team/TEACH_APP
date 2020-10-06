@@ -6,24 +6,14 @@
   </h4>
   <div class="vocabulary-level">
     <ul>
-      <li>基礎レベル</li>
-        <div class="words-list" style="padding: 10px 7%;">
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">50単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">100単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">150単語</a></div>
-        </div>
-      <li>標準レベル</li>
+      <% @levels.each do |level| %>
+        <li><%= level %></li>
         <div style="padding: 10px 7%;">
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">50単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">100単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">150単語</a></div>
+          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/50" style="color: black;">50単語</a></div>
+          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/100" style="color: black;">100単語</a></div>
+          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/150" style="color: black;">150単語</a></div>
         </div>
-      <li>発展レベル</li>
-      <div style="padding: 10px 7%;">
-        <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">50単語</a></div>
-        <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">100単語</a></div>
-        <div style="margin-bottom: 10px;"><a href="/home/test" style="color: black;">150単語</a></div>
-      </div>
-    </ul>
+      <% end %>
+      </ul>
   </div>
 </div>

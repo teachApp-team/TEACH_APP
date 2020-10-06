@@ -1,4 +1,7 @@
 <div class="before_test_card" id="before_test_card" style="margin: 10%; text-align: center;">
+  <% @words.each do |word| %>
+    <p><%= word.japanese %></p>
+  <% end %>  
   <div>
     <h5>システム英単語</h5>
     <h5>標準レベル</h5>
