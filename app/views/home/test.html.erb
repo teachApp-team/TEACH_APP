@@ -54,10 +54,54 @@
   </div>
 </div>
 
+<div id="after-question">
+  <div style="padding: 10px;">
+    <div>
+      あなたの得点は...
+    </div>
+    <div style="text-align: center;">
+      <span>30</span><span>点です</span>
+    </div>
+  </div>
+  <div style="padding: 10px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">問題番号</th>
+          <th scope="col">英単語</th>
+          <th scope="col">日本語</th>
+          <th scope="col">品詞</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Caluculation</td>
+          <td>計算</td>
+          <td>名詞</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Biology</td>
+          <td>生物（学）</td>
+          <td>名詞</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Accumulation</td>
+          <td>蓄積</td>
+          <td>名詞</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 
 <script type="text/javascript">
 $('#answer-wrapper').hide();
 $('#middle_test').hide();
+$('#after-question').hide();
 const quizSet = [
     {q: 'Caluculation', c: ['計算', '耕作', '文化', '美学']},
     {q: 'Biology', c: ['B0', 'B1', 'B2', 'B3']},
@@ -85,11 +129,20 @@ var countdown = function() {
   var restBarLength = maxBar * restRate
   $('#bar').attr('value', restBarLength);
   if (restMs < 0) {
-    resetTimer();
-    $('#middle_test').hide();
-    $('#answer-wrapper').fadeIn();
-    $('#seikai').hide();
-    setTimeout("restartTest()", 3000);
+    if (quizSet.length  == currentNum) {
+      $('#middle_test').hide();
+      $('#answer-wrapper').hide();
+      $('#seikai').hide();
+      $('#after-question').fadeIn();
+    } else {
+      console.log(quizSet.length);
+      console.log(currentNum);
+      resetTimer();
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      setTimeout("restartTest()", 3000);
+    }
   }
 };
 
@@ -134,6 +187,4 @@ function restartTest() {
   $('#middle_test').fadeIn();
   timer = setInterval('countdown()', resolutionMs);
 }
-
-
 </script>
