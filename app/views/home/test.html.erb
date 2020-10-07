@@ -29,14 +29,13 @@
       <div class="question-word-p">名詞</div>
     </div>
     <div class="answer-card">
-      <ul>
+      <ul id="alternative">
         <li class="alternative alternative0" id="real-answer"></li>
         <li class="alternative alternative1"></li>
         <li class="alternative alternative2"></li>
         <li class="alternative alternative3"></li>
-        <li class="alternative">分からない</li>
-      </ul>
     </div>
+    <div class="alternative">分からない</div>
   </div>
 </div>
 
@@ -54,7 +53,7 @@
   </div>
 </div>
 
-<div id="afterquestion">
+<div id="after-question">
   <div style="padding: 10px;">
     <div>
       あなたの得点は...
@@ -101,6 +100,7 @@
 <script type="text/javascript">
 $('#answer-wrapper').hide();
 $('#middle_test').hide();
+$('#after-question').hide();
 
 
 const quizSet = gon.words
@@ -112,6 +112,14 @@ function startTest() {
     $('#before_test_card').hide();
     $('#middle_test').fadeIn(1000);
     $('#seikai').hide();
+}
+
+function shuffleContent(container) {
+	var content = container.find("> *");
+	var total = content.size();
+	content.each(function() {
+		content.eq(Math.floor(Math.random()*total)).prependTo(container);
+	});
 }
 
 var timer,
@@ -148,11 +156,18 @@ var resetTimer = function() {
   limitMs = restMs = 5000;
   $('#bar').attr('value', 0);
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
+    question = quizSet[currentNum].q;
+    console.log('問題');
+    console.log(question);
     choise = quizSet[currentNum].c[i];
     console.log(choise)
+    $('.question-word')[0].textContent = question;
     $('.alternative' + i)[0].textContent = choise;
   }
   currentNum = currentNum + 1;
+  $(function() {
+	shuffleContent($("ul#alternative"));
+  });
 };
 
 $(function() {
