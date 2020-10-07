@@ -13,14 +13,17 @@ class Wordbook < ApplicationRecord
   def testabe_words(level, limit)
     words = self.leveling_words(level, limit)
     c_words = words.map do |w|
-      shuffle_words = words.order("RAND()").limit(4)
+      shuffle_words = words.order("RAND()").limit(3)
+      shuffle_words = shuffle_words.map {|word| word.japanese}
+      shuffle_words.push(w.japanese)
+      shuffle_words.shuffle
       {
         q: w.english,
         c: [
-          shuffle_words[0].japanese,
-          shuffle_words[1].japanese,
-          shuffle_words[2].japanese,
-          shuffle_words[3].japanese,
+          shuffle_words[0],
+          shuffle_words[1],
+          shuffle_words[2],
+          shuffle_words[3],
         ]
       }
     end
