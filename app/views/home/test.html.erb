@@ -58,11 +58,8 @@
 <script type="text/javascript">
 $('#answer-wrapper').hide();
 $('#middle_test').hide();
-const quizSet = [
-    {q: 'Caluculation', c: ['計算', '耕作', '文化', '美学']},
-    {q: 'Biology', c: ['B0', 'B1', 'B2', 'B3']},
-    {q: 'Accumulation', c: ['C0', 'C1', 'C2', 'C3']},
-  ];
+
+const quizSet = gon.words
 
 let currentNum = 0; // 現在出題中の問題数をカウント
 

@@ -10,7 +10,7 @@ class HomeController < ApplicationController
   def test
     @wordbook = Wordbook.find(params['wordbook_id'])
     @words = @wordbook.leveling_words(params['level'], params['limit'])
-    gon_words = @words
+    gon.words = @wordbook.testabe_words(params['level'], params['limit'])
   end
 
   def top
