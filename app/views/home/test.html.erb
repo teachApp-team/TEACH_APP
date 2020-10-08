@@ -139,8 +139,6 @@ var countdown = function() {
       p.style.color = 'red';
       resultQuestion();
       postResult(student_id, wordtest_id, question_id, false)
-      console.log(quizSet.length);
-      console.log(currentNum);
       resetTimer();
       $('#middle_test').hide();
       $('#answer-wrapper').fadeIn();
@@ -166,9 +164,6 @@ var resetTimer = function() {
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
     question = quizSet[currentNum].q;
     question_id = quizSet[currentNum].q_id;
-    console.log('問題');
-    console.log(question);
-    console.log(question_id)
     choise = quizSet[currentNum].c[i];
     $('.question-word')[0].textContent = question;
     $('.alternative' + i)[0].textContent = choise;
@@ -203,6 +198,9 @@ $(function() {
       postResult(student_id, wordtest_id, question_id, false)
     }
     if (quizSet.length  == currentNum) {
+      clearInterval(timer);
+      limitMs = restMs = 5000;
+      $('#bar').attr('value', 0);
       setTimeout("finishTest();", 3000);
     } else {
       resetTimer();
