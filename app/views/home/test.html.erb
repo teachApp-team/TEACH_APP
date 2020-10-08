@@ -128,16 +128,12 @@ var countdown = function() {
   var restRate = (limitMs - restMs) / limitMs;
   var restBarLength = maxBar * restRate
   $('#bar').attr('value', restBarLength);
-  if (restMs < 0) {
+  if (restMs == 0.0 ) {
     if (quizSet.length  == currentNum) {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
+      finishTest();
       postResult(student_id, wordtest_id, question_id, false)
-      $('#middle_test').hide();
-      $('#answer-wrapper').hide();
-      $('#seikai').hide();
-      $('#batsu').hide();
-      $('#after-question').fadeIn();
     } else {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
@@ -154,6 +150,16 @@ var countdown = function() {
     }
   }
 };
+
+function finishTest() {
+  var p = document.getElementById('answer-line' + currentNum);
+  p.style.color = 'red';
+  $('#middle_test').hide();
+  $('#answer-wrapper').hide();
+  $('#seikai').hide();
+  $('#batsu').hide();
+  $('#after-question').fadeIn();
+}
 
 var resetTimer = function() {
   clearInterval(timer);
@@ -199,8 +205,12 @@ $(function() {
       p.style.color = 'red';
       postResult(student_id, wordtest_id, question_id, false)
     }
-    resetTimer();
-    setTimeout("restartTest()", 3000);
+    if (quizSet.length  == currentNum) {
+      setTimeout("finishTest();", 3000);
+    } else {
+      resetTimer();
+      setTimeout("restartTest()", 3000);
+    }
   });
   $('.noidea-btn').on('click', function() {
     resultQuestion();
