@@ -208,15 +208,30 @@ $(function() {
     }
   });
   $('.noidea-btn').on('click', function() {
-    resultQuestion();
-    $('#middle_test').hide();
-    $('#answer-wrapper').fadeIn();
-    $('#seikai').hide();
-    $('#batsu').fadeIn();
-    var p = document.getElementById('answer-line' + currentNum);
-    p.style.color = 'red';
-    resetTimer();
-    setTimeout("restartTest()", 3000);
+    if (quizSet.length  == currentNum) {
+      postResult(student_id, wordtest_id, question_id, false)
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      clearInterval(timer);
+      limitMs = restMs = 5000;
+      $('#bar').attr('value', 0);
+      setTimeout("finishTest();", 3000);
+    } else {  
+      postResult(student_id, wordtest_id, question_id, false)
+      resultQuestion();
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      resetTimer();
+      setTimeout("restartTest()", 3000);
+    }
   });
 });
 
