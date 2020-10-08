@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_132616) do
+ActiveRecord::Schema.define(version: 2020_10_08_112448) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -115,8 +115,10 @@ ActiveRecord::Schema.define(version: 2020_10_04_132616) do
     t.boolean "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "word_test_id"
     t.index ["student_id"], name: "index_results_on_student_id"
     t.index ["word_id"], name: "index_results_on_word_id"
+    t.index ["word_test_id"], name: "index_results_on_word_test_id"
   end
 
   create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -155,6 +157,13 @@ ActiveRecord::Schema.define(version: 2020_10_04_132616) do
     t.index ["teacher_id"], name: "index_tests_on_teacher_id"
   end
 
+  create_table "word_tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_word_tests_on_student_id"
+  end
+
   create_table "wordbooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -188,9 +197,11 @@ ActiveRecord::Schema.define(version: 2020_10_04_132616) do
   add_foreign_key "replies", "students"
   add_foreign_key "replies", "teachers"
   add_foreign_key "results", "students"
+  add_foreign_key "results", "word_tests"
   add_foreign_key "results", "words"
   add_foreign_key "students", "teachers"
   add_foreign_key "tests", "students"
   add_foreign_key "tests", "teachers"
+  add_foreign_key "word_tests", "students"
   add_foreign_key "words", "wordbooks"
 end

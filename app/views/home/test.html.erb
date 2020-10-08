@@ -82,6 +82,8 @@
       <% end %> 
       </tbody>
     </table>
+    <div id="student-id" student-id="<%= @current_student.id %>"></div>
+    <div id="wordtest-id" wordtest-id="<%= @wordtest.id %>"></div>
   </div>
 </div>
 
@@ -96,6 +98,8 @@ const quizSet = gon.words
 
 let currentNum = 0; // 現在出題中の問題数をカウント
 
+const student_id = $("#student-id").attr('student-id')  
+const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
 
 function startTest() {
     $('#before_test_card').hide();
@@ -111,6 +115,7 @@ function shuffleContent(container) {
 	});
 }
 
+var question_id
 var timer,
 limitMs = 0,
 restMs = 0,
@@ -127,6 +132,7 @@ var countdown = function() {
     if (quizSet.length  == currentNum) {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
+      postResult(student_id, wordtest_id, question_id, false)
       $('#middle_test').hide();
       $('#answer-wrapper').hide();
       $('#seikai').hide();
@@ -136,6 +142,7 @@ var countdown = function() {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
       resultQuestion();
+      postResult(student_id, wordtest_id, question_id, false)
       console.log(quizSet.length);
       console.log(currentNum);
       resetTimer();
@@ -154,6 +161,10 @@ var resetTimer = function() {
   $('#bar').attr('value', 0);
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
     question = quizSet[currentNum].q;
+    question_id = quizSet[currentNum].q_id;
+    console.log('問題');
+    console.log(question);
+    console.log(question_id)
     choise = quizSet[currentNum].c[i];
     $('.question-word')[0].textContent = question;
     $('.alternative' + i)[0].textContent = choise;
@@ -180,11 +191,13 @@ $(function() {
       $('#seikai').fadeIn();
       totalscore = totalscore + 1;
       $('#result-num')[0].textContent = totalscore;
+      postResult(student_id, wordtest_id, question_id, true)
     } else {
       $('#seikai').hide();
       $('#batsu').fadeIn();
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
+      postResult(student_id, wordtest_id, question_id, false)
     }
     resetTimer();
     setTimeout("restartTest()", 3000);
@@ -214,5 +227,23 @@ function resultQuestion() {
   choise = quizSet[currentNum - 1].c[0];
   $('.question-english')[0].textContent = question;
   $('.question-japanese')[0].textContent = choise;
-}
+ }
+function postResult(student_id, wordtest_id, question_id, isCorrect){
+  const data = {
+    student_id: student_id,
+    word_test_id: wordtest_id,
+    correct: isCorrect,
+    word_id: question_id
+  }
+  $.ajax({
+    url: '/results',
+    type: 'POST',
+    data: data,
+    dataType: 'json'
+  }).done(function(response){
+    console.log(response)
+  }).fail(function(error){
+    console.log(error)
+  })
+
 </script>
