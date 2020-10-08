@@ -21,7 +21,7 @@
   </div>
 
   <div id="question-wrapper">
-    <div class="question-card">
+    <div class="question-card box13" style="margin:40px 13%">
       <div class="question-word"></div>
       <div class="question-word-p">名詞</div>
     </div>
@@ -43,23 +43,26 @@
     <div class="batsu" id="batsu"></div>
     <div class="seikai" id="seikai"></div>
   </div>
-  <div class="question-card">
-    <div class="question-english">Caluculation</div>
+  <div class="question-card box17" style="text-align: center;margin: 30px 6%;">
+    <h2 class="question-english">Caluculation</h2>
     <div>名詞</div>
   </div>
-  <div class="answer">
-    <h3 class="question-japanese">計算</h3>
+  <div class="answer box11" style="text-align: center;">
+    <span>答え：</span> <span class="question-japanese" style="font-size: 25px;">計算</span>
   </div>
 </div>
 
-<div id="afterquestion">
+<div id="after-question" style="text-align: center;">
   <div style="padding: 10px;">
-    <div>
-      <%= @words.length %>問中
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="question-circle">
+        <div><%= @words.length %>問中</div>
+        <span id="result-num" style="font-size: 25px;">0</span><span>問正解</span>
+      </div>
     </div>
-    <div style="text-align: center;">
-      <span id="result-num">0</span><span>問正解</span>
-    </div>
+  </div>
+  <div class="after_test_buttons">
+    <a href="#" class="btn-flat-simple" type="button"><i class="fa fa-caret-right"></i>終了する</a>
   </div>
   <div style="padding: 10px;">
     <table class="table table-bordered">
