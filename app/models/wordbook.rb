@@ -32,6 +32,7 @@ class Wordbook < ApplicationRecord
       index+= 3
       {
         q: w.english,
+        q_id: w.id,
         c: [
           shuffle_words[0],
           shuffle_words[1],

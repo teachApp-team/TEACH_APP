@@ -93,6 +93,8 @@
         </tr>
       </tbody>
     </table>
+    <div id="student-id" student-id="<%= @current_student.id %>"></div>
+    <div id="wordtest-id" wordtest-id="<%= @wordtest.id %>"></div>
   </div>
 </div>
 
@@ -121,6 +123,7 @@ function shuffleContent(container) {
 	});
 }
 
+var question_id
 var timer,
 limitMs = 0,
 restMs = 0,
@@ -156,6 +159,7 @@ var resetTimer = function() {
   $('#bar').attr('value', 0);
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
     question = quizSet[currentNum].q;
+    question_id = quizSet[currentNum].q_id;
     console.log('問題');
     console.log(question);
     choise = quizSet[currentNum].c[i];
@@ -181,9 +185,22 @@ $(function() {
     resetTimer();
     $('#middle_test').hide();
     $('#answer-wrapper').fadeIn();
+    const url = '/results'
+    const student_id = $("#student-id").attr('student-id')  
+    const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
+    console.log('dounanndeysou- -----------------------j')
+    console.log(student_id)
+    console.log(wordtest_id)
+    console.log(question_id)
     if ($(this).attr('id') == 'real-answer') {
       $('#batsu').hide();
       $('#seikai').fadeIn();
+      const data = {
+        student_id: student_id,
+        word_test_id: wordtest_id,
+        correct: true,
+        word_id: question_id
+      }
     } else {
       $('#seikai').hide();
       $('#batsu').fadeIn();
