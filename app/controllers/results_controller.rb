@@ -11,7 +11,7 @@ class ResultsController < ApplicationController
   
   private
   def result_params
-    params.permit(:student_id, :word_id, :correct)
+    params.permit(:student_id, :word_id, :correct, :word_test_id)
   end
 end
 
@@ -36,3 +36,12 @@ end
 #   data: data,
 #   dataType: 'json'
 # })
+# .done(function(calendar) {
+#   // Show here on async. When the page is reloaded it is drawn by haml
+#   const destroyLink = addLink(calendar)
+#   $('#google-calendar-destroy').html(destroyLink)
+#   $('#google-calendar-tag').html(
+#     '<div class="tag is-primary">連携中</div>'
+#   )
+# })
+# .fail(function(calendar) {})
