@@ -128,7 +128,7 @@ var countdown = function() {
   var restRate = (limitMs - restMs) / limitMs;
   var restBarLength = maxBar * restRate
   $('#bar').attr('value', restBarLength);
-  if (restMs == 0.0 ) {
+  if (restMs === 0.0 ) {
     if (quizSet.length  == currentNum) {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
