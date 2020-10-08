@@ -220,7 +220,7 @@ progress::-moz-progress-bar {
   text-align: right;
 }
 
-.btn-flat-simple {
+.before_start_cancel_buttons .btn-flat-simple {
   position: relative;
   display: inline-block;
   font-weight: bold;
@@ -229,4 +229,73 @@ progress::-moz-progress-bar {
   color:  #0033CC;
   background: #ECECEC;
   transition: .4s;
+}
+
+.after_test_buttons {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.after_test_buttons .btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color:  red;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.question-circle {
+  padding-top: 16px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: skyblue;/*背景色*/
+}
+
+.box11{
+  padding: 20px 20px;
+  margin: 2em 20%;
+  color: red;
+  background: white;
+  border-top: solid 5px #5d627b;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.box11 span {
+  margin: 0; 
+  padding: 0;
+}
+
+.box17{
+  margin:2em 20%;
+  position: relative;
+  padding: 20px 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+.box17:before, .box17:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: black;
+}
+.box17:before {left: 10px;}
+.box17:after {right: 10px;}
+.box17 p {
+  margin: 0; 
+  padding: 0;
+}
+.box13 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #FFF;
+  background:#6eb7ff;
+  border-bottom: solid 6p#3f87ce;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
 }
