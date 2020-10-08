@@ -108,6 +108,8 @@ const quizSet = gon.words
 
 let currentNum = 0; // 現在出題中の問題数をカウント
 
+const student_id = $("#student-id").attr('student-id')  
+const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
 
 function startTest() {
     $('#before_test_card').hide();
@@ -137,11 +139,13 @@ var countdown = function() {
   $('#bar').attr('value', restBarLength);
   if (restMs < 0) {
     if (quizSet.length  == currentNum) {
+      postResult(student_id, wordtest_id, question_id, false)
       $('#middle_test').hide();
       $('#answer-wrapper').hide();
       $('#seikai').hide();
       $('#after-question').fadeIn();
     } else {
+      postResult(student_id, wordtest_id, question_id, false)
       console.log(quizSet.length);
       console.log(currentNum);
       resetTimer();
@@ -162,6 +166,7 @@ var resetTimer = function() {
     question_id = quizSet[currentNum].q_id;
     console.log('問題');
     console.log(question);
+    console.log(question_id)
     choise = quizSet[currentNum].c[i];
     console.log(choise)
     $('.question-word')[0].textContent = question;
@@ -182,28 +187,17 @@ $(function() {
   });
 
   $('.alternative').on('click', function() {
-    resetTimer();
-    $('#middle_test').hide();
+   $('#middle_test').hide();
     $('#answer-wrapper').fadeIn();
-    const url = '/results'
-    const student_id = $("#student-id").attr('student-id')  
-    const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
-    console.log('dounanndeysou- -----------------------j')
-    console.log(student_id)
-    console.log(wordtest_id)
-    console.log(question_id)
     if ($(this).attr('id') == 'real-answer') {
       $('#batsu').hide();
       $('#seikai').fadeIn();
-      const data = {
-        student_id: student_id,
-        word_test_id: wordtest_id,
-        correct: true,
-        word_id: question_id
-      }
+      postResult(student_id, wordtest_id, question_id, true)
     } else {
       $('#seikai').hide();
       $('#batsu').fadeIn();
+      postResult(student_id, wordtest_id, question_id, false)
+      resetTimer();
     }
     setTimeout("restartTest()", 3000);
   });
@@ -214,5 +208,24 @@ function restartTest() {
   $('#answer-wrapper').hide();
   $('#middle_test').fadeIn();
   timer = setInterval('countdown()', resolutionMs);
+}
+
+function postResult(student_id, wordtest_id, question_id, isCorrect){
+  const data = {
+    student_id: student_id,
+    word_test_id: wordtest_id,
+    correct: isCorrect,
+    word_id: question_id
+  }
+  $.ajax({
+    url: '/results',
+    type: 'POST',
+    data: data,
+    dataType: 'json'
+  }).done(function(response){
+    console.log(response)
+  }).fail(function(error){
+    console.log(error)
+  })
 }
 </script>
