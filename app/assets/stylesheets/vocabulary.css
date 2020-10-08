@@ -51,26 +51,29 @@ progress {
   -moz-appearance: none;
   -webkit-appearance: none;
   border: 0;
-  height: 10px;
+  height: 16px;
   width: 100%;
-  color: red;
+  color: navy;
   /* IE */
-  background: navy;
+  background: white;
   /* Firefox */
+  border: solid 1px #212529;
+  border-left: none;
+  border-right: none;
 }
 
 /* Chrome needs '-webkit-progress-value' and '-webkit-progress-bar' attributes. */
 progress::-webkit-progress-value {
-  background: red;
+  background: navy;
 }
 
 progress::-webkit-progress-bar {
-  background: navy;
+  background: white;
 }
 
 /* Firefox needs only '-moz-progress-bar' attiribute. */
 progress::-moz-progress-bar {
-  background: red;
+  background: navy;
 }
 
 .answer-card > ul, ol {
@@ -82,7 +85,7 @@ progress::-moz-progress-bar {
   list-style-type: none !important;
   /*ポチ消す*/
   padding: 0.5em 0.5em 0.5em 0.5em;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   line-height: 1.5;
   background: #dbebf8;
   vertical-align: middle;
@@ -164,5 +167,84 @@ progress::-moz-progress-bar {
 .question-word-p {
   text-align: center;
   margin-bottom: 15px;
+}
+
+.noidea-button > .btn {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.noidea-button > html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.noidea-button > .btn, a.btn, button.btn {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 5px 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+  background-color: #FFCC99;
+}
+
+.noidea-button > input.btn--red.btn--cubic {
+  border-bottom: 5px solid #FFCC00;
+}
+
+.noidea-button > input.btn--red.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid #FFCC00;
+}
+
+.noidea-button > input.btn--radius {
+  border-radius: 100vh;
+}
+
+.noidea-button > .fa-position-right {
+  position: absolute;
+  top: calc(50% - 10px);
+  right: 10px;
+}
+
+#before_start_buttons > .btn--orange, input.btn--orange {
+  color: #fff;
+  background-color: #0033CC;
+}
+
+#before_start_buttons > .btn--orange:hover, input.btn--orange:hover {
+  color: #fff;
+  background: #0033CC;
+}
+
+.before_start_cancel_buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #0033CC;
+  background: #ECECEC;
+  -webkit-transition: .4s;
+  transition: .4s;
 }
 /*# sourceMappingURL=vocabulary.css.map */

@@ -11,7 +11,8 @@ class HomeController < ApplicationController
     @wordtest = WordTest.create(student_id: @current_student.id)
     @wordbook = Wordbook.find(params['wordbook_id'])
     @words = @wordbook.leveling_words(params['level'], params['limit'])
-    gon.words = @wordbook.testabe_words(params['level'], params['limit'])
+    @testwords = @wordbook.testabe_words(params['level'], params['limit'])
+    gon.words = @testwords
   end
 
   def top

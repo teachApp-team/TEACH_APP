@@ -1,19 +1,16 @@
 <div class="before_test_card" id="before_test_card" style="margin: 10%; text-align: center;">
-  <% @words.each do |word| %>
-    <p><%= word.japanese %></p>
-  <% end %>  
   <div>
-    <h5>システム英単語</h5>
-    <h5>標準レベル</h5>
-    <h5>50単語</h5>
+    <h5><%= @wordbook.name %></h5>
+    <h5><%= @words[0].level %></h5>
+    <h5><%= @words.length %>単語</h5>
   </div>
   <div>
     <p style="font-size: 13px;">以上でテストを開始してよろしいですか？</p>
   </div>
   <div id="before_start_buttons">
-    <input type="button" class="start-test" id="start_test_btn" style="background-color: gainsboro; margin: 15px; padding:5px;" onclick="startTest()" value="スタート" >
-    <div>
-      <a href="/home/test" type="button">キャンセル</a>
+    <input type="button" class="btn btn--orange start-test" id="start_test_btn" style= "margin: 15px; padding:10px;" onclick="startTest()" value="スタート" >
+    <div class="before_start_cancel_buttons">
+      <a href="/home/test" class="btn-flat-simple" type="button"><i class="fa fa-caret-right"></i>キャンセル</a>
     </div>
   </div>
 </div>
@@ -25,7 +22,7 @@
 
   <div id="question-wrapper">
     <div class="question-card">
-      <div class="question-word">Caluculation</div>
+      <div class="question-word"></div>
       <div class="question-word-p">名詞</div>
     </div>
     <div class="answer-card">
@@ -35,7 +32,9 @@
         <li class="alternative alternative2"></li>
         <li class="alternative alternative3"></li>
     </div>
-    <div class="alternative">分からない</div>
+    <div class="noidea-button" style="text-align: center;">
+      <input type="button" value="分からない" class="noidea-btn btn btn--red btn--radius btn--cubic">
+    </div>
   </div>
 </div>
 
@@ -45,21 +44,21 @@
     <div class="seikai" id="seikai"></div>
   </div>
   <div class="question-card">
-    <div>Caluculation</div>
+    <div class="question-english">Caluculation</div>
     <div>名詞</div>
   </div>
   <div class="answer">
-    <h3>計算</h3>
+    <h3 class="question-japanese">計算</h3>
   </div>
 </div>
 
 <div id="after-question">
   <div style="padding: 10px;">
     <div>
-      あなたの得点は...
+      <%= @words.length %>問中
     </div>
     <div style="text-align: center;">
-      <span>30</span><span>点です</span>
+      <span id="result-num">0</span><span>問正解</span>
     </div>
   </div>
   <div style="padding: 10px;">
@@ -73,30 +72,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row" style="font-size: 5px; margin-bottom: 0px;">1</th>
-          <td style="font-size: 14px; margin-bottom: 0px;">Caluculation</td>
-          <td style="font-size: 14px; margin-bottom: 0px;">計算</td>
-          <td style="text-align: ceneter;">3</td>
+      <% @testwords.each_with_index do |word, i| %>
+        <tr id= "answer-line<%=i+1 %>" >
+          <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%=i %></th>
+          <td style="font-size: 14px; margin-bottom: 0px;"><%= word[:q] %></td>
+          <td style="font-size: 14px; margin-bottom: 0px;"><%= word[:c][0] %></td>
+          <td style="text-align: ceneter;">-</td>
         </tr>
-        <tr>
-          <th scope="row" style="font-size: 5px; margin-bottom: 0px;">2</th>
-          <td style="font-size: 14px; margin-bottom: 0px;">Biology</td>
-          <td style="font-size: 14px; margin-bottom: 0px;">生物（学）</td>
-          <td style="text-align: ceneter;">0</td>
-        </tr>
-        <tr>
-          <th scope="row" style="font-size: 5px; margin-bottom: 0px;">3</th>
-          <td style="font-size: 14px; margin-bottom: 0px;">Accumulation</td>
-          <td style="font-size: 14px; margin-bottom: 0px;">蓄積</td>
-          <td>4</td>
-        </tr>
+      <% end %> 
       </tbody>
     </table>
     <div id="student-id" student-id="<%= @current_student.id %>"></div>
     <div id="wordtest-id" wordtest-id="<%= @wordtest.id %>"></div>
   </div>
 </div>
+
 
 
 <script type="text/javascript">
@@ -131,6 +121,7 @@ limitMs = 0,
 restMs = 0,
 resolutionMs = 50,    /* NOTE: Too small value does not work on IE11. */
 maxBar;
+var totalscore = 0;
 
 var countdown = function() {
   restMs -= resolutionMs;
@@ -139,12 +130,18 @@ var countdown = function() {
   $('#bar').attr('value', restBarLength);
   if (restMs < 0) {
     if (quizSet.length  == currentNum) {
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
       postResult(student_id, wordtest_id, question_id, false)
       $('#middle_test').hide();
       $('#answer-wrapper').hide();
       $('#seikai').hide();
+      $('#batsu').hide();
       $('#after-question').fadeIn();
     } else {
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      resultQuestion();
       postResult(student_id, wordtest_id, question_id, false)
       console.log(quizSet.length);
       console.log(currentNum);
@@ -152,6 +149,7 @@ var countdown = function() {
       $('#middle_test').hide();
       $('#answer-wrapper').fadeIn();
       $('#seikai').hide();
+      $('#batsu').fadeIn();
       setTimeout("restartTest()", 3000);
     }
   }
@@ -168,7 +166,6 @@ var resetTimer = function() {
     console.log(question);
     console.log(question_id)
     choise = quizSet[currentNum].c[i];
-    console.log(choise)
     $('.question-word')[0].textContent = question;
     $('.alternative' + i)[0].textContent = choise;
   }
@@ -185,20 +182,35 @@ $(function() {
     resetTimer();
     timer = setInterval('countdown()', resolutionMs);
   });
-
   $('.alternative').on('click', function() {
-   $('#middle_test').hide();
+    resultQuestion();
+    $('#middle_test').hide();
     $('#answer-wrapper').fadeIn();
     if ($(this).attr('id') == 'real-answer') {
       $('#batsu').hide();
       $('#seikai').fadeIn();
+      totalscore = totalscore + 1;
+      $('#result-num')[0].textContent = totalscore;
       postResult(student_id, wordtest_id, question_id, true)
     } else {
       $('#seikai').hide();
       $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
       postResult(student_id, wordtest_id, question_id, false)
-      resetTimer();
     }
+    resetTimer();
+    setTimeout("restartTest()", 3000);
+  });
+  $('.noidea-btn').on('click', function() {
+    resultQuestion();
+    $('#middle_test').hide();
+    $('#answer-wrapper').fadeIn();
+    $('#seikai').hide();
+    $('#batsu').fadeIn();
+    var p = document.getElementById('answer-line' + currentNum);
+    p.style.color = 'red';
+    resetTimer();
     setTimeout("restartTest()", 3000);
   });
 });
@@ -210,6 +222,12 @@ function restartTest() {
   timer = setInterval('countdown()', resolutionMs);
 }
 
+function resultQuestion() {
+  question = quizSet[currentNum - 1].q;
+  choise = quizSet[currentNum - 1].c[0];
+  $('.question-english')[0].textContent = question;
+  $('.question-japanese')[0].textContent = choise;
+ }
 function postResult(student_id, wordtest_id, question_id, isCorrect){
   const data = {
     student_id: student_id,
@@ -227,5 +245,5 @@ function postResult(student_id, wordtest_id, question_id, isCorrect){
   }).fail(function(error){
     console.log(error)
   })
-}
+
 </script>
