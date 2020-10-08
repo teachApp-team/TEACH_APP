@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<div id="after-question">
+<div id="afterquestion">
   <div style="padding: 10px;">
     <div>
       <%= @words.length %>問中
@@ -128,7 +128,7 @@ var countdown = function() {
   var restRate = (limitMs - restMs) / limitMs;
   var restBarLength = maxBar * restRate
   $('#bar').attr('value', restBarLength);
-  if (restMs == 0.0 ) {
+  if (restMs === 0.0 ) {
     if (quizSet.length  == currentNum) {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
@@ -152,8 +152,6 @@ var countdown = function() {
 };
 
 function finishTest() {
-  var p = document.getElementById('answer-line' + currentNum);
-  p.style.color = 'red';
   $('#middle_test').hide();
   $('#answer-wrapper').hide();
   $('#seikai').hide();
@@ -183,7 +181,6 @@ var resetTimer = function() {
 
 $(function() {
   maxBar = $('#bar').attr('max');
-
   $('#start_test_btn').on('click', function() {
     resetTimer();
     timer = setInterval('countdown()', resolutionMs);
@@ -230,6 +227,7 @@ function restartTest() {
   $('#answer-wrapper').hide();
   $('#middle_test').fadeIn();
   timer = setInterval('countdown()', resolutionMs);
+  
 }
 
 function resultQuestion() {
