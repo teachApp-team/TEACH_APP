@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/show', to: 'home#show'
   get 'home/level/:id', to: 'home#level'
   get 'home/test/:level/:wordbook_id/:limit', to: 'home#test'
+  get 'home/retest/:level/:wordbook_id/:wrong_count', to: 'home#retest'
 
   get 'student_sign_up', to: 'home#student_sign_up'
   get 'teacher_sign_up', to: 'home#teacher_sign_up'
