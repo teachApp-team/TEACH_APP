@@ -2,7 +2,6 @@
   <div>
     <h5><%= @wordbook.name %></h5>
     <h5><%= @words[0].level %></h5>
-    <h5><%= @words.length %>単語</h5>
     <h5><%= @testwords.length %>単語</h5>
   </div>
   <div>
@@ -150,7 +149,7 @@ var countdown = function() {
       $('#answer-wrapper').fadeIn();
       $('#seikai').hide();
       $('#batsu').fadeIn();
-      setTimeout("restartTest()", 3000);
+      setTimeout("restartTest()", 2000);
     }
   }
 };
@@ -165,7 +164,7 @@ function finishTest() {
 
 var resetTimer = function() {
   clearInterval(timer);
-  limitMs = restMs = 5000;
+  limitMs = restMs = 3000;
   $('#bar').attr('value', 0);
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
     question = quizSet[currentNum].q;
@@ -206,12 +205,12 @@ $(function() {
     }
     if (quizSet.length  == currentNum) {
       clearInterval(timer);
-      limitMs = restMs = 5000;
+      limitMs = restMs = 3000;
       $('#bar').attr('value', 0);
-      setTimeout("finishTest();", 3000);
+      setTimeout("finishTest();", 2000);
     } else {
       resetTimer();
-      setTimeout("restartTest()", 3000);
+      setTimeout("restartTest()", 2000);
     }
   });
   $('.noidea-btn').on('click', function() {
@@ -225,9 +224,9 @@ $(function() {
       p.style.color = 'red';
       p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
       clearInterval(timer);
-      limitMs = restMs = 5000;
+      limitMs = restMs = 3000;
       $('#bar').attr('value', 0);
-      setTimeout("finishTest();", 3000);
+      setTimeout("finishTest();", 2000);
     } else {  
       postResult(student_id, wordtest_id, question_id, false)
       resultQuestion();
@@ -239,7 +238,7 @@ $(function() {
       p.style.color = 'red';
       p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
       resetTimer();
-      setTimeout("restartTest()", 3000);
+      setTimeout("restartTest()", 2000);
     }
   });
 });

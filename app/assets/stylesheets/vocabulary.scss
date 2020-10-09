@@ -175,7 +175,7 @@ progress::-moz-progress-bar {
   box-sizing: border-box;
 }
 
-.noidea-button > .btn, a.btn, button.btn {
+.noidea-button > .btn, a.btn {
   font-size: 15px;
   font-weight: 700;
   line-height: 1.5;
@@ -231,7 +231,7 @@ progress::-moz-progress-bar {
   text-align: right;
 }
 
-.before_start_cancel_buttons .btn-flat-simple {
+.before_start_cancel_buttons > .btn-flat-simple {
   position: relative;
   display: inline-block;
   font-weight: bold;
@@ -247,7 +247,7 @@ progress::-moz-progress-bar {
   text-align: center;
 }
 
-.after_test_buttons .btn-flat-simple {
+.after_test_buttons > .btn-flat-simple {
   position: relative;
   display: inline-block;
   font-weight: bold;
