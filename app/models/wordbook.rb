@@ -12,36 +12,27 @@ class Wordbook < ApplicationRecord
 
   def testabe_words(level, limit)
     words = self.leveling_words(level, limit)
-    choices1 = self.leveling_words(level, limit).order("RAND()").pluck(:japanese)
-    choices2 = self.leveling_words(level, limit).order("RAND()").pluck(:japanese)
-    choices3 = self.leveling_words(level, limit).order("RAND()").pluck(:japanese) 
-    choices = choices1 + choices2 + choices3
-    choices.shuffle
-    index = 0
-    c_words = words.map.with_index do |w, i|
-      # shuffle_words = words.order("RAND()").limit(3)
-      # shuffle_words = shuffle_words.map {|word| word.japanese}
-      # shuffle_words.push(w.japanese)
-      # shuffle_words.shuffle
-      shuffle_words = [
-        w.japanese,
-        choices[index],
-        choices[index+1],
-        choices[index+2],
-      ]
-      index+= 3
-      {
-        q: w.english,
-        q_id: w.id,
+    choice_words = self.leveling_words(level, limit.to_i*4).order("RAND()").pluck(:id)
+    choice_words.shuffle
+    c_words = []
+    choice_words.each_slice(4) do |w|
+      ws = Word.where(id: w)
+      break if ws[3].nil?
+      word = {
+        q: ws.first.english,
+        q_id: ws.first.id,
+        q_part: ws.first.part,
+        q_wrong_count: ws.first.wrong_count,
         c: [
-          shuffle_words[0],
-          shuffle_words[1],
-          shuffle_words[2],
-          shuffle_words[3],
+          ws[0].japanese,
+          ws[1].japanese,
+          ws[2].japanese,
+          ws[3].japanese,
         ]
       }
+      c_words.push(word)
     end
-    c_words.shuffle
+    c_words
   end
 end
 # const quizSet = [
