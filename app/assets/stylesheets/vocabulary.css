@@ -16,11 +16,11 @@
   list-style-type: none !important;
 }
 
-.vocabulary-level ul {
+.vocabulary-level > ul {
   padding: 0;
 }
 
-.vocabulary-level ul li {
+.vocabulary-level > ul > li {
   color: black;
   position: relative;
   background: #f1f8ff;
@@ -31,6 +31,20 @@
   border-left: solid 35px #5c9ee7;
   /*先の色＝アイコン裏の色*/
   list-style-type: none !important;
+}
+
+.number-of-vocabulary > ul, ol {
+  background: #AFEEEE;
+  /*灰色に*/
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 5px silver;
+          box-shadow: 0px 0px 5px silver;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+
+.number-of-vocabulary > ul li, ol li {
+  line-height: 1.5;
+  padding: 0.5em 0;
 }
 
 .progressWrapper {
