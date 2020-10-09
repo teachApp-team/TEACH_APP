@@ -9,9 +9,9 @@
       <% @levels.each do |level| %>
         <li><%= level %></li>
         <div style="padding: 10px 7%;">
+          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/10" style="color: black;">10単語</a></div>
+          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/30" style="color: black;">30単語</a></div>
           <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/50" style="color: black;">50単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/100" style="color: black;">100単語</a></div>
-          <div style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/150" style="color: black;">150単語</a></div>
         </div>
       <% end %>
       </ul>
