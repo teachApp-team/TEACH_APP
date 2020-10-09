@@ -29,13 +29,14 @@ class NewsController < ApplicationController
     messages.each do |m|
       @news.push(m)
     end
-    eachtests.each do |et|
+    eachtests.each_with_index do |et, ei|
       test = {
         results: et.results,
         class: {
           name: "WordTest"
         },
         created_at: et.created_at,
+        index: ei
       }
       if test[:results].length > 9
         @news.push(test)

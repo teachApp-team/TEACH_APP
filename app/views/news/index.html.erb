@@ -2,8 +2,6 @@
 <div style="padding: 76px 0 0 0"></div>
 
 <section class="news_field_background">
-<%= @n %>
-<%= @t %>
 
 <% @news.each do |e| %>
 <% if e.class.name == "Question" %>
@@ -238,10 +236,10 @@
       <div class="stu_card_content_words" style="text-align: left;">
         <button class="btn btn-primary"
         data-toggle="collapse"
-        data-target="#example-1"
+        data-target="#example-<%= e[:index] %>"
         aria-expand="false"
-        aria-controls="example-1">回答の詳細はこちら</button>
-        <div class="collapse" id="example-1">
+        aria-controls="example-<%= e[:index] %>">回答の詳細はこちら</button>
+        <div class="collapse" id="example-<%= e[:index] %>">
           <div class="card card-body" style="padding: 10px;">
             <table class="table table-bordered" style="margin-bottom: 0px;">
               <thead>
@@ -254,8 +252,12 @@
               </thead>
               <tbody>
                 <% e[:results].each_with_index do |r, i| %>
+                <% if r.correct %>
                   <tr>
-                    <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%= i %></th>
+                <% else %>
+                  <tr class= "wrong-correct-word" style="color:red;">
+                <% end %>
+                    <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%= i+1 %></th>
                     <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.english %></td>
                     <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.japanese %></td>
                     <td style="font-size: 11px; text-align: ceneter;"><%=r.word.wrong_count %></td>
