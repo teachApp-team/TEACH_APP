@@ -2,6 +2,8 @@
 <div style="padding: 76px 0 0 0"></div>
 
 <section class="news_field_background">
+<%= @n %>
+<%= @t %>
 
 <% @news.each do |e| %>
 <% if e.class.name == "Question" %>
@@ -194,8 +196,82 @@
       </div>
     </div>
   </div>
+
+
+  <% else %>
+  <div class="stu_card">
+    <div class="stu_card_info" style="margin-bottom: 20px;">
+      <div class="stu_card_info_img">
+        <% if e[:results].last.student.image.present? %>
+          <%= image_tag e[:results].last.student.image.url, class: "stu_card_info_img_self" %>
+        <% else %>
+          <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+        <% end %>
+      </div>
+      <div class="stu_card_info_name">
+          <h5>
+            <%= e[:results].last.student.full_name %>
+          </h5>
+      </div>
+      <div class="stu_card_info_time_ago">
+        <p style="margin-bottom: 5px;">
+          <%= e[:created_at].to_s(:datetime_jp) %>
+        </p>
+      </div>
+    </div>
+    <div class="balloon" style="margin-top: 0px;">
+      <div class="stu_card_content">
+        <div class="stu_card_content_subject">
+            <p class="stu_card_content_words_circle" style="margin-bottom: 5px">単</p>
+        </div>
+        <div class="stu_card_words" style="padding-left: 10px;text-align: center;">
+          <p style="font-size: 12px;margin-bottom: 2px;">
+            <%= e[:results].length %>問中
+          </p>
+          <div style="text-align: center;">
+            <p style="font-size: 17px;margin-bottom: 5px;">
+  
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="stu_card_content_words" style="text-align: left;">
+        <button class="btn btn-primary"
+        data-toggle="collapse"
+        data-target="#example-1"
+        aria-expand="false"
+        aria-controls="example-1">回答の詳細はこちら</button>
+        <div class="collapse" id="example-1">
+          <div class="card card-body" style="padding: 10px;">
+            <table class="table table-bordered" style="margin-bottom: 0px;">
+              <thead>
+                <tr>
+                  <th scope="col"><p style="font-size: 12px; margin-bottom: 0px;">No.</p></th>
+                  <th scope="col" style="font-size: 12px">英単語</th>
+                  <th scope="col" style="font-size: 12px">日本語</th>
+                  <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% e[:results].each_with_index do |r, i| %>
+                  <tr>
+                    <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%= i %></th>
+                    <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.english %></td>
+                    <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.japanese %></td>
+                    <td style="font-size: 11px; text-align: ceneter;"><%=r.word.wrong_count %></td>
+                  </tr> 
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <% end %>
-  <% end%>
+
+<% end%>
   <% if @current_teacher %>
     <div class="new_message_add">
     <a href="/messages/new" class="new_message_add_btn">
