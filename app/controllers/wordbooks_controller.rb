@@ -1,4 +1,5 @@
 class WordbooksController < ApplicationController
+
   def new
     @wordbook = Wordbook.new
     @wordbooks = Wordbook.all
