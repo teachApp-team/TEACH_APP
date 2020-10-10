@@ -11,6 +11,7 @@ class Student < ApplicationRecord
   has_many :exams
   has_many :replies
   has_many :results
+  has_many :word_tests
 
   def history_time_ary
     histories = self.learning_histories

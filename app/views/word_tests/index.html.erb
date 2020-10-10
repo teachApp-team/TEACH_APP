@@ -15,7 +15,7 @@
         <tbody>
           <% @students.each do |student| %>
             <tr>
-              <th class="result-td"><%= student.full_name %></th>
+              <th class="result-td"><%= link_to student.full_name, "/word_tests/#{student.id}" %></th>
               <td class="result-td"><%= student.solved_results(book.id, level).length %>単語</td>
               <td class="result-td"><%= student.correct_percentage(book.id, level) %>%</td>
               <td class="result-td"><%= student.last_solved_at(book.id, level) %></td>
