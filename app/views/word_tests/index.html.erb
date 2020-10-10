@@ -1,63 +1,28 @@
-<h1>WordTests#index</h1>
-<p>Find me in app/views/word_tests/index.html.erb</p>
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-
-<table class="table">
-  <thead class="thead-light">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="word-test-index-wrapper">
+  <% @wordbooks.each do |book| %>
+    <h1 class="book-title"><%= book.name %></h1>
+    <% book.levels.each do |level| %>
+      <p><%= level %>レベル</p>
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">生徒</th>
+            <th scope="col">回答数</th>
+            <th scope="col">正答率</th>
+            <th scope="col">最後に受けた日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+            <tr>
+              <th class="result-td"><%= student.full_name %></th>
+              <td class="result-td"><%= student.solved_results(book.id, level).length %>単語</td>
+              <td class="result-td"><%= student.correct_percentage(book.id, level) %>%</td>
+              <td class="result-td"><%= student.last_solved_at(book.id, level) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  <% end %> 
+</div>
