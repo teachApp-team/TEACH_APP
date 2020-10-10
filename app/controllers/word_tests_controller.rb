@@ -6,5 +6,8 @@ class WordTestsController < ApplicationController
   end
 
   def show
+    @student = Student.find(params[:id])
+    @word_tests = @student.word_tests
+    @wordbooks = Wordbook.all
   end
 end
