@@ -17,7 +17,7 @@ class NewsController < ApplicationController
       messages = Message.where(teacher_id: @current_teacher.id)
       questions = Question.where(teacher_id: @current_teacher.id)
       replies = Reply.where(student_id: @current_teacher.id)
-      eachtest = word_test.where(student_id: @current_teacher.id)
+      eachtests = WordTest.where(student_id: @current_teacher.students.ids) 
     end
     @news = []
     questions.each do |q|

@@ -1,0 +1,2 @@
+module WordTestsHelper
+end
