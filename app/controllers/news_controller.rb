@@ -38,7 +38,7 @@ class NewsController < ApplicationController
         created_at: et.created_at,
         index: ei
       }
-      if test[:results].length > 9
+      if test[:results].length > 5
         @news.push(test)
       end
     end
