@@ -1,6 +1,6 @@
 class Word < ApplicationRecord
   belongs_to :wordbook
-  has_many :results
+  has_many :results, dependent: :delete_all
 
   validates :english, presence: true, uniqueness: true
   validates :japanese, presence: true
