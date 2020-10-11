@@ -2,7 +2,7 @@ class Word < ApplicationRecord
   belongs_to :wordbook
   has_many :results, dependent: :delete_all
 
-  validates :english, presence: true, uniqueness: true
+  validates :english, presence: true
   validates :japanese, presence: true
   validates :part, presence: true
   validates :level, presence: true
