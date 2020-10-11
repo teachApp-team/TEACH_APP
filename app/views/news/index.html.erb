@@ -222,16 +222,24 @@
         <div class="stu_card_content_subject">
             <p class="stu_card_content_words_circle" style="margin-bottom: 5px">単</p>
         </div>
-        <div class="stu_card_words" style="padding-left: 10px;text-align: center;">
+        <div class="stu_card_words" style="padding-left: 10px;">
           <p style="font-size: 12px;margin-bottom: 2px;">
-            <%= e[:results].length %>問中
+            教材： <%= e[:results].last.word.wordbook.name %>
           </p>
-          <div style="text-align: center;">
-            <p style="font-size: 17px;margin-bottom: 5px;">
-              <%= e[:results].corrects_count %>問正解
-            </p>
+          <div>
+          <p style="font-size: 12px;margin-bottom: 5px;">
+            レベル: <%= e[:results].last.word.level %>
+          </p>
           </div>
         </div>
+      </div>
+      <div style="text-align: center;padding-right: 20px;">
+        <span style="font-size: 12px;margin-bottom: 2px;margin-right: 5px;">
+          <%= e[:results].length %>問中
+        </span>
+        <span style="font-size: 17px;margin-bottom: 5px;">
+          <%= e[:results].corrects_count %>問正解
+        </span>
       </div>
       <div class="stu_card_content_words" style="text-align: left;">
         <button class="btn btn-primary"
