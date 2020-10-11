@@ -29,13 +29,13 @@ namespace :scrape do
           puts i
           puts english
           puts japanese
-          # Word.create({
-          #   english: english,
-          #   japanese: japanese,
-          #   part: part,
-          #   level: level,
-          #   wordbook_id: wordbook.id
-          # })
+          Word.create({
+            english: english,
+            japanese: japanese,
+            part: part,
+            level: level,
+            wordbook_id: wordbook.id
+          })
           puts "---------------------------"
           break if i >= ends_at
         end
