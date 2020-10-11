@@ -1,0 +1,17 @@
+.word-test-index-wrapper {
+  padding: 40px;
+}
+
+.book-title {
+  margin-top: 60px;
+}
+
+@media screen and (max-width: 600px) {
+  .word-test-index-wrapper {
+    padding: 40px 0;
+  }
+  tr > .result-td {
+    padding: 20px 0 !important;
+  }
+}
+/*# sourceMappingURL=word_tests.css.map */
