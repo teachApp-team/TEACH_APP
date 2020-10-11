@@ -9,11 +9,16 @@ class Wordbook < ApplicationRecord
   end
 
   def leveling_words(level, limit)
-    words.where(level: level).limit(limit)
+    # words.where(level: level).order("RAND()").limit(limit)
+    words.where(level: level).select('words.*', 'count(results.id) AS results')
+      .left_joins(:results)
+      .group('words.id')
+      .order('results asc').limit(limit)
   end
 
   def leveling_wrong_words(level, limit, count)
-    words = self.leveling_words(level, 100).order("RAND()")
+    words = self.leveling_words(level, 2021)
+    # words = self.words
     if count.to_i < 3
       return_words = words.select do |w|
         w.wrong_count == count.to_i
@@ -27,7 +32,7 @@ class Wordbook < ApplicationRecord
   end
 
   def testabe_words(level, limit)
-    words = self.leveling_words(level, limit.to_i).order("RAND()")
+    words = self.leveling_words(level, limit.to_i)
     format_testable(words)
   end
 
@@ -40,10 +45,8 @@ class Wordbook < ApplicationRecord
 
   def format_testable(words) 
     return_words = []
-    lev = words.first.level if words.first.present?
     words.each do |q|
-      # c_words = words.where.not(id: q.id).order("RAND()").limit(3)
-      c_words = Word.where(level: lev).where.not(id: q.id).order("RAND()").limit(3)
+      c_words = Word.where(part: q.part).where.not(id: q.id).order("RAND()").limit(3)
       break if c_words[2].nil?
       word = {
         q: q.english,

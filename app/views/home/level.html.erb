@@ -13,16 +13,7 @@
             <li style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/10" style="color: black;">10単語</a></li>
             <li style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/30" style="color: black;">30単語</a></li>
             <li style="margin-bottom: 10px;"><a href="/home/test/<%= level %>/<%= @wordbook.id %>/50" style="color: black;">50単語</a></li>
-            <% if @wordbook.retestabe_words(level, 10, 1).present? %>
-              <li style="margin-bottom: 10px;"><a href="/home/retest/<%= level %>/<%= @wordbook.id %>/1" style="color: black;">1回間違えた単語(10単語)</a></li>
-            <% end %>
-            <% if @wordbook.retestabe_words(level, 10, 2).present? %>
-              <li style="margin-bottom: 10px;"><a href="/home/retest/<%= level %>/<%= @wordbook.id %>/2" style="color: black;">2回間違えた単語(10単語)</a></li>
-            <% end %>
-            <% if @wordbook.retestabe_words(level, 10, 3).present? %>
-              <li style="margin-bottom: 10px;"><a href="/home/retest/<%= level %>/<%= @wordbook.id %>/3" style="color: black;">3回間違えた単語(10単語)</a></li>
-            <% end %>
-          </ul>
+            <li style="margin-bottom: 10px;"><a href="/home/choise_retest/<%= level %>/<%= @wordbook.id %>" style="color: black;">間違えた単語をテストする</a></li>
         </div>
         <% end %>
       </ul>
