@@ -25,6 +25,11 @@ class HomeController < ApplicationController
     render "test"
   end
 
+  def choise_retest
+    @wordbook = Wordbook.find(params['wordbook_id'])
+    @level = params['level']
+  end
+
   def top
     if @current_user
       redirect_to '/news_field'

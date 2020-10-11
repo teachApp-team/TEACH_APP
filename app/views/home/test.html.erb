@@ -24,7 +24,7 @@
   <div id="question-wrapper">
     <div class="question-card box13" style="margin:40px 13%">
       <div class="question-word"></div>
-      <div class="question-word-p">名詞</div>
+      <div class="question-word-p"></div>
     </div>
     <div class="answer-card">
       <ul id="alternative">
@@ -46,7 +46,7 @@
   </div>
   <div class="question-card box17" style="text-align: center;margin: 30px 6%;">
     <h2 class="question-english">Caluculation</h2>
-    <div>名詞</div>
+    <div class="answer-part"></div>
   </div>
   <div class="answer box11" style="text-align: center;">
     <span>答え：</span> <span class="question-japanese" style="font-size: 25px;">計算</span>
@@ -172,6 +172,7 @@ var resetTimer = function() {
     question_id = quizSet[currentNum].q_id;
     choise = quizSet[currentNum].c[i];
     $('.question-word')[0].textContent = question;
+    $('.question-word-p')[0].textContent = quizSet[currentNum].q_part;
     $('.alternative' + i)[0].textContent = choise;
   }
   currentNum = currentNum + 1;
@@ -255,8 +256,10 @@ function restartTest() {
 function resultQuestion() {
   question = quizSet[currentNum - 1].q;
   choise = quizSet[currentNum - 1].c[0];
+  part = quizSet[currentNum - 1].q_part;
   $('.question-english')[0].textContent = question;
   $('.question-japanese')[0].textContent = choise;
+  $('.answer-part')[0].textContent = part;
  }
 function postResult(student_id, wordtest_id, question_id, isCorrect){
   const data = {
