@@ -3,8 +3,8 @@ class HomeController < ApplicationController
   end
 
   def words
-    @levels = Wordbook.find(params['id']).levels
-    @wordbook = Wordbook.find(params['id'])
+    wordbook = Wordbook.find(params['id'])
+    @words = wordbook.words
   end
 
   def level
