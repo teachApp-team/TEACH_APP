@@ -10,11 +10,11 @@
       <li style="margin-bottom:0px;"><span><%= level %></span></li>
       <div class="wordbook-progress" style="text-align: right;">
         <div class="progressWrapper">
-          <progress max="100" value="<%= @current_student.corrects_of_level(level).length %>"></progress>
+          <progress max="100" value="<%= @current_student.corrects_of_level_percentage(level) %>"></progress>
         </div>
       </div>
       <div style="text-align: right;">
-        <span style="font-size: 13px;"><%= @current_student.corrects_of_level(level).length %>% 正解</span>
+        <span style="font-size: 13px;"><%= @current_student.corrects_of_level_percentage(level) %>% 正解</span>
         <span>全<%= @wordbook.words.where(level: level).length %>単語</span>
       </div>
         <div class="number-of-vocabulary" style="margin:20px 3%">

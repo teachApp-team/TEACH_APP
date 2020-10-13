@@ -64,4 +64,10 @@ class Student < ApplicationRecord
       result.word.level == level
     end
   end
+  def corrects_of_book_percentage(book_id)
+    (self.corrects_of_book(book_id).length / Word.where(wordbook_id: book_id).length.to_f * 100).round(1)
+  end
+  def corrects_of_level_percentage(level)
+    (self.corrects_of_level(level).length / Word.where(level: level).length.to_f * 100).round(1)
+  end
 end
