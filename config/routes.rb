@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'home/show', to: 'home#show'
+  get 'home/level/:id/allwords', to: 'home#words'
   get 'home/level/:id', to: 'home#level'
   get 'home/test/:level/:wordbook_id/:limit', to: 'home#test'
   get 'home/retest/:level/:wordbook_id/:wrong_count', to: 'home#retest'
