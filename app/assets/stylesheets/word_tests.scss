@@ -8,6 +8,16 @@
   margin-top: 60px;
 }
 
+.choise_retest_wrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.choise_retest_wrapper .content {
+}
+
 @media screen and (max-width: 600px) {
   .word-test-index-wrapper {
     padding: 40px 0;
