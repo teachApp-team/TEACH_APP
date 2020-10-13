@@ -61,4 +61,22 @@
 .wordbook-progress > .progressWrapper > progress::-moz-progress-bar {
   background: navy;
 }
+
+.btn-flat-logo {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  -webkit-transition: .4s;
+  transition: .4s;
+  font-size: 11px;
+  border-radius: 5px;
+  margin: 5px 0px;
+}
+
+.btn-flat-logo:hover {
+  background: #1ec7bb;
+}
 /*# sourceMappingURL=word_tests.css.map */
