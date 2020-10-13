@@ -12,12 +12,12 @@
       </a>
       <div class="wordbook-progress" style="text-align: right;">
         <div class="progressWrapper">
-          <progress max="100" value="80"></progress>
+          <progress max="100" value="<%= @current_student.corrects_of_book(book.id).length %>"></progress>
         </div>
       </div>
       <div style="text-align: right;">
-        <span style="font-size: 13px;">80% 正解</span>
-        <span>全1900単語</span>
+        <span style="font-size: 13px;"><%= @current_student.corrects_of_book(book.id).length %> 正解</span>
+        <span>全<%= book.words.length %>単語</span>
       </div>
       <div style="text-align: right;">
         <a href="/home/level/<%= book.id %>/allwords" class="btn-flat-logo">
