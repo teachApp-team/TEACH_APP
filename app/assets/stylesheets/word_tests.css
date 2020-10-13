@@ -1,13 +1,11 @@
-// Place all the styles related to the word_tests controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
 .word-test-index-wrapper {
   padding: 40px;
 }
+
 .book-title {
   margin-top: 60px;
 }
-
 
 @media screen and (max-width: 600px) {
   .word-test-index-wrapper {
@@ -23,10 +21,14 @@
 }
 
 .wrong-word-title > h2 {
-  color: #364e96;/*文字色*/
-  padding: 0.5em 0;/*上下の余白*/
-  border-top: solid 3px #364e96;/*上線*/
-  border-bottom: solid 3px #364e96;/*下線*/
+  color: #364e96;
+  /*文字色*/
+  padding: 0.5em 0;
+  /*上下の余白*/
+  border-top: solid 3px #364e96;
+  /*上線*/
+  border-bottom: solid 3px #364e96;
+  /*下線*/
 }
 
 .wordbook-progress > .progressWrapper {
@@ -40,13 +42,15 @@
   -webkit-appearance: none;
   border: 0;
   height: 8px;
-  width: 70%;      /* IE */
-  background: white; /* Firefox */
+  width: 70%;
+  /* IE */
+  background: white;
+  /* Firefox */
   border: solid 1px #212529;
 }
 
 .wordbook-progress > .progressWrapper > progress::-webkit-progress-value {
-  background:  navy;
+  background: navy;
 }
 
 .wordbook-progress > .progressWrapper > progress::-webkit-progress-bar {
@@ -55,5 +59,6 @@
 
 /* Firefox needs only '-moz-progress-bar' attiribute. */
 .wordbook-progress > .progressWrapper > progress::-moz-progress-bar {
-  background:  navy;
+  background: navy;
 }
+/*# sourceMappingURL=word_tests.css.map */

@@ -47,7 +47,7 @@
   padding: 0.5em 0;
 }
 
-.progressWrapper {
+#middle_test > .progressWrapper {
   width: 100%;
   margin-top: 10px;
 }
@@ -59,7 +59,7 @@
   /*前後の文との余白*/
 }
 
-progress {
+#middle_test > .progressWrapper > progress {
   /* Turn off default styling. */
   appearance: none;
   -moz-appearance: none;
@@ -77,16 +77,16 @@ progress {
 }
 
 /* Chrome needs '-webkit-progress-value' and '-webkit-progress-bar' attributes. */
-progress::-webkit-progress-value {
+#middle_test > .progressWrapper > progress::-webkit-progress-value {
   background: navy;
 }
 
-progress::-webkit-progress-bar {
+#middle_test > .progressWrapper > progress::-webkit-progress-bar {
   background: white;
 }
 
 /* Firefox needs only '-moz-progress-bar' attiribute. */
-progress::-moz-progress-bar {
+#middle_test > .progressWrapper > progress::-moz-progress-bar {
   background: navy;
 }
 
