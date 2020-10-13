@@ -7,7 +7,18 @@
   <div class="vocabulary-text">
     <ul>
     <% Wordbook.all.each do |book| %>
-      <a href="/home/level/<%= book.id %>"><li><%= book.name %></li></a>
+      <a href="/home/level/<%= book.id %>">
+        <li style="margin-bottom: 0px;"><%= book.name %></li>
+      </a>
+      <div class="wordbook-progress" style="text-align: right;">
+        <div class="progressWrapper">
+          <progress max="100" value="80"></progress>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <span style="font-size: 13px;">80% 正解</span>
+        <span>全1900単語</span>
+      </div>
     <% end %>
     </ul>
   </div>

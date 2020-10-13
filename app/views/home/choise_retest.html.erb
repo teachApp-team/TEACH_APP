@@ -1,9 +1,21 @@
-<div class="choise_retest_wrapper">
+<div class="choise_retest_wrapper" style="padding: 0px 5%;">
   <div class="content">
-    <h1>再テスト</h1>
-    
-    <%= link_to "１回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/1", class: "btn btn-warning" %>
-    <%= link_to "2回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/2", class: "btn btn-warning" %>
-    <%= link_to "3回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/3", class: "btn btn-warning" %>
+    <div class="wrong-word-title" style="text-align: center;margin: 10px;">
+      <h2>再テスト一覧</h2>
+    </div>
+    <div>
+      1度間違えた単語は数日空けてもう1度テストしてみましょう。意外と忘れているので。
+    </div>
+    <div>
+      <div class="wrong-word-list">
+        <%= link_to "１回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/1", class: "btn btn-warning" %>
+      </div>
+      <div class="wrong-word-list">
+        <%= link_to "2回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/2", class: "btn btn-warning" %>
+      </div>
+      <div class="wrong-word-list">
+        <%= link_to "3回間違えた単語", "/home/retest/#{@level}/#{@wordbook.id}/3", class: "btn btn-warning" %>
+      </div>
+    </div>
   </div>
 </div>
