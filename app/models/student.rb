@@ -54,4 +54,14 @@ class Student < ApplicationRecord
       "未受験"
     end
   end
+  def corrects_of_book(book_id)
+    results.where(correct: true).select do |result|
+      result.word.wordbook_id == book_id
+    end
+  end
+  def corrects_of_level(level)
+    results.where(correct: true).select do |result|
+      result.word.level == level
+    end
+  end
 end
