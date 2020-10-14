@@ -1,0 +1,2 @@
+class OldWordbook < ApplicationRecord
+end
