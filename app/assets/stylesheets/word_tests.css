@@ -104,4 +104,32 @@
   border-bottom: 2px solid #da3c41;
   outline: none;
 }
+
+ul.sample1 {
+  counter-reset: list;
+  list-style-type: none;
+  font: 14px/1.6 'arial narrow', sans-serif;
+  padding: 0;
+}
+
+ul.sample1 li {
+  position: relative;
+  color: #333;
+  padding: 0 0 0 20px;
+  margin: 7px 0px;
+  line-height: 30px;
+  border-bottom: dashed 1px #ccc;
+}
+
+ul.sample1 li:before {
+  counter-increment: list;
+  content: counter(list) ".";
+  display: block;
+  position: absolute;
+  left: 0px;
+  font-weight: bold;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 /*# sourceMappingURL=word_tests.css.map */

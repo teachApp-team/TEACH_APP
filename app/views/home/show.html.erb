@@ -1,7 +1,11 @@
 <%= render 'share/header' %>
 <div style="padding-top: 80px;"></div>
 <div style="padding: 0 10%;">
-  <h4 style="margin: 20px 0">
+  <h4 style="color: #364e96;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;
+  margin:35px 0px;">
     勉強したい教材を選択
   </h4>
   <div class="vocabulary-text">
@@ -23,6 +27,9 @@
         <a href="/home/level/<%= book.id %>/allwords" class="btn-flat-logo">
           <i class="fa fa-chevron-right"></i>単語一覧
         </a>
+        <!-- <a href="/home/ranking/<%= book.id %>" class="btn-flat-logo">
+          <i class="fa fa-chevron-right"></i>ランキング
+        </a> -->
       </div>
     <% end %>
     </ul>
