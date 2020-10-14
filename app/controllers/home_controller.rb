@@ -2,6 +2,11 @@ class HomeController < ApplicationController
   def show
   end
 
+  def ranking
+    @wordbook = Wordbook.find(params['id']).name
+  end
+
+
   def words
     wordbook = Wordbook.find(params['id'])
     @words = wordbook.words
