@@ -214,7 +214,7 @@ namespace :scrape do
 
   end
 
-  namespace :oldjapanese do
+  task oldjapanese: :environment do
     url = "https://tokyo-teacher.com/article/dj-32-jpc/dj-jpc-1-word/dj-jpc-word-1-list/"
     charset = nil
     html = open(url) do |f|
@@ -222,9 +222,27 @@ namespace :scrape do
       f.read
     end
     doc = Nokogiri::HTML.parse(html, nil, charset)
-
-
+    nodes = doc.xpath("//div[@class='topic-text']")
     
+    nodes.each do |node|
+      # このノード以下のすべての子要素に対して検索を行う場合は「.//」をつける
+      title_node = node.xpath(".//p[contains(text(), '単語')]")
+      title_node.children.each do |w|
+        if  w.text.include?('【単語】：')
+          puts w.text
+          puts w.text.slice!(7..25)
+        elsif  w.text.include?('【漢字】：')
+          puts w.text
+        elsif  w.text.include?('【意味】：')
+          puts w.text
+        elsif  w.text.include?('【品詞】：')
+          puts w.text
+          puts '-----------------------------------------------'
+        end
+      end
+    end
+
+
   end
 
 
