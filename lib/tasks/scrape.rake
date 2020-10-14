@@ -3,7 +3,6 @@ require 'nokogiri'
 
 namespace :scrape do
   namespace :system do 
-
     def system_scrape(url, level, starts_at, ends_at, part)
       puts "実行"
       wordbook = Wordbook.find_by!(name: "システム英単語")
@@ -214,6 +213,22 @@ namespace :scrape do
     )
 
   end
+
+  namespace :oldjapanese do
+    url = "https://tokyo-teacher.com/article/dj-32-jpc/dj-jpc-1-word/dj-jpc-word-1-list/"
+    charset = nil
+    html = open(url) do |f|
+      charset = f.charset
+      f.read
+    end
+    doc = Nokogiri::HTML.parse(html, nil, charset)
+
+
+    
+  end
+
+
+
   namespace :target do
     url = "https://gogen-ejd.info/%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%881900-%E7%AC%AC5%E8%A8%82%E7%89%88%E4%B8%80%E8%A6%A7/"
     charset = nil
