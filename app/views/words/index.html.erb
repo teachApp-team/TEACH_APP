@@ -1,10 +1,37 @@
 <h1>単語一覧</h1>
+<div class="cp_iptxt" style="text-align: center;">
+	<label class="ef">
+    <input type="text" id="search-word1" placeholder="英単語を検索">
+  </label>
+</div>
 <% @words.each do |w| %>
-  <p><%# "#{w.english w.japanese w.part w.level}レベル #{w.wordbook.name}" %></p>
-  <p>
-    <%= w.english %>, <%= w.japanese %>, <%= w.part %>, <%= w.level %>レベル, <%= w.wordbook.name %>
+  <p><%# "#{w.english w.japanese w.part w.level}レベル #{w.wordbook.name}" %>
+    <span class="wordh"><%= w.english %></span>, <%= w.japanese %>, <%= w.part %>, <%= w.level %>レベル, <%= w.wordbook.name %>
     <%= link_to "編集", edit_word_path(w) %>
     <%= link_to "削除", word_path(w), method: :delete, data: { confirm: '削除する？？本当に？？' } %>
   </p>
   
 <% end %>  
+
+<script type="text/javascript">
+  $(function () {
+    searchWord = function(){
+      var searchText = $(this).val(), 
+          targetText;
+      
+      $('.wordh').each(function() {
+        targetText = $(this).text();
+  
+        if (targetText.indexOf(searchText) != -1) {
+          $(this).parent().removeClass('hidden');
+          $(this).parent().fadeIn();
+        } else {
+          $(this).parent().addClass('hidden');
+          $(this).parent().hide();
+        }
+      });
+    };
+  
+    $('#search-word1').on('input', searchWord);
+  });
+</script>
