@@ -40,7 +40,10 @@ class HomeController < ApplicationController
     @testwords = @wordbook.test_words(10)
     @wordtest = OldWordTest.new(student_id: @current_student.id)
     gon.words = @testwords
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   end
 
 
