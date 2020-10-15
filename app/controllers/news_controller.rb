@@ -45,7 +45,7 @@ class NewsController < ApplicationController
       end
     end
     eachjtests.each_with_index do |jt, ji|
-      test = {
+      jtest = {
         results: jt.old_results,
         class: {
           name: "OldWordTest"
@@ -53,8 +53,8 @@ class NewsController < ApplicationController
         created_at: jt.created_at,
         index: ji
       }
-      if test[:results].length > 5
-        @news.push(test)
+      if jtest[:results].length > 5
+        @news.push(jtest)
       end
     end
     
