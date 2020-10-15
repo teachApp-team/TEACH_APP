@@ -20,7 +20,7 @@ class OldWordbook < ApplicationRecord
         q: q.name,
         q_id: q.meaning,
         q_part: q.part,
-        q_wrong_count: 1,
+        q_wrong_count: q_wrong_count,
         c: [
           q.meaning,
           c_words[0].meaning,
