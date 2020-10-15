@@ -36,11 +36,10 @@ class HomeController < ApplicationController
   end
 
   def japanesetest
-
     @wordbook = OldWordbook.first
-    @testwords = []
-    @words = @wordbook.test_words(10)
+    @testwords = @wordbook.test_words(10)
     @wordtest = OldWordTest.new(student_id: @current_student.id)
+    gon.words = @testwords
 
   end
 

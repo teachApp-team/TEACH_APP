@@ -3,6 +3,6 @@ class OldWord < ApplicationRecord
   has_many :old_results
 
   def wrong_count
-    self.ord_results.where(correct: false).length
+    self.old_results.where(correct: false).length
   end
 end

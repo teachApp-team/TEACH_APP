@@ -55,7 +55,7 @@
   <div style="padding: 10px;">
     <div style="display: flex; justify-content: center; align-items: center;">
       <div class="question-circle">
-        <div><%= @words.length %>問中</div>
+        <div><%= @testwords.length %>問中</div>
         <span id="result-num" style="font-size: 25px;">0</span><span>問正解</span>
       </div>
     </div>
@@ -88,7 +88,6 @@
     <div id="wordtest-id" wordtest-id="<%= @wordtest.id %>"></div>
   </div>
 </div>
-
 
 
 
@@ -164,7 +163,7 @@ function finishTest() {
 
 var resetTimer = function() {
   clearInterval(timer);
-  limitMs = restMs = 3000;
+  limitMs = restMs = 5000;
   $('#bar').attr('value', 0);
   for (var i = 0; i < quizSet[currentNum].c.length; i++) {
     question = quizSet[currentNum].q;
@@ -206,7 +205,7 @@ $(function() {
     }
     if (quizSet.length  == currentNum) {
       clearInterval(timer);
-      limitMs = restMs = 3000;
+      limitMs = restMs = 5000;
       $('#bar').attr('value', 0);
       setTimeout("finishTest();", 2000);
     } else {
@@ -225,7 +224,7 @@ $(function() {
       p.style.color = 'red';
       p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
       clearInterval(timer);
-      limitMs = restMs = 3000;
+      limitMs = restMs = 5000;
       $('#bar').attr('value', 0);
       setTimeout("finishTest();", 2000);
     } else {  

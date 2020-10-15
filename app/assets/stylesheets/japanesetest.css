@@ -1,0 +1,346 @@
+@charset "UTF-8";
+.vocabulary-text > ul {
+  padding: 0;
+}
+
+.vocabulary-text > ul > a li {
+  color: black;
+  position: relative;
+  background: #f1f8ff;
+  /*バーの色*/
+  line-height: 1.5;
+  padding: 0.5em;
+  margin-bottom: 8px;
+  border-left: solid 35px #5c9ee7;
+  /*先の色＝アイコン裏の色*/
+  list-style-type: none !important;
+}
+
+.vocabulary-level > ul {
+  padding: 0;
+}
+
+.vocabulary-level > ul > li {
+  color: black;
+  position: relative;
+  background: #f1f8ff;
+  /*バーの色*/
+  line-height: 1.5;
+  padding: 0.5em;
+  margin-bottom: 8px;
+  border-left: solid 35px #5c9ee7;
+  /*先の色＝アイコン裏の色*/
+  list-style-type: none !important;
+}
+
+.number-of-vocabulary > ul, ol {
+  background: #AFEEEE;
+  /*灰色に*/
+  border-radius: 8px;
+  -webkit-box-shadow: 0px 0px 5px silver;
+          box-shadow: 0px 0px 5px silver;
+  padding: 0.5em 0.5em 0.5em 2em;
+}
+
+.number-of-vocabulary > ul li, ol li {
+  line-height: 1.5;
+  padding: 0.5em 0;
+}
+
+#middle_test1 > .progressWrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.words-list li, ol li {
+  line-height: 1.5;
+  /*文の行高*/
+  padding: 0.5em 0;
+  /*前後の文との余白*/
+}
+
+#middle_test1 > .progressWrapper > progress {
+  /* Turn off default styling. */
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  height: 16px;
+  width: 100%;
+  color: navy;
+  /* IE */
+  background: white;
+  /* Firefox */
+  border: solid 1px #212529;
+  border-left: none;
+  border-right: none;
+}
+
+/* Chrome needs '-webkit-progress-value' and '-webkit-progress-bar' attributes. */
+#middle_test1 > .progressWrapper > progress::-webkit-progress-value {
+  background: navy;
+}
+
+#middle_test1 > .progressWrapper > progress::-webkit-progress-bar {
+  background: white;
+}
+
+/* Firefox needs only '-moz-progress-bar' attiribute. */
+#middle_test1 > .progressWrapper > progress::-moz-progress-bar {
+  background: navy;
+}
+
+.answer-card > ul, ol {
+  padding: 0;
+}
+
+.answer-card > ul li {
+  position: relative;
+  list-style-type: none !important;
+  /*ポチ消す*/
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  background: #dbebf8;
+  vertical-align: middle;
+  color: #505050;
+  border-radius: 15px 0px 0px 15px;
+  /*左側の角丸く*/
+}
+
+.answer-card > ul li:before {
+  display: inline-block;
+  vertical-align: middle;
+  /*以下白丸つくる*/
+  content: '';
+  width: 1em;
+  height: 1em;
+  background: #fff;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.alternative {
+  padding: 5px 100px;
+}
+
+.batsu {
+  width: 100px;
+  /*枠の大きさ*/
+  height: 100px;
+  /*枠の大きさ*/
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.batsu::before, .batsu::after {
+  content: "";
+  width: 100%;
+  /*バツ線の長さ*/
+  height: 10px;
+  /*バツ線の太さ*/
+  background: blue;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+  position: absolute;
+  top: calc(14% - 5px);
+  left: 14%;
+}
+
+.batsu::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  -webkit-transform-origin: 100% 50%;
+          transform-origin: 100% 50%;
+  left: auto;
+  right: 14%;
+}
+
+.seikai {
+  width: 100px;
+  height: 100px;
+  border: 10px solid red;
+  /* ←上下20pxのボーダー */
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 80px;
+  /* ←円の高さ100px - 上下のボーダー20px */
+}
+
+.question-word {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.question-word-p {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.noidea-button > .btn {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.noidea-button > html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.noidea-button > .btn, a.btn {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 5px 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+  background-color: #FFCC99;
+}
+
+.noidea-button > input.btn--red.btn--cubic {
+  border-bottom: 5px solid #FFCC00;
+}
+
+.noidea-button > input.btn--red.btn--cubic:hover {
+  margin-top: 3px;
+  border-bottom: 2px solid #FFCC00;
+}
+
+.noidea-button > input.btn--radius {
+  border-radius: 100vh;
+}
+
+.noidea-button > .fa-position-right {
+  position: absolute;
+  top: calc(50% - 10px);
+  right: 10px;
+}
+
+#before_start_buttons > .btn--orange, input.btn--orange {
+  color: #fff;
+  background-color: #0033CC;
+}
+
+#before_start_buttons > .btn--orange:hover, input.btn--orange:hover {
+  color: #fff;
+  background: #0033CC;
+}
+
+.before_start_cancel_buttons {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.before_start_cancel_buttons > .btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #0033CC;
+  background: #ECECEC;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.after_test_buttons {
+  margin: 20px 0px;
+  text-align: center;
+}
+
+.after_test_buttons > .btn-flat-simple {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: red;
+  background: #ECECEC;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.question-circle {
+  padding-top: 16px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: skyblue;
+  /*背景色*/
+}
+
+.box11 {
+  padding: 20px 20px;
+  margin: 2em 20%;
+  color: red;
+  background: white;
+  border-top: solid 5px #5d627b;
+  -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+          box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
+.box11 span {
+  margin: 0;
+  padding: 0;
+}
+
+.box17 {
+  margin: 2em 20%;
+  position: relative;
+  padding: 20px 1.5em;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
+}
+
+.box17:before, .box17:after {
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: calc(100% + 20px);
+  background-color: black;
+}
+
+.box17:before {
+  left: 10px;
+}
+
+.box17:after {
+  right: 10px;
+}
+
+.box17 p {
+  margin: 0;
+  padding: 0;
+}
+
+.box13 {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  color: #FFF;
+  background: #6eb7ff;
+  border-bottom: solid 6p #3f87ce;
+  -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 9px;
+}
+/*# sourceMappingURL=japanesetest.css.map */
