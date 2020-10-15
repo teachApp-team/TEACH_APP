@@ -18,9 +18,9 @@ class OldWordbook < ApplicationRecord
       break if c_words[2].nil?
       word = {
         q: q.name,
-        q_id: q.meaning,
+        q_id: q.id,
         q_part: q.part,
-        q_wrong_count: q_wrong_count,
+        q_wrong_count: q.wrong_count,
         c: [
           q.meaning,
           c_words[0].meaning,
