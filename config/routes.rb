@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'home/level/japanese/:id', to: 'home#japaneselevel'
   get 'home/level/:id', to: 'home#level'
   get 'home/test/:level/:wordbook_id/:limit', to: 'home#test'
-  get 'home/test/:wordbook_id/:limit', to: 'home#japanesetest'
+  get 'home/test/old/:limit', to: 'home#japanesetest'
   get 'home/retest/:level/:wordbook_id/:wrong_count', to: 'home#retest'
   get 'home/choise_retest/:level/:wordbook_id', to: 'home#choise_retest'
 

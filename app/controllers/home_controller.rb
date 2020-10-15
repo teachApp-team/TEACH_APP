@@ -18,7 +18,8 @@ class HomeController < ApplicationController
   end
 
   def japaneselevel
-    @wordbook = OldWordbook.find(params['id'])
+    @wordbook = OldWordbook.first
+    @testwords = []
   end
 
   def test
@@ -30,8 +31,10 @@ class HomeController < ApplicationController
   end
 
   def japanesetest
-    @wordbook = OldWordbook.find(params['wordbook_id'])
-    
+    @wordbook = OldWordbook.first
+    @testwords = []
+    @words = @wordbook.test_words(10)
+    @wordtest = OldWordTest.new(student_id: @current_student.id)
   end
 
 
