@@ -31,6 +31,7 @@ class HomeController < ApplicationController
 
   def japanesetest
     @wordbook = OldWordbook.find(params['wordbook_id'])
+    
   end
 
 
