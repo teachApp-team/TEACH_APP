@@ -1,0 +1,280 @@
+<div class="before_test_card" id="before_test_card" style="margin: 10%; text-align: center;">
+  <div>
+    <h5><%= @wordbook.name %></h5>
+    <h5><%= @testwords.length %>単語</h5>
+  </div>
+  <div>
+    <p style="font-size: 13px;">以上でテストを開始してよろしいですか？</p>
+  </div>
+  <div id="before_start_buttons">
+    <input type="button" class="btn btn--orange start-test" id="start_test_btn" style= "margin: 15px; padding:10px;" onclick="startTest()" value="スタート" >
+    <div class="before_start_cancel_buttons">
+      <a href="/home/level/<%= @wordbook.id %>" class="btn-flat-simple" type="button"><i class="fa fa-caret-right"></i>キャンセル</a>
+    </div>
+  </div>
+</div>
+
+<div id="middle_test">
+  <div class="progressWrapper">
+    <progress id="bar" value="0" max="1000" min="0"></progress>
+  </div>
+
+  <div id="question-wrapper">
+    <div class="question-card box13" style="margin:40px 13%">
+      <div class="question-word"></div>
+      <div class="question-word-p"></div>
+    </div>
+    <div class="answer-card">
+      <ul id="alternative">
+        <li class="alternative alternative0" id="real-answer"></li>
+        <li class="alternative alternative1"></li>
+        <li class="alternative alternative2"></li>
+        <li class="alternative alternative3"></li>
+    </div>
+    <div class="noidea-button" style="text-align: center;">
+      <input type="button" value="分からない" class="noidea-btn btn btn--red btn--radius btn--cubic">
+    </div>
+  </div>
+</div>
+
+<div id="answer-wrapper">
+  <div class="judgement">
+    <div class="batsu" id="batsu"></div>
+    <div class="seikai" id="seikai"></div>
+  </div>
+  <div class="question-card box17" style="text-align: center;margin: 30px 6%;">
+    <h2 class="question-english">Caluculation</h2>
+    <div class="answer-part"></div>
+  </div>
+  <div class="answer box11" style="text-align: center;">
+    <span>答え：</span> <span class="question-japanese" style="font-size: 25px;">計算</span>
+  </div>
+</div>
+
+<div id="after-question" style="text-align: center;">
+  <div style="padding: 10px;">
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <div class="question-circle">
+        <div><%= @words.length %>問中</div>
+        <span id="result-num" style="font-size: 25px;">0</span><span>問正解</span>
+      </div>
+    </div>
+  </div>
+  <div class="after_test_buttons">
+    <a href="/news_field" class="btn-flat-simple" type="button"><i class="fa fa-caret-right"></i>終了する</a>
+  </div>
+  <div style="padding: 10px;">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col"><p style="font-size: 14px; margin-bottom: 0px;">No.</p></th>
+          <th scope="col" style="font-size: 15px">英単語</th>
+          <th scope="col" style="font-size: 15px">日本語</th>
+          <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @testwords.each_with_index do |word, i| %>
+        <tr id= "answer-line<%=i+1 %>" >
+          <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%=i %></th>
+          <td style="font-size: 14px; margin-bottom: 0px;"><%= word[:q] %></td>
+          <td style="font-size: 14px; margin-bottom: 0px;"><%= word[:c][0] %></td>
+          <td style="text-align: ceneter;"><%= word[:q_wrong_count] %></td>
+        </tr>
+      <% end %> 
+      </tbody>
+    </table>
+    <div id="student-id" student-id="<%= @current_student.id %>"></div>
+    <div id="wordtest-id" wordtest-id="<%= @wordtest.id %>"></div>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+$('#answer-wrapper').hide();
+$('#middle_test').hide();
+$('#after-question').hide();
+
+const quizSet = gon.words
+
+let currentNum = 0; // 現在出題中の問題数をカウント
+
+const student_id = $("#student-id").attr('student-id')  
+const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
+
+function startTest() {
+    $('#before_test_card').hide();
+    $('#middle_test').fadeIn(1000);
+    $('#seikai').hide();
+}
+
+function shuffleContent(container) {
+	var content = container.find("> *");
+	var total = content.size();
+	content.each(function() {
+		content.eq(Math.floor(Math.random()*total)).prependTo(container);
+	});
+}
+
+var question_id
+var timer,
+limitMs = 0,
+restMs = 0,
+resolutionMs = 50,    /* NOTE: Too small value does not work on IE11. */
+maxBar;
+var totalscore = 0;
+
+var countdown = function() {
+  restMs -= resolutionMs;
+  var restRate = (limitMs - restMs) / limitMs;
+  var restBarLength = maxBar * restRate
+  $('#bar').attr('value', restBarLength);
+  if (restMs === 0.0 ) {
+    if (quizSet.length  == currentNum) {
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
+      finishTest();
+      postResult(student_id, wordtest_id, question_id, false)
+    } else {
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
+      resultQuestion();
+      postResult(student_id, wordtest_id, question_id, false)
+      resetTimer();
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      setTimeout("restartTest()", 2000);
+    }
+  }
+};
+
+function finishTest() {
+  $('#middle_test').hide();
+  $('#answer-wrapper').hide();
+  $('#seikai').hide();
+  $('#batsu').hide();
+  $('#after-question').fadeIn();
+}
+
+var resetTimer = function() {
+  clearInterval(timer);
+  limitMs = restMs = 3000;
+  $('#bar').attr('value', 0);
+  for (var i = 0; i < quizSet[currentNum].c.length; i++) {
+    question = quizSet[currentNum].q;
+    question_id = quizSet[currentNum].q_id;
+    choise = quizSet[currentNum].c[i];
+    $('.question-word')[0].textContent = question;
+    $('.question-word-p')[0].textContent = quizSet[currentNum].q_part;
+    $('.alternative' + i)[0].textContent = choise;
+  }
+  currentNum = currentNum + 1;
+  $(function() {
+	shuffleContent($("ul#alternative"));
+  });
+};
+
+$(function() {
+  maxBar = $('#bar').attr('max');
+  $('#start_test_btn').on('click', function() {
+    resetTimer();
+    timer = setInterval('countdown()', resolutionMs);
+  });
+  $('.alternative').on('click', function() {
+    resultQuestion();
+    $('#middle_test').hide();
+    $('#answer-wrapper').fadeIn();
+    if ($(this).attr('id') == 'real-answer') {
+      $('#batsu').hide();
+      $('#seikai').fadeIn();
+      totalscore = totalscore + 1;
+      $('#result-num')[0].textContent = totalscore;
+      postResult(student_id, wordtest_id, question_id, true)
+    } else {
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
+      postResult(student_id, wordtest_id, question_id, false)
+    }
+    if (quizSet.length  == currentNum) {
+      clearInterval(timer);
+      limitMs = restMs = 3000;
+      $('#bar').attr('value', 0);
+      setTimeout("finishTest();", 2000);
+    } else {
+      resetTimer();
+      setTimeout("restartTest()", 2000);
+    }
+  });
+  $('.noidea-btn').on('click', function() {
+    if (quizSet.length  == currentNum) {
+      postResult(student_id, wordtest_id, question_id, false)
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
+      clearInterval(timer);
+      limitMs = restMs = 3000;
+      $('#bar').attr('value', 0);
+      setTimeout("finishTest();", 2000);
+    } else {  
+      postResult(student_id, wordtest_id, question_id, false)
+      resultQuestion();
+      $('#middle_test').hide();
+      $('#answer-wrapper').fadeIn();
+      $('#seikai').hide();
+      $('#batsu').fadeIn();
+      var p = document.getElementById('answer-line' + currentNum);
+      p.style.color = 'red';
+      p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
+      resetTimer();
+      setTimeout("restartTest()", 2000);
+    }
+  });
+});
+
+function restartTest() {
+  $('#before_test_card').hide();
+  $('#answer-wrapper').hide();
+  $('#middle_test').fadeIn();
+  timer = setInterval('countdown()', resolutionMs);
+  
+}
+
+function resultQuestion() {
+  question = quizSet[currentNum - 1].q;
+  choise = quizSet[currentNum - 1].c[0];
+  part = quizSet[currentNum - 1].q_part;
+  $('.question-english')[0].textContent = question;
+  $('.question-japanese')[0].textContent = choise;
+  $('.answer-part')[0].textContent = part;
+ }
+function postResult(student_id, wordtest_id, question_id, isCorrect){
+  const data = {
+    student_id: student_id,
+    word_test_id: wordtest_id,
+    correct: isCorrect,
+    word_id: question_id
+  }
+  $.ajax({
+    url: '/results',
+    type: 'POST',
+    data: data,
+    dataType: 'json'
+  }).done(function(response){
+    console.log(response)
+  }).fail(function(error){
+    console.log(error)
+  })
+}
+</script>

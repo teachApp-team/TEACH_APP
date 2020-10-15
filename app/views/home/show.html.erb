@@ -32,6 +32,25 @@
         </a> -->
       </div>
     <% end %>
+    <% OldWordbook.all.each do |book| %>
+      <a href="/home/level/japanese/<%= book.id %>">
+        <li style="margin-bottom: 0px;"><i class="fa fa-chevron-right"></i> <%= book.name %></li>
+      </a>
+      <div class="wordbook-progress" style="text-align: right;">
+        <div class="progressWrapper">
+          <progress max="100" value="<%= @current_student.corrects_of_book_percentage(book.id) %>"></progress>
+        </div>
+      </div>
+      <div style="text-align: right;">
+        <span style="font-size: 13px;"><%= @current_student.corrects_of_book_percentage(book.id) %> % 正解</span>
+        <span>全<%= book.old_words.length %>単語</span>
+      </div>
+      <div style="text-align: right;">
+        <a href="/home/level/<%= book.id %>/allwords" class="btn-flat-logo">
+          <i class="fa fa-chevron-right"></i>単語一覧
+        </a>
+      </div>
+    <% end %>
     </ul>
   </div>
 </div>

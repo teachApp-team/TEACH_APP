@@ -227,18 +227,44 @@ namespace :scrape do
     nodes.each do |node|
       # このノード以下のすべての子要素に対して検索を行う場合は「.//」をつける
       title_node = node.xpath(".//p[contains(text(), '単語')]")
-      title_node.children.each do |w|
+      array = []
+      title_node.children.each_with_index do |w,i|
         if  w.text.include?('【単語】：')
-          puts w.text
+          array[i] = [w.text.slice!(7..25)]
+          # puts w.text
           puts w.text.slice!(7..25)
+          # puts i
         elsif  w.text.include?('【漢字】：')
-          puts w.text
+          array[i - 2].push(w.text.slice!(7..25))
+          # puts w.text
+          # puts w.text.slice!(7..25)
+          # puts i
         elsif  w.text.include?('【意味】：')
-          puts w.text
+          array[i - 4].push(w.text.slice!(7..25))
+          # puts w.text
+          # puts w.text.slice!(7..25)
+          # puts i
         elsif  w.text.include?('【品詞】：')
-          puts w.text
-          puts '-----------------------------------------------'
+          array[i - 6].push(w.text.slice!(7..25))
+          # puts w.text
+          # puts w.text.slice!(7..25)
+          # puts i
+          # puts '-----------------------------------------------'
         end
+      end
+      array.each do |a|
+        next if a == nil
+        word = a[0]  
+        kannji = a[1]    
+        mean = a[2]
+        type = a[3]
+        # OldWord.create({
+        #     name: word,
+        #     meaning: mean,
+        #     kanji: kannji,
+        #     part: type,
+        #     old_wordbook_id: 1
+        #   })
       end
     end
 
