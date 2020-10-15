@@ -217,7 +217,7 @@
         </p>
       </div>
     </div>
-    <% if e[:class][:name] = "WordTest" %>
+    <% if e[:class][:name] == "WordTest" %>
       <div class="balloon" style="margin-top: 0px;">
         <div class="stu_card_content">
           <div class="stu_card_content_subject">
@@ -285,6 +285,7 @@
               <p class="stu_card_content_words_circle" style="margin-bottom: 5px">単</p>
           </div>
           <div class="stu_card_words" style="padding-left: 10px;">
+            古文単語
             <p style="font-size: 12px;margin-bottom: 2px;">
               教材： <%= e[:results].last.old_word.old_wordbook.name %>
             </p>
