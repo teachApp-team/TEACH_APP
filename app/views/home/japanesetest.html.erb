@@ -22,6 +22,7 @@
   <div id="question-wrapper">
     <div class="question-card box13" style="margin:40px 13%">
       <div class="question-word"></div>
+      <div class="question-word-k" style="text-align: center;"></div>
       <div class="question-word-p"></div>
     </div>
     <div class="answer-card">
@@ -171,6 +172,7 @@ var resetTimer = function() {
     choise = quizSet[currentNum].c[i];
     $('.question-word')[0].textContent = question;
     $('.question-word-p')[0].textContent = quizSet[currentNum].q_part;
+    $('.question-word-k')[0].textContent = quizSet[currentNum].q_kanji;
     $('.alternative' + i)[0].textContent = choise;
   }
   currentNum = currentNum + 1;
