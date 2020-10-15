@@ -17,6 +17,10 @@ class HomeController < ApplicationController
     @wordbook = Wordbook.find(params['id'])
   end
 
+  def japaneselevel
+    @wordbook = OldWordbook.find(params['id'])
+  end
+
   def test
     @wordtest = WordTest.create(student_id: @current_student.id)
     @wordbook = Wordbook.find(params['wordbook_id'])
@@ -24,6 +28,12 @@ class HomeController < ApplicationController
     @testwords = @wordbook.testabe_words(params['level'], params['limit'])
     gon.words = @testwords
   end
+
+  def japanesetest
+    @wordbook = OldWordbook.find(params['wordbook_id'])
+  end
+
+
 
   def retest
     @wordtest = WordTest.create(student_id: @current_student.id)
