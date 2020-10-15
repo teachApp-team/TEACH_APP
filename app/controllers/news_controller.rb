@@ -10,7 +10,7 @@ class NewsController < ApplicationController
       messages = Message.where(student_id: @current_student.id)
       questions = Question.where(student_id: @current_student.id)
       replies = Reply.where(student_id: @current_student.id)
-      
+      eachjtests = OldWordTest.where(student_id: @current_student.id)
       eachtests = WordTest.where(student_id: @current_student.id)
     end
     if @current_teacher.present?
@@ -18,6 +18,7 @@ class NewsController < ApplicationController
       messages = Message.where(teacher_id: @current_teacher.id)
       questions = Question.where(teacher_id: @current_teacher.id)
       replies = Reply.where(student_id: @current_teacher.id)
+      eachjtests = OldWordTest.where(student_id: @current_teacher.students.ids) 
       eachtests = WordTest.where(student_id: @current_teacher.students.ids) 
     end
     @news = []
@@ -43,7 +44,19 @@ class NewsController < ApplicationController
         @news.push(test)
       end
     end
-  
+    eachjtests.each_with_index do |jt, ji|
+      test = {
+        results: jt.old_results,
+        class: {
+          name: "OldWordTest"
+        },
+        created_at: jt.created_at,
+        index: ji
+      }
+      if test[:results].length > 5
+        @news.push(test)
+      end
+    end
     
     # newsの投稿日時から降順に並び替え
     @news = @news.sort_by! do |n|

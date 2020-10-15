@@ -12,6 +12,11 @@ class HomeController < ApplicationController
     @words = wordbook.words
   end
 
+  def jwords
+    wordbook = OldWordbook.find(params['id'])
+    @words = wordbook.old_words
+  end
+
   def level
     @levels = Wordbook.find(params['id']).levels
     @wordbook = Wordbook.find(params['id'])
@@ -31,10 +36,12 @@ class HomeController < ApplicationController
   end
 
   def japanesetest
+
     @wordbook = OldWordbook.first
     @testwords = []
     @words = @wordbook.test_words(10)
     @wordtest = OldWordTest.new(student_id: @current_student.id)
+
   end
 
 

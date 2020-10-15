@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/ranking/:id', to: 'home#ranking'
+  get 'home/oldjapanese/show', to: 'home#oldjapaneseshow'
   get 'home/show', to: 'home#show'
+  get 'home/level/:id/japanese/allwords', to: 'home#jwords'
   get 'home/level/:id/allwords', to: 'home#words'
   get 'home/level/japanese/:id', to: 'home#japaneselevel'
   get 'home/level/:id', to: 'home#level'

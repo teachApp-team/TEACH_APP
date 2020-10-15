@@ -1,0 +1,59 @@
+<div style="margin: 10px 10%;">
+  <h2 style="color: #364e96;
+  padding: 0.5em 0;
+  border-top: solid 3px #364e96;
+  border-bottom: solid 3px #364e96;">古文単語一覧</h2>
+</div>
+
+<div class="cp_iptxt" style="text-align: center;">
+	<label class="ef">
+    <input type="text" id="search-jword" placeholder="古文単語を検索">
+  </label>
+</div>
+<div class="student-index-card-wrapper" style="margin: 0px 7%;">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col"><p style="font-size: 14px; margin-bottom: 0px;">No.</p></th>
+        <th scope="col" style="font-size: 15px">古文単語</th>
+        <th scope="col" style="font-size: 15px">漢字</th>
+        <th scope="col" style="font-size: 15px">意味</th>
+        <!-- <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th> -->
+      </tr>
+    </thead>
+    <tbody>
+    <% @words.each_with_index do |w, i| %>
+      <tr>
+        <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%=i %></th>
+        <td class="wordh" style="font-size: 14px; margin-bottom: 0px;"><%= w.name %></td>
+        <td style="font-size: 14px; margin-bottom: 0px;"><%= w.kanji %></td>
+        <td style="font-size: 14px; margin-bottom: 0px;"><%= w.meaning %></td>
+        
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+$(function () {
+  searchWord = function(){
+    var searchText = $(this).val(), 
+        targetText;
+    
+    $('.wordh').each(function() {
+      targetText = $(this).text();
+
+      if (targetText.indexOf(searchText) != -1) {
+        $(this).parent().removeClass('hidden');
+        $(this).parent().fadeIn();
+      } else {
+        $(this).parent().addClass('hidden');
+        $(this).parent().hide();
+      }
+    });
+  };
+
+  $('#search-jword').on('input', searchWord);
+});
+</script>
