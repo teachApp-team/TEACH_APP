@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_102811) do
+ActiveRecord::Schema.define(version: 2020_10_15_122328) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -83,10 +83,23 @@ ActiveRecord::Schema.define(version: 2020_10_15_102811) do
     t.index ["teacher_id"], name: "index_messages_on_teacher_id"
   end
 
-  create_table "old_word_tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "student_id"
+  create_table "old_results", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "student_id"
+    t.boolean "correct"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "old_word_id"
+    t.bigint "old_word_test_id"
+    t.index ["old_word_id"], name: "index_old_results_on_old_word_id"
+    t.index ["old_word_test_id"], name: "index_old_results_on_old_word_test_id"
+    t.index ["student_id"], name: "index_old_results_on_student_id"
+  end
+
+  create_table "old_word_tests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_old_word_tests_on_student_id"
   end
 
   create_table "old_wordbooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -104,6 +117,12 @@ ActiveRecord::Schema.define(version: 2020_10_15_102811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["old_wordbook_id"], name: "index_old_words_on_old_wordbook_id"
+  end
+
+  create_table "ord_wordbooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -214,6 +233,10 @@ ActiveRecord::Schema.define(version: 2020_10_15_102811) do
   add_foreign_key "likes", "teachers"
   add_foreign_key "messages", "students"
   add_foreign_key "messages", "teachers"
+  add_foreign_key "old_results", "old_word_tests"
+  add_foreign_key "old_results", "old_words"
+  add_foreign_key "old_results", "students"
+  add_foreign_key "old_word_tests", "students"
   add_foreign_key "old_words", "old_wordbooks"
   add_foreign_key "questions", "students"
   add_foreign_key "questions", "teachers"
