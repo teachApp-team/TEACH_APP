@@ -85,5 +85,6 @@ Rails.application.routes.draw do
   resources :wordbooks
   resources :results
   resources :word_tests
+  resources :old_results, only: [:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

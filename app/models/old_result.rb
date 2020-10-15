@@ -1,5 +1,5 @@
 class OldResult < ApplicationRecord
   belongs_to :student
-  belongs_to :word
-  belongs_to :word_test
+  belongs_to :old_word
+  belongs_to :old_word_test
 end

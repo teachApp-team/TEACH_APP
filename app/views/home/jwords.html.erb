@@ -18,7 +18,7 @@
         <th scope="col" style="font-size: 15px">古文単語</th>
         <th scope="col" style="font-size: 15px">漢字</th>
         <th scope="col" style="font-size: 15px">意味</th>
-        <!-- <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th> -->
+        <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +28,7 @@
         <td class="wordh" style="font-size: 14px; margin-bottom: 0px;"><%= w.name %></td>
         <td style="font-size: 14px; margin-bottom: 0px;"><%= w.kanji %></td>
         <td style="font-size: 14px; margin-bottom: 0px;"><%= w.meaning %></td>
+        <td style="font-size: 14px; margin-bottom: 0px;"><%= w.wrong_count %></td>
         
       </tr>
     <% end %>

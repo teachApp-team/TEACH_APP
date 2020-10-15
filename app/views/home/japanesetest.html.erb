@@ -102,7 +102,7 @@ let currentNum = 0; // 現在出題中の問題数をカウント
 
 const student_id = $("#student-id").attr('student-id')  
 const wordtest_id = $("#wordtest-id").attr('wordtest-id')  
-
+console.log(wordtest_id)
 function startTest() {
     $('#before_test_card').hide();
     $('#middle_test').fadeIn(1000);
@@ -262,12 +262,12 @@ function resultQuestion() {
 function postResult(student_id, wordtest_id, question_id, isCorrect){
   const data = {
     student_id: student_id,
-    word_test_id: wordtest_id,
+    old_word_test_id: wordtest_id,
     correct: isCorrect,
-    word_id: question_id
+    old_word_id: question_id
   }
   $.ajax({
-    url: '/results',
+    url: '/old_results',
     type: 'POST',
     data: data,
     dataType: 'json'
