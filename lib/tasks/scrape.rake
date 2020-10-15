@@ -233,22 +233,22 @@ namespace :scrape do
           array[i] = [w.text.slice!(7..25)]
           # puts w.text
           puts w.text.slice!(7..25)
-          # puts i
+          puts i
         elsif  w.text.include?('【漢字】：')
           array[i - 2].push(w.text.slice!(7..25))
           # puts w.text
           # puts w.text.slice!(7..25)
-          # puts i
+          puts i
         elsif  w.text.include?('【意味】：')
           array[i - 4].push(w.text.slice!(7..25))
           # puts w.text
           # puts w.text.slice!(7..25)
-          # puts i
+          puts i
         elsif  w.text.include?('【品詞】：')
           array[i - 6].push(w.text.slice!(7..25))
           # puts w.text
           # puts w.text.slice!(7..25)
-          # puts i
+          puts i
           # puts '-----------------------------------------------'
         end
       end
@@ -258,13 +258,13 @@ namespace :scrape do
         kannji = a[1]    
         mean = a[2]
         type = a[3]
-        # OldWord.create({
-        #     name: word,
-        #     meaning: mean,
-        #     kanji: kannji,
-        #     part: type,
-        #     old_wordbook_id: 1
-        #   })
+        OldWord.create({
+            name: word,
+            meaning: mean,
+            kanji: kannji,
+            part: type,
+            old_wordbook_id: 1
+          })
       end
     end
 

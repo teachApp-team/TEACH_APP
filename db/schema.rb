@@ -119,12 +119,6 @@ ActiveRecord::Schema.define(version: 2020_10_15_122328) do
     t.index ["old_wordbook_id"], name: "index_old_words_on_old_wordbook_id"
   end
 
-  create_table "ord_wordbooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "teacher_id"
     t.bigint "student_id"
