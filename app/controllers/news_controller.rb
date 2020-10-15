@@ -10,6 +10,7 @@ class NewsController < ApplicationController
       messages = Message.where(student_id: @current_student.id)
       questions = Question.where(student_id: @current_student.id)
       replies = Reply.where(student_id: @current_student.id)
+      
       eachtests = WordTest.where(student_id: @current_student.id)
     end
     if @current_teacher.present?
