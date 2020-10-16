@@ -214,6 +214,334 @@ namespace :scrape do
 
   end
 
+  namespace :target1000 do
+    task target000: :environment do
+      url="https://quizlet.com/86502848/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-001-100-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "001-100",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "000-100"
+    end
+    task target100: :environment do
+      url="https://quizlet.com/86506573/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-101-200-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "100-200",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "100-200"
+    end
+    task target200: :environment do
+      url="https://quizlet.com/86629512/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E1000-201-300-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "200-300",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "200-300"
+    end
+    task target300: :environment do
+      url="https://quizlet.com/86647916/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-301-400-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "300-400",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "300-400"
+    end
+    task target400: :environment do
+      url="https://quizlet.com/86655793/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-401-500-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "400-500",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "400-500"
+    end
+    task target500: :environment do
+      url="https://quizlet.com/86655947/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-501-600-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "500-600",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "500-600"
+    end
+      
+    task target600: :environment do
+      url="https://quizlet.com/86656098/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-601-700-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "600-700",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "600-700"
+    end
+    task target700: :environment do
+      url="https://quizlet.com/86697001/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-701-800-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "700-800",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "700-800"
+    end
+    task target800: :environment do
+      url="https://quizlet.com/86699934/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-801-900-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "800-900",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "800-900"
+    end
+    task target900: :environment do
+      url="https://quizlet.com/86700120/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E1000-901-1000-flash-cards/"
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      charset = nil
+      html = open(url,opt) do |f|
+        charset = f.charset
+        f.read
+      end
+      doc = Nokogiri::HTML.parse(html, nil, charset)
+      array = []
+      doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+        array[i] = [w.text]
+      end
+      doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+        array[i].push(w.text)
+      end
+      array.each do |a|
+        puts a[0]
+        puts a[1]
+        Word.create({
+            english: a[0],
+            japanese: a[1],
+            part: "熟語",
+            level: "900-1000",
+            wordbook_id: wordbook.id
+          })
+      end
+      puts "900-1000"
+    end
+
+    task all: %i(
+      target000
+      target100
+      target200
+      target300
+      target400
+      target500
+      target600
+      target700
+      target800
+      target900
+    )
+  end
+
+
   task oldjapanese: :environment do
     url = "https://tokyo-teacher.com/article/dj-32-jpc/dj-jpc-1-word/dj-jpc-word-1-list/"
     charset = nil
