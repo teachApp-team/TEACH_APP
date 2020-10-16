@@ -253,10 +253,10 @@
               <table class="table table-bordered" style="margin-bottom: 0px;">
                 <thead>
                   <tr>
-                    <th scope="col"><p style="font-size: 12px; margin-bottom: 0px;">No.</p></th>
+                    <th scope="col"><p style="font-size: 8px; margin-bottom: 0px;">No.</p></th>
                     <th scope="col" style="font-size: 12px">英単語</th>
                     <th scope="col" style="font-size: 12px">日本語</th>
-                    <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th>
+                    <th class="wrong_count" scope="col" style="font-size: 5px">間違えた回数</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -267,9 +267,9 @@
                     <tr class= "wrong-correct-word" style="color:red;">
                   <% end %>
                       <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%= i+1 %></th>
-                      <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.english %></td>
-                      <td style="font-size: 11px; margin-bottom: 0px;"><%=r.word.japanese %></td>
-                      <td style="font-size: 11px; text-align: ceneter;"><%=r.word.wrong_count %></td>
+                      <td style="font-size: 8px; margin-bottom: 0px;"><%=r.word.english %></td>
+                      <td style="font-size: 8px; margin-bottom: 0px;"><%=r.word.japanese %></td>
+                      <td style="font-size: 8px; text-align: ceneter;"><%=r.word.wrong_count %></td>
                     </tr> 
                   <% end %>
                 </tbody>
@@ -314,7 +314,7 @@
                     <th scope="col" style="font-size: 12px">古文単語</th>
                     <th scope="col" style="font-size: 12px">漢字</th>
                     <th scope="col" style="font-size: 12px">意味</th>
-                    <th class="wrong_count" scope="col" style="font-size: 9px">間違えた<br>回数</th>
+                    <th class="wrong_count" scope="col" style="font-size: 9px">間違えた回数</th>
                   </tr>
                 </thead>
                 <tbody>
