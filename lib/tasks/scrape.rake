@@ -218,7 +218,7 @@ namespace :scrape do
     task target000: :environment do
       url="https://quizlet.com/86502848/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-001-100-flash-cards/"
       opt = {}
-      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      opt['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'
       wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
       charset = nil
       html = open(url,opt) do |f|
