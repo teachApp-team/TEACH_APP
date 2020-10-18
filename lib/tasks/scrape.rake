@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'csv'
 
 namespace :scrape do
   namespace :system do 
@@ -215,16 +216,69 @@ namespace :scrape do
   end
 
   namespace :target1000 do
+    task target1000: :environment do
+      urls = %w(
+        https://quizlet.com/86502848/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-001-100-flash-cards/,
+        https://quizlet.com/86506573/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-101-200-flash-cards/,
+        https://quizlet.com/86629512/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E1000-201-300-flash-cards/,
+        https://quizlet.com/86647916/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-301-400-flash-cards/,
+        https://quizlet.com/86655793/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-401-500-flash-cards/,
+        https://quizlet.com/86655947/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-501-600-flash-cards/,
+        https://quizlet.com/86656098/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-601-700-flash-cards/,
+        https://quizlet.com/86697001/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-701-800-flash-cards/,
+        https://quizlet.com/86699934/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-801-900-flash-cards/,
+        https://quizlet.com/86700120/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E1000-901-1000-flash-cards/,
+      )
+      titles = []
+      charset = nil
+      opt = {}
+      opt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
+      wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
+      CSV.open("test.csv", "w") do |csv|
+        urls.each_with_index do |url, index|
+          index = index*100
+          level = "#{index}-#{index+100}"
+          part = "熟語"
+          wordbook_id = wordbook.id
+          html = open(url,opt) do |f|
+            charset = f.charset
+            f.read
+          end
+          doc = Nokogiri::HTML.parse(html, nil, charset)
+          array = []
+          doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
+            array[i] = [w.text]
+          end
+          doc.css('span.TermText.notranslate.lang-ja').each_with_index do |w, i|
+            array[i].push(w.text)
+          end
+          array.each_with_index do |a,i|
+            puts a[0]
+            puts a[1]
+            puts i
+            english = a[0]
+            japanese = a[1]
+            csv << [a[0],a[1],part,level,wordbook_id]
+          end
+        end
+      end
+    end
+
     task target000: :environment do
       url="https://quizlet.com/86502848/seikyo-463-%E3%82%BF%E3%83%BC%E3%82%B2%E3%83%83%E3%83%88%E8%8B%B1%E7%86%9F%E8%AA%9E-1000-001-100-flash-cards/"
       opt = {}
-      opt['User-Agent'] = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36'
+      oopt['User-Agent'] = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/xxxxxx (KHTML, like Gecko) Chrome/xxxxxx Safari/xxxxx'
       wordbook = Wordbook.find_by!(name: "ターゲット英熟語1000")
       charset = nil
+
       html = open(url,opt) do |f|
         charset = f.charset
         f.read
       end
+
+      headers = ['English', 'Japanese', 'Page URL']
+
+
       doc = Nokogiri::HTML.parse(html, nil, charset)
       array = []
       doc.css('span.TermText.notranslate.lang-en').each_with_index do |w, i|
