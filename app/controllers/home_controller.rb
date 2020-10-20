@@ -37,7 +37,7 @@ class HomeController < ApplicationController
 
   def japanesetest
     @wordbook = OldWordbook.first
-    @testwords = @wordbook.test_words(10)
+    @testwords = @wordbook.test_words(params[:limit])
     @wordtest = OldWordTest.create(student_id: @current_student.id)
     gon.words = @testwords
   end
