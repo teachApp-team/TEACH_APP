@@ -1,11 +1,13 @@
 class OldWordbook < ApplicationRecord
   has_many :old_words
+  has_many :old_results, through: :old_words
   
   def test_words(limit)
-    words = old_words.select('old_words.*', 'count(old_results.id) AS results')
-    .left_joins(:old_results)
-    .group('old_words.id')
-    .order('results asc').limit(limit)
+    # words = old_words.select('old_words.*', 'count(old_results.id) AS results')
+    # .left_joins(:old_results)
+    # .group('old_words.id')
+    # .order('results asc').limit(limit)
+    words = old_words.order("RAND()").limit(limit)
     format_testable(words)
   end
 
@@ -14,7 +16,7 @@ class OldWordbook < ApplicationRecord
   def format_testable(words) 
     return_words = []
     words.each do |q|
-      c_words = OldWord.where(part: q.part).where.not(id: q.id).order("RAND()").limit(3)
+      c_words = OldWord.where.not(id: q.id).order("RAND()").limit(3)
       break if c_words[2].nil?
       word = {
         q: q.name,
