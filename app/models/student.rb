@@ -32,6 +32,7 @@ class Student < ApplicationRecord
     created_at_ary.uniq.sort.reverse!
   end
 
+  
   def solved_results(book_id, level)
     results.select { |result| result.word.wordbook_id == book_id && result.word.level == level }
   end
