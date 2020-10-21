@@ -75,6 +75,8 @@ Rails.application.routes.draw do
   get 'demo_select_levels/:wordbook_id', to: "words#demo_select_levels"
   get 'demo_test/:wordbook_id/:level/:words_limit', to: "words#demo_test"
 
+  get "word_tests/analysis", to: "word_tests#analysis"
+
   resources :events
   resources :messages
   resources :exams, only: [:index, :create, :new, :edit, :show]
