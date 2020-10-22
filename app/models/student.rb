@@ -12,6 +12,7 @@ class Student < ApplicationRecord
   has_many :replies
   has_many :results
   has_many :word_tests
+  has_many :old_results
 
   def history_time_ary
     histories = self.learning_histories
@@ -70,5 +71,13 @@ class Student < ApplicationRecord
   end
   def corrects_of_level_percentage(level)
     (self.corrects_of_level(level).length / Word.where(level: level).length.to_f * 100).round(1)
+  end
+  def corrects_of_old_book(book_id)
+    old_results.where(correct: true).select do |result|
+      result.old_word.old_wordbook_id == book_id
+    end
+  end
+  def corrects_of_old_book_percentage(book_id)
+    (self.corrects_of_old_book(book_id).length / OldWord.all.length.to_f * 100).round(1)
   end
 end
