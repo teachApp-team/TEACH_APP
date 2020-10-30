@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 require 'csv'
-
 namespace :scrape do
   namespace :system do 
     def system_scrape(url, level, starts_at, ends_at, part)
