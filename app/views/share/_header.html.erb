@@ -3,11 +3,11 @@
     <div class="nav_self bg-dark p-2">
       <div class="self_img">  
       <% if @current_user&.image %>
-      <% if @current_user.image.present? %>
-        <%= image_tag @current_user.image.url, class: "self_profile" %>
-      <% end %>
-      <% else %>
-        <%= image_tag "self-profile.jpg", class: "self_profile" %>
+        <% if @current_user.image.present? %>
+          <%= image_tag @current_user.image.url, class: "self_profile" %>
+        <% end %>
+        <% else %>
+          <%= image_tag "self-profile.jpg", class: "self_profile" %>
       <% end %>
       </div>
       <div class="self_name">

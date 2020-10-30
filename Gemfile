@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
+gem 'fog'
+gem 'fog-aws'
 gem 'rmagick'
 gem 'bootstrap', '~> 4.1.3' # 記事下の関連URLからバージョンを確認して導入
 gem 'jquery-rails'

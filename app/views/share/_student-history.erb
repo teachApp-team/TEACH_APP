@@ -33,7 +33,11 @@
   <% if variable.like.present? %>
     <div class="good_buttons on" learning-history-id="<%= variable.id %>" teacher-id="<%= variable.student.teacher.id %>">
       <span class="good_font" style="display: inline;">
+      <% if variable.student.teacher.image.present? %>
         <%= image_tag variable.student.teacher.image.url, class: "good_stu_card_info_img_self" %>
+      <% else %>
+        画像なし
+      <% end %>
       </span>
       <span class="good_font text" style="font-size: 10px; display: inline;">
         <%= variable.liked_teacher.full_name %>先生がいいねしました
@@ -43,7 +47,11 @@
   <% else %>
     <div class="good_buttons" learning-history-id="<%= variable.id %>" teacher-id="<%= variable.student.teacher.id %>">
       <span class="good_font" style="display: none;">
+      <% if variable.student.teacher.image.present? %>
         <%= image_tag variable.student.teacher.image.url, class: "good_stu_card_info_img_self" %>
+      <% else %>
+        画像なし
+      <% end %>
       </span>
       <span class="good_font text" style="font-size: 10px; display: none;">
         Fujita先生がいいねしました
