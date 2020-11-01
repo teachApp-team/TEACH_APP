@@ -253,7 +253,7 @@ namespace :db_csv do
     task words: :environment do
       puts "words start"
       CSV.foreach("db-words.csv", headers: true) do |row|
-        Word.create!({
+        Word.find_or_create_by!({
           english: row[1],
           japanese: row[2],
           part: row[3],
@@ -280,17 +280,21 @@ namespace :db_csv do
 
     task results: :environment do
       puts "results start"
-      CSV.foreach("db-results.csv", headers: true) do |row|
-        Result.find_or_create_by!({
-          student_id: row[1],
-          word_id: row[2],
-          correct: row[3],
-          created_at: row[4],
-          updated_at: row[5],
-          word_test_id: row[6],
-        })
-        puts row[0]
-      end
+        begin
+          CSV.foreach("db-results.csv", headers: true) do |row|
+          Result.find_or_create_by!({
+            student_id: row[1],
+            word_id: row[2],
+            correct: row[3],
+            created_at: row[4],
+            updated_at: row[5],
+            word_test_id: row[6],
+          })
+          puts row[0]
+          rescue
+            puts "一旦飛ばします"
+          end
+        end
       puts "results done"
     end
 
