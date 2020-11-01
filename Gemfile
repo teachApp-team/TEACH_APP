@@ -38,6 +38,7 @@ gem "chartkick"
 gem 'gon'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'dotenv-rails'
 
 gem 'simple_calendar', '~> 2.0'
 # Use ActiveStorage variant
