@@ -6,21 +6,36 @@ class NewsController < ApplicationController
   def index
     require "time"
     if @current_student.present?
-      @learning_histories = LearningHistory.where(student_id: @current_student.id).order(created_at: :desc)
-      @messages = Message.where(student_id: @current_student.id).order(created_at: :desc)
+      learning_histories = LearningHistory.where(student_id: @current_student.id).order(created_at: :desc)
+      messages = Message.where(student_id: @current_student.id).order(created_at: :desc)
+    
+      @lm = learning_histories
+      # messages.each {|m| @lm.push(m) }
+      # @lm = @lm.sort_by! {|s| s[:created_at]}
+
       @questions = Question.where(student_id: @current_student.id).order(created_at: :desc)
       @replies = Reply.where(student_id: @current_student.id).order(created_at: :desc)
       @old_word_tests = OldWordTest.where(student_id: @current_student.id).order(created_at: :desc)
       @word_tests = WordTest.where(student_id: @current_student.id).order(created_at: :desc)
+
     end
     if @current_teacher.present?
-      @learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
-      @messages = Message.where(student_id: @current_teacher.id).order(created_at: :desc)
+      learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
+      messages = Message.where(student_id: @current_teacher.id).order(created_at: :desc)
+
+      @lm = learning_histories
+      # messages.each {|m| @lm.push(m) }
+      # @lm = @lm.sort_by! {|s| s[:created_at]}
+
       @questions = Question.where(student_id: @current_teacher.id).order(created_at: :desc)
       @replies = Reply.where(student_id: @current_teacher.id).order(created_at: :desc)
       @old_word_tests = OldWordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
       @word_tests = WordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
     end
+
+    @t = @old_word_tests.map{|o| return o }
+    @word_tests.each {|w| @t.push(w) }
+    @t.sort_by! {|s| s[:created_at]}
   end
 
   def new_learning_history
