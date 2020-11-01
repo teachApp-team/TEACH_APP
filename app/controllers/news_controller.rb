@@ -6,69 +6,21 @@ class NewsController < ApplicationController
   def index
     require "time"
     if @current_student.present?
-      histories = LearningHistory.where(student_id: @current_student.id)
-      messages = Message.where(student_id: @current_student.id)
-      questions = Question.where(student_id: @current_student.id)
-      replies = Reply.where(student_id: @current_student.id)
-      eachjtests = OldWordTest.where(student_id: @current_student.id)
-      eachtests = WordTest.where(student_id: @current_student.id)
+      @learning_histories = LearningHistory.where(student_id: @current_student.id).order(created_at: :desc)
+      @messages = Message.where(student_id: @current_student.id).order(created_at: :desc)
+      @questions = Question.where(student_id: @current_student.id).order(created_at: :desc)
+      @replies = Reply.where(student_id: @current_student.id).order(created_at: :desc)
+      @old_word_tests = OldWordTest.where(student_id: @current_student.id).order(created_at: :desc)
+      @word_tests = WordTest.where(student_id: @current_student.id).order(created_at: :desc)
     end
     if @current_teacher.present?
-      histories = LearningHistory.where(student_id: @current_teacher.students.ids)
-      messages = Message.where(teacher_id: @current_teacher.id)
-      questions = Question.where(teacher_id: @current_teacher.id)
-      replies = Reply.where(student_id: @current_teacher.id)
-      eachjtests = OldWordTest.where(student_id: @current_teacher.students.ids) 
-      eachtests = WordTest.where(student_id: @current_teacher.students.ids) 
+      @learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
+      @messages = Message.where(student_id: @current_teacher.id).order(created_at: :desc)
+      @questions = Question.where(student_id: @current_teacher.id).order(created_at: :desc)
+      @replies = Reply.where(student_id: @current_teacher.id).order(created_at: :desc)
+      @old_word_tests = OldWordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
+      @word_tests = WordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
     end
-    @news = []
-    questions.each do |q|
-      @news.push(q)
-    end
-    histories.each do |h|
-      @news.push(h)
-    end
-    messages.each do |m|
-      @news.push(m)
-    end
-    eachtests.each_with_index do |et, ei|
-      test = {
-        results: et.results,
-        class: {
-          name: "WordTest"
-        },
-        created_at: et.created_at,
-        index: ei
-      }
-      if test[:results].length > 5
-        @news.push(test)
-      end
-    end
-    eachjtests.each_with_index do |jt, ji|
-      jtest = {
-        results: jt.old_results,
-        class: {
-          name: "OldWordTest"
-        },
-        created_at: jt.created_at,
-        index: ji
-      }
-      if jtest[:results].length > 5
-        @news.push(jtest)
-      end
-    end
-    
-    # newsの投稿日時から降順に並び替え
-    @news = @news.sort_by! do |n|
-      if n.class.name == "Question" && n.replies.present?
-        n.replies.last.created_at 
-      else
-        n[:created_at]
-      end 
-    end
-    @news.reverse!
-    @news = Kaminari.paginate_array(@news).page(params[:page]).per(25)
-    @n = @news.length
   end
 
   def new_learning_history
