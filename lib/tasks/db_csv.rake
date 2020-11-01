@@ -12,6 +12,11 @@ namespace :db_csv do
     FileUtils.touch('db-wordbooks.csv')
     FileUtils.touch('db-words.csv')
     FileUtils.touch('db-word_tests.csv')
+    FileUtils.touch('db-results.csv')
+    FileUtils.touch('db-old_wordbooks.csv')
+    FileUtils.touch('db-old_words.csv')
+    FileUtils.touch('db-old_word_tests.csv')
+    FileUtils.touch('db-old_results.csv')
   end
   task export: :environment do 
     CSV.open("db-students.csv", "w") do |csv|
@@ -40,7 +45,7 @@ namespace :db_csv do
       end
       puts "leaning history ok"
     end
-    CSV.open("db-message.csv", "w") do |csv|
+    CSV.open("db-messages.csv", "w") do |csv|
       column_names = Message.column_names
       csv << column_names
       Message.all.each do |record|
@@ -87,6 +92,46 @@ namespace :db_csv do
         csv << record.attributes.values_at(*WordTest.column_names)
       end
       puts "word_test ok"
+    end
+    CSV.open("db-results.csv", "w") do |csv|
+      column_names = Result.column_names
+      csv << column_names
+      Result.all.each do |record|
+        csv << record.attributes.values_at(*Result.column_names)
+      end
+      puts "result ok"
+    end
+    CSV.open("db-old_wordbooks.csv", "w") do |csv|
+      column_names = OldWordbook.column_names
+      csv << column_names
+      OldWordbook.all.each do |record|
+        csv << record.attributes.values_at(*OldWordbook.column_names)
+      end
+      puts "old wordbook ok"
+    end
+    CSV.open("db-old_words.csv", "w") do |csv|
+      column_names = OldWord.column_names
+      csv << column_names
+      OldWord.all.each do |record|
+        csv << record.attributes.values_at(*OldWord.column_names)
+      end
+      puts "old word ok"
+    end
+    CSV.open("db-old_word_tests.csv", "w") do |csv|
+      column_names = OldWordTest.column_names
+      csv << column_names
+      OldWordTest.all.each do |record|
+        csv << record.attributes.values_at(*OldWordTest.column_names)
+      end
+      puts "old word test ok"
+    end
+    CSV.open("db-old_results.csv", "w") do |csv|
+      column_names = OldResult.column_names
+      csv << column_names
+      OldResult.all.each do |record|
+        csv << record.attributes.values_at(*OldResult.column_names)
+      end
+      puts "old result ok"
     end
 
   end
