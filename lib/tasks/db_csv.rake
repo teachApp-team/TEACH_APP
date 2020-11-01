@@ -143,31 +143,211 @@ namespace :db_csv do
 
 
 
-
-  task import: :environment do
-    CSV.foreach("db-teacher.csv", headers: true) do |row|
-      Teacher.create!({
-        full_name: row[1],
-        subject: row[2],
-        password: 'password',
-        password_confirmation: 'password',
-        image: "",
-      })
+  namespace :import do
+    task teachers: :environment do
+      puts "teacher start"
+      CSV.foreach("db-teachers.csv", headers: true) do |row|
+        Teacher.create!({
+          full_name: row[1],
+          subject: row[2],
+          password: 'password',
+          password_confirmation: 'password',
+          image: "",
+        })
+        puts row[0]
+      end
+      puts "teacher done"
     end
-    puts "teacher ok"
-
-    CSV.foreach("db-student.csv", headers: true) do |row|
-      Student.create!({
-        full_name: row[1],
-        school_of_choice: row[2],
-        password: 'password',
-        password_confirmation: 'password',
-        teacher_id: 1, 
-        image: "",
-      })
+    task students: :environment do
+      puts "student start"
+      CSV.foreach("db-students.csv", headers: true) do |row|
+        Student.create!({
+          full_name: row[1],
+          school_of_choice: row[2],
+          password: 'password',
+          password_confirmation: 'password',
+          teacher_id: 1, 
+          image: "",
+        })
+        puts row[0]
+      end
+      puts "student done"
     end
-    puts "student ok"
-    
+    task learning_histories: :environment do
+      puts "learning_histories start"
+      CSV.foreach("db-learning_histories.csv", headers: true) do |row|
+        LearningHistory.create!({
+          learning_time: row[1],
+          learning_text: row[2],
+          comment: row[3],
+          subject: row[4],
+          student_id: row[5],
+          created_at: row[6],
+          updated_at: row[7],
+        })
+        puts row[0]
+      end
+      puts "learning_histories done"
+    end
+    task messages: :environment do
+      puts "messages start"
+      CSV.foreach("db-messages.csv", headers: true) do |row|
+        Message.create!({
+          comment: row[1],
+          student_id: row[2],
+          teacher_id: row[3],
+          created_at: row[4],
+          updated_at: row[5],
+        })
+        puts row[0]
+      end
+      puts "messages done"
+    end
+
+    task questions: :environment do
+      puts "questions start"
+      CSV.foreach("db-questions.csv", headers: true) do |row|
+        Question.create!({
+          teacher_id: row[1],
+          student_id: row[2],
+          category: row[3],
+          content: row[4],
+          created_at: row[5],
+          updated_at: row[6],
+          image: "",
+        })
+        puts row[0]
+      end
+      puts "questions done"
+    end
+
+    task replies: :environment do
+      puts "replies start"
+      CSV.foreach("db-replies.csv", headers: true) do |row|
+        Reply.create!({
+          content: row[1],
+          teacher_id: row[2],
+          student_id: row[3],
+          question_id: row[4],
+          created_at: row[5],
+          updated_at: row[6],
+          which: row[7],
+          image: "",
+        })
+        puts row[0]
+      end
+      puts "replies done"
+    end
+
+    task wordbooks: :environment do
+      puts "wordbooks start"
+      CSV.foreach("db-wordbooks.csv", headers: true) do |row|
+        Wordbook.create!({
+          name: row[1],
+        })
+        puts row[0]
+      end
+      puts "wordbooks done"
+    end
+
+    task words: :environment do
+      puts "words start"
+      CSV.foreach("db-words.csv", headers: true) do |row|
+        Word.create!({
+          english: row[1],
+          japanese: row[2],
+          part: row[3],
+          level: row[4],
+          wordbook_id: row[5],
+        })
+        puts row[0]
+      end
+      puts "words done"
+    end
+
+    task word_tests: :environment do
+      puts "word_tests start"
+      CSV.foreach("db-word_tests.csv", headers: true) do |row|
+        WordTest.create!({
+          student_id: row[1],
+          created_at: row[2],
+          updated_at: row[3],
+        })
+        puts row[0]
+      end
+      puts "word_tests done"
+    end
+
+    task results: :environment do
+      puts "results start"
+      CSV.foreach("db-results.csv", headers: true) do |row|
+        Result.create!({
+          student_id: row[1],
+          word_id: row[2],
+          correct: row[3],
+          created_at: row[4],
+          updated_at: row[5],
+          word_test_id: row[6],
+        })
+        puts row[0]
+      end
+      puts "results done"
+    end
+
+    task old_wordbooks: :environment do
+      puts "old_wordbooks start"
+      CSV.foreach("db-old_wordbooks.csv", headers: true) do |row|
+        OldWordbook.create!({
+          name: row[1],
+        })
+        puts row[0]
+      end
+      puts "old_wordbooks done"
+    end
+
+    task old_words: :environment do
+      puts "old_words start"
+      CSV.foreach("db-old_words.csv", headers: true) do |row|
+        OldWord.create!({
+          name: row[1],
+          meaning: row[2],
+          kanji: row[3],
+          part: row[4],
+          old_wordbook_id: row[5],
+        })
+        puts row[0]
+      end
+      puts "old_words done"
+    end
+
+    task old_word_tests: :environment do
+      puts "old_word_tests start"
+      CSV.foreach("db-old_word_tests.csv", headers: true) do |row|
+        OldWordTest.create!({
+          student_id: row[1],
+          created_at: row[2],
+          updated_at: row[3],
+        })
+        puts row[0]
+      end
+      puts "old_word_tests done"
+    end
+
+    task old_results: :environment do
+      puts "old_results start"
+      CSV.foreach("db-old_results.csv", headers: true) do |row|
+        OldResult.create!({
+          student_id: row[1],
+          correct: row[2],
+          created_at: row[3],
+          updated_at: row[4],
+          old_word_id: row[5],
+          old_word_test_id: row[6],
+        })
+        puts row[0]
+      end
+      puts "old_results done"
+    end
 
   end
 end
