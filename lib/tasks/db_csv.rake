@@ -224,7 +224,7 @@ namespace :db_csv do
     task replies: :environment do
       puts "replies start"
       CSV.foreach("db-replies.csv", headers: true) do |row|
-        Reply.create!({
+        Reply.find_or_create_by!({
           content: row[1],
           teacher_id: row[2],
           student_id: row[3],
@@ -281,7 +281,7 @@ namespace :db_csv do
     task results: :environment do
       puts "results start"
       CSV.foreach("db-results.csv", headers: true) do |row|
-        Result.create!({
+        Result.find_or_create_by!({
           student_id: row[1],
           word_id: row[2],
           correct: row[3],
@@ -297,7 +297,7 @@ namespace :db_csv do
     task old_wordbooks: :environment do
       puts "old_wordbooks start"
       CSV.foreach("db-old_wordbooks.csv", headers: true) do |row|
-        OldWordbook.create!({
+        OldWordbook.find_or_create_by!({
           name: row[1],
         })
         puts row[0]
@@ -308,7 +308,7 @@ namespace :db_csv do
     task old_words: :environment do
       puts "old_words start"
       CSV.foreach("db-old_words.csv", headers: true) do |row|
-        OldWord.create!({
+        OldWord.find_or_create_by!({
           name: row[1],
           meaning: row[2],
           kanji: row[3],
@@ -323,7 +323,7 @@ namespace :db_csv do
     task old_word_tests: :environment do
       puts "old_word_tests start"
       CSV.foreach("db-old_word_tests.csv", headers: true) do |row|
-        OldWordTest.create!({
+        OldWordTest.find_or_create_by!({
           student_id: row[1],
           created_at: row[2],
           updated_at: row[3],
@@ -336,7 +336,7 @@ namespace :db_csv do
     task old_results: :environment do
       puts "old_results start"
       CSV.foreach("db-old_results.csv", headers: true) do |row|
-        OldResult.create!({
+        OldResult.find_or_create_by!({
           student_id: row[1],
           correct: row[2],
           created_at: row[3],
