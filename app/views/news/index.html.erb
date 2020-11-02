@@ -24,20 +24,22 @@
                         <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
                       <% end %>
                     </div>
-                  </div>
-                  <div class="stu_card_info_name">
-                    <% if l.student.id == @current_student&.id %>
+                    <div class="stu_card_info_name">
+                      <% if l.student.id == @current_student&.id %>
                       <h5>
                         <%= l.student.full_name %>君
                         <%= link_to "編集", "/news_field/#{l.id}/edit", style: "color: tomato;margin-left: 40px;font-size:13px;" %>
                         <%= link_to "削除", "/destroy_lh/#{l.id}", style: "color: tomato;margin-left: 20px;font-size:13px;", method: :delete, data: { confirm: '削除しますか？' } %>
                       </h5>
-                    <% else %>
-                      <h5><%= link_to l.student.full_name, "/each_student/#{l.student.id}", method: :get %></h5>
-                    <% end %>
-                  </div>
-                  <div class="stu_card_info_time_ago">
-                    <p style="margin-bottom: 5px;"><%= l.created_at.to_s(:datetime_jp) %></p>
+                      <% else %>
+                      <h5>
+                        <%= link_to l.student.full_name, "/each_student/#{l.student.id}", method: :get %>
+                      </h5>
+                      <% end %>
+                    </div>
+                    <div class="stu_card_info_time_ago">
+                      <p style="margin-bottom: 5px;"><%= l.created_at.to_s(:datetime_jp) %></p>
+                    </div>
                   </div>
                   <%= render partial: 'share/student-history', locals: {variable: l} %>
                 </div>
