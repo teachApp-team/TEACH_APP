@@ -211,26 +211,27 @@
           <div class="tab_content_description">
             <% @t&.each do |t| %>
               <div class="stu_card">
-                <div class="stu_card_info" style="margin-bottom: 20px;">
-                  <div class="stu_card_info_img">
-                    <% if t.results.last.student.image.present? %>
-                      <%= image_tag t.results.last.student.image.url, class: "stu_card_info_img_self" %>
-                    <% else %>
-                      <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
-                    <% end %>
-                  </div>
-                  <div class="stu_card_info_name">
-                    <h5>
-                      <%= t.results.last.student.full_name %>
-                    </h5>
-                  </div>
-                  <div class="stu_card_info_time_ago">
-                    <p style="margin-bottom: 5px;">
-                      <%= t.created_at.to_s(:datetime_jp) %>
-                    </p>
-                  </div>
-                </div>
                 <% if t.class.name == "WordTest" %>
+                  <% next if t.results.last.nil? %>
+                  <div class="stu_card_info" style="margin-bottom: 20px;">
+                    <div class="stu_card_info_img">
+                      <% if t.results.last.student.image.present? %>
+                        <%= image_tag t.results.last.student.image.url, class: "stu_card_info_img_self" %>
+                      <% else %>
+                        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+                      <% end %>
+                    </div>
+                    <div class="stu_card_info_name">
+                      <h5>
+                        <%= t.results.last.student.full_name %>
+                      </h5>
+                    </div>
+                    <div class="stu_card_info_time_ago">
+                      <p style="margin-bottom: 5px;">
+                        <%= t.created_at.to_s(:datetime_jp) %>
+                      </p>
+                    </div>
+                  </div>
                   <div class="balloon" style="margin-top: 0px;">
                     <div class="stu_card_content">
                       <div class="stu_card_content_subject">
@@ -292,6 +293,26 @@
                     </div>
                   </div>
                 <% else %>
+                  <% next if t.old_results.last.nil? %>
+                  <div class="stu_card_info" style="margin-bottom: 20px;">
+                    <div class="stu_card_info_img">
+                      <% if t.old_results.last.student.image.present? %>
+                        <%= image_tag t.old_results.last.student.image.url, class: "stu_card_info_img_self" %>
+                      <% else %>
+                        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+                      <% end %>
+                    </div>
+                    <div class="stu_card_info_name">
+                      <h5>
+                        <%= t.old_results.last.student.full_name %>
+                      </h5>
+                    </div>
+                    <div class="stu_card_info_time_ago">
+                      <p style="margin-bottom: 5px;">
+                        <%= t.created_at.to_s(:datetime_jp) %>
+                      </p>
+                    </div>
+                  </div>
                   <div class="balloon" style="margin-top: 0px;">
                     <div class="stu_card_content">
                       <div class="stu_card_content_subject">
@@ -306,10 +327,10 @@
                     </div>
                     <div style="text-align: center;padding-right: 20px;">
                       <span style="font-size: 12px;margin-bottom: 2px;margin-right: 5px;">
-                        <%= t.results.length %>問中
+                        <%= t.old_results.length %>問中
                       </span>
                       <span style="font-size: 17px;margin-bottom: 5px;">
-                        <%= t.results.corrects_count %>問正解
+                        <%= t.old_results.corrects_count %>問正解
                       </span>
                     </div>
                     <div class="stu_card_content_words" style="text-align: left;">
@@ -331,7 +352,7 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <% t.results.each_with_index do |r, i| %>
+                              <% t.old_results.each_with_index do |r, i| %>
                               <% if r.correct %>
                                 <tr>
                               <% else %>
