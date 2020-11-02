@@ -15,8 +15,8 @@ class NewsController < ApplicationController
     end
     if @current_teacher.present?
       learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids)
-      messages = Message.where(student_id: @current_teacher.id)
-      @questions = Question.where(student_id: @current_teacher.id).order(created_at: :desc)
+      messages = Message.where(student_id: @current_teacher.students.ids)
+      @questions = Question.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
       @replies = Reply.where(student_id: @current_teacher.id).order(created_at: :desc)
       @old_word_tests = OldWordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
       @word_tests = WordTest.where(student_id: @current_teacher.students.ids).order(created_at: :desc)
