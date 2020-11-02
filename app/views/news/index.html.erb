@@ -197,7 +197,7 @@
                   <% end %>
                   <% if q.replies.length == i + 1 %>
                     <div style = "margin-top: 10px;">
-                      <%= link_to "返信する", "replies/#{e.id}/new", method: :get, style: "color: blue;" %>
+                      <%= link_to "返信する", "replies/#{q.id}/new", method: :get, style: "color: blue;" %>
                     </div>
                   <% end %>
                 </div>
