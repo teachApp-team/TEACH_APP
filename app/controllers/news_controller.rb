@@ -6,20 +6,20 @@ class NewsController < ApplicationController
   def index
     require "time"
     if @current_student.present?
-      learning_histories = LearningHistory.where(student_id: @current_student.id, created_at: Time.current.in_time_zone.all_week)
-      messages = Message.where(student_id: @current_student.id, created_at: Time.current.in_time_zone.all_week)
-      @questions = Question.where(student_id: @current_student.id, created_at: Time.current.in_time_zone.all_week).order(created_at: :desc)
+      learning_histories = LearningHistory.where(student_id: @current_student.id).where('created_at >= ?', Time.current - 1.weeks) 
+      messages = Message.where(student_id: @current_student.id).where('created_at >= ?', Time.current - 1.weeks) 
+      @questions = Question.where(student_id: @current_student.id).where('created_at >= ?', Time.current - 1.weeks).order(created_at: :desc)
       @replies = Reply.where(student_id: @current_student.id).order(created_at: :desc)
-      @old_word_tests = OldWordTest.where(student_id: @current_student.id, created_at: Time.current.in_time_zone.all_week)
-      @word_tests = WordTest.where(student_id: @current_student.id, created_at: Time.current.in_time_zone.all_week)
+      @old_word_tests = OldWordTest.where(student_id: @current_student.id).where('created_at >= ?', Time.current - 1.weeks) 
+      @word_tests = WordTest.where(student_id: @current_student.id).where('created_at >= ?', Time.current - 1.weeks) 
     end
     if @current_teacher.present?
-      learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids, created_at: Time.current.in_time_zone.all_week)
-      messages = Message.where(student_id: @current_teacher.students.ids, created_at: Time.current.in_time_zone.all_week)
-      @questions = Question.where(student_id: @current_teacher.students.ids, created_at: Time.current.in_time_zone.all_week).order(created_at: :desc)
-      @replies = Reply.where(student_id: @current_teacher.id, created_at: Time.current.in_time_zone.all_week).order(created_at: :desc)
-      @old_word_tests = OldWordTest.where(student_id: @current_teacher.students.ids, created_at: Time.current.in_time_zone.all_week).order(created_at: :desc)
-      @word_tests = WordTest.where(student_id: @current_teacher.students.ids, created_at: Time.current.in_time_zone.all_week).order(created_at: :desc)
+      learning_histories = LearningHistory.where(student_id: @current_teacher.students.ids).where('created_at >= ?', Time.current - 1.weeks) 
+      messages = Message.where(student_id: @current_teacher.students.ids).where('created_at >= ?', Time.current - 1.weeks) 
+      @questions = Question.where(student_id: @current_teacher.students.ids).where('created_at >= ?', Time.current - 1.weeks).order(created_at: :desc)
+      @replies = Reply.where(student_id: @current_teacher.id).where('created_at >= ?', Time.current - 1.weeks) .order(created_at: :desc)
+      @old_word_tests = OldWordTest.where(student_id: @current_teacher.students.ids).where('created_at >= ?', Time.current - 1.weeks) 
+      @word_tests = WordTest.where(student_id: @current_teacher.students.ids).where('created_at >= ?', Time.current - 1.weeks)
     end
 
     @lm = []
