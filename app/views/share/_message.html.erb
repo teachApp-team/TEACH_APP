@@ -1,0 +1,38 @@
+<div class="teacher_card">
+  <div class="teacher_card_info">
+    <div class="teacher_card_info_img">
+      <% if variable.teacher.present? %>
+        <% if variable.teacher.image.present? %>
+          <%=image_tag variable.teacher.image.url , class: "teacher_card_info_img_self" %>
+        <% else %>
+          <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+        <% end %>
+      <% else %>
+        <div></div>
+      <% end %>
+    </div>
+    <div class="teacher_card_info_name">
+      <% if variable.teacher.id == @current_teacher&.id %>
+        <h5>
+          <%= variable.teacher.full_name %>先生
+            <%= link_to "削除", "/messages/#{variable.id}", method: :delete, style: "color: tomato;margin-left: 40px;font-size:13px;", data: { confirm: '削除しますか？' } %>
+        </h5>
+      <% else %>
+        <h5><%= variable.teacher.full_name %>先生</h5>
+      <% end %>
+    </div>
+    <div class="teacher_card_info_time_ago">
+      <p><%= variable.created_at.to_s(:datetime_jp) %></p>
+    </div>
+  </div>
+  <div class="balloon_teacher">
+    <div class="teacher_card_comment">
+      <% if @current_student.present? %>
+        <p><%= variable.comment %></p>
+      <% else %>
+        <p style="font-size: 11px;">To: <%= variable.student.full_name %>君</p>
+        <p><%= variable.comment %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
