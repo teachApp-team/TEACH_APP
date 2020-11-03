@@ -1,0 +1,81 @@
+<div class="stu_card">
+  <div class="stu_card_info" style="margin-bottom: 20px;">
+    <div class="stu_card_info_img">
+      <% if variable.results.last.student.image.present? %>
+        <%= image_tag variable.results.last.student.image.url, class: "stu_card_info_img_self" %>
+      <% else %>
+        <p class="stu_card_info_img_self" style="font-size: 14px;">画像<br>なし</p>
+      <% end %>
+    </div>
+    <div class="stu_card_info_name">
+      <h5>
+        <%= variable.results.last.student.full_name %>
+      </h5>
+    </div>
+    <div class="stu_card_info_time_ago">
+      <p style="margin-bottom: 5px;">
+        <%= variable.created_at.to_s(:datetime_jp) %>
+      </p>
+    </div>
+  </div>
+  <div class="balloon" style="margin-top: 0px;">
+    <div class="stu_card_content">
+      <div class="stu_card_content_subject">
+        <p class="stu_card_content_words_circle" style="margin-bottom: 5px">単</p>
+      </div>
+      <div class="stu_card_words" style="padding-left: 10px;">
+        <p style="font-size: 12px;margin-bottom: 2px;">
+          教材： <%= variable.results.last.word.wordbook.name %>
+        </p>
+        <div>
+          <p style="font-size: 12px;margin-bottom: 5px;">
+            レベル: <%= variable.results.last.word.level %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;padding-right: 20px;">
+      <span style="font-size: 12px;margin-bottom: 2px;margin-right: 5px;">
+        <%= variable.results.length %>問中
+      </span>
+      <span style="font-size: 17px;margin-bottom: 5px;">
+        <%= variable.results.corrects_count %>問正解
+      </span>
+    </div>
+    <div class="stu_card_content_words" style="text-align: left;">
+      <button class="btn btn-primary"
+      data-toggle="collapse"
+      data-target="#example-<%= variable.id %>"
+      aria-expand="false"
+      aria-controls="example-<%= variable.id %>">回答の詳細はこちら</button>
+      <div class="collapse" id="example-<%= variable.id %>">
+        <div class="card card-body" style="padding: 10px;">
+          <table class="table table-bordered" style="margin-bottom: 0px;">
+            <thead>
+              <tr>
+                <th scope="col"><p style="font-size: 8px; margin-bottom: 0px;">No.</p></th>
+                <th scope="col" style="font-size: 12px">英単語</th>
+                <th scope="col" style="font-size: 12px">日本語</th>
+                <th class="wrong_count" scope="col" style="font-size: 5px">間違えた回数</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% variable.results.each_with_index do |r, i| %>
+                <% if r.correct %>
+                  <tr>
+                <% else %>
+                  <tr class= "wrong-correct-word" style="color:red;">
+                <% end %>
+                    <th scope="row" style="font-size: 5px; margin-bottom: 0px;"><%= i+1 %></th>
+                    <td style="font-size: 8px; margin-bottom: 0px;"><%=r.word.english %></td>
+                    <td style="font-size: 8px; margin-bottom: 0px;"><%=r.word.japanese %></td>
+                    <td style="font-size: 8px; text-align: ceneter;"><%=r.word.wrong_count %></td>
+                  </tr> 
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
