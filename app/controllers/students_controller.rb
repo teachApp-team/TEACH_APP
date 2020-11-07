@@ -68,6 +68,26 @@ class StudentsController < ApplicationController
     redirect_to "/teachers/#{@current_teacher.id}"
   end
 
+  def edit_password
+    @student = Student.find(params[:id])
+  end
+
+  def update_password
+    @student = Student.find(params[:id])
+    if @student.authenticate(student_password_params[:current_password])
+      # @student.assign_attributes(
+      #   password: student_password_params[:password],
+      #   password_confirmation: student_password_params[:password_confirmation]
+      # )
+      @student.password = student_password_params[:password]
+      @student.password_confirmation = student_password_params[:password_confirmation]
+      @student.save
+      redirect_to '/students/edit'
+    else
+      redirect_to "/password/edit/#{@student.id}"
+    end
+  end
+
   private
   def student_params
     params.require(:student).permit(:full_name, :password, :password_confirmation, :school_of_choice, :subject, :image, :mail)
@@ -75,5 +95,9 @@ class StudentsController < ApplicationController
 
   def get_params
     params.permit(:student_id)
+  end
+
+  def student_password_params
+    params.require(:student).permit(:current_password, :password, :password_confirmation)
   end
 end
