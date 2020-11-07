@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'password/update/:id', to: 'students#update_password'
+  get 'password/edit/:id', to: 'students#edit_password'
   get 'home/ranking/:id', to: 'home#ranking'
   get 'home/oldjapanese/show', to: 'home#oldjapaneseshow'
   get 'home/show', to: 'home#show'
