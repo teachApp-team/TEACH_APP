@@ -16,11 +16,11 @@
       </a>
       <div class="wordbook-progress" style="text-align: right;">
         <div class="progressWrapper">
-          <progress max="100" value="<%= @current_student.corrects_of_book_percentage(book.id) %>"></progress>
+          <progress max="100" value="<%= @current_student.aggregate_of_book(book.id)&.percentage %>"></progress>
         </div>
       </div>
       <div style="text-align: right;">
-        <span style="font-size: 13px;"><%= @current_student.corrects_of_book_percentage(book.id) %> % 正解</span>
+        <span style="font-size: 13px;"><%= @current_student.aggregate_of_book(book.id)&.percentage %> % 正解</span>
         <span>全<%= book.words.length %>単語</span>
       </div>
       <div style="text-align: right;">

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  student: one
+  wordbook: one
+  is_level: false
+  percentage: 1.5
+  level: MyString
+
+two:
+  student: two
+  wordbook: two
+  is_level: false
+  percentage: 1.5
+  level: MyString

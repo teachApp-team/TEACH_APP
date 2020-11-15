@@ -13,6 +13,7 @@ class Student < ApplicationRecord
   has_many :results
   has_many :word_tests
   has_many :old_results
+  has_many :aggregates
 
   def history_time_ary
     histories = self.learning_histories
@@ -79,5 +80,11 @@ class Student < ApplicationRecord
   end
   def corrects_of_old_book_percentage(book_id)
     (self.corrects_of_old_book(book_id).length / OldWord.all.length.to_f * 100).round(1)
+  end
+  def aggregate_of_level(level)
+    aggregates.find_by(level: level)
+  end
+  def aggregate_of_book(book_id)
+    aggregates.find_by(wordbook_id: book_id, level: "単語帳")  
   end
 end

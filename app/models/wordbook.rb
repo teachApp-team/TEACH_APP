@@ -1,5 +1,6 @@
 class Wordbook < ApplicationRecord
   has_many :words
+  has_many :aggregates
 
   # scope :recent, -> (count) { where() }
 
