@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_15_122328) do
+ActiveRecord::Schema.define(version: 2020_11_15_125506) do
+
+  create_table "aggregates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "wordbook_id"
+    t.boolean "is_level"
+    t.float "percentage"
+    t.string "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_aggregates_on_student_id"
+    t.index ["wordbook_id"], name: "index_aggregates_on_wordbook_id"
+  end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -119,6 +131,12 @@ ActiveRecord::Schema.define(version: 2020_10_15_122328) do
     t.index ["old_wordbook_id"], name: "index_old_words_on_old_wordbook_id"
   end
 
+  create_table "ord_wordbooks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "teacher_id"
     t.bigint "student_id"
@@ -217,6 +235,8 @@ ActiveRecord::Schema.define(version: 2020_10_15_122328) do
     t.index ["wordbook_id"], name: "index_words_on_wordbook_id"
   end
 
+  add_foreign_key "aggregates", "students"
+  add_foreign_key "aggregates", "wordbooks"
   add_foreign_key "events", "students"
   add_foreign_key "events", "teachers"
   add_foreign_key "exam_subjects", "exams"
