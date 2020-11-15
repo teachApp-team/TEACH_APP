@@ -139,6 +139,7 @@ var countdown = function() {
       p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
       finishTest();
       postResult(student_id, wordtest_id, question_id, false)
+      postAggregate(student_id, gon.wordbook_id, gon.level)
     } else {
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
@@ -209,6 +210,7 @@ $(function() {
       clearInterval(timer);
       limitMs = restMs = 3000;
       $('#bar').attr('value', 0);
+      postAggregate(student_id, gon.wordbook_id, gon.level)
       setTimeout("finishTest();", 2000);
     } else {
       resetTimer();
@@ -222,6 +224,7 @@ $(function() {
       $('#answer-wrapper').fadeIn();
       $('#seikai').hide();
       $('#batsu').fadeIn();
+      postAggregate(student_id, gon.wordbook_id, gon.level)
       var p = document.getElementById('answer-line' + currentNum);
       p.style.color = 'red';
       p.lastElementChild.textContent = Number(p.lastElementChild.textContent) + 1
@@ -277,6 +280,20 @@ function postResult(student_id, wordtest_id, question_id, isCorrect){
     console.log(response)
   }).fail(function(error){
     console.log(error)
+  })
+}
+function postAggregate(student_id, wordbook_id, level){
+  console.log('集計開始')
+  const data = {
+    student_id: student_id,
+    wordbook_id: wordbook_id,
+    level: level
+  }
+  $.ajax({
+    url: '/aggregate',
+    type: 'POST',
+    data: data,
+    dataType: 'json'
   })
 }
 </script>

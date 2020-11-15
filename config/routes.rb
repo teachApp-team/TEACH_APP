@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'aggregates/index'
+  post 'aggregate', to: 'aggregates#update'
   post 'password/update/:id', to: 'students#update_password'
   get 'password/edit/:id', to: 'students#edit_password'
   get 'home/ranking/:id', to: 'home#ranking'
