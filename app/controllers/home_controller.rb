@@ -33,6 +33,8 @@ class HomeController < ApplicationController
     @words = @wordbook.leveling_words(params['level'], params['limit'])
     @testwords = @wordbook.testabe_words(params['level'], params['limit'])
     gon.words = @testwords
+    gon.wordbook_id = @wordbook.id
+    gon.level = params['level']
   end
 
   def japanesetest
