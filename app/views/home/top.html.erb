@@ -2,28 +2,93 @@
 <div style="text-align: center;background-color:#99CCFF;">
 <%=  flash[:danger]  %>
 </div>
+<section class="top-design-container">
+  <div class="top-image-container">
+    <%= image_tag "studying.jpg", class: "top-image" %>
+    <div class="logo-container">
+      <div class="logo-img">TEACH APP.</div>
+      <a href="#" class="btn-horizontal-border">(生徒)ログインはこちら</a>
+    </div>
+  </div>
+  <div class="about-teach-app" >
+    <%= image_tag "about1.png", class: "about-teach-app-img" %>
+    <div class="about-teach-app-info">
+      日々の学習の記録や成績を先生に報告できるWebアプリケーションです。
+      <br>
+      さらに単語テストや質問チャット機能により効率よい学習をサポートします。
+    </div>
+  </div>
+  
+  
+  <!-- <div class="second-container">
+    <div>
+      <%= image_tag "logo.png"%>
+    </div>
+    <div class="second-container-info">
+      <p>
+        TEACH APPでは学習履歴や模試成績をクラウド化します。
+        また、2000単語以上の英単語テスト、古文単語テストを実施することができます。
+      </p>
+    </div>
+  </div> -->
+  <section class="iphone-img-container-background">
+    <div class="iphone-img-container iphone-img-container1">
+      <div>
+        <%= image_tag "question1.png", class:"iphone-img"%>
+      </div>
+      <div class="iphone-img-container-info1">
+        <h5 class="iphone-img-container-info1-title">先生ができること</h5>
+        TEACH APPでは生徒の学習履歴や模試成績をクラウド化します。<br>
+        先生ユーザとしてリアルタイムに生徒の学習状況が把握でき、マネジメントや授業の準備に役立てることができます。
+      </div>
+    </div>
+    <div class="iphone-img-container">
+      <div class="iphone-img-container-info2">
+        <h5 class="iphone-img-container-info2-title">生徒ができること</h5>
+        生徒は先生に対して学習の報告をするだけでなくアプリ上で質問をできたり、生徒の授業日程やテストの成績を管理する機能も備わっています。
+      </div>
+      <div>
+        <%= image_tag "learning3.png", class:"iphone-img"%>
+      </div>
+    </div>
+    <div class="tanngo-container" >
+      <div class="tanngo-info-container">
+        <h5 class="other-func-title">その他機能について</h5>
+        <p class="tanngo-info">「システム英単語」・「ターゲット1900」・「ターゲット英熟語1000」に載っている英単語・英熟語の学習ができます。</p>
+        <p class="tanngo-info">また先生は生徒のテスト結果を分析することができ生徒一人ひとりに合ったテストを作成することができます。</p>
+      </div>
+      <div class="tanngo-img-container">
+        <div class="tanngo-img1">
+          <%= image_tag "tanngo.png", class:"tanngo-img"%>
+        </div>
+        <div>
+          <%= image_tag "tanngo1.jpeg", class:"tanngo-img"%>
+        </div>
+      </div>
+    </div>
+    <div class="logo-footer" style="text-align: center;">
+      <%= image_tag "logo.png", class:"logo-footer1" %>
+      <p style="font-size: 15px;">Produced by Kosuke Fujita, Hiroharu Hara</p>
+    </div>
+  </section>
+</section>
   <div class="top_container">
     <div class="login_container">
       <%= form_for(:session, method: :post, url: 'sessions/create') do |f| %>
-        <%= image_tag "door-knob.jpg", class: "open_door_img" %>
-        <h2 class="font-italic">Welcome</h2>
-        <div class="input_div first_input_div">
-          <i class="fas fa-user"></i>  
-          <div>
-            <h5 class="font-italic">Username</h5>
-            <%= f.text_field :name, class: "input" %>
-          </div>
-        </div>
-        <div class="input_div second_input_div">
-          <i class="fas fa-lock"></i>  
-          <div>
-            <h5 class="font-italic">Password</h5>
-            <%= f.password_field :password, class: "input" %>
-          </div>
-        </div>
-        <a href="student_sign_up">新規登録はこちら</a>
-        <input type="submit" class="btn" value="Login">
+      <%= render partial: 'share/login-container', locals: {variable: f} %>
       <% end %>
     </div>
   </div>
 </section>
+
+<script type="text/javascript">
+$('.top_container').hide();
+
+$(function() { 
+  $('.btn-horizontal-border').on('click', function() {
+    $('.top_container').fadeIn();
+    $('.top-design-container').hide();
+  });
+});
+  
+</script>
