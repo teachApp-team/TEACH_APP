@@ -1,0 +1,18 @@
+<%= image_tag "door-knob.jpg", class: "open_door_img" %>
+<h2 class="font-italic">Welcome</h2>
+<div class="input_div first_input_div">
+  <i class="fas fa-user"></i>  
+  <div>
+    <h5 class="font-italic">Username</h5>
+    <%= variable.text_field :name, class: "input" %>
+  </div>
+</div>
+<div class="input_div second_input_div">
+  <i class="fas fa-lock"></i>  
+  <div>
+    <h5 class="font-italic">Password</h5>
+    <%= variable.password_field :password, class: "input" %>
+  </div>
+</div>
+<a href="student_sign_up">新規登録はこちら</a>
+<input type="submit" class="btn" value="Login">
