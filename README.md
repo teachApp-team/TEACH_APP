@@ -1,5 +1,19 @@
-<h1>TEACH APPとは</h1>
-<p>単語学習機能を備えた学習管理Webアプリケーション</p>
+<div>
+  <h1>TEACH APPとは</h1>
+  <p>単語学習機能を備えた学習管理Webアプリケーション</p>
+</div>
+<div>
+  <h1>開発環境</h1>
+  <ul>
+    <li>Ruby on Rails (5.2.0)</li>
+    <li>MySQL</li>
+    <li>jQuery</li>
+    <li>Bootstrap</li>
+    <li>Ruby</li>
+    <li>JavaScript</li>
+    <li>VSCode</li>
+  </ul>
+</div>
 <div>
   <h1>基本機能</h1>
   <div>
